@@ -3,13 +3,14 @@ import './App.css';
 function App() {
   return (
     <div className='App '>
+      123
       <header>
         <div>SignBar</div>
         <nav></nav>
         <div>Hero</div>
       </header>
       <main>
-        <section>GOOD$ME DEAL</section>
+        <section>GOOD4ME DEAL</section>
         <section>TAKE CONTROL</section>
         <section>OUR PRODUCTS</section>
         <section>CAROUSEL</section>
