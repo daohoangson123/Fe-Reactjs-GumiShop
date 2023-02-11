@@ -1,0 +1,21 @@
+.HeroBannerItem__Title {
+    font-family: Jost;
+    font-size: 26px;
+    font-weight: 600;
+    line-height: 42px;
+    color: #F6623E;
+}
+
+.HeroBannerItem__ProductName {
+    font-family: Jost;
+    font-size: 56px;
+    font-weight: 600;
+    line-height: 72px;
+}
+
+.HeroBannerItem__ProductDes {
+    font-family: Jost;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 29px;
+}

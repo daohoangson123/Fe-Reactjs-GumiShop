@@ -1,28 +1,24 @@
 import './App.css';
+// import { Routes, Route } from "react-router-dom";
+// import LandingPage from './components/MAIN/LandingPage';
+import Header from './components/HEADER/Header';
+// import Footer from './components/FOOTER/Footer';
 
 function App() {
   return (
     <div className='App '>
       <header>
-        <div>SignBar</div>
-        <nav></nav>
-        <div>Hero</div>
+        <Header />
       </header>
-      <main>
-        <section>GOOD4ME DEAL</section>
-        <section>TAKE CONTROL</section>
-        <section>OUR PRODUCTS</section>
-        <section>CAROUSEL</section>
-        <section>SHOP ALL</section>
-        <section>LATEST NEWS</section>
-        <section>#GOOD4ME</section>
+      {/* <main className=' text-center'>
+        <Routes>
+          <Route path='/' element={<LandingPage/>} />
+          <Route path='about' />
+        </Routes>
       </main>
-      <footer>
-        <div>GOOD4ME</div>
-        <div>KEEP IN TOUCH</div>
-        <div>MORE INFO</div>
-        <div>COPYRIGHT</div>
-      </footer>
+      <footer className=' text-center'>
+        <Footer />
+      </footer> */}
     </div>
   );
 }
