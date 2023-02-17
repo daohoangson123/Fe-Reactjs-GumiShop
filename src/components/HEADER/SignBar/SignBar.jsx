@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-import './SignBar.css'
+import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import './SignBar.css';
 
 const text = 'Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*'
 
@@ -24,26 +24,26 @@ const SignBar = () => {
         }
     }
     useEffect(() => {
-    }, [flag])
+    }, [])
 
     return (
-        <div className='SignBar hidden md:flex justify-between gap-3 '>
+        <div className='SignBar container hidden md:flex justify-between gap-3 '>
             <div className='SignBar__text'>{text}</div>
             <div className='SignBar__SignRegis flex gap-2 '>
                 <div className='SignBar__SignRegis--Component flex flex-wrap justify-center pr-2 '>
-                    <Link className=' mr-1 hover:underline '>
+                    <Link to='/signin' className=' mr-1 hover:underline '>
                         Sign In
                     </Link>
                     /
-                    <Link className=' ml-1 hover:underline '>
+                    <Link to='/register' className=' ml-1 hover:underline '>
                     Register
                     </Link> 
                 </div>
                 <div className='SignBar__SignRegis--Languages flex items-center gap-1 '>
-                    <label htmlFor="lang" className='LangLabel grid place-items-center '>
-                        <img src={flag} alt="flag" />
+                    <label htmlFor="lang" className='LangLabel '>
+                        <img src={flag} alt="flag" className=' grid place-items-center ' />
                     </label>
-                    <select className='LangSelect focus:border-none' name="lang" id="lang" onChange={handelChange}>
+                    <select className='LangSelect ' name="lang" id="lang" onChange={handelChange}>
                         {langs.map((item) => (
                             <option className='LangOption ' key={item.name} value={item.name}>
                                 {item.name}

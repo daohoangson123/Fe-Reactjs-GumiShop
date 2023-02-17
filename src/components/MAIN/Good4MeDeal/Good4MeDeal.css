@@ -1,0 +1,28 @@
+.Good4MeDeal {
+    text-align: center;
+    margin-top: 60px;
+}
+
+.Good4MeDeal > hr {
+    width: 127px;
+    height: 4px;
+    margin: 25px auto;
+    background: var(--color-primary);
+    border: none;
+}
+
+.Good4MeDeal > p {
+    font-family: var(--font-default);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    color: var(--color-text);
+    margin-bottom: 36px;
+}
+
+
+@media only screen and (max-width: 1920px) {   
+    .ProductContainer {
+        margin: 30px 60px;
+    }
+}

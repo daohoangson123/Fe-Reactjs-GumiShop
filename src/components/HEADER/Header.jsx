@@ -1,14 +1,12 @@
 import SignBar from "./SignBar/SignBar";
 import NavBar from "./NavBar/NavBar";
-import HeroBanner from "./HeroBanner/HeroBanner";
 
 const Header = () => {
     return (
-        <>
+        <header>
             <SignBar />
             <NavBar />
-            <HeroBanner />
-        </>
+        </header>
     )
 }
 

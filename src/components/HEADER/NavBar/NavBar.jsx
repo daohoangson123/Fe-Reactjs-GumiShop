@@ -1,13 +1,11 @@
 import { Link } from "react-router-dom";
-import logoIcon from "../../../icon/LogoIcon.png";
-import menuIcon1 from "../../../icon/MenuIcon1.png";
-import menuIcon2 from "../../../icon/MenuIcon2.png";
-import menuIcon3 from "../../../icon/MenuIcon3.png";
 import searchIcon from "../../../icon/SearchIcon.svg";
 import cartIcon from "../../../icon/CartIcon.svg";
+import usertIcon from "../../../icon/UserIcon.png";
 import "./NavBar.css"
+import { useEffect , useState } from "react";
 
-const Nav_Items = [
+const nav_Items = [
     {
         name: "HOME",
         path: "/",
@@ -29,35 +27,87 @@ const Nav_Items = [
     },
 ]
 
+
 const NavBar = () => {
+    const [menuvisible, setMenuvisible] = useState("MobileMenu__NavBar");
+    const [stickyNav, setStickyNav] = useState("NavBar");
+    const [navColor, setNavColor] = useState("NavBar__List");
+
+    const scrollNav = () => {
+        if (window.pageYOffset > 0) {
+            setStickyNav("stickyNav");
+            setNavColor("navColor");
+        } else {
+            setStickyNav("NavBar");
+            setNavColor("NavBar__List");
+        }
+    };
+
+    window.addEventListener("scroll", scrollNav);
+
+    const toggleMenu = () => {
+        if(menuvisible === "MobileMenu__NavBar") {
+            setMenuvisible("MobileMenu__NavBar-actived");
+        } else {
+            setMenuvisible("MobileMenu__NavBar");
+        }
+    };
+        
+    const mq = window.matchMedia('(min-width: 1025px)');
+
+    useEffect(() => {
+        // initial check to toggle something on or off
+        toggle();
+    
+        // returns true when window is => 1025px
+        mq.addListener(toggle);
+    
+        // unmount cleanup handler
+        return () => mq.removeListener(toggle);
+    }, );
+
+    // toggle something based on matchMedia event
+    const toggle = () => {
+        if (mq.matches) {
+            setMenuvisible("MobileMenu__NavBar");
+        }
+    };
+
     return (
-        <nav className="NavBar p-5 sm:py-[10px] sm:px-[50px] md:px-[100px] flex flex-wrap justify-between items-center bg-white">
-            <button className="MobileMenu flex flex-col items-end gap-1 lg:hidden ">
-                <img src={menuIcon1} alt="" className="w-[30px] " />
-                <img src={menuIcon2} alt="" className="w-[30px] "/>
-                <img src={menuIcon3} alt="" className="w-[20px] "/>
+        <nav className={stickyNav}>
+            <button className="MobileMenu"
+            onClick={toggleMenu}>
+                <div className="MenuIcon1 MenuIcon "></div>
+                <div className="MenuIcon2 MenuIcon "></div>
+                <div className="MenuIcon3 MenuIcon "></div>
+                {/* <img src={menuIcon1} alt="" className="MenuIcon1 MenuIcon " />
+                <img src={menuIcon2} alt="" className="MenuIcon2 MenuIcon "/>
+                <img src={menuIcon3} alt="" className="MenuIcon3 MenuIcon "/> */}
             </button>
-            <div className="NavBar__List absolute top-[100px] left-[50px] hidden lg:hidden justify-between gap-5">
-                {Nav_Items.map((item) => (
-                    <Link to={item.path} className="">
+            <div className={menuvisible}>
+                {nav_Items.map((item) => (
+                    <Link to={item.path} key={item.name} className='MobileMenu__Item hover:underline '>
                         {item.name}
                     </Link>
                 ))}
             </div>
-            <h1 className="NavBar__Logo p-1 sm:p-0 w-[200px] sm:w-[250px] h-[50px] "><img src={logoIcon} alt="Logo" /></h1>
-            <div className="NavBar__List hidden lg:flex justify-center sm:gap-5 2xl:gap-20">
-                {Nav_Items.map((item) => (
+            <h1 className="NavBar__Logo">GOOD<span>4</span>ME.</h1>
+            <div className={navColor}>
+                {nav_Items.map((item) => (
                     <Link to={item.path} key={item.name} className=' hover:underline '>
                         {item.name}
                     </Link>
                 ))}
             </div>
-            <div className="SearchCart flex items-center gap-2">
+            <div className="SearchCart">
                 <Link to='/search' >
-                    <img className='NavBar__SearchIcon' src={searchIcon} alt="search" />
+                    <img className='NavBar__SearchIcon Icon' src={searchIcon} alt="search" />
+                </Link>
+                <Link to='/signin' >
+                    <img className='NavBar__UserIcon Icon' src={usertIcon} alt="cart" />
                 </Link>
                 <Link to='/cart' >
-                    <img className='NavBar__CartIcon' src={cartIcon} alt="cart" />
+                    <img className='NavBar__CartIcon Icon' src={cartIcon} alt="cart" />
                 </Link>
             </div>
         </nav>

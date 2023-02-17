@@ -1,39 +1,57 @@
-:root {
-    --SignBar: #F6623E;
-    --textDefault: #ffffff;
-    --textAlt: #000000;
-}
-
 .SignBar {
-    color: var(--textDefault);
-    background-color: var(--SignBar);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    color: var(--color-default);
+    background-color: var(--color-primary);
     padding: 15px 120px;
 }
 
 .SignBar__SignRegis {
-    
+    display: flex;
+    gap: 10px;
 }
 
-
 .SignBar__SignRegis--Component {
-    border-right: solid 1px var(--textDefault);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding-right: 5px;
+    color: var(--color-default);
+    border-right: solid 1px var(--color-default);
+}
+
+.SignBar__SignRegis--Component > a:visited {
+    color: var(--color-default);
 }
 
 .SignBar__SignRegis--Languages {
-
+    display: flex;
+    align-items: center;
+    gap: 5px;
 }
 
-.LangLabel {
+.LangLabel > img {
+    display: grid;
+    place-items: center;
     width: 30px;
     height: 25px;
 }
 
 .LangSelect {
-    color: var(--textDefault);
+    color: var(--color-default);
     background: transparent;
     border: none;
 }
 
 .LangOption {
-    color: var(--textAlt);
+    color: var(--color-alt);
+}
+
+@media only screen and (max-width: 1024px) {
+    .SignBar {
+        display: none;
+    }
 }
