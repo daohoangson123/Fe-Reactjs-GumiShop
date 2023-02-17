@@ -74,7 +74,7 @@ header {
     width: 100%;
     border: 2px solid black;
     transition: all ease-in-out .5s;
-    visibility: hidden;
+    font-family: var(--font-default);
 }
 
 .MobileMenu__NavBar-actived {
@@ -86,12 +86,12 @@ header {
     left: 0;
     background: rgba(255, 255, 255, .7);
     width: 100%;
-    border: 2px solid black;
+    border: 2px solid var(--color-primary);
     transition: all ease-in-out .5s;
-    visibility: visible;
+    font-family: var(--font-default);
 }
 
-.MobileMenu__NavBar > a:visited {
+.MobileMenu__NavBar-actived > a:visited {
     color: var(--color-text);
 }
 
@@ -104,10 +104,12 @@ header {
     color: var(--color-default) !important;
     background: rgba(246, 98, 62, .9);
     padding-left: 50px;
+    font-weight: 900;
 }
 
 .NavBar__Logo {
     display: flex;
+    justify-content: center;
     font-size: clamp(30px, 1vw, 36px);
     font-weight: 600;
     line-height: 24px;

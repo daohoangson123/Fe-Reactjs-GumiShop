@@ -25,7 +25,7 @@ main {
 
 h2 {
     font-family: var(--font-default);
-    font-size: 36px;
+    font-size: clamp(26px, 1vw, 36px);
     font-weight: 500;
     line-height: 32px;
     color: var(--color-alt);

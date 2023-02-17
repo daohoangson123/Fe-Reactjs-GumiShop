@@ -4,7 +4,7 @@ import item2 from '../../../img/item2.png';
 import './Good4MeDeal.css';
 import Good4MeDealBot from "./Good4MeDealBot";
 
-const products_List = [
+const deal_List = [
     {
         url: item1,
         name: "MULTI-VITAMIN: EVERYDAY WELLNESS",
@@ -30,7 +30,7 @@ const Good4MeDeal = ({...props}) => {
             <hr />
             <p>Pick your beauty products today. 50% OFF on the most popular GOOD4ME. Order all classy products today!</p>
             <div className="ProductContainer">
-                {products_List.map((product) => (
+                {deal_List.map((product) => (
                     <div className="ProductItem" key={product.name}>
                         <Product
                         url={product.url}

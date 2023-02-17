@@ -4,6 +4,7 @@ const Product = ({...props}) => {
     return (
         <div className="Product">
             <div className="Product__Img-Container">
+                <abbr title={props.name}></abbr>
                 <img src={props.url} alt={props.name} />
                 {props.sale
                 ? <div className='Product__Sale'>ON SALE</div>
