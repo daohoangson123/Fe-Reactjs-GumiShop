@@ -1,5 +1,5 @@
 .SearchForm {
-    margin-bottom: 50px;
+    margin-bottom: 10px;
 }
 
 .SearchInput {
@@ -12,4 +12,11 @@
     border: 1px solid var(--color-primary);
     border-radius: 3px;
     outline: none;
+}
+
+.ProductCount,
+.Guide,
+.WaitAPI {
+    font-family: var(--font-default);
+    font-weight: 400;
 }

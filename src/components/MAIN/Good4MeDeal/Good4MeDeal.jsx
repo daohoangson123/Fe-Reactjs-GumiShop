@@ -30,7 +30,7 @@ const Good4MeDeal = ({...props}) => {
                         name={product.name}
                         sale={product.sale}
                         prices={product.price}
-                        saleprices={product.discouter}
+                        saleprices={product.price / 2}
                     />
                     </div>
                 ))}

@@ -10,31 +10,25 @@ const Shop = () => {
         event.preventDefault();
     }
     
-    const [searchValue, setSearchValue] = useState("");
+    const [searchValue, setSearchValue] = useState(undefined);
     
     const handleChange = (event) => {
         setSearchValue(event.target.value);
 
-        if (searchValue !== result) {
+        if (result !== searchValue) {
             setResult([])
-        } else if(searchValue === "") {
-            setResult(api)
         }
     }
 
     useEffect(() => {
-        (async function () {
+        async function getApi() {
             const fetchAPI = await fetch ("https://fe21-db.vercel.app/gummi");
             const fetchedAPI = await fetchAPI.json();
-            const results = fetchedAPI;
+            const result = fetchedAPI;
             setApi(result);
-            setResult(results);
-        })();
-        if (searchValue !== result) {
-            setResult([])
-        } else if(searchValue === "") {
-            setResult(api)
-        }
+        };
+
+        getApi();
     }, []);
 
     useEffect(() => {
@@ -53,12 +47,7 @@ const Shop = () => {
                         setResult(searchTemp);
                 }
         };
-        if (searchValue !== result) {
-            setResult([])
-        } else if(searchValue === "") {
-            setResult(api)
-        }
-    }, [])
+    }, [searchValue])
 
     return (
         <div className='Shop'>
@@ -71,10 +60,32 @@ const Shop = () => {
                     onChange={handleChange}
                 />
             </form>
-            <h2>Check Our Products</h2>
-            <div className="ProductContainer">
-                {result !== [] ?
-                result.map((product) => (
+                <div className='ProductCount'>
+                    {result.length === 0 && searchValue === undefined
+                    ? null
+                    : result.length !== 0 && searchValue === ""
+                    ? null
+                    : <div>{result.length} item found</div>}
+                </div>
+            <span className='Guide'>Looking For Products? Just a letter of its name</span>
+                {api.length === 0
+                ? <div className='WaitAPI'>Loading Products... Please Wait A Second</div>
+                : null}
+            <div className="ProductContainer ShopProductContainer">
+                {result.length === 0 && searchValue === undefined
+                ? api.map((product) => (
+                    <div className="ProductItem" key={product._id}>
+                        <Product
+                        url={product.img}
+                        name={product.name}
+                        sale={product.sale}
+                        prices={product.discouter}
+                        saleprices={product.price}
+                        style={{fontSize: "14px", lineHeight: "20px"}}
+                        />
+                    </div>
+                    ))
+                : result.map((product) => (
                     <div className="ProductItem" key={product._id}>
                         <Product
                         url={product.img}
@@ -86,7 +97,6 @@ const Shop = () => {
                         />
                     </div>
                     ))
-                : "123"
                 }
             </div>
         </div>
