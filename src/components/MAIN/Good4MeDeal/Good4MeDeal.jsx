@@ -9,12 +9,14 @@ const Good4MeDeal = ({...props}) => {
     const data = api.slice(4, 8);
     
     useEffect(() => {
-        (async function () {
+        async function getAPI() {
             let fetchAPI = await fetch ("https://fe21-db.vercel.app/gummi");
             let fetchedAPI = await fetchAPI.json();
             let results = fetchedAPI;
-            setApi([...results]);
-        })();
+            setApi(results);
+        }
+
+        getAPI();
     }, []);
 
     return (

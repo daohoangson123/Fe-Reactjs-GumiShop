@@ -24,8 +24,8 @@ const Shop = () => {
         async function getApi() {
             const fetchAPI = await fetch ("https://fe21-db.vercel.app/gummi");
             const fetchedAPI = await fetchAPI.json();
-            const result = fetchedAPI;
-            setApi(result);
+            const results = fetchedAPI;
+            setApi(results);
         };
 
         getApi();
