@@ -16,10 +16,13 @@ const Product = ({...props}) => {
             </div>
             <div className="Product__Prices">
                 <span className='SalePrices'>
-                    {props.saleprices}
+                    {props.saleprices + " NZD"}
                 </span>
                 <span className='Prices'>
-                    {props.prices}
+                    {props.prices === 0
+                    ? null
+                    : props.prices + " NZD"
+                    }
                 </span>
             </div>
         </div>

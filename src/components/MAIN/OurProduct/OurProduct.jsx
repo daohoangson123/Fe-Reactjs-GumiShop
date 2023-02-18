@@ -1,89 +1,72 @@
 import './OurProduct.css';
-import p1 from '../../../img/product1.png';
-import p4 from '../../../img/product4.png';
 import Product from '../../RepeatComponent/Product';
-import { useState } from 'react';
-
-const products_List = [
-    {
-        id: 1,
-        url: p1,
-        name: "MULTI-VITAMIN (3 MONTH SUPPLY)",
-        sale: true,
-        prices: "$199.75 NZD",
-        saleprices: "$39.95 NZD",
-    },
-    {
-        id: 2,
-        url: p4,
-        name: "APPLE CIDER VINEGAR (3 MONTH SUPPLY)",
-        sale: true,
-        prices: "$199.75 NZD",
-        saleprices: "$94.95 NZD",
-    },
-    {
-        id: 3,
-        url: p1,
-        name: "MULTI-VITAMIN (3 MONTH SUPPLY)",
-        sale: false,
-        prices: "$199.75 NZD",
-        saleprices: "$39.95 NZD",
-    },
-    {
-        id: 4,
-        url: p4,
-        name: "APPLE CIDER VINEGAR (3 MONTH SUPPLY)",
-        sale: true,
-        prices: "$199.75 NZD",
-        saleprices: "$94.95 NZD",
-    },
-]
+import { useEffect,useState } from 'react';
 
 const OurProduct = () => {
-    const fisrtLoad = products_List.slice(0,3);
+    const [api, setApi] = useState([]);
 
-    const fullLoad = products_List;
+    const fisrtLoad = api.slice(0,0);
+
+    const fullLoad = api.slice(4, 8);
     
     const [load, setLoad] = useState(fisrtLoad);
 
     const [isCLicked, setIsClicked] = useState("VIEW ALL PRODUCTS");
 
     const loadmore = () => {
-        if (load === fisrtLoad) {
+        if (load.length === 0) {
             setLoad(fullLoad);
             setIsClicked("VIEW LESS PRODUCTS");
-        } else if (load === fullLoad) {
+        } else if (load.length !== 0) {
             setLoad(fisrtLoad);
             setIsClicked("VIEW ALL PRODUCTS");
-        } else if (load !== fisrtLoad) {
-            setLoad(fullLoad);
-            setIsClicked("VIEW LESS PRODUCTS");
-        } else if (load !== fullLoad) {
-            setLoad(fisrtLoad);
-            setIsClicked("VIEW ALL PRODUCTS");
-        }
+        } 
+
     }
     
-
+    useEffect(() => {
+        (async function () {
+            let fetchAPI = await fetch ("https://fe21-db.vercel.app/gummi");
+            let fetchedAPI = await fetchAPI.json();
+            let results = fetchedAPI;
+            setApi([...results]);
+        })();
+    }, []);
+    
     return (
         <div className='OurProduct'>
             <h2>OUR PRODUCTS ARE</h2>
             <div className="ProductContainer">
-                {load.map((product) => (
-                    <div className="ProductItem" key={product.id}>
+                {api.slice(0, 4).map((product) => (
+                    <div className="ProductItem" key={product._id}>
                         <Product
-                        url={product.url}
+                        url={product.img}
                         name={product.name}
                         sale={product.sale}
-                        prices={product.prices}
-                        saleprices={product.saleprices}
+                        prices={product.discouter}
+                        saleprices={product.price}
                         style={{fontSize: "14px", lineHeight: "20px"}}
                         />
                     </div>
-                ))}
+                    ))
+                }
+                {load.map((product) => (
+                    <div className="ProductItem" key={product._id}>
+                        <Product
+                        url={product.img}
+                        name={product.name}
+                        sale={product.sale}
+                        prices={product.price}
+                        saleprices={product.discouter}
+                        style={{fontSize: "14px", lineHeight: "20px"}}
+                        />
+                    </div>
+                    ))
+                }
             </div>
             <div className="LoadMore"
-                onClick={loadmore}>
+                onClick={loadmore}
+                >
                     {isCLicked}
             </div>
         </div>

@@ -80,13 +80,10 @@ const NavBar = () => {
                 <div className="MenuIcon1 MenuIcon "></div>
                 <div className="MenuIcon2 MenuIcon "></div>
                 <div className="MenuIcon3 MenuIcon "></div>
-                {/* <img src={menuIcon1} alt="" className="MenuIcon1 MenuIcon " />
-                <img src={menuIcon2} alt="" className="MenuIcon2 MenuIcon "/>
-                <img src={menuIcon3} alt="" className="MenuIcon3 MenuIcon "/> */}
             </button>
             <div className={menuvisible}>
                 {nav_Items.map((item) => (
-                    <Link to={item.path} key={item.name} className='MobileMenu__Item hover:underline '>
+                    <Link to={item.path} key={item.name} className='MobileMenu__Item'>
                         {item.name}
                     </Link>
                 ))}
@@ -94,7 +91,7 @@ const NavBar = () => {
             <h1 className="NavBar__Logo">GOOD<span>4</span>ME.</h1>
             <div className={navColor}>
                 {nav_Items.map((item) => (
-                    <Link to={item.path} key={item.name} className=' hover:underline '>
+                    <Link to={item.path} key={item.name} className=''>
                         {item.name}
                     </Link>
                 ))}

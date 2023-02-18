@@ -1,41 +1,64 @@
 import './Shop.css';
-import { products_List } from '../../data/productsData';
 import Product from '../RepeatComponent/Product';
 import { useEffect, useState } from 'react';
 
 const Shop = () => {
+    const [api, setApi] = useState([]);
+    const [result, setResult] = useState([]);
+
     const handleSubmit = (event) => {
         event.preventDefault();
     }
     
-    const [searchValue, setSearchValue] = useState("string");
-    const [result, setResult] = useState(products_List);
-
+    const [searchValue, setSearchValue] = useState("");
+    
     const handleChange = (event) => {
         setSearchValue(event.target.value);
-        
+
         if (searchValue !== result) {
-            setResult([]);
-        }    
+            setResult([])
+        } else if(searchValue === "") {
+            setResult(api)
+        }
     }
 
     useEffect(() => {
-        const serchTemp = []
-        for (let i = 0; i < products_List.length; i++) {
+        (async function () {
+            const fetchAPI = await fetch ("https://fe21-db.vercel.app/gummi");
+            const fetchedAPI = await fetchAPI.json();
+            const results = fetchedAPI;
+            setApi(result);
+            setResult(results);
+        })();
+        if (searchValue !== result) {
+            setResult([])
+        } else if(searchValue === "") {
+            setResult(api)
+        }
+    }, []);
+
+    useEffect(() => {
+        const searchTemp = [];
+        for (let i = 0; i < api.length; i++) {
             if (searchValue === "") {
-                    setResult(products_List);
-                    break; 
-                } else if ((products_List[i].name
-                            .replace(/\s+/g, '')
-                            .toLocaleLowerCase()
-                            .includes(searchValue
-                            .replace(/\s+/g, '')
-                            .toLocaleLowerCase()))) {
-                                serchTemp.push(products_List[i]);
-                                setResult(serchTemp);
-                        }
+                    setResult(api);
+                    break;
+                } else if ((api[i].name
+                    .replace(/\s+/g, '')
+                    .toLocaleLowerCase()
+                    .includes(searchValue
+                    .replace(/\s+/g, '')
+                    .toLocaleLowerCase()))) {
+                        searchTemp.push(api[i]);
+                        setResult(searchTemp);
+                }
         };
-    }, [searchValue])
+        if (searchValue !== result) {
+            setResult([])
+        } else if(searchValue === "") {
+            setResult(api)
+        }
+    }, [])
 
     return (
         <div className='Shop'>
@@ -50,18 +73,21 @@ const Shop = () => {
             </form>
             <h2>Check Our Products</h2>
             <div className="ProductContainer">
-                {result.map((product) => (
-                    <div className="ProductItem" key={product.id}>
+                {result !== [] ?
+                result.map((product) => (
+                    <div className="ProductItem" key={product._id}>
                         <Product
-                        url={product.url}
+                        url={product.img}
                         name={product.name}
                         sale={product.sale}
-                        prices={product.prices}
-                        saleprices={product.saleprices}
+                        prices={product.price}
+                        saleprices={product.discouter}
                         style={{fontSize: "14px", lineHeight: "20px"}}
                         />
                     </div>
-                ))}
+                    ))
+                : "123"
+                }
             </div>
         </div>
         </div>

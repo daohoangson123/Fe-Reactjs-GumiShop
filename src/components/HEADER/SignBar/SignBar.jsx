@@ -27,21 +27,21 @@ const SignBar = () => {
     }, [])
 
     return (
-        <div className='SignBar container hidden md:flex justify-between gap-3 '>
-            <div className='SignBar__text'>{text}</div>
-            <div className='SignBar__SignRegis flex gap-2 '>
-                <div className='SignBar__SignRegis--Component flex flex-wrap justify-center pr-2 '>
-                    <Link to='/signin' className=' mr-1 hover:underline '>
+        <div className='SignBar '>
+            <div className='SignBar__Text'>{text}</div>
+            <div className='SignBar__SignRegis '>
+                <div className='SignBar__SignRegis--Component'>
+                    <Link to='/signin' className=''>
                         Sign In
                     </Link>
                     /
-                    <Link to='/register' className=' ml-1 hover:underline '>
+                    <Link to='/register' className=''>
                     Register
                     </Link> 
                 </div>
-                <div className='SignBar__SignRegis--Languages flex items-center gap-1 '>
+                <div className='SignBar__SignRegis--Languages '>
                     <label htmlFor="lang" className='LangLabel '>
-                        <img src={flag} alt="flag" className=' grid place-items-center ' />
+                        <img src={flag} alt="flag" className=' ' />
                     </label>
                     <select className='LangSelect ' name="lang" id="lang" onChange={handelChange}>
                         {langs.map((item) => (

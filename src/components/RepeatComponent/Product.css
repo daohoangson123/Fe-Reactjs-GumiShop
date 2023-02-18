@@ -1,12 +1,13 @@
 .ProductContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fill, clamp(200px, 21vw, 400px));
+    grid-template-columns: repeat(auto-fill, 400px);
     justify-content: center;
     gap: 30px;
 }
 
 .Product__Img-Container {
     position: relative;
+    height: 400px;
 }
 
 .Product__Img-Container abbr {
@@ -57,4 +58,16 @@
     line-height: 20px;
     color: var(--color-text);
     text-decoration: line-through;
+}
+
+@media only screen and (max-width: 1440px) {
+    .ProductContainer {
+
+        grid-template-columns: repeat(auto-fill, 280px);
+    }
+    
+    .Product__Img-Container {
+        position: relative;
+        height: 280px;
+    }
 }
