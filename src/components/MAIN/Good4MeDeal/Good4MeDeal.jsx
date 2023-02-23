@@ -24,10 +24,15 @@ const Good4MeDeal = ({...props}) => {
             <h2>GOOD4ME DEAL</h2>
             <hr />
             <p>Pick your beauty products today. 50% OFF on the most popular GOOD4ME. Order all classy products today!</p>
+            {api.length === 0
+                ? <div className='Loading'>Loading Products...</div>
+                : null
+            }
             <div className="ProductContainer">
                 {data.map((product) => (
-                    <div className="ProductItem" key={product.name}>
+                    <div className="ProductItem" key={product._id}>
                         <Product
+                        id={product._id}
                         url={product.img}
                         name={product.name}
                         sale={product.sale}

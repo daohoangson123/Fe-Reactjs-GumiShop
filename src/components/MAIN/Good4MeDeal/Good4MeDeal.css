@@ -3,6 +3,13 @@
     margin-top: 60px;
 }
 
+.Loading {
+    font-family: var(--font-default);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
 .Good4MeDeal > hr {
     width: 127px;
     height: 4px;

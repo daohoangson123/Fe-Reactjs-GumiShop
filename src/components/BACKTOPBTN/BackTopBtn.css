@@ -1,4 +1,5 @@
-.BackTopBtn, .BackTopBtn-actived {
+.BackTopBtn,
+.BackTopBtn-actived {
     position: fixed;
     display: grid;
     place-items: center;

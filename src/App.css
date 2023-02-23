@@ -30,7 +30,3 @@ h2 {
     line-height: 32px;
     color: var(--color-alt);
 }
-
-a:hover {
-    text-decoration: underline;
-}

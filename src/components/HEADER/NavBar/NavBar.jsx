@@ -1,9 +1,11 @@
+import "./NavBar.css";
 import { Link } from "react-router-dom";
 import searchIcon from "../../../icon/SearchIcon.svg";
 import cartIcon from "../../../icon/CartIcon.svg";
 import usertIcon from "../../../icon/UserIcon.png";
-import "./NavBar.css"
 import { useEffect , useState } from "react";
+import { useSelector } from 'react-redux';
+import { myCartSelector } from '../../../REDUX/Selectors/Selector';
 
 const nav_Items = [
     {
@@ -27,8 +29,8 @@ const nav_Items = [
     },
 ]
 
-
 const NavBar = () => {
+    const myCart = useSelector(myCartSelector);
     const [menuvisible, setMenuvisible] = useState("MobileMenu__NavBar");
     const [stickyNav, setStickyNav] = useState("NavBar");
     const [navColor, setNavColor] = useState("NavBar__List");
@@ -72,7 +74,6 @@ const NavBar = () => {
             setMenuvisible("MobileMenu__NavBar");
         }
     };
-
     return (
         <nav className={stickyNav}>
             <button className="MobileMenu"
@@ -104,7 +105,17 @@ const NavBar = () => {
                     <img className='NavBar__UserIcon Icon' src={usertIcon} alt="cart" />
                 </Link>
                 <Link to='/cart' >
-                    <img className='NavBar__CartIcon Icon' src={cartIcon} alt="cart" />
+                    <div className="Cart_IconContainer">
+                        <img className='NavBar__CartIcon Icon' src={cartIcon} alt="cart" />
+                        {Object.keys(myCart).length === 0
+                        ? <></>
+                        :   <div className="Cart_Notify">
+                                <span>
+                                    {Object.keys(myCart).length}
+                                </span>
+                            </div>
+                        }
+                    </div>
                 </Link>
             </div>
         </nav>

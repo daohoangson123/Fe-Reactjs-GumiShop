@@ -2,7 +2,10 @@ import './Shop.css';
 import Product from '../RepeatComponent/Product';
 import { useEffect, useState } from 'react';
 
+
 const Shop = () => {
+    
+
     const [api, setApi] = useState([]);
     const [result, setResult] = useState([]);
 
@@ -67,7 +70,6 @@ const Shop = () => {
                     ? null
                     : <div>{result.length} item found</div>}
                 </div>
-            <span className='Guide'>Looking For Products? Just a letter of its name</span>
                 {api.length === 0
                 ? <div className='WaitAPI'>Loading Products... Please Wait A Second</div>
                 : null}
@@ -76,6 +78,7 @@ const Shop = () => {
                 ? api.map((product) => (
                     <div className="ProductItem" key={product._id}>
                         <Product
+                        id={product._id}
                         url={product.img}
                         name={product.name}
                         sale={product.sale}
@@ -88,11 +91,12 @@ const Shop = () => {
                 : result.map((product) => (
                     <div className="ProductItem" key={product._id}>
                         <Product
+                        id={product._id}
                         url={product.img}
                         name={product.name}
                         sale={product.sale}
-                        prices={product.price}
-                        saleprices={product.discouter}
+                        prices={product.discouter}
+                        saleprices={product.price}
                         style={{fontSize: "14px", lineHeight: "20px"}}
                         />
                     </div>

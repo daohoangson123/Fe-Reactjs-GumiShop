@@ -16,13 +16,31 @@
     margin-bottom: 40px;
 }
 
+@media only screen and (max-width: 1440px) {
+    .owl-control .owl-stage {
+        margin-left: -130px;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     .owl-control .owl-stage {
-        margin-left: 0;
+        margin-left: -70px;
     }
 
     .owl-control .item {
         width: 200px;
         height: 200px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .owl-control .owl-stage {
+        margin-left: -120px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .owl-control .owl-stage {
+        margin-left: -170px;
     }
 }

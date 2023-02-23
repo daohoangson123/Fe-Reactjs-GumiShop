@@ -36,10 +36,15 @@ const OurProduct = () => {
     return (
         <div className='OurProduct'>
             <h2>OUR PRODUCTS ARE</h2>
+            {api.length === 0
+                ? <div className='Loading'>Loading Products...</div>
+                : null
+            }
             <div className="ProductContainer">
                 {api.slice(0, 4).map((product) => (
                     <div className="ProductItem" key={product._id}>
                         <Product
+                        id={product._id}
                         url={product.img}
                         name={product.name}
                         sale={product.sale}
@@ -53,6 +58,7 @@ const OurProduct = () => {
                 {load.map((product) => (
                     <div className="ProductItem" key={product._id}>
                         <Product
+                        id={product._id}
                         url={product.img}
                         name={product.name}
                         sale={product.sale}

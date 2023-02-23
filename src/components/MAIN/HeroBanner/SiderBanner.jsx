@@ -22,12 +22,13 @@ const banner_2 = {
     }
 
 const SliderBanner = () => {
+
     return (
         <div>
             <OwlCarousel className='owl-theme' responsiveRefreshRate={0} autoplay={false} items={1} nav={false} dots={false} loop>
                 <div className='SliderContainer'>
                     <div className='BannerContainer BannerContainer_1' style={{backgroundImage: `url(${banner_1.bgUrl})`}}>
-                        <div className='SliderBanner_1'>
+                        <div className='SliderBanner_1' >
                             <ProductShop
                             title={banner_1.title}
                             name={banner_1.name}

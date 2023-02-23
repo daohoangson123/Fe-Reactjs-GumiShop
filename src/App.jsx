@@ -5,7 +5,10 @@ import Footer from './components/FOOTER/Footer';
 import BackTopBtn from './components/BACKTOPBTN/BackTopBtn';
 import Shop from './components/FUNCTIONPAGES/Shop';
 import BackTopWrapper from './components/BACKTOPWRAPPER/BackTopWrapper';
+import SignIn from "./components/FUNCTIONPAGES/SignIn";
+import Regis from "./components/FUNCTIONPAGES/Regis";
 import './App.css';
+import Cart from "./components/FUNCTIONPAGES/Cart";
 
 function App() {
   return (
@@ -16,6 +19,13 @@ function App() {
         <Routes>
           <Route path='/' element={<LandingPage/>} />
           <Route path='/shop' element={<Shop/>} />
+          <Route path='/faq' element={<Shop/>} />
+          <Route path='/stockist' element={<Shop/>} />
+          <Route path='/wholesale' element={<Shop/>} />
+          <Route path='/contact' element={<Shop/>} />
+          <Route path='/signin' element={<SignIn/>} />
+          <Route path='/regis' element={<Regis/>} />
+          <Route path='/cart' element={<Cart/>} />
         </Routes>
       </BackTopWrapper>
       </main>
