@@ -19,4 +19,10 @@
     padding: 15px 45px;
     border: 2px solid var(--color-primary);
     cursor: pointer;
+    transition: all ease-in-out .3s;
+}
+
+.LoadMore:hover {
+    color: var(--color-default);
+    background: var(--color-primary);
 }

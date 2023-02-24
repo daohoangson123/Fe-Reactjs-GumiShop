@@ -101,7 +101,7 @@ const NavBar = () => {
                 <Link to='/shop' >
                     <img className='NavBar__SearchIcon Icon' src={searchIcon} alt="search" />
                 </Link>
-                <Link to='/signin' >
+                <Link to='/user' >
                     <img className='NavBar__UserIcon Icon' src={usertIcon} alt="cart" />
                 </Link>
                 <Link to='/cart' >

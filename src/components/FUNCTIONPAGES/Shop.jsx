@@ -68,7 +68,7 @@ const Shop = () => {
                     ? null
                     : result.length !== 0 && searchValue === ""
                     ? null
-                    : <div>{result.length} item found</div>}
+                    : <div>{result.length} item{result.length > 1 ? "s" : null} found</div>}
                 </div>
                 {api.length === 0
                 ? <div className='WaitAPI'>Loading Products... Please Wait A Second</div>

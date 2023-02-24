@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { userSelector } from '../../../REDUX/Selectors/Selector';
 import './SignBar.css';
 
 const text = 'Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*'
@@ -15,7 +16,7 @@ const langs = [
 
 const SignBar = () => {
     const [flag, setFlag] = useState("https://cdn-icons-png.flaticon.com/512/555/555526.png");
-
+    
     const handelChange = (e) => {
         if(e.target.value === "VNM") {
             setFlag("https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/255px-Flag_of_Vietnam.svg.png")
@@ -31,11 +32,11 @@ const SignBar = () => {
             <div className='SignBar__Text'>{text}</div>
             <div className='SignBar__SignRegis '>
                 <div className='SignBar__SignRegis--Component'>
-                    <Link to='/signin' className=''>
+                    <Link to='/user' className=''>
                         Sign In
                     </Link>
                     /
-                    <Link to='/register' className=''>
+                    <Link to='/user' className=''>
                     Register
                     </Link> 
                 </div>

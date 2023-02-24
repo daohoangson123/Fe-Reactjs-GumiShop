@@ -9,12 +9,6 @@
     font-weight: 500;
 }
 
-.Total-Price {
-    text-align: right;
-    margin-right: 20px;
-    font-weight: 600;
-}
-
 .Cart-Item {
     display: grid;
     align-items: center;
@@ -62,6 +56,45 @@ margin: 0;
 .Cart-Item_Cost {
     font-size: clamp(14px, 2vw, 18px);
     font-weight: 500;
+}
+
+.Total-Price {
+    text-align: right;
+    margin-right: 20px;
+    font-weight: 600;
+}
+
+.Buy_Btn-Container {
+    display: inline-block;
+    position: relative;
+    justify-self: right;
+    width: 120px;
+    height: 70px;
+}
+
+.Buy_Btn-Shadow {
+    position: absolute;
+    width: 100px;
+    height: 49px;
+    background: #000;
+    z-index: -1;
+    border-radius: 5px;
+    top: 5px;
+    left: 5px;
+}
+
+.Buy_Btn {
+    position: absolute;
+    font-family: var(--font-default);
+    font-weight: 600;
+    font-size: 20px;
+    padding: 10px;
+    background-image: linear-gradient( var(--color-primary), rgba(246, 98, 62, .6));
+    color: var(--color-default);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease-in-out .1s;
 }
 
 @media only screen and (max-width: 768px) {

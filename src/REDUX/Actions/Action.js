@@ -18,3 +18,10 @@ export const removeInCart = productId => {
         payload: productId
     }
 }
+
+export const User = user => {
+    return {
+        type: 'User',
+        payload: user
+    }
+}

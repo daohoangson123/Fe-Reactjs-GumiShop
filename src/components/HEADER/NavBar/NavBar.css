@@ -74,11 +74,11 @@ header a:hover {
     position: absolute;
     top: 100px;
     left: 0;
+    font-family: var(--font-default);
     background: rgba(255, 255, 255, .7);
     width: 100%;
     border: 2px solid black;
     transition: all ease-in-out .5s;
-    font-family: var(--font-default);
 }
 
 .MobileMenu__NavBar-actived {
@@ -88,11 +88,11 @@ header a:hover {
     position: absolute;
     top: 100px;
     left: 0;
+    font-family: var(--font-default);
     background: rgba(255, 255, 255, .7);
     width: 100%;
     border: 2px solid var(--color-primary);
     transition: all ease-in-out .5s;
-    font-family: var(--font-default);
 }
 
 .MobileMenu__NavBar-actived > a:visited {

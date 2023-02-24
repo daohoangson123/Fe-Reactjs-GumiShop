@@ -3,7 +3,7 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import heroBanner1 from '../../../img/HeroBanner.png';
 import heroBanner2 from '../../../img/HeroBanner1.png';
-import ProductShop from '../../RepeatComponent/ProductShop';
+import ProductShop from './ProductShop';
 import heroBannerBot from '../../../img/HeroBannerBot.png';
 import './SliderBanner.css';
 

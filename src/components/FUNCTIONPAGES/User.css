@@ -1,0 +1,45 @@
+.User {
+    font-family: var(--font-default);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 50px;
+}
+
+.SignIn, .Regis {
+    width: clamp(240px, 50vw, 400px);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+}
+
+fieldset {
+    height: 400px;
+    display: grid;
+    place-items: center;
+    padding: 0 10px;
+}
+
+.Input_Container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, clamp(220px, 40vw, 300px));
+    gap: 20px;
+}
+
+.SignIn input, .Regis input {
+    width: clamp(220px, 40vw, 300px);
+    height: 30px;
+}
+
+.User_Submit  button {
+    font-family: var(--font-default);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    margin-top: 20px;
+}
+
+.Sign-Regis:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}

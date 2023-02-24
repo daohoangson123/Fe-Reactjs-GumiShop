@@ -4,7 +4,6 @@ const initState = {
   };
   
   const rootReducer = (state = initState, action) => {
-    
   
     switch (action.type) {
       case "Set_Product_Data":

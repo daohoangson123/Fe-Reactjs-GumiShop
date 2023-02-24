@@ -1,10 +1,10 @@
 .Good4MeDeal {
     text-align: center;
     margin-top: 60px;
+    font-family: var(--font-default);
 }
 
 .Loading {
-    font-family: var(--font-default);
     font-size: 16px;
     font-weight: 400;
     line-height: 25px;
@@ -19,7 +19,6 @@
 }
 
 .Good4MeDeal > p {
-    font-family: var(--font-default);
     font-size: 18px;
     font-weight: 500;
     line-height: 24px;

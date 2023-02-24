@@ -4,6 +4,7 @@
     gap: 171px;
     margin: 140px 0;
     margin-inline: 363px;
+    font-family: var(--font-default);
 }
 
 .Good4MeDealBot_Item {
@@ -34,14 +35,12 @@
 }
 
 .Good4MeDealBot_Item-title {
-    font-family: var(--font-default);
     font-size: 24px;
     font-weight: 500;
     line-height: 32px;
 }
 
 .Good4MeDealBot_Item-content {
-    font-family: var(--font-default);
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;

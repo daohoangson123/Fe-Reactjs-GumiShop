@@ -1,3 +1,7 @@
+.Shop {
+    font-family: var(--font-default);
+}
+
 .SearchForm {
     margin-bottom: 10px;
 }
@@ -16,6 +20,5 @@
 
 .ProductCount,
 .WaitAPI {
-    font-family: var(--font-default);
     font-weight: 400;
 }
