@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { userSelector } from '../../../REDUX/Selectors/Selector';
 import './SignBar.css';
 
 const text = 'Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*'
@@ -24,20 +23,18 @@ const SignBar = () => {
             setFlag("https://cdn-icons-png.flaticon.com/512/555/555526.png")
         }
     }
-    useEffect(() => {
-    }, [])
-
+    
     return (
         <div className='SignBar '>
             <div className='SignBar__Text'>{text}</div>
             <div className='SignBar__SignRegis '>
                 <div className='SignBar__SignRegis--Component'>
-                    <Link to='/user' className=''>
+                    <Link to='/userLogin' className=''>
                         Sign In
                     </Link>
                     /
-                    <Link to='/user' className=''>
-                    Register
+                    <Link to='/userRegister' className=''>
+                        Register
                     </Link> 
                 </div>
                 <div className='SignBar__SignRegis--Languages '>
@@ -52,7 +49,7 @@ const SignBar = () => {
                         ))}
                     </select>
                 </div>
-            </div> {/* tao component rieng */}
+            </div>
         </div>
     )
 }

@@ -1,12 +1,17 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './User.css';
 
 const User = ({...props}) => {
-    const [login, setLogin] = useState(true);
+
+    const [signIn, setSignIn] = useState(props.user)
+
+    useEffect(() => {
+        setSignIn(props.user)
+    }, [props.user])
 
     return (
         <div className='User'>
-            {login
+            {signIn
             ?
             <div className='SignIn'>
                 <form action="">
@@ -23,7 +28,9 @@ const User = ({...props}) => {
                                 Sign In
                             </button>
                         </div>
-                        <span className='Sign-Regis' onClick={() => setLogin(false)}>Create Account</span>
+                        <span className='Sign-Regis'
+                        onClick={() => setSignIn(false)}
+                        >Create Account</span>
                     </fieldset>
                 </form>
             </div>
@@ -45,7 +52,9 @@ const User = ({...props}) => {
                                 Register
                             </button>
                         </div>
-                        <span className='Sign-Regis' onClick={() => setLogin(true)}>Already have Account?</span>
+                        <span className='Sign-Regis'
+                        onClick={() => setSignIn(true)}
+                        >Already have Account?</span>
                     </fieldset>
                 </form>
             </div>

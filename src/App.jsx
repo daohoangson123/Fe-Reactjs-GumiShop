@@ -22,7 +22,8 @@ function App() {
           <Route path='/stockist' element={<Shop/>} />
           <Route path='/wholesale' element={<Shop/>} />
           <Route path='/contact' element={<Shop/>} />
-          <Route path='/user' element={<User/>} />
+          <Route path='/userLogin' element={<User user={true} />} />
+          <Route path='/userRegister' element={<User user={false} />} />
           <Route path='/cart' element={<Cart/>} />
         </Routes>
       </BackTopWrapper>

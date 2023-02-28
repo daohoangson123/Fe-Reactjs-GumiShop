@@ -31,14 +31,14 @@ const CartForm = ({...props}) => {
                     Total Prices: {totalPrice}
                 </div>
                 <div className='Buy_Btn-Container'>
-                <button className='Buy_Btn' type='button' style={{top: mouseDown ? "5px" : 0, left: mouseDown ? "5px" : 0}}
-                onMouseDown={() => setMouseDown(true)}
-                onMouseUp={() => setMouseDown(false)}>
-                    Buy Now
-                </button>
-                <div className='Buy_Btn-Shadow'>
-
-                </div>
+                    <button className='Buy_Btn' type='button' style={{top: mouseDown ? "5px" : 0, left: mouseDown ? "5px" : 0}}
+                    onMouseDown={() => setMouseDown(true)}
+                    onMouseUp={() => setMouseDown(false)}
+                    onMouseLeave={() => setMouseDown(false)}
+                    >
+                        Buy Now
+                    </button>
+                    <div className='Buy_Btn-Shadow'></div>
                 </div>
             </form>
     )

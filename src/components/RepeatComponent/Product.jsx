@@ -1,13 +1,11 @@
 import './Product.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { myCartSelector} from '../../REDUX/Selectors/Selector';
+import { useDispatch } from 'react-redux';
 import { addToCart } from '../../REDUX/Actions/Action';
 import { useState } from 'react';
 
 const Product = ({...props}) => {
     const dispatch = useDispatch();
     const [added, setAdded] = useState(false);
-    const myCart = useSelector(myCartSelector);
     function handleAddToCart(product){
             if(!added) {
                 dispatch(addToCart(product));
@@ -22,7 +20,7 @@ const Product = ({...props}) => {
             <div className="Product__Img-Container">
                 <img src={props.url} alt={props.name} />
                 <div className='AddToCart_Bg' style={{top: added ? 0 : null}}>
-                    <button className='AddToCart'
+                    <button className='AddToCart' style={{background: added ? "#F6623E" : null, borderRadius: added ? "100%" : null}}
                         onClick={() => 
                             handleAddToCart({
                                 id: props.id,
