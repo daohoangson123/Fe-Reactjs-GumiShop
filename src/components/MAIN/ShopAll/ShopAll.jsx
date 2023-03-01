@@ -1,13 +1,14 @@
-import './OurProduct.css';
+import './ShopAll.css';
+
 import Product from '../../RepeatComponent/Product';
 import { useEffect, useState } from 'react';
 
-const OurProduct = () => {
+const ShopAll = () => {
     const [api, setApi] = useState([]);
 
-    const fisrtLoad = api.slice(0,0);
+    const fisrtLoad = api.slice(0, 0);
 
-    const fullLoad = api.slice(4, 8);
+    const fullLoad = api.slice(0, 4);
     
     const [load, setLoad] = useState(fisrtLoad);
 
@@ -35,13 +36,13 @@ const OurProduct = () => {
     
     return (
         <section className='OurProduct container'>
-            <h2>OUR PRODUCTS ARE</h2>
+            <h2>SHOP ALL</h2>
             {api.length === 0
                 ? <div className='Loading'>Loading Products...</div>
                 : null
             }
             <div className="ProductContainer">
-                {api.slice(0, 4).map((product) => (
+                {api.slice(4, 8).map((product) => (
                     <div className="ProductItem" key={product._id}>
                         <Product
                         id={product._id}
@@ -79,4 +80,4 @@ const OurProduct = () => {
     )
 }
 
-export default OurProduct;
+export default ShopAll;

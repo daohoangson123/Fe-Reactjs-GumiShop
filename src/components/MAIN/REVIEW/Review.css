@@ -49,6 +49,7 @@
     width: 44px;
     height: 44px;
     border: 1px solid var(--color-primary);
+    transition: all ease-in-out .1s;
 }
 
 .Review__Slider .owl-theme .owl-nav [class*='owl-']:hover {

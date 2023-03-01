@@ -1,5 +1,5 @@
 import "./NavBar.css";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import searchIcon from "../../../icon/SearchIcon.svg";
 import cartIcon from "../../../icon/CartIcon.svg";
 import usertIcon from "../../../icon/UserIcon.png";
@@ -84,39 +84,39 @@ const NavBar = () => {
             </button>
             <div className={menuvisible}>
                 {nav_Items.map((item) => (
-                    <Link to={item.path} key={item.name} className='MobileMenu__Item'>
+                    <NavLink to={item.path} key={item.name} className='MobileMenu__Item'>
                         {item.name}
-                    </Link>
+                    </NavLink>
                 ))}
             </div>
             <h1 className="NavBar__Logo">GOOD<span>4</span>ME.</h1>
             <div className={navColor}>
                 {nav_Items.map((item) => (
-                    <Link to={item.path} key={item.name} className=''>
+                    <NavLink to={item.path} key={item.name} className={({ isActive }) => (isActive ? 'active' : 'inactive')} >
                         {item.name}
-                    </Link>
+                    </NavLink>
                 ))}
             </div>
             <div className="SearchCart">
-                <Link to='/shop' >
+                <NavLink to='/shop' >
                     <img className='NavBar__SearchIcon Icon' src={searchIcon} alt="search" />
-                </Link>
-                <Link to='/user' >
+                </NavLink>
+                <NavLink to='/user' >
                     <img className='NavBar__UserIcon Icon' src={usertIcon} alt="cart" />
-                </Link>
-                <Link to='/cart' >
+                </NavLink>
+                <NavLink to='/cart' >
                     <div className="Cart_IconContainer">
                         <img className='NavBar__CartIcon Icon' src={cartIcon} alt="cart" />
-                        {Object.keys(myCart).length === 0
+                        {myCart.length === 0
                         ? <></>
                         :   <div className="Cart_Notify">
                                 <span>
-                                    {Object.keys(myCart).length}
+                                    {myCart.length}
                                 </span>
                             </div>
                         }
                     </div>
-                </Link>
+                </NavLink>
             </div>
         </nav>
     )

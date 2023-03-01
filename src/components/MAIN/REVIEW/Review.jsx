@@ -28,8 +28,8 @@ const Review = () => {
                             <div className='Review__Slider-Item-Title'>REAL REVIEWS</div>
                             <div className='Review__Slider-Item-SubTitle'>REAL RESULTS</div>
                             <div className='Review__Slider-Item-Rating'>
-                                {review.rating.map((star) => (
-                                    <i class="fa-solid fa-star" style={{display: "inline-block", width: "20px", height: "20px", color: star === 1 ? "#FFC107" : "#D8D8D8"}}></i>
+                                {review.rating.map((star, index) => (
+                                    <i className="fa-solid fa-star" key={index} style={{display: "inline-block", width: "20px", height: "20px", color: star === 1 ? "#FFC107" : "#D8D8D8"}}></i>
                                 ))}
                             </div>
                             <p className='Review__Slider-Item-Review'>{review.review}</p>

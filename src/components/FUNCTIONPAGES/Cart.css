@@ -1,7 +1,40 @@
 .Cart-Item_Form {
+    position: relative;
     display: grid;
     gap: 20px;
     font-family: var(--font-default);
+}
+
+.Purchased {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 300px;
+    height: 200px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    background: rgba(246, 98, 62, .7);
+    color: var(--color-default);
+    font-size: 20px;
+    transition: all linear 1s;
+    opacity: 1;
+}
+
+.NotPurchased {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 300px;
+    height: 200px;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    background: rgba(246, 98, 62, .7);
+    color: var(--color-default);
+    font-size: 20px;
+    transition: all linear .7s;
+    opacity: 0;
 }
 
 .Product-Amount {
@@ -66,35 +99,26 @@ margin: 0;
 
 .Buy_Btn-Container {
     display: inline-block;
-    position: relative;
     justify-self: right;
     width: 120px;
     height: 70px;
 }
 
-.Buy_Btn-Shadow {
-    position: absolute;
-    width: 100px;
-    height: 49px;
-    background: #000;
-    z-index: -1;
-    border-radius: 5px;
-    top: 5px;
-    left: 5px;
-}
-
 .Buy_Btn {
-    position: absolute;
     font-family: var(--font-default);
     font-weight: 600;
     font-size: 20px;
     padding: 10px;
-    background-image: linear-gradient( var(--color-primary), rgba(246, 98, 62, .6));
+    background-image: linear-gradient( var(--color-primary), rgba(246, 98, 62, .5));
     color: var(--color-default);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     transition: all ease-in-out .1s;
+}
+
+.Buy_Btn:disabled {
+    background: var(--color-text);
 }
 
 @media only screen and (max-width: 768px) {

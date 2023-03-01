@@ -37,6 +37,13 @@
     padding: 18px 45px 13px 45px;
     background: transparent;
     border: 2px solid var(--color-primary);
+    transition: all ease-in-out .2s;
+    cursor: pointer;
+}
+
+.Cotrol__Content-Btn:hover {
+    color: var(--color-default);
+    background: var(--color-primary);
 }
 
 .Control__Img {

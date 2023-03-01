@@ -2,14 +2,18 @@ import './Cart.css';
 import { useSelector } from 'react-redux';
 import { myCartSelector } from '../../REDUX/Selectors/Selector';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 
 const CartForm = ({...props}) => {
     const totalPrice = props.myCart && props.myCart.reduce((sum, item) => sum + (item.price * item.amount), 0);
-    const [mouseDown, setMouseDown] = useState(false);
+    const [isPurchased, setIsPurchased] = useState(false);
 
     return (
-        <form className='Cart-Item_Form'>
+        <form className='Cart-Item_Form' id='delayedForm'>
+            <div className={ isPurchased ? 'Purchased' : 'NotPurchased' }>
+                <div>
+                    {props.myCart.length} Items Purchased!
+                </div>
+            </div>
             <div className='Product-Amount'>
                 Product{props.myCart.length === 0 ? null : "s"} In Cart: {props.myCart.length}
             </div>
@@ -21,7 +25,10 @@ const CartForm = ({...props}) => {
                         <span className='Cart-Item_Price'>Price: {item.price}</span>
                         <div className='Cart-Item_Quantity'>
                             <label htmlFor='quantity'>Quantity: </label>
-                            <input type="number" value={item.amount} name="quantity" id="quantity" onChange={(e) => props.handleChange(e,item)} />
+                            <input type="number" value={item.amount} name="quantity" id="quantity"
+                            onChange={(e) => {
+                                props.handleChange(e,item)
+                            }}/>
                         </div>
                         <div className='Cart-Item_Cost'>
                             Cost: {cost}
@@ -32,14 +39,18 @@ const CartForm = ({...props}) => {
                     Total Prices: {totalPrice}
                 </div>
                 <div className='Buy_Btn-Container'>
-                    <button className='Buy_Btn' type='button' style={{top: mouseDown ? "5px" : 0, left: mouseDown ? "5px" : 0}}
-                    onMouseDown={() => setMouseDown(true)}
-                    onMouseUp={() => setMouseDown(false)}
-                    onMouseLeave={() => setMouseDown(false)}
+                    <button className='Buy_Btn' disabled={props.myCart.length === 0 ? true : false} type='submit'
+                    onClick={(e) => {
+                        e.preventDefault();
+                        setIsPurchased(true);
+                        setTimeout(() => {
+                            setIsPurchased(false)
+                        }, 2000);
+                        setTimeout(() => window.location.reload(), 2000);
+                    }}
                     >
-                        Buy Now
+                        Purchase
                     </button>
-                    <div className='Buy_Btn-Shadow'></div>
                 </div>
             </form>
     )

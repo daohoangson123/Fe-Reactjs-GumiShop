@@ -1,6 +1,6 @@
 .ProductContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 400px);
+    grid-template-columns: repeat(auto-fit, 395px);
     justify-content: center;
     gap: 30px;
     font-family: var(--font-default);
@@ -12,13 +12,13 @@
     position: relative;
     display: grid;
     place-items: center;
-    height: 400px;
+    height: 395px;
     overflow: hidden;
 }
 
 .ProductItem img {
     width: 100%;
-    height: 100%;
+    height: 95%;
 }
 
 .Product__Img-Container:hover .AddToCart_Bg {
@@ -34,7 +34,7 @@
     height: 100%;
     background: rgba(0, 0, 0, .7);
     z-index: 1;
-    transition: all ease-in-out .5s;
+    transition: all ease-in-out .4s;
 }
 
 .AddToCart {
@@ -46,7 +46,7 @@
     width: 110px;
     height: 110px;
     cursor: pointer;
-    transition: all linear .3s;
+    transition: all ease-in-out .3s;
 }
 
 .AddToCart:hover {

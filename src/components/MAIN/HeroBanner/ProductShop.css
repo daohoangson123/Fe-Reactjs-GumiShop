@@ -35,9 +35,11 @@
     color: var(--color-default);
     background-color: var(--color-primary);
     cursor: pointer;
+    transition: all ease-in-out .2s;
 }
 
-.Product__Btn:hover > a {
+.Product__Btn:hover {
+    opacity: .7;
     text-decoration: underline;
 }
 

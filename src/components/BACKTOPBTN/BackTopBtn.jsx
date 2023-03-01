@@ -5,7 +5,7 @@ const BackTopBtn = () => {
     const [backtop, setBacktop] = useState("BackTopBtn");
 
     const scrollTop = () => {
-        if(window.pageYOffset > 700) {
+        if(window.pageYOffset > 400) {
             setBacktop("BackTopBtn-actived");
         } else {
             setBacktop("BackTopBtn");

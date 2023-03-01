@@ -18,10 +18,10 @@ function App() {
         <Routes>
           <Route path='/' element={<LandingPage/>} />
           <Route path='/shop' element={<Shop/>} />
-          <Route path='/faq' element={<Shop/>} />
-          <Route path='/stockist' element={<Shop/>} />
-          <Route path='/wholesale' element={<Shop/>} />
-          <Route path='/contact' element={<Shop/>} />
+          <Route path='/faq' element={null} />
+          <Route path='/stockist' element={null} />
+          <Route path='/wholesale' element={null} />
+          <Route path='/contact' element={null} />
           <Route path='/userLogin' element={<User user={true} />} />
           <Route path='/userRegister' element={<User user={false} />} />
           <Route path='/cart' element={<Cart/>} />
