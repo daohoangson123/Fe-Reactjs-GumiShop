@@ -34,7 +34,7 @@ const info_List = [
 
 const FooterTop = () => {
     return (
-        <div className='FooterTop'>
+        <div className='FooterTop container'>
             <div className='FooterTop_Item1'>
                 <div className='NavBar__Logo FooterTop_Item1-Logo'>GOOD<span>4</span>ME</div>
                 <p className='FooterTop_Item1-content'>Good health is important, so all of our products have been carefully designed to bring out the best in you.</p>

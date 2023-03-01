@@ -24,7 +24,7 @@ const banner_2 = {
 const SliderBanner = () => {
 
     return (
-        <div>
+        <section className='SilderBanner'>
             <OwlCarousel className='owl-theme' responsiveRefreshRate={0} autoplay={false} items={1} nav={false} dots={false} loop>
                 <div className='SliderContainer'>
                     <div className='BannerContainer BannerContainer_1' style={{backgroundImage: `url(${banner_1.bgUrl})`}}>
@@ -54,7 +54,7 @@ const SliderBanner = () => {
                     </div>
                 </div>
             </OwlCarousel>
-        </div>
+        </section>
     )
 }
 

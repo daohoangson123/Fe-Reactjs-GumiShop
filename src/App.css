@@ -25,8 +25,24 @@ main {
 
 h2 {
     font-family: var(--font-default);
-    font-size: clamp(26px, 1vw, 36px);
+    font-size: 36px;
     font-weight: 500;
     line-height: 32px;
     color: var(--color-alt);
+}
+
+.container {
+    padding: 0 120px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .container {
+        padding: 0 20px;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    .container {
+        padding: 0;
+    }
 }

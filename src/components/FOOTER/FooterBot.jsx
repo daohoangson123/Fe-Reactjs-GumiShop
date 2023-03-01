@@ -62,7 +62,7 @@ const payIcons_List = [
 
 const FooterBot = () => {
     return (
-        <div className='FooterBot'>
+        <div className='FooterBot container'>
             <div className="SocialIcons FooterIcons">
                 {socialIcons_List.map((icon) => (
                     <a href={icon.href} key={icon.url} target='_blank' rel="noreferrer">

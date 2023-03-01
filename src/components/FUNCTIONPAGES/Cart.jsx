@@ -2,6 +2,7 @@ import './Cart.css';
 import { useSelector } from 'react-redux';
 import { myCartSelector } from '../../REDUX/Selectors/Selector';
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 const CartForm = ({...props}) => {
     const totalPrice = props.myCart && props.myCart.reduce((sum, item) => sum + (item.price * item.amount), 0);

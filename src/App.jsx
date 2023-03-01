@@ -13,7 +13,7 @@ function App() {
   return (
     <div className='App '>
         <Header />
-      <main className=''>
+      <main>
       <BackTopWrapper>
         <Routes>
           <Route path='/' element={<LandingPage/>} />

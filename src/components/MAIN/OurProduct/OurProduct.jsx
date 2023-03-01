@@ -34,7 +34,7 @@ const OurProduct = () => {
     }, []);
     
     return (
-        <div className='OurProduct'>
+        <section className='OurProduct container'>
             <h2>OUR PRODUCTS ARE</h2>
             {api.length === 0
                 ? <div className='Loading'>Loading Products...</div>
@@ -75,7 +75,7 @@ const OurProduct = () => {
                 >
                     {isCLicked}
             </div>
-        </div>
+        </section>
     )
 }
 

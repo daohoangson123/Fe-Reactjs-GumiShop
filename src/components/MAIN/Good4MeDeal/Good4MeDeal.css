@@ -25,9 +25,3 @@
     color: var(--color-text);
     margin-bottom: 36px;
 }
-
-@media only screen and (max-width: 1920px) {   
-    .ProductContainer {
-        margin: 30px 60px;
-    }
-}

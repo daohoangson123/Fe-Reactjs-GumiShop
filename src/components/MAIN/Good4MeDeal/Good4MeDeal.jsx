@@ -20,7 +20,7 @@ const Good4MeDeal = ({...props}) => {
     }, []);
 
     return (
-        <section className="Good4MeDeal">
+        <section className="Good4MeDeal container">
             <h2>GOOD4ME DEAL</h2>
             <hr />
             <p>Pick your beauty products today. 50% OFF on the most popular GOOD4ME. Order all classy products today!</p>

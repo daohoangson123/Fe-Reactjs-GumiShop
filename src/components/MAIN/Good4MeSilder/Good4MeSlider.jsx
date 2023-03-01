@@ -1,7 +1,7 @@
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
-import './Good4Me.css';
+import './Good4MeSilder.css';
 import good4me from '../../../img/good4me.png';
 import good4me2 from '../../../img/good4me2.png';
 
@@ -19,7 +19,7 @@ const hashtag_Img = [
 const Good4MeSilder = () => {
 
     return (
-        <div className='Good4MeSilder'>
+        <section className='Good4MeSilder'>
             <h2>#GOOD4ME</h2>
             <OwlCarousel className='owl-theme owl-control' autoWidth={true} dots={false} margin={30} items={6} loop>
                 {hashtag_Img.map((img) => (
@@ -28,7 +28,7 @@ const Good4MeSilder = () => {
                     </div>
                 ))}
             </OwlCarousel>
-        </div>
+        </section>
         )
 }
 

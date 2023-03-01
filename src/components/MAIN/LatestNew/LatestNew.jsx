@@ -33,7 +33,7 @@ const news_List = [
 
 const LatestNew = () => {
     return (
-        <div className='LatestNew'>
+        <section className='LatestNew container'>
             <h2>LATEST NEWS</h2>
             <div className='LatestNew_Container'>
                 {news_List.map((item) => (
@@ -46,7 +46,7 @@ const LatestNew = () => {
                     />
                 ))}
             </div>
-        </div>
+        </section>
     )
 }
 
