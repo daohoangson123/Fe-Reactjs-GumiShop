@@ -1,0 +1,229 @@
+header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header a:hover {
+    text-decoration: underline;
+}
+
+.active {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--color-primary) !important;
+    transition: color ease-in-out .3s;
+}
+
+.NavBar,
+.stickyNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 100px;
+    transition: background ease-in-out .3s;
+}
+
+.stickyNav {
+    color: var(--color-default) !important;
+    background: rgba(246, 98, 62, .9);
+}
+
+.MobileMenu {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: end;
+    width: 45px;
+    height: 40px;
+    gap: 5px;
+    padding: 7px;
+    border: none;
+    border-radius: 2px;
+    background: none;
+    cursor: pointer;
+    transition: all ease-in-out .3s;
+}
+
+.MobileMenu1 {
+    font-size: 30px;
+}
+
+.MobileMenu:hover {
+    background: rgba(0, 0, 0, .5);
+}
+
+.MobileMenu:hover .MenuIcon {
+    background: var(--color-default);
+}
+
+.MenuIcon {
+    height: 2px;
+    background: var(--color-text);
+    transition: all ease-in-out .3s;
+}
+
+.MenuIcon1,
+.MenuIcon2 {
+    width: 50px;
+}
+
+.MenuIcon3 {
+    width: 40px;
+}
+
+.MobileMenu__NavBar {
+    display: grid;
+    opacity: 0;
+    transform: scale(0);
+    transform-origin: top left;
+    position: absolute;
+    top: 100px;
+    left: 0;
+    font-family: var(--font-default);
+    background: rgba(255, 255, 255, .7);
+    width: 100%;
+    border: 2px solid black;
+    transition: all ease-in-out .5s;
+}
+
+.MobileMenu__NavBar-actived {
+    display: grid;
+    opacity: 1;
+    transform: scale(1);
+    position: absolute;
+    top: 100px;
+    left: 0;
+    font-family: var(--font-default);
+    background: rgba(255, 255, 255, .7);
+    width: 100%;
+    border: 2px solid var(--color-primary);
+    transition: all ease-in-out .5s;
+}
+
+.MobileMenu__NavBar-actived > a:visited {
+    color: var(--color-text);
+}
+
+.MobileMenu__Item {
+    padding: 20px;
+    transition: padding ease-in-out .5s;
+}
+
+.MobileMenu__Item:hover {
+    color: var(--color-default) !important;
+    background: rgba(246, 98, 62, .9);
+    padding-left: 50px;
+    font-weight: 900;
+}
+
+.NavBar__Logo {
+    display: flex;
+    justify-content: center;
+    font-size: clamp(30px, 1vw, 36px);
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.NavBar__Logo > span {
+    font-size: clamp(20px, 1vw, 26px);
+}
+
+.navColor,
+.navColor > a:visited {
+    color: var(--color-default) !important;
+}
+
+.NavBar__List,
+.navColor {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-family: var(--font-default);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.NavBar__List > a:visited {
+    color: var(--color-text);
+}
+
+.SearchCart {
+    display: flex;
+    gap: 10px;
+}
+
+.Icon {
+    width: 20px;
+    height: 20px;
+    transition: all ease-in-out .3s;
+}
+
+.Icon:hover {
+    transform: translateY(-5px);
+}
+
+.Icon:hover + .Cart_Notify {
+    transform: translateY(-5px);
+}
+
+.NavBar__UserIcon {
+    display: none;
+}
+
+.Cart_IconContainer {
+    position: relative;
+}
+
+.Cart_Notify {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 15px;
+    height: 15px;
+    border: 1px solid var(--color-default);
+    border-radius: 100%;
+    background: var(--color-primary);
+    color: var(--color-default);
+    top: -5px;
+    right: -10px;
+    transition: all ease-in-out .3s;
+}
+
+.Cart_Notify span {
+    font-size: 12px;
+}
+
+@media only screen and (max-width: 1024px) {
+    .NavBar, .stickyNav {
+        padding: 30px 20px;
+    }
+
+    .MobileMenu {
+        display: flex;
+    }
+
+    .MenuIcon1, .MenuIcon2 {
+        width: 30px;
+    }
+    
+    .MenuIcon3 {
+        width: 20px;
+    }
+
+    .NavBar__List,
+    .navColor {
+        display: none;
+    }
+
+    .Icon {
+        width: 15px;
+        height: 15px;
+    }
+
+    .NavBar__UserIcon {
+        display: block;
+    }
+}

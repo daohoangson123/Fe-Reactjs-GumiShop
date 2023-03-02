@@ -1,0 +1,103 @@
+.ProductContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 395px);
+    justify-content: center;
+    gap: 30px;
+    font-family: var(--font-default);
+    text-decoration: none;
+    margin: 30px 0;
+}
+
+.Product__Img-Container {
+    position: relative;
+    display: grid;
+    place-items: center;
+    height: 395px;
+    overflow: hidden;
+}
+
+.ProductItem img {
+    width: 100%;
+    height: 100%;
+}
+
+.Product__Img-Container:hover .AddToCart_Bg {
+    top: 0;
+}
+
+.AddToCart_Bg {
+    top: 100%;
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .7);
+    z-index: 1;
+    transition: all ease-in-out .4s;
+}
+
+.AddToCart {
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--color-default);
+    background: transparent;
+    border: 1px solid var(--color-default);
+    width: 110px;
+    height: 110px;
+    cursor: pointer;
+    transition: all ease-in-out .3s;
+}
+
+.AddToCart:hover {
+    border-radius: 100%;
+    background: var(--color-primary);
+}
+
+.Product__Sale {
+    position: absolute;
+    top: 11px;
+    right: 11px;
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 10px;
+    letter-spacing: 1px;
+    padding: 5px 9px;
+    color: var(--color-default);
+    background: var(--color-primary);
+    z-index: 5;
+}
+
+.Product__Name {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+    margin-top: 25px;
+    color: var(--color-alt);
+}
+
+.SalePrices {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--color-primary);margin-right: 20px;
+}
+
+.Prices {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    color: var(--color-text);
+    text-decoration: line-through;
+}
+
+@media only screen and (max-width: 1440px) {
+    .ProductContainer {
+        grid-template-columns: repeat(auto-fill, 280px);
+    }
+    
+    .Product__Img-Container {
+        position: relative;
+        height: 280px;
+    }
+}

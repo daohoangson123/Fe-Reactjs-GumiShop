@@ -1,0 +1,20 @@
+.LatestNew {
+    text-align: center;
+}
+
+.LatestNew_Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 50px;
+    margin-bottom: 120px;
+}
+
+
+@media only screen and (max-width: 1700px) {
+    .LatestNew_Container {
+        justify-content: space-evenly;
+        gap: 24px;
+    }
+}

@@ -1,0 +1,24 @@
+.Shop {
+    font-family: var(--font-default);
+}
+
+.SearchForm {
+    margin-bottom: 10px;
+}
+
+.SearchInput {
+    font-family: var(--font-default);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    width: clamp(250px, 30vw, 400px);
+    padding: 10px;
+    border: 1px solid var(--color-primary);
+    border-radius: 3px;
+    outline: none;
+}
+
+.ProductCount,
+.WaitAPI {
+    font-weight: 400;
+}

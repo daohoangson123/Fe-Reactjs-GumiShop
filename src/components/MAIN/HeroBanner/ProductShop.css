@@ -1,0 +1,51 @@
+.Product__Banner {
+    width: clamp(300px, 30vw, 500px);
+}
+
+.ProductBanner__Title {
+    font-family: var(--font-default);
+    font-size: clamp(20px, 3vw, 26px);
+    font-weight: 600;
+    line-height: 42px;
+    color: var(--color-primary);
+}
+
+.ProductBanner__Name {
+    font-family: var(--font-default);
+    font-size: clamp(28px, 3vw, 56px);
+    font-weight: 600;
+    line-height: 72px;
+}
+
+.ProductBanner__Des {
+    font-family: var(--font-default);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 29px;
+    margin-bottom: 30px;
+    color: var(--color-text);
+}
+
+.Product__Btn {
+    display: inline-block;
+    font-family: var(--font-default);
+    padding: 13px 25px;
+    border: none;
+    font-weight: 500;
+    color: var(--color-default);
+    background-color: var(--color-primary);
+    cursor: pointer;
+    transition: all ease-in-out .2s;
+}
+
+.Product__Btn:hover {
+    opacity: .7;
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+    .ProductBanner__Name, .ProductBanner__Des {
+        color: var(--color-default);
+        line-height: 30px;
+    }
+}
