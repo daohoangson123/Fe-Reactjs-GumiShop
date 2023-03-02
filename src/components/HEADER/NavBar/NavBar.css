@@ -8,14 +8,6 @@ header a:hover {
     text-decoration: underline;
 }
 
-nav .active {
-    color: var(--color-primary) !important;
-}
-
-nav .inactive {
-    color: var(--color-text);
-}
-
 .NavBar,
 .stickyNav {
     display: flex;
@@ -44,15 +36,11 @@ nav .inactive {
     border-radius: 2px;
     background: none;
     cursor: pointer;
-    transition: all ease-in-out .3s;
-}
-
-.MobileMenu1 {
-    font-size: 30px;
+    transition: background ease-in-out .2s;
 }
 
 .MobileMenu:hover {
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, .3);
 }
 
 .MobileMenu:hover .MenuIcon {
@@ -62,7 +50,6 @@ nav .inactive {
 .MenuIcon {
     height: 2px;
     background: var(--color-text);
-    transition: all ease-in-out .3s;
 }
 
 .MenuIcon1,
@@ -76,47 +63,65 @@ nav .inactive {
 
 .MobileMenu__NavBar {
     display: grid;
-    opacity: 0;
-    transform: scale(0);
-    transform-origin: top left;
+    height: 0;
+    overflow: hidden;
     position: absolute;
     top: 100px;
     left: 0;
     font-family: var(--font-default);
     background: rgba(255, 255, 255, .7);
     width: 100%;
-    border: 2px solid black;
-    transition: all ease-in-out .5s;
+    transition: all ease-in-out .3s;
 }
 
 .MobileMenu__NavBar-actived {
     display: grid;
-    opacity: 1;
-    transform: scale(1);
+    height: 378px;
+    overflow: hidden;
     position: absolute;
     top: 100px;
     left: 0;
     font-family: var(--font-default);
+    font-weight: 500;
     background: rgba(255, 255, 255, .7);
     width: 100%;
-    border: 2px solid var(--color-primary);
-    transition: all ease-in-out .5s;
+    transition: all ease-in-out .3s;
 }
 
-.MobileMenu__NavBar-actived > a:visited {
+.MobileMenu__NavBar-actived > a {
     color: var(--color-text);
 }
 
 .MobileMenu__Item {
+    position: relative;
     padding: 20px;
-    transition: padding ease-in-out .5s;
+    transition: all ease-in-out .3s;
 }
 
-.MobileMenu__Item:hover {
-    color: var(--color-default) !important;
-    background: rgba(246, 98, 62, .9);
-    padding-left: 50px;
-    font-weight: 900;
+.MobileMenu__Item::before {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    width: 0;
+    height: 3px;
+    background: var(--color-text);
+    transition: all ease-in-out .3s;
+}
+
+.MobileMenu__Item::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: var(--color-text);
+    transition: all ease-in-out .3s;
+}
+
+.MobileMenu__Item:hover::before, .MobileMenu__Item:hover::after {
+    width: 50%;
 }
 
 .NavBar__Logo {
@@ -131,11 +136,6 @@ nav .inactive {
     font-size: clamp(20px, 1vw, 26px);
 }
 
-.navColor,
-.navColor > a:visited {
-    color: var(--color-default) !important;
-}
-
 .NavBar__List,
 .navColor {
     display: flex;
@@ -147,8 +147,31 @@ nav .inactive {
     line-height: 24px;
 }
 
-.NavBar__List > a:visited {
+.NavBar__List .active, .MobileMenu__NavBar-actived .active {
+    color: var(--color-primary) !important;
+}
+
+.NavBar__List .inactive, .MobileMenu__Item {
     color: var(--color-text);
+}
+
+.navColor .active {
+    color: var(--color-default);
+}
+
+.navColor .inactive {
+    color: var(--color-text);
+}
+
+.navColor a:hover {
+    color: var(--color-default);
+}
+
+.MobileMenu__Item:hover {
+    color: var(--color-default) !important;
+    background: rgba(246, 98, 62, .9);
+    padding-left: 50px;
+    font-weight: 900;
 }
 
 .SearchCart {

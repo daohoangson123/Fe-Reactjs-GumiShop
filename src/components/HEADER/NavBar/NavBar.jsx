@@ -92,7 +92,7 @@ const NavBar = () => {
             <h1 className="NavBar__Logo">GOOD<span>4</span>ME.</h1>
             <div className={navColor}>
                 {nav_Items.map((item) => (
-                    <NavLink to={item.path} key={item.name} className={({ isActive }) => (isActive ? 'active' : 'inactive')} >
+                    <NavLink to={item.path} key={item.name} className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
                         {item.name}
                     </NavLink>
                 ))}
