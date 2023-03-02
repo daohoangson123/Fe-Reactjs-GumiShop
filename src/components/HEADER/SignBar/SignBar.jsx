@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './SignBar.css';
 
 const text = 'Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*'
@@ -29,13 +29,13 @@ const SignBar = () => {
             <div className='SignBar__Text'>{text}</div>
             <div className='SignBar__SignRegis '>
                 <div className='SignBar__SignRegis--Component'>
-                    <Link to='/userLogin' className=''>
+                    <NavLink to='/userLogin' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
                         Sign In
-                    </Link>
+                    </NavLink>
                     /
-                    <Link to='/userRegister' className=''>
+                    <NavLink to='/userRegister' className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
                         Register
-                    </Link> 
+                    </NavLink> 
                 </div>
                 <div className='SignBar__SignRegis--Languages '>
                     <label htmlFor="lang" className='LangLabel '>

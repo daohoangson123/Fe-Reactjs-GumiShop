@@ -8,11 +8,12 @@ header a:hover {
     text-decoration: underline;
 }
 
-.active {
-    font-size: 20px;
-    font-weight: 600;
+nav .active {
     color: var(--color-primary) !important;
-    transition: color ease-in-out .3s;
+}
+
+nav .inactive {
+    color: var(--color-text);
 }
 
 .NavBar,
