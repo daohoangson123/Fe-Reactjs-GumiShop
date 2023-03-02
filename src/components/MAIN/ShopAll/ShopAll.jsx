@@ -63,8 +63,8 @@ const ShopAll = () => {
                         url={product.img}
                         name={product.name}
                         sale={product.sale}
-                        prices={product.price}
-                        saleprices={product.discouter}
+                        prices={product.discouter}
+                        saleprices={product.price}
                         style={{fontSize: "14px", lineHeight: "20px"}}
                         />
                     </div>
