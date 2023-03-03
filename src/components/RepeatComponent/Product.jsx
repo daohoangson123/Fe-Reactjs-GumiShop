@@ -30,7 +30,7 @@ const Product = ({...props}) => {
                                 amount: 1,
                             })}>
                             {!added
-                            ? "AddToCart"
+                            ? "Add"
                             : "Added"
                             }
                     </button>
