@@ -43,8 +43,8 @@
     color: var(--color-default);
     background: transparent;
     border: 1px solid var(--color-default);
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     transition: all ease-in-out .3s;
 }
@@ -98,6 +98,11 @@
     
     .Product__Img-Container {
         height: 220px;
+    }
+
+    .AddToCart {
+        width: 70px;
+        height: 70px;
     }
 }
 
