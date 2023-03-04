@@ -23,7 +23,7 @@ const initState = {
 
       case "Remove_In_Cart":
         const cart = [...state.myCart];
-        return cart.filter((product, index) => product.id !== action.payload);
+        return cart.filter((product) => product.id !== action.payload);
 
       default:
         return state;

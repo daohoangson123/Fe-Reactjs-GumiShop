@@ -11,7 +11,7 @@ import User from "./components/FUNCTIONPAGES/User";
 
 function App() {
   return (
-    <div className='App '>
+    <div className='App'>
         <Header />
       <main>
       <BackTopWrapper>

@@ -1,16 +1,28 @@
 import './Cart.css';
 import { useSelector } from 'react-redux';
 import { myCartSelector } from '../../REDUX/Selectors/Selector';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const CartForm = ({...props}) => {
     const totalPrice = props.myCart && props.myCart.reduce((sum, item) => sum + (item.price * item.amount), 0);
     const [isPurchased, setIsPurchased] = useState(false);
+    function handleSubmit(event) {
+        event.preventDefault();
+        setTimeout(() => {
+            this.submit();
+        }, 3000)
+    }
+
+    useEffect(() => {
+        const submitForm = document.getElementById('delayedForm');
+        submitForm.addEventListener('submit', handleSubmit);
+        console.log(submitForm);
+    }, []);
 
     return (
         <form className='Cart-Item_Form' id='delayedForm'>
             <div className={ isPurchased ? 'Purchased' : 'NotPurchased' }>
-                <div>
+                <div className='Purchased__Notify'>
                     {props.myCart.length} Items Purchased!
                 </div>
             </div>
@@ -40,13 +52,11 @@ const CartForm = ({...props}) => {
                 </div>
                 <div className='Buy_Btn-Container'>
                     <button className='Buy_Btn' disabled={props.myCart.length === 0 ? true : false} type='submit'
-                    onClick={(e) => {
-                        e.preventDefault();
+                    onClick={() => {
                         setIsPurchased(true);
                         setTimeout(() => {
                             setIsPurchased(false)
                         }, 2000);
-                        setTimeout(() => window.location.reload(), 2000);
                     }}
                     >
                         Purchase
