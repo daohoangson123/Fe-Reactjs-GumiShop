@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import './Cart.css';
 import { useSelector } from 'react-redux';
 import { myCartSelector } from '../../REDUX/Selectors/Selector';
