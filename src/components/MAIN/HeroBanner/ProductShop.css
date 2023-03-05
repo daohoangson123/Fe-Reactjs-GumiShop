@@ -33,14 +33,15 @@
     border: none;
     font-weight: 500;
     color: var(--color-default);
-    background-color: var(--color-primary);
+    background: var(--color-primary);
     cursor: pointer;
-    transition: all ease-in-out .2s;
+    transition: all linear .2s;
 }
 
 .Product__Btn:hover {
-    opacity: .7;
     text-decoration: underline;
+    color: var(--color-text);
+    background: var(--color-default);
 }
 
 @media only screen and (max-width: 768px) {

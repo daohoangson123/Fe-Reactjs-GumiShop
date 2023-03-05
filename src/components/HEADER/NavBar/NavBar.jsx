@@ -71,7 +71,8 @@ const NavBar = () => {
     // toggle something based on matchMedia event
     const toggle = () => {
         if (mq.matches) {
-            setMenuvisible("MobileMenu__NavBar");
+            setMenuvisible("hideMobileMenu");
+            setTimeout(() => setMenuvisible("MobileMenu__NavBar"), 0)
         }
     };
     return (

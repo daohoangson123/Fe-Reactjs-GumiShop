@@ -1,36 +1,36 @@
-/* eslint-disable no-unused-vars */
 import './Cart.css';
 import { useSelector } from 'react-redux';
 import { myCartSelector } from '../../REDUX/Selectors/Selector';
 import { useEffect, useState } from 'react';
 
 const CartForm = ({...props}) => {
-    const totalPrice = props.myCart && props.myCart.reduce((sum, item) => sum + (item.price * item.amount), 0);
+
+    const clonedCart = [...props.myCart];
+    const totalPrice = clonedCart && clonedCart.reduce((sum, item) => sum + (item.price * item.amount), 0);
     const [isPurchased, setIsPurchased] = useState(false);
     function handleSubmit(event) {
         event.preventDefault();
         setTimeout(() => {
             this.submit();
-        }, 3000)
+        }, 2500)
     }
 
     useEffect(() => {
         const submitForm = document.getElementById('delayedForm');
         submitForm.addEventListener('submit', handleSubmit);
-        console.log(submitForm);
     }, []);
 
     return (
         <form className='Cart-Item_Form' id='delayedForm'>
             <div className={ isPurchased ? 'Purchased' : 'NotPurchased' }>
                 <div className='Purchased__Notify'>
-                    {props.myCart.length} Items Purchased!
+                    {clonedCart.length} Items Purchased!
                 </div>
             </div>
             <div className='Product-Amount'>
-                Product{props.myCart.length === 0 ? null : "s"} In Cart: {props.myCart.length}
+                Product{clonedCart.length === 0 ? null : "s"} In Cart: {clonedCart.length}
             </div>
-                {props.myCart.map((item) => {
+                {clonedCart.map((item) => {
                     const cost = item.amount * item.price;
                     return (<div className='Cart-Item' key={item.id}>
                         <img src={item.img} alt="" />

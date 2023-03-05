@@ -3,7 +3,6 @@
     justify-content: center;
     gap: 171px;
     margin: 140px 0;
-    margin-inline: 363px;
     font-family: var(--font-default);
 }
 
@@ -44,14 +43,6 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 20px;
-}
-
-
-
-@media only screen and (max-width: 1920px) {
-    .Good4MeDealBot {
-        margin-inline: 120px;
-    }
 }
 
 @media only screen and (max-width: 1024px) {

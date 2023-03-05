@@ -15,12 +15,12 @@ header a:hover {
     align-items: center;
     gap: 10px;
     padding: 30px 100px;
-    transition: background ease-in-out .3s;
+    transition: all linear .1s;
 }
 
 .stickyNav {
     color: var(--color-default) !important;
-    background: rgba(246, 98, 62, .9);
+    background: rgba(246, 98, 62, 1);
 }
 
 .MobileMenu {
@@ -61,6 +61,10 @@ header a:hover {
     width: 40px;
 }
 
+.hideMobileMenu {
+    display: none;
+}
+
 .MobileMenu__NavBar {
     display: grid;
     height: 0;
@@ -69,6 +73,7 @@ header a:hover {
     top: 100px;
     left: 0;
     font-family: var(--font-default);
+    border: 1px solid none;
     background: rgba(255, 255, 255, .7);
     width: 100%;
     transition: all ease-in-out .3s;
@@ -76,14 +81,15 @@ header a:hover {
 
 .MobileMenu__NavBar-actived {
     display: grid;
-    height: 378px;
+    height: 380px;
     overflow: hidden;
     position: absolute;
     top: 100px;
     left: 0;
     font-family: var(--font-default);
     font-weight: 500;
-    background: rgba(255, 255, 255, .7);
+    border: 1px solid var(--color-primary);
+    background: rgba(255, 255, 255, .9);
     width: 100%;
     transition: all ease-in-out .3s;
 }
@@ -95,7 +101,7 @@ header a:hover {
 .MobileMenu__Item {
     position: relative;
     padding: 20px;
-    transition: all ease-in-out .3s;
+    transition: all ease-in-out .3s .2s;
 }
 
 .MobileMenu__Item::before {
@@ -105,7 +111,7 @@ header a:hover {
     right: 0;
     width: 0;
     height: 3px;
-    background: var(--color-text);
+    background: var(--color-alt);
     transition: all ease-in-out .3s;
 }
 
@@ -116,7 +122,7 @@ header a:hover {
     left: 0;
     width: 0;
     height: 3px;
-    background: var(--color-text);
+    background: var(--color-alt);
     transition: all ease-in-out .3s;
 }
 
