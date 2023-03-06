@@ -102,7 +102,7 @@ const NavBar = () => {
                 <NavLink to='/shop' >
                     <img className='NavBar__SearchIcon Icon' src={searchIcon} alt="search" />
                 </NavLink>
-                <NavLink to='/user' >
+                <NavLink to='/userLogin' >
                     <img className='NavBar__UserIcon Icon' src={usertIcon} alt="cart" />
                 </NavLink>
                 <NavLink to='/cart' >

@@ -100,3 +100,49 @@
     cursor: pointer;
     text-decoration: underline;
 }
+
+.User__Account {
+    width: clamp(300px, 60vw, 1920px);
+    background: rgba(0, 0, 0, .5);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.User__Account-Form {
+    display: grid;
+    gap: 10px;
+    font-size: 20px;
+    color: var(--color-default);
+}
+
+.User__Account-Form input {
+    font-family: var(--font-default);
+    font-size: 20px;
+    width: clamp(260px, 40vw, 600px);
+    height: 30px;
+}
+
+#address {
+    font-family: var(--font-default);
+    font-size: 20px;
+    height: 50px;
+    text-align: center;
+    resize: none;
+    text-align: left;
+}
+
+.SaveInfo-Btn, .ChangeInfo-Btn {
+    font-family: var(--font-default);
+    font-size: 18px;
+    width: max-content;
+    padding: 10px;
+    justify-self: end;
+    background: var(--color-primary);
+    color: var(--color-default);
+    cursor: pointer;
+}
+
+.SaveInfo-Btn:disabled, .ChangeInfo-Btn:disabled {
+    background: var(--color-alt);
+    pointer-events: none;
+}

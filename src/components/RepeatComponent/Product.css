@@ -12,13 +12,12 @@
     position: relative;
     display: grid;
     place-items: center;
-    height: 395px;
     overflow: hidden;
 }
 
 .ProductItem img {
     width: 100%;
-    height: 100%;
+    height: 395px;
 }
 
 .Product__Img-Container:hover .AddToCart_Bg {
@@ -96,7 +95,7 @@
         grid-template-columns: repeat(auto-fill, 220px);
     }
     
-    .Product__Img-Container {
+    .ProductItem img {
         height: 220px;
     }
 
@@ -111,7 +110,7 @@
         grid-template-columns: repeat(auto-fill, 180px);
     }
     
-    .Product__Img-Container {
+    .ProductItem img {
         height: 180px;
     }
 }

@@ -114,16 +114,23 @@ margin: 0;
     font-weight: 600;
     font-size: 20px;
     padding: 10px;
-    background-image: linear-gradient( var(--color-primary), rgba(246, 98, 62, .5));
+    background: linear-gradient( var(--color-primary), rgba(246, 98, 62, .5));
     color: var(--color-default);
     border: none;
     border-radius: 5px;
+    box-shadow: 5px 5px 5px 1px black;
     cursor: pointer;
-    transition: all ease-in-out .1s;
+    transition: all ease-in-out .2s;
+}
+
+.Buy_Btn:hover {
+    background: linear-gradient(to right, var(--color-primary), rgba(246, 98, 62, .5));
 }
 
 .Buy_Btn:disabled {
     background: var(--color-text);
+    box-shadow: none;
+    pointer-events: none;
 }
 
 @media only screen and (max-width: 768px) {
