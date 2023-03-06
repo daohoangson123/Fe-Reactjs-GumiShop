@@ -45,11 +45,15 @@ const User = ({...props}) => {
                 }}>
                     <div className='Input_Container'>
                         <div>
-                            <i className="fa-solid fa-user"></i>
+                            <label htmlFor="UserName">
+                                <i className="fa-solid fa-user"></i>
+                            </label>
                             <input type="text" name="UserName" id="UserName" value={inputValue.UserName} required autoComplete='off' placeholder='User Name' onChange={(event) => setInputValue({...inputValue, 'UserName' : event.target.value })}/>
                         </div>
                         <div>
-                            <i className="fa-solid fa-lock"></i>
+                            <label htmlFor="UserPass">
+                                <i className="fa-solid fa-lock"></i>
+                            </label>
                             <input type="password" name="UserPass" id="UserPass" value={inputValue.Password} required autoComplete='off' placeholder='Password' onChange={(event) => setInputValue({...inputValue, 'Password' : event.target.value })}/>
                         </div>
                     </div>
@@ -96,15 +100,21 @@ const User = ({...props}) => {
                     }}>
                     <div className='Input_Container'>
                         <div>
-                            <i className="fa-solid fa-envelope"></i>
+                            <label htmlFor="RegisEmail">
+                                <i className="fa-solid fa-envelope"></i>
+                            </label>
                             <input type="email" name="RegisEmail" id="RegisEmail" value={inputValue.RegisEmail} required autoComplete='off' placeholder='Email' onChange={(event) => setInputValue({...inputValue, 'RegisEmail' : event.target.value })}/>
                         </div>
                         <div>
-                            <i className="fa-solid fa-user-plus"></i>
+                            <label htmlFor="RegisUser">
+                                <i className="fa-solid fa-user-plus"></i>
+                            </label>
                             <input type="text" name="RegisUser" id="RegisUser" value={inputValue.RegisUser} required autoComplete='off' placeholder='User Name' onChange={(event) => setInputValue({...inputValue, 'RegisUser' : event.target.value })}/>
                         </div>
                         <div>
-                            <i className="fa-solid fa-lock"></i>
+                            <label htmlFor="RegisPass">
+                                <i className="fa-solid fa-lock"></i>
+                            </label>
                             <input type="password" name="RegisPass" id="RegisPass" value={inputValue.RegisPass} required autoComplete='off' placeholder='Password' onChange={(event) => setInputValue({...inputValue, 'RegisPass' : event.target.value })}/>
                         </div>
                     </div>

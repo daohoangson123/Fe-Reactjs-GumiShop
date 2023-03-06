@@ -1,8 +1,5 @@
 import "./NavBar.css";
 import { NavLink } from "react-router-dom";
-import searchIcon from "../../../icon/SearchIcon.svg";
-import cartIcon from "../../../icon/CartIcon.svg";
-import usertIcon from "../../../icon/UserIcon.png";
 import { useEffect , useState } from "react";
 import { useSelector } from 'react-redux';
 import { myCartSelector } from '../../../REDUX/Selectors/Selector';
@@ -32,20 +29,6 @@ const nav_Items = [
 const NavBar = () => {
     const myCart = useSelector(myCartSelector);
     const [menuvisible, setMenuvisible] = useState("MobileMenu__NavBar");
-    const [stickyNav, setStickyNav] = useState("NavBar");
-    const [navColor, setNavColor] = useState("NavBar__List");
-
-    const scrollNav = () => {
-        if (window.pageYOffset > 0) {
-            setStickyNav("stickyNav");
-            setNavColor("navColor");
-        } else {
-            setStickyNav("NavBar");
-            setNavColor("NavBar__List");
-        }
-    };
-
-    window.addEventListener("scroll", scrollNav);
 
     const toggleMenu = () => {
         if(menuvisible === "MobileMenu__NavBar") {
@@ -76,7 +59,7 @@ const NavBar = () => {
         }
     };
     return (
-        <nav className={stickyNav}>
+        <nav className="NavBar">
             <button className="MobileMenu"
             onClick={toggleMenu}>
                 <div className="MenuIcon1 MenuIcon "></div>
@@ -91,7 +74,7 @@ const NavBar = () => {
                 ))}
             </div>
             <h1 className="NavBar__Logo">GOOD<span>4</span>ME.</h1>
-            <div className={navColor}>
+            <div className="NavBar__List">
                 {nav_Items.map((item) => (
                     <NavLink to={item.path} key={item.name} className={({ isActive }) => (isActive ? 'active' : 'inactive')}>
                         {item.name}
@@ -100,14 +83,14 @@ const NavBar = () => {
             </div>
             <div className="SearchCart">
                 <NavLink to='/shop' >
-                    <img className='NavBar__SearchIcon Icon' src={searchIcon} alt="search" />
+                    <i className="fa-solid fa-magnifying-glass Icon"></i>
                 </NavLink>
                 <NavLink to='/userLogin' >
-                    <img className='NavBar__UserIcon Icon' src={usertIcon} alt="cart" />
+                    <i className="fa-regular fa-user Icon NavBar__UserIcon"></i>
                 </NavLink>
                 <NavLink to='/cart' >
                     <div className="Cart_IconContainer">
-                        <img className='NavBar__CartIcon Icon' src={cartIcon} alt="cart" />
+                        <i className="fa-solid fa-bag-shopping Icon"></i>
                         {myCart.length === 0
                         ? <></>
                         :   <div className="Cart_Notify">

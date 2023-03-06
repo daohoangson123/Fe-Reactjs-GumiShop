@@ -75,7 +75,7 @@ const Cart = () => {
     const handleChange = (event, product) => {
         let newAmount = event.target.value;
         product.amount = Number(newAmount);
-        setQuantity(event.target.value)
+        setQuantity(event.target.value);
     }
 
     return (

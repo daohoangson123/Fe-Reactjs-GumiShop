@@ -8,19 +8,14 @@ header a:hover {
     text-decoration: underline;
 }
 
-.NavBar,
-.stickyNav {
+.NavBar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 10px;
+    background-color: var(--color-default);
     padding: 30px 100px;
-    transition: all linear .1s;
-}
-
-.stickyNav {
-    color: var(--color-default) !important;
-    background: rgba(246, 98, 62, 1);
+    transition: all ease-in-out .3s;
 }
 
 .MobileMenu {
@@ -81,14 +76,13 @@ header a:hover {
 
 .MobileMenu__NavBar-actived {
     display: grid;
-    height: 380px;
+    height: 318px;
     overflow: hidden;
     position: absolute;
     top: 100px;
     left: 0;
     font-family: var(--font-default);
     font-weight: 500;
-    border: 1px solid var(--color-primary);
     background: rgba(255, 255, 255, .9);
     width: 100%;
     transition: all ease-in-out .3s;
@@ -100,19 +94,19 @@ header a:hover {
 
 .MobileMenu__Item {
     position: relative;
-    padding: 20px;
-    transition: all ease-in-out .3s .2s;
+    padding: 15px;
+    transition: padding ease-in-out .3s .1s;
 }
 
 .MobileMenu__Item::before {
     position: absolute;
     content: '';
     top: 0;
-    right: 0;
-    width: 0;
-    height: 3px;
+    left: 0;
+    width: 2px;
+    height: 0;
     background: var(--color-alt);
-    transition: all ease-in-out .3s;
+    transition: all ease-in-out .5s;
 }
 
 .MobileMenu__Item::after {
@@ -121,13 +115,17 @@ header a:hover {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 3px;
+    height: 2px;
     background: var(--color-alt);
-    transition: all ease-in-out .3s;
+    transition: all ease-in-out .5s;
 }
 
-.MobileMenu__Item:hover::before, .MobileMenu__Item:hover::after {
-    width: 50%;
+.MobileMenu__Item:hover::before {
+    height: 100%;
+}
+
+.MobileMenu__Item:hover::after {
+    width: 100%;
 }
 
 .NavBar__Logo {
@@ -142,52 +140,47 @@ header a:hover {
     font-size: clamp(20px, 1vw, 26px);
 }
 
-.NavBar__List,
-.navColor {
+.NavBar__List {
     display: flex;
     justify-content: center;
     gap: 40px;
     font-family: var(--font-default);
     font-size: 18px;
-    font-weight: 400;
+    font-weight: 500;
     line-height: 24px;
 }
 
-.NavBar__List .active, .MobileMenu__NavBar-actived .active {
+.NavBar__List .active,
+.SearchCart .active i {
     color: var(--color-primary) !important;
 }
 
-.NavBar__List .inactive, .MobileMenu__Item {
-    color: var(--color-text);
-}
-
-.navColor .active {
+.MobileMenu__NavBar-actived .active {
+    padding-left: 50px;
     color: var(--color-default);
+    background: rgba(246, 98, 62, .8);
 }
 
-.navColor .inactive {
+.NavBar__List .inactive,
+.MobileMenu__Item {
     color: var(--color-text);
-}
-
-.navColor a:hover {
-    color: var(--color-default);
 }
 
 .MobileMenu__Item:hover {
     color: var(--color-default) !important;
-    background: rgba(246, 98, 62, .9);
+    background: rgba(246, 98, 62, .8);
     padding-left: 50px;
     font-weight: 900;
 }
 
 .SearchCart {
     display: flex;
-    gap: 10px;
+    gap: 15px;
 }
 
 .Icon {
-    width: 20px;
-    height: 20px;
+    font-size: 20px;
+    color: var(--color-text);
     transition: all ease-in-out .3s;
 }
 
@@ -227,7 +220,7 @@ header a:hover {
 }
 
 @media only screen and (max-width: 1024px) {
-    .NavBar, .stickyNav {
+    .NavBar {
         padding: 30px 20px;
     }
 
@@ -235,7 +228,8 @@ header a:hover {
         display: flex;
     }
 
-    .MenuIcon1, .MenuIcon2 {
+    .MenuIcon1,
+    .MenuIcon2 {
         width: 30px;
     }
     
@@ -243,8 +237,7 @@ header a:hover {
         width: 20px;
     }
 
-    .NavBar__List,
-    .navColor {
+    .NavBar__List {
         display: none;
     }
 
