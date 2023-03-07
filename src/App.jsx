@@ -8,6 +8,7 @@ import BackTopWrapper from './components/BACKTOPWRAPPER/BackTopWrapper';
 import './App.css';
 import Cart from "./components/FUNCTIONPAGES/Cart";
 import User from "./components/FUNCTIONPAGES/User";
+import Contact from "./components/MAIN/Contact/Contact";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route path='/faq' element={null} />
           <Route path='/stockist' element={null} />
           <Route path='/wholesale' element={null} />
-          <Route path='/contact' element={null} />
+          <Route path='/contact' element={<Contact/>} />
           <Route path='/userLogin' element={<User user={true} />} />
           <Route path='/userRegister' element={<User user={false} />} />
           <Route path='/cart' element={<Cart/>} />

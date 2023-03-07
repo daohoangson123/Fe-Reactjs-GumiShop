@@ -221,7 +221,7 @@ header a:hover {
 
 @media only screen and (max-width: 1024px) {
     .NavBar {
-        padding: 30px 20px;
+        padding: 30px 10px;
     }
 
     .MobileMenu {
@@ -242,8 +242,7 @@ header a:hover {
     }
 
     .Icon {
-        width: 15px;
-        height: 15px;
+        font-size: 16px;
     }
 
     .NavBar__UserIcon {
