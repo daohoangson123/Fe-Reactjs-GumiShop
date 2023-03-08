@@ -2,13 +2,14 @@ import { Routes, Route } from "react-router-dom";
 import Header from './components/HEADER/Header';
 import LandingPage from './components/MAIN/LandingPage';
 import Footer from './components/FOOTER/Footer';
-import BackTopBtn from './components/BACKTOPBTN/BackTopBtn';
+import Contact from './components/MAIN/Contact/Contact';
 import Shop from './components/FUNCTIONPAGES/Shop';
+import Cart from './components/FUNCTIONPAGES/Cart';
+import User from './components/FUNCTIONPAGES/User';
+import BackTopBtn from './components/BACKTOPBTN/BackTopBtn';
 import BackTopWrapper from './components/BACKTOPWRAPPER/BackTopWrapper';
+import NewsDetail from "./components/MAIN/LatestNew/NewsDetail/NewDetail";
 import './App.css';
-import Cart from "./components/FUNCTIONPAGES/Cart";
-import User from "./components/FUNCTIONPAGES/User";
-import Contact from "./components/MAIN/Contact/Contact";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path='/userLogin' element={<User user={true} />} />
           <Route path='/userRegister' element={<User user={false} />} />
           <Route path='/cart' element={<Cart/>} />
+          <Route path='/news/:id' element={<NewsDetail/>} />
         </Routes>
       </BackTopWrapper>
       </main>
