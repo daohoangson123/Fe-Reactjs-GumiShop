@@ -7,20 +7,17 @@ const Shop = () => {
     
 
     const [api, setApi] = useState([]);
+    const data = [...api];
     const [result, setResult] = useState([]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
     }
     
-    const [searchValue, setSearchValue] = useState(undefined);
+    const [searchValue, setSearchValue] = useState('undefined');
     
     const handleChange = (event) => {
         setSearchValue(event.target.value);
-
-        if (result !== searchValue) {
-            setResult([])
-        }
     }
 
     useEffect(() => {
@@ -36,46 +33,49 @@ const Shop = () => {
 
     useEffect(() => {
         const searchTemp = [];
-        for (let i = 0; i < api.length; i++) {
+        for (let i = 0; i < data.length; i++) {
             if (searchValue === "") {
-                    setResult(api);
+                    setResult(data);
                     break;
-                } else if ((api[i].name
+                } else if ((data[i].name
                     .replace(/\s+/g, '')
                     .toLocaleLowerCase()
                     .includes(searchValue
                     .replace(/\s+/g, '')
                     .toLocaleLowerCase()))) {
-                        searchTemp.push(api[i]);
+                        searchTemp.push(data[i]);
                         setResult(searchTemp);
+                } else if(searchTemp.length === 0) {
+                    setResult([]);
                 }
-        };
-    }, [searchValue])
+            };
+        }, [searchValue])
 
     return (
         <div className='Shop'>
             <div className='OurProduct'>
             <form className='SearchForm '
                 action="" autoComplete='off'
-                onSubmit={handleSubmit}    >
+                onSubmit={handleSubmit}
+            >
                 <input type="text" name="searchkw" id="searchkw" placeholder="Search by Product's name" required
                     className='SearchInput '
                     onChange={handleChange}
                 />
-            </form>
                 <div className='ProductCount'>
-                    {result.length === 0 && searchValue === undefined
+                    {result.length === 0 && searchValue === 'undefined'
                     ? null
                     : result.length !== 0 && searchValue === ""
-                    ? null
+                    ? <div>Please enter Product's name</div>
                     : <div>{result.length} item{result.length > 1 ? "s" : null} found</div>}
                 </div>
-                {api.length === 0
+            </form>
+                {data.length === 0
                 ? <div className='WaitAPI'>Loading Products... Please Wait A Second</div>
                 : null}
             <div className="ProductContainer ShopProductContainer">
-                {result.length === 0 && searchValue === undefined
-                ? api.map((product) => (
+                {result.length === 0 && searchValue === 'undefined'
+                ? data.map((product) => (
                     <div className="ProductItem" key={product._id}>
                         <Product
                         id={product._id}
