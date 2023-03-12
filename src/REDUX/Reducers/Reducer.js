@@ -1,29 +1,28 @@
 const initState = {
     myCart: [],
-  };
-  
-  const rootReducer = (state = initState, action) => {
-  
+};
+
+const rootReducer = (state = initState, action) => {
     switch (action.type) {
-      case "Add_To_Cart":
-        action.payload.amount = 1;
-        for (let i = 0; i < state.myCart.length; i++) {
-          if (state.myCart[i].id === action.payload.id) {
-            state.myCart[i].amount++
+        case 'Add_To_Cart':
+            action.payload.amount = 1;
+            for (let i = 0; i < state.myCart.length; i++) {
+                if (state.myCart[i].id === action.payload.id) {
+                    state.myCart[i].amount++;
+                    return {
+                        ...state,
+                        myCart: [...state.myCart],
+                    };
+                }
+            }
             return {
-              ...state,
-              myCart: [...state.myCart],
+                ...state,
+                myCart: [...state.myCart, action.payload],
             };
-          }
-        }
-        return {
-          ...state,
-          myCart: [...state.myCart, action.payload],
-        };
 
-      default:
-        return state;
+        default:
+            return state;
     }
-  };
+};
 
-  export default rootReducer;
+export default rootReducer;

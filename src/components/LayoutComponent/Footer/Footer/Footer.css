@@ -1,0 +1,17 @@
+footer {
+    background-image: url(../../../../Assets/img/Footer.png);
+}
+
+footer > hr {
+    opacity: 0.2;
+    border: 1px solid #828181;
+    margin: 20px 120px;
+}
+
+.FooterTopBG {
+    background-image: url(../../../../Assets/img/FooterTop.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 130px;
+}

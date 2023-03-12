@@ -1,0 +1,27 @@
+.BackTopBtn,
+.BackTopBtn-actived {
+    position: fixed;
+    display: grid;
+    place-items: center;
+    right: 20px;
+    bottom: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    font-family: var(--font-default);
+    font-weight: 800;
+    color: var(--color-default);
+    background: var(--color-primary);
+    transition: all ease-in-out 0.2s;
+    transform: scale(0);
+    z-index: 20;
+    cursor: pointer;
+}
+
+.BackTopBtn-actived {
+    transform: scale(1) !important;
+}
+
+.BackTopBtn a:visited {
+    color: var(--color-default);
+}
