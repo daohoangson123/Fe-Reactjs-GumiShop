@@ -1,17 +1,18 @@
 import './Cart.css';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { myCartSelector } from '../../../Redux/Selectors/Selector';
+import { removeInCart } from '../../../Redux/Actions/Action';
 import { useEffect, useState } from 'react';
 
 const CartForm = ({ ...props }) => {
-    const clonedCart = [...props.myCart];
+    const dispatch = useDispatch();
+    const myCart = useSelector(myCartSelector);
+
     const totalPrice =
-        clonedCart &&
-        clonedCart.reduce(
-            (sum, item) => sum + item.price * item.amount,
-            0,
-        );
+        myCart &&
+        myCart.reduce((sum, item) => sum + item.price * item.amount, 0);
     const [isPurchased, setIsPurchased] = useState(false);
+
     function handleSubmit(event) {
         event.preventDefault();
         setTimeout(() => {
@@ -19,84 +20,78 @@ const CartForm = ({ ...props }) => {
         }, 2500);
     }
 
+    function handleRemove(product) {
+        dispatch(removeInCart(product));
+    }
+
     useEffect(() => {
-        const submitForm =
-            document.getElementById('delayedForm');
+        const submitForm = document.getElementById('delayedForm');
         submitForm.addEventListener('submit', handleSubmit);
-    }, []);
+    });
 
     return (
         <form
             className='Cart-Item_Form'
             id='delayedForm'
         >
-            <div
-                className={
-                    isPurchased
-                        ? 'Purchased'
-                        : 'NotPurchased'
-                }
-            >
+            <div className={isPurchased ? 'Purchased' : 'NotPurchased'}>
                 <div className='Purchased__Notify'>
-                    {clonedCart.length} Items Purchased!
+                    {myCart.length} Items Purchased!
                 </div>
             </div>
             <div className='Product-Amount'>
                 Product
-                {clonedCart.length === 0 ? null : 's'} In
-                Cart: {clonedCart.length}
+                {myCart.length === 0 ? null : 's'} In Cart: {myCart.length}
             </div>
-            {clonedCart.map((item) => {
-                const cost = item.amount * item.price;
-                return (
-                    <div
-                        className='Cart-Item'
-                        key={item.id}
-                    >
-                        <img
-                            src={item.img}
-                            alt=''
-                        />
-                        <div className='Cart-Item_Name'>
-                            {item.name}
-                        </div>
-                        <span className='Cart-Item_Price'>
-                            Price: {item.price}
-                        </span>
-                        <div className='Cart-Item_Quantity'>
-                            <label htmlFor='quantity'>
-                                Quantity:{' '}
-                            </label>
-                            <input
-                                type='number'
-                                value={item.amount}
-                                name='quantity'
-                                id='quantity'
-                                onChange={(e) => {
-                                    props.handleChange(
-                                        e,
-                                        item,
-                                    );
-                                }}
-                            />
-                        </div>
-                        <div className='Cart-Item_Cost'>
-                            Cost: {cost}
-                        </div>
-                    </div>
-                );
-            })}
-            <div className='Total-Price'>
-                Total Prices: {totalPrice}
-            </div>
+            {myCart
+                ? myCart.map((item, index) => {
+                      const cost = item.amount * item.price;
+                      return (
+                          <div
+                              className='Cart-Item'
+                              key={index}
+                          >
+                              <img
+                                  src={item.img}
+                                  alt=''
+                              />
+                              <div className='Cart-Item_Name'>{item.name}</div>
+                              <span className='Cart-Item_Price'>
+                                  Price: {item.price}
+                              </span>
+                              <div className='Cart-Item_Quantity'>
+                                  <label htmlFor='quantity'>Quantity: </label>
+                                  <input
+                                      type='number'
+                                      value={item.amount}
+                                      name='quantity'
+                                      id='quantity'
+                                      onChange={(event) => {
+                                          props.handleChange(event, item);
+                                      }}
+                                  />
+                              </div>
+                              <div className='Cart-Item_Cost'>Cost: {cost}</div>
+                              <button
+                                  className='Remove_Item'
+                                  type='button'
+                                  onClick={() => {
+                                      handleRemove({
+                                          id: item.id,
+                                      });
+                                  }}
+                              >
+                                  Remove Item
+                              </button>
+                          </div>
+                      );
+                  })
+                : null}
+            <div className='Total-Price'>Total Prices: {totalPrice}</div>
             <div className='Buy_Btn-Container'>
                 <button
                     className='Buy_Btn'
-                    disabled={
-                        props.myCart.length === 0
-                            ? true
-                            : false
-                    }
+                    disabled={myCart.length === 0 ? true : false}
                     type='submit'
                     onClick={() => {
                         setIsPurchased(true);
@@ -113,21 +108,17 @@ const CartForm = ({ ...props }) => {
 };
 
 const Cart = () => {
-    const myCart = useSelector(myCartSelector);
     const [quantity, setQuantity] = useState(1);
 
     const handleChange = (event, product) => {
         let newAmount = event.target.value;
-        product.amount = Number(newAmount);
+        product.amount = Math.ceil(Number(newAmount));
         setQuantity(event.target.value);
     };
 
     return (
         <div className='Cart'>
-            <CartForm
-                myCart={myCart}
-                handleChange={handleChange}
-            />
+            <CartForm handleChange={handleChange} />
         </div>
     );
 };

@@ -2,7 +2,3 @@
 export const myCartSelector = (state) => {
     return state.myCart;
 };
-
-export const setProductDataSelector = (state) => {
-    return state.productData;
-};

@@ -131,7 +131,7 @@ header a:hover {
 .NavBar__Logo {
     display: flex;
     justify-content: center;
-    font-size: clamp(30px, 1vw, 36px);
+    font-size: clamp(26px, 4vw, 36px);
     font-weight: 600;
     line-height: 24px;
 }
@@ -175,7 +175,7 @@ header a:hover {
 
 .SearchCart {
     display: flex;
-    gap: 15px;
+    gap: 5px;
 }
 
 .Icon {
@@ -204,10 +204,10 @@ header a:hover {
     position: absolute;
     display: grid;
     place-items: center;
-    width: 15px;
-    height: 15px;
-    border: 1px solid var(--color-default);
+    width: 20px;
+    height: 20px;
     border-radius: 100%;
+    border: 2px solid var(--color-default);
     background: var(--color-primary);
     color: var(--color-default);
     top: -5px;
@@ -216,33 +216,22 @@ header a:hover {
 }
 
 .Cart_Notify span {
-    font-size: 12px;
+    font-size: 14px;
+    font-weight: 600;
+    transform: translateY(1px);
 }
 
 @media only screen and (max-width: 1024px) {
     .NavBar {
-        padding: 30px 10px;
+        padding: 30px 20px;
     }
 
     .MobileMenu {
         display: flex;
     }
 
-    .MenuIcon1,
-    .MenuIcon2 {
-        width: 30px;
-    }
-
-    .MenuIcon3 {
-        width: 20px;
-    }
-
     .NavBar__List {
         display: none;
-    }
-
-    .Icon {
-        font-size: 16px;
     }
 
     .NavBar__UserIcon {

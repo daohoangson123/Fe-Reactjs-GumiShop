@@ -19,7 +19,12 @@ const rootReducer = (state = initState, action) => {
                 ...state,
                 myCart: [...state.myCart, action.payload],
             };
-
+        case 'Remove_In_Cart':
+            return {
+                myCart: state.myCart.filter(
+                    (item) => item.id !== action.payload.id,
+                ),
+            };
         default:
             return state;
     }

@@ -54,7 +54,7 @@ const NavBar = () => {
 
         // unmount cleanup handler
         return () => mq.removeListener(toggle);
-    });
+    }, []);
 
     // toggle something based on matchMedia event
     const toggle = () => {

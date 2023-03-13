@@ -46,7 +46,7 @@ const Shop = () => {
     }, [searchValue]);
 
     return (
-        <div className='Shop'>
+        <div className='Shop container'>
             <div className='OurProduct'>
                 <form
                     className='SearchForm '
