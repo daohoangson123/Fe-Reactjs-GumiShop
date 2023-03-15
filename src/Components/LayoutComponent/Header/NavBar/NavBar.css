@@ -23,7 +23,7 @@ header a:hover {
     flex-direction: column;
     justify-content: center;
     align-items: end;
-    width: 45px;
+    width: clamp(45px, 8vw, 65px);
     height: 40px;
     gap: 5px;
     padding: 7px;
@@ -49,11 +49,11 @@ header a:hover {
 
 .MenuIcon1,
 .MenuIcon2 {
-    width: 50px;
+    width: clamp(30px, 5vw, 50px);
 }
 
 .MenuIcon3 {
-    width: 40px;
+    width: clamp(20px, 2vw, 40px);
 }
 
 .hideMobileMenu {
