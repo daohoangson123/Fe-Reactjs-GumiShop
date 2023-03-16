@@ -4,9 +4,17 @@ import { myCartSelector } from '../../../Redux/Selectors/Selector';
 import { removeInCart } from '../../../Redux/Actions/Action';
 import { useEffect, useState } from 'react';
 
-const CartForm = ({ ...props }) => {
+const CartForm = () => {
     const dispatch = useDispatch();
     const myCart = useSelector(myCartSelector);
+
+    const [quantity, setQuantity] = useState(1);
+
+    const handleChange = (event, product) => {
+        let newAmount = event.target.value;
+        product.amount = Math.ceil(Number(newAmount));
+        setQuantity(event.target.value);
+    };
 
     const totalPrice =
         myCart &&
@@ -15,9 +23,10 @@ const CartForm = ({ ...props }) => {
 
     function handleSubmit(event) {
         event.preventDefault();
+        setIsPurchased(true);
         setTimeout(() => {
             this.submit();
-        }, 2500);
+        }, 2000);
     }
 
     function handleRemove(product) {
@@ -40,8 +49,12 @@ const CartForm = ({ ...props }) => {
                 </div>
             </div>
             <div className='Product-Amount'>
-                Product
-                {myCart.length === 0 ? null : 's'} In Cart: {myCart.length}
+                {myCart.length} Product
+                {myCart.length === 0 ? null : 's'} In Cart
+                <div>
+                    Note: item's minimum quantity is 1, if you remove it the
+                    item will be remove from cart
+                </div>
             </div>
             {myCart
                 ? myCart.map((item, index) => {
@@ -53,21 +66,24 @@ const CartForm = ({ ...props }) => {
                           >
                               <img
                                   src={item.img}
-                                  alt=''
+                                  alt={item.name}
                               />
                               <div className='Cart-Item_Name'>{item.name}</div>
                               <span className='Cart-Item_Price'>
                                   Price: {item.price}
                               </span>
                               <div className='Cart-Item_Quantity'>
-                                  <label htmlFor='quantity'>Quantity: </label>
+                                  <label htmlFor={`quantity${index}`}>
+                                      Quantity:{' '}
+                                  </label>
                                   <input
                                       type='number'
+                                      name={`quantity${index}`}
+                                      id={`quantity${index}`}
+                                      min='1'
                                       value={item.amount}
-                                      name='quantity'
-                                      id='quantity'
                                       onChange={(event) => {
-                                          props.handleChange(event, item);
+                                          handleChange(event, item);
                                       }}
                                   />
                               </div>
@@ -93,12 +109,6 @@ const CartForm = ({ ...props }) => {
                     className='Buy_Btn'
                     disabled={myCart.length === 0 ? true : false}
                     type='submit'
-                    onClick={() => {
-                        setIsPurchased(true);
-                        setTimeout(() => {
-                            setIsPurchased(false);
-                        }, 2000);
-                    }}
                 >
                     Purchase
                 </button>
@@ -108,17 +118,9 @@ const CartForm = ({ ...props }) => {
 };
 
 const Cart = () => {
-    const [quantity, setQuantity] = useState(1);
-
-    const handleChange = (event, product) => {
-        let newAmount = event.target.value;
-        product.amount = Math.ceil(Number(newAmount));
-        setQuantity(event.target.value);
-    };
-
     return (
         <div className='Cart'>
-            <CartForm handleChange={handleChange} />
+            <CartForm />
         </div>
     );
 };
