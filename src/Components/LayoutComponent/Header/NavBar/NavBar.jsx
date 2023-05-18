@@ -32,16 +32,19 @@ const nav_Items = [
 ];
 
 const NavBar = () => {
-    const myCart = useSelector(myCartSelector);
-    const [menuvisible, setMenuvisible] = useState('MobileMenu__NavBar');
+    const [isClicked, setIsClicked] = useState(true);
 
-    const toggleMenu = () => {
-        if (menuvisible === 'MobileMenu__NavBar') {
+    function handleClick() {
+        if (isClicked) {
             setMenuvisible('MobileMenu__NavBar-actived');
         } else {
             setMenuvisible('MobileMenu__NavBar');
         }
-    };
+        setIsClicked(!isClicked);
+    }
+
+    const myCart = useSelector(myCartSelector);
+    const [menuvisible, setMenuvisible] = useState('MobileMenu__NavBar');
 
     const mq = window.matchMedia('(min-width: 1025px)');
 
@@ -67,7 +70,8 @@ const NavBar = () => {
         <nav className='NavBar'>
             <button
                 className='MobileMenu'
-                onClick={toggleMenu}
+                onClick={handleClick}
+                aria-label='MobileMenuToggle'
             >
                 <div className='MenuIcon1 MenuIcon '></div>
                 <div className='MenuIcon2 MenuIcon '></div>
@@ -79,14 +83,17 @@ const NavBar = () => {
                         to={item.path}
                         key={item.name}
                         className='MobileMenu__Item'
+                        onClick={handleClick}
                     >
                         {item.name}
                     </NavLink>
                 ))}
             </div>
-            <h1 className='NavBar__Logo'>
-                GOOD<span>4</span>ME.
-            </h1>
+            <NavLink to='/'>
+                <h1 className='NavBar__Logo'>
+                    GOOD<span>4</span>ME.
+                </h1>
+            </NavLink>
             <div className='NavBar__List'>
                 {nav_Items.map((item) => (
                     <NavLink
@@ -101,13 +108,22 @@ const NavBar = () => {
                 ))}
             </div>
             <div className='SearchCart'>
-                <NavLink to='/shop'>
+                <NavLink
+                    to='/shop'
+                    aria-label='Shopping-Page'
+                >
                     <i className='fa-solid fa-magnifying-glass Icon'></i>
                 </NavLink>
-                <NavLink to='/userLogin'>
+                <NavLink
+                    to='/userLogin'
+                    aria-label='User-Page'
+                >
                     <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
                 </NavLink>
-                <NavLink to='/cart'>
+                <NavLink
+                    to='/cart'
+                    aria-label='Cart-Page'
+                >
                     <div className='Cart_IconContainer'>
                         <i className='fa-solid fa-bag-shopping Icon'></i>
                         {myCart.length === 0 ? (

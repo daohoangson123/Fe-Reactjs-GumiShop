@@ -1,5 +1,8 @@
 import './User.css';
+//
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+//
 
 const User = ({ ...props }) => {
     const [signIn, setSignIn] = useState(props.user);
@@ -117,12 +120,12 @@ const User = ({ ...props }) => {
                                 Sign In
                             </button>
                         </div>
-                        <span
+                        <Link
+                            to='/userRegister'
                             className='Sign-Regis'
-                            onClick={() => setSignIn(false)}
                         >
-                            Create Account
-                        </span>
+                            Create New Account
+                        </Link>
                     </form>
                 </div>
             ) : isSigned ? (
@@ -295,12 +298,12 @@ const User = ({ ...props }) => {
                                 Register
                             </button>
                         </div>
-                        <span
+                        <Link
+                            to='/userLogin'
                             className='Sign-Regis'
-                            onClick={() => setSignIn(true)}
                         >
                             Already have Account?
-                        </span>
+                        </Link>
                     </form>
                 </div>
             )}

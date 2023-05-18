@@ -1,6 +1,10 @@
+import './SignBar.css';
+//
+import usa from '../../../../Assets/img/usa.png';
+import vnm from '../../../../Assets/img/vnm.png';
+//
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import './SignBar.css';
 
 const text =
     'Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*';
@@ -15,17 +19,13 @@ const langs = [
 ];
 
 const SignBar = () => {
-    const [flag, setFlag] = useState(
-        'https://cdn-icons-png.flaticon.com/512/555/555526.png',
-    );
+    const [flag, setFlag] = useState(usa);
 
     const handelChange = (event) => {
         if (event.target.value === 'VNM') {
-            setFlag(
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/2/21/Flag_of_Vietnam.svg/255px-Flag_of_Vietnam.svg.png',
-            );
+            setFlag(vnm);
         } else {
-            setFlag('https://cdn-icons-png.flaticon.com/512/555/555526.png');
+            setFlag(usa);
         }
     };
 
@@ -60,7 +60,6 @@ const SignBar = () => {
                         <img
                             src={flag}
                             alt='flag'
-                            className=' '
                         />
                     </label>
                     <select

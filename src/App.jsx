@@ -1,3 +1,5 @@
+import './App.css';
+//
 import { Routes, Route } from 'react-router-dom';
 import Header from './Components/LayoutComponent/Header/Header/Header';
 import LandingPage from './Components/LayoutComponent/Main/Main/LandingPage';
@@ -6,14 +8,17 @@ import Contact from './Components/LayoutComponent/Main/Contact/Contact';
 import Shop from './Components/FunctionComponent/Shop/Shop';
 import Cart from './Components/FunctionComponent/Cart/Cart';
 import User from './Components/FunctionComponent/User/User';
+import NewsDetail from './Components/LayoutComponent/Main/LatestNew/NewsDetail/NewDetail';
+//
+// import Preloader from './Components/SupportComponent/Preloader/Preloader';
 import BackTopBtn from './Components/SupportComponent/BackTopBtn/BackTopBtn';
 import BackTopWrapper from './Components/SupportComponent/BackTopWrapper/BackTopWrapper';
-import NewsDetail from './Components/LayoutComponent/Main/LatestNew/NewsDetail/NewDetail';
-import './App.css';
+//
 
 function App() {
     return (
         <div className='App'>
+            {/* <Preloader /> */}
             <Header />
             <main>
                 <BackTopWrapper>

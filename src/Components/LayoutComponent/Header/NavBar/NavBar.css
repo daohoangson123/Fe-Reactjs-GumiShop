@@ -4,8 +4,8 @@ header {
     z-index: 100;
 }
 
-header a:hover {
-    text-decoration: underline;
+.NavBar a {
+    transition: all ease-in-out 0.2s;
 }
 
 .NavBar {
@@ -13,9 +13,13 @@ header a:hover {
     justify-content: space-between;
     align-items: center;
     gap: 10px;
-    background-color: var(--color-default);
-    padding: 30px 100px;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 30px 60px;
     transition: all ease-in-out 0.3s;
+}
+
+.NavBar:hover {
+    background-color: rgba(255, 255, 255, 1);
 }
 
 .MobileMenu {
@@ -79,7 +83,7 @@ header a:hover {
     height: 318px;
     overflow: hidden;
     position: absolute;
-    top: 100px;
+    top: 95px;
     left: 0;
     font-family: var(--font-default);
     font-weight: 500;
@@ -134,9 +138,17 @@ header a:hover {
     font-size: clamp(26px, 4vw, 36px);
     font-weight: 600;
     line-height: 24px;
+    color: var(--color-alt);
+    transition: all ease-in-out 0.2s;
 }
 
-.NavBar__Logo > span {
+.NavBar__Logo:hover {
+    background: linear-gradient(120deg, red, orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.NavBar__Logo span {
     font-size: clamp(20px, 1vw, 26px);
 }
 
@@ -153,6 +165,10 @@ header a:hover {
 .NavBar__List .active,
 .SearchCart .active i {
     color: var(--color-primary) !important;
+}
+
+.NavBar__List a:hover {
+    text-decoration: underline;
 }
 
 .MobileMenu__NavBar-actived .active {
@@ -175,7 +191,8 @@ header a:hover {
 
 .SearchCart {
     display: flex;
-    gap: 5px;
+    align-items: baseline;
+    gap: 10px;
 }
 
 .Icon {
@@ -236,5 +253,11 @@ header a:hover {
 
     .NavBar__UserIcon {
         display: block;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .Icon {
+        font-size: 16px;
     }
 }

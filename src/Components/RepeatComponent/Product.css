@@ -8,6 +8,19 @@
     margin: 30px 0;
 }
 
+.Product {
+    animation: productIn 0.3s both ease-in-out;
+}
+
+@keyframes productIn {
+    0% {
+        transform: scaleX(0);
+    }
+    100% {
+        transform: scaleX(1);
+    }
+}
+
 .Product__Img-Container {
     position: relative;
     display: grid;
