@@ -2,9 +2,9 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './SliderBanner.css';
-import heroBanner1 from '../../../../../Assets/img/HeroBanner.png';
-import heroBanner2 from '../../../../../Assets/img/HeroBanner1.png';
-import heroBannerBot from '../../../../../Assets/img/HeroBannerBot.png';
+import heroBanner1 from '../../../../../Assets/img/HeroBanner.webp';
+import heroBanner2 from '../../../../../Assets/img/HeroBanner1.webp';
+import heroBannerBot from '../../../../../Assets/img/HeroBannerBot.webp';
 import ProductShop from '../SliderProduct/ProductShop';
 
 const banner_1 = {

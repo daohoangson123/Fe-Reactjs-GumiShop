@@ -1,5 +1,5 @@
 footer {
-    background-image: url(../../../../Assets/img/Footer.png);
+    background-image: url(../../../../Assets/img/Footer.webp);
 }
 
 footer > hr {
@@ -9,7 +9,7 @@ footer > hr {
 }
 
 .FooterTopBG {
-    background-image: url(../../../../Assets/img/FooterTop.png);
+    background-image: url(../../../../Assets/img/FooterTop.webp);
     background-repeat: no-repeat;
     background-size: cover;
     width: 100%;

@@ -1,0 +1,13 @@
+header {
+    animation: header-appear 1s ease-in-out both;
+    transition: all ease-in-out 0.5s;
+}
+
+@keyframes header-appear {
+    0% {
+        transform: translateY(-100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}

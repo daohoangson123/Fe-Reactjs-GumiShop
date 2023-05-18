@@ -1,8 +1,10 @@
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+//
 import './Review.css';
-import review_img from '../../../../Assets/img/review.png';
+//
+import review_img from '../../../../Assets/img/review.webp';
 
 const reviewData = [
     {

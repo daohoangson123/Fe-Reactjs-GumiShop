@@ -1,9 +1,8 @@
 import './App.css';
 //
-import { Routes, Route } from 'react-router-dom';
 import Header from './Components/LayoutComponent/Header/Header/Header';
-import LandingPage from './Components/LayoutComponent/Main/Main/LandingPage';
 import Footer from './Components/LayoutComponent/Footer/Footer/Footer';
+import LandingPage from './Components/LayoutComponent/Main/Main/LandingPage';
 import Contact from './Components/LayoutComponent/Main/Contact/Contact';
 import Shop from './Components/FunctionComponent/Shop/Shop';
 import Cart from './Components/FunctionComponent/Cart/Cart';
@@ -13,6 +12,8 @@ import NewsDetail from './Components/LayoutComponent/Main/LatestNew/NewsDetail/N
 // import Preloader from './Components/SupportComponent/Preloader/Preloader';
 import BackTopBtn from './Components/SupportComponent/BackTopBtn/BackTopBtn';
 import BackTopWrapper from './Components/SupportComponent/BackTopWrapper/BackTopWrapper';
+//
+import { Routes, Route } from 'react-router-dom';
 //
 
 function App() {

@@ -1,9 +1,11 @@
 import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
+//
 import './Good4MeSilder.css';
-import good4me from '../../../../Assets/img/good4me.png';
-import good4me2 from '../../../../Assets/img/good4me2.png';
+//
+import good4me from '../../../../Assets/img/good4me.webp';
+import good4me2 from '../../../../Assets/img/good4me2.webp';
 
 const hashtag_Img = [
     {

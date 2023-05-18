@@ -1,13 +1,13 @@
-import n1 from '../../../../../Assets/img/news1.png';
-import n2 from '../../../../../Assets/img/news2.png';
-import n3 from '../../../../../Assets/img/news3.png';
+import new1 from '../../../../../Assets/img/news1.webp';
+import new2 from '../../../../../Assets/img/news2.webp';
+import new3 from '../../../../../Assets/img/news3.webp';
 import './LatestNew.css';
 import NewsItem from '../NewsItem/NewsItem';
 
 export const news_List = [
     {
         id: 1,
-        url: n1,
+        url: new1,
         date: 'August 26, 2020',
         title: 'WE DONATE ONE WEEKS SUPPLY',
         content:
@@ -15,7 +15,7 @@ export const news_List = [
     },
     {
         id: 2,
-        url: n2,
+        url: new2,
         date: 'August 26, 2020',
         title: 'WE DONATE ONE WEEKS SUPPLY',
         content:
@@ -23,7 +23,7 @@ export const news_List = [
     },
     {
         id: 3,
-        url: n3,
+        url: new3,
         date: 'August 26, 2020',
         title: 'WE DONATE ONE WEEKS SUPPLY',
         content:

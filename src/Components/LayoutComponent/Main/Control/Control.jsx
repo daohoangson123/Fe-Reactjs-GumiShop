@@ -1,7 +1,7 @@
 import './Control.css';
-import control1 from '../../../../Assets/img/control1.png';
-import control2 from '../../../../Assets/img/control2.png';
-import control3 from '../../../../Assets/img/control3.png';
+import control1 from '../../../../Assets/img/control1.webp';
+import control2 from '../../../../Assets/img/control2.webp';
+import control3 from '../../../../Assets/img/control3.webp';
 
 const Control = () => {
     return (

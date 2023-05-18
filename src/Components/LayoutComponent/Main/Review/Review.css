@@ -1,5 +1,5 @@
 .Review {
-    background-image: url(../../../../Assets/img/Reviewbg.png);
+    background-image: url(../../../../Assets/img/Reviewbg.webp);
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -10,7 +10,7 @@
     padding: 216px 120px !important;
 }
 .Review__Slider-BgTop {
-    background-image: url(../../../../Assets/img/ReviewTop.png);
+    background-image: url(../../../../Assets/img/ReviewTop.webp);
     background-size: cover;
     position: absolute;
     top: 0;
@@ -19,7 +19,7 @@
 }
 
 .Review__Slider-BgBot {
-    background-image: url(../../../../Assets/img/ReviewBot.png);
+    background-image: url(../../../../Assets/img/ReviewBot.webp);
     background-size: cover;
     position: absolute;
     bottom: 0;
