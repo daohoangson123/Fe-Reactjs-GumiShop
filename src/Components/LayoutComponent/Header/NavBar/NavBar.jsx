@@ -1,4 +1,5 @@
 import './NavBar.css';
+//
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
@@ -32,21 +33,42 @@ const nav_Items = [
 ];
 
 const NavBar = () => {
-    const [isClicked, setIsClicked] = useState(true);
+    const myCart = useSelector(myCartSelector);
+    const [isClicked, setIsClicked] = useState(false);
+    const [menuvisible, setMenuvisible] = useState('MobileMenu__NavBar');
 
-    function handleClick() {
+    const mq = window.matchMedia('(min-width: 1025px)');
+
+    // toggle something based on matchMedia event
+    const toggle = () => {
+        if (mq.matches) {
+            setMenuvisible('hideMobileMenu');
+            setTimeout(() => setMenuvisible('MobileMenu__NavBar'), 0);
+        }
+    };
+
+    useEffect(() => {
         if (isClicked) {
             setMenuvisible('MobileMenu__NavBar-actived');
         } else {
             setMenuvisible('MobileMenu__NavBar');
         }
-        setIsClicked(!isClicked);
-    }
 
-    const myCart = useSelector(myCartSelector);
-    const [menuvisible, setMenuvisible] = useState('MobileMenu__NavBar');
+        const mobileMenu = document.getElementById('MobileMenu');
 
-    const mq = window.matchMedia('(min-width: 1025px)');
+        window.addEventListener('click', (event) => {
+            const mbDimensons = mobileMenu.getBoundingClientRect();
+            if (
+                (event.clientX < mbDimensons.left ||
+                    event.clientX > mbDimensons.right ||
+                    event.clientY < mbDimensons.top ||
+                    event.clientY > mbDimensons.bottom) &&
+                isClicked
+            ) {
+                setIsClicked(false);
+            }
+        });
+    }, [isClicked]);
 
     useEffect(() => {
         // initial check to toggle something on or off
@@ -57,86 +79,109 @@ const NavBar = () => {
 
         // unmount cleanup handler
         return () => mq.removeListener(toggle);
-    }, []);
+    });
 
-    // toggle something based on matchMedia event
-    const toggle = () => {
-        if (mq.matches) {
-            setMenuvisible('hideMobileMenu');
-            setTimeout(() => setMenuvisible('MobileMenu__NavBar'), 0);
-        }
-    };
     return (
-        <nav className='NavBar'>
-            <button
-                className='MobileMenu'
-                onClick={handleClick}
-                aria-label='MobileMenuToggle'
-            >
-                <div className='MenuIcon1 MenuIcon '></div>
-                <div className='MenuIcon2 MenuIcon '></div>
-                <div className='MenuIcon3 MenuIcon '></div>
-            </button>
+        <>
+            <nav className='NavBar'>
+                <button
+                    id='MobileMenu'
+                    className='MobileMenu'
+                    onClick={() => setIsClicked(!isClicked)}
+                    aria-label='MobileMenuToggle'
+                    style={{
+                        backgroundColor: isClicked
+                            ? 'rgba(0, 0, 0, 0.3)'
+                            : null,
+                    }}
+                >
+                    <div
+                        className='MenuIcon1 MenuIcon '
+                        style={{
+                            backgroundColor: isClicked
+                                ? 'var(--color-default)'
+                                : null,
+                        }}
+                    ></div>
+                    <div
+                        className='MenuIcon2 MenuIcon '
+                        style={{
+                            backgroundColor: isClicked
+                                ? 'var(--color-default)'
+                                : null,
+                        }}
+                    ></div>
+                    <div
+                        className='MenuIcon3 MenuIcon '
+                        style={{
+                            backgroundColor: isClicked
+                                ? 'var(--color-default)'
+                                : null,
+                        }}
+                    ></div>
+                </button>
+
+                <NavLink to='/'>
+                    <h1 className='NavBar__Logo'>
+                        GOOD<span>4</span>ME.
+                    </h1>
+                </NavLink>
+                <div className='NavBar__List'>
+                    {nav_Items.map((item) => (
+                        <NavLink
+                            to={item.path}
+                            key={item.name}
+                            className={({ isActive }) =>
+                                isActive ? 'active' : 'inactive'
+                            }
+                        >
+                            {item.name}
+                        </NavLink>
+                    ))}
+                </div>
+                <div className='SearchCart'>
+                    <NavLink
+                        to='/shop'
+                        aria-label='Shopping-Page'
+                    >
+                        <i className='fa-solid fa-magnifying-glass Icon'></i>
+                    </NavLink>
+                    <NavLink
+                        to='/userLogin'
+                        aria-label='User-Page'
+                    >
+                        <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
+                    </NavLink>
+                    <NavLink
+                        to='/cart'
+                        aria-label='Cart-Page'
+                    >
+                        <div className='Cart_IconContainer'>
+                            <i className='fa-solid fa-bag-shopping Icon'></i>
+                            {myCart.length === 0 ? (
+                                <></>
+                            ) : (
+                                <div className='Cart_Notify'>
+                                    <span>{myCart.length}</span>
+                                </div>
+                            )}
+                        </div>
+                    </NavLink>
+                </div>
+            </nav>
             <div className={menuvisible}>
                 {nav_Items.map((item) => (
                     <NavLink
                         to={item.path}
                         key={item.name}
                         className='MobileMenu__Item'
-                        onClick={handleClick}
+                        onClick={() => setIsClicked(false)}
                     >
                         {item.name}
                     </NavLink>
                 ))}
             </div>
-            <NavLink to='/'>
-                <h1 className='NavBar__Logo'>
-                    GOOD<span>4</span>ME.
-                </h1>
-            </NavLink>
-            <div className='NavBar__List'>
-                {nav_Items.map((item) => (
-                    <NavLink
-                        to={item.path}
-                        key={item.name}
-                        className={({ isActive }) =>
-                            isActive ? 'active' : 'inactive'
-                        }
-                    >
-                        {item.name}
-                    </NavLink>
-                ))}
-            </div>
-            <div className='SearchCart'>
-                <NavLink
-                    to='/shop'
-                    aria-label='Shopping-Page'
-                >
-                    <i className='fa-solid fa-magnifying-glass Icon'></i>
-                </NavLink>
-                <NavLink
-                    to='/userLogin'
-                    aria-label='User-Page'
-                >
-                    <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
-                </NavLink>
-                <NavLink
-                    to='/cart'
-                    aria-label='Cart-Page'
-                >
-                    <div className='Cart_IconContainer'>
-                        <i className='fa-solid fa-bag-shopping Icon'></i>
-                        {myCart.length === 0 ? (
-                            <></>
-                        ) : (
-                            <div className='Cart_Notify'>
-                                <span>{myCart.length}</span>
-                            </div>
-                        )}
-                    </div>
-                </NavLink>
-            </div>
-        </nav>
+        </>
     );
 };
 

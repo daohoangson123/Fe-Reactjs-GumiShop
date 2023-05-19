@@ -1,4 +1,5 @@
 import './Control.css';
+//
 import control1 from '../../../../Assets/img/control1.webp';
 import control2 from '../../../../Assets/img/control2.webp';
 import control3 from '../../../../Assets/img/control3.webp';
@@ -28,16 +29,17 @@ const Control = () => {
                     className='Control__Img-1'
                     src={control1}
                     alt='control-img'
+                    lazy-src={control1}
                 />
                 <img
                     className='Control__Img-2'
                     src={control2}
-                    alt='control-img'
+                    alt='control-img2'
                 />
                 <img
                     className='Control__Img-3'
                     src={control3}
-                    alt='control-img'
+                    alt='control-img3'
                 />
             </div>
         </section>

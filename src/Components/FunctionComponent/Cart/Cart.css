@@ -49,7 +49,7 @@
 .Cart__Layout {
     position: relative;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-columns: 6fr 1fr;
     gap: 30px;
 }
 
