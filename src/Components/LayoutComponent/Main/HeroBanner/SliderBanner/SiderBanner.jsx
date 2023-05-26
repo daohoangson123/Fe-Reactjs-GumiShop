@@ -3,24 +3,14 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './SliderBanner.css';
 //
+import { banner_1, banner_2 } from '../../../../../Data/banner';
+//
 import ProductShop from '../SliderProduct/ProductShop';
 //
 
-const banner_1 = {
-    title: 'Good4Me',
-    name: 'Apple Cider Vinegar',
-    des: 'Good4Me Apple Cider Vinegar gummies are the newest addition to your morning health and well-being regime.',
-};
-
-const banner_2 = {
-    title: 'Good4Me',
-    name: 'MULTI-VITAMIN (3 MONTH SUPPLY)',
-    des: 'Good4Me Apple Cider Vinegar gummies are the newest addition to your morning health and well-being regime.',
-};
-
 const SliderBanner = () => {
     return (
-        <section className='SilderBanner'>
+        <article className='SilderBanner'>
             <OwlCarousel
                 className='owl-theme'
                 responsiveRefreshRate={0}
@@ -58,7 +48,7 @@ const SliderBanner = () => {
                     </div>
                 </div>
             </OwlCarousel>
-        </section>
+        </article>
     );
 };
 

@@ -6,21 +6,21 @@ import vnm from '../../../../Assets/img/vnm.png';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const text =
-    'Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*';
-
-const langs = [
-    {
-        name: 'USA',
-        flag: usa,
-    },
-    {
-        name: 'VNM',
-        flag: vnm,
-    },
-];
-
 const SignBar = () => {
+    const text =
+        'Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*';
+
+    const langs = [
+        {
+            name: 'USA',
+            flag: usa,
+        },
+        {
+            name: 'VNM',
+            flag: vnm,
+        },
+    ];
+
     const [flag, setFlag] = useState(usa);
 
     const handelChange = (event) => {

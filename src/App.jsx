@@ -4,7 +4,6 @@ import Header from './Components/LayoutComponent/Header/Header/Header';
 import LandingPage from './Components/LayoutComponent/Main/Main/LandingPage';
 import Footer from './Components/LayoutComponent/Footer/Footer/Footer';
 //
-// import SignBar from './Components/LayoutComponent/Header/SignBar/SignBar';
 import ProductDetail from './Components/FunctionComponent/ProductDetail/ProductDetail';
 import NewsDetail from './Components/LayoutComponent/Main/LatestNew/NewsDetail/NewDetail';
 //
@@ -24,7 +23,6 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
     return (
         <div className='App'>
-            {/* <SignBar /> */}
             <Header />
             <main>
                 <BackTopWrapper>

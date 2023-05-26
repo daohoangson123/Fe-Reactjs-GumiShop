@@ -20,7 +20,7 @@ const Good4MeDeal = () => {
     }, []);
 
     return (
-        <section className='Good4MeDeal container'>
+        <section className='Good4MeDeal hide container'>
             <h2>GOOD4ME DEAL</h2>
             <hr />
             <p>

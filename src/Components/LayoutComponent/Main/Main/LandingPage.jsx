@@ -7,8 +7,31 @@ import Good4MeSlider from '../Good4MeSilder/Good4MeSlider';
 import Review from '../Review/Review';
 import ShopAll from '../ShopAll/ShopAll';
 //
+import { useEffect } from 'react';
 
 const LandingPage = () => {
+    useEffect(() => {
+        const sect = document.querySelectorAll('section');
+
+        sect.forEach((item) => item.classList.add('hide'));
+
+        const hiddenSect = document.querySelectorAll('.hide');
+
+        function show() {
+            const windowHeight = window.innerHeight;
+            const elementVisible = 10;
+            hiddenSect.forEach((item) => {
+                const elementTop = item.getBoundingClientRect().top;
+                if (elementTop < windowHeight - elementVisible) {
+                    item.classList.add('show');
+                    item.classList.remove('hide');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', show);
+    });
+
     return (
         <>
             <SliderBanner />

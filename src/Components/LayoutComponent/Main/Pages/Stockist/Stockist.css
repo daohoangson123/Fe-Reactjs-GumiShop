@@ -2,6 +2,21 @@
     padding: 0 30px;
 }
 
+.StockistPage .table {
+    animation: table-in 0.5s ease-in-out;
+}
+
+@keyframes table-in {
+    0% {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 .table td:first-child {
     display: -webkit-box;
     -webkit-box-orient: vertical;
