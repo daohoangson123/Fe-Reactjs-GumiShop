@@ -2,20 +2,17 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 import './SliderBanner.css';
-import heroBanner1 from '../../../../../Assets/img/HeroBanner.webp';
-import heroBanner2 from '../../../../../Assets/img/HeroBanner1.webp';
-import heroBannerBot from '../../../../../Assets/img/HeroBannerBot.webp';
+//
 import ProductShop from '../SliderProduct/ProductShop';
+//
 
 const banner_1 = {
-    bgUrl: heroBanner1,
     title: 'Good4Me',
     name: 'Apple Cider Vinegar',
     des: 'Good4Me Apple Cider Vinegar gummies are the newest addition to your morning health and well-being regime.',
 };
 
 const banner_2 = {
-    bgUrl: heroBanner2,
     title: 'Good4Me',
     name: 'MULTI-VITAMIN (3 MONTH SUPPLY)',
     des: 'Good4Me Apple Cider Vinegar gummies are the newest addition to your morning health and well-being regime.',
@@ -37,12 +34,7 @@ const SliderBanner = () => {
                 loop
             >
                 <div className='SliderContainer'>
-                    <div
-                        className='BannerContainer BannerContainer_1'
-                        style={{
-                            backgroundImage: `url(${banner_1.bgUrl})`,
-                        }}
-                    >
+                    <div className='BannerContainer BannerContainer_1'>
                         <div className='SliderBanner_1'>
                             <ProductShop
                                 title={banner_1.title}
@@ -51,21 +43,10 @@ const SliderBanner = () => {
                                 btn='SHOP NOW'
                             />
                         </div>
-                        <div className='Silder1Bot'>
-                            <img
-                                src={heroBannerBot}
-                                alt=''
-                            />
-                        </div>
                     </div>
                 </div>
                 <div className='SliderContainer'>
-                    <div
-                        className='BannerContainer BannerContainer_2'
-                        style={{
-                            backgroundImage: `url(${banner_2.bgUrl})`,
-                        }}
-                    >
+                    <div className='BannerContainer BannerContainer_2'>
                         <div className='SliderBanner_2'>
                             <ProductShop
                                 title={banner_2.title}

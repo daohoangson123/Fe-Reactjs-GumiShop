@@ -1,8 +1,8 @@
-import './Contact.css';
+import './ContactPage.css';
 
-const Contact = () => {
+const ContactPage = () => {
     return (
-        <section className='Contact'>
+        <section className='ContactPage'>
             <div className='Contact__Content container'>
                 <div className='Contact__Info'>
                     <div className='Contact-ShopName'>
@@ -82,4 +82,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default ContactPage;

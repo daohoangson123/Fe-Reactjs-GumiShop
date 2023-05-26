@@ -1,62 +1,40 @@
 import './NavBar.css';
 //
+import { nav_Items } from '../../../../Data/nav_Items';
+//
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+//
 import { useSelector } from 'react-redux';
 import { myCartSelector } from '../../../../Redux/Selectors/Selector';
-
-const nav_Items = [
-    {
-        name: 'HOME',
-        path: '/',
-    },
-    {
-        name: 'SHOP',
-        path: '/shop',
-    },
-    {
-        name: "FAQ'S",
-        path: '/faq',
-    },
-    {
-        name: 'STOCKIST',
-        path: '/stockist',
-    },
-    {
-        name: 'WHOLESALE',
-        path: '/wholesale',
-    },
-    {
-        name: 'CONTACT',
-        path: '/contact',
-    },
-];
 
 const NavBar = () => {
     const myCart = useSelector(myCartSelector);
     const [isClicked, setIsClicked] = useState(false);
-    const [menuvisible, setMenuvisible] = useState('MobileMenu__NavBar');
 
     const mq = window.matchMedia('(min-width: 1025px)');
 
-    // toggle something based on matchMedia event
+    const [menuVisible, setMenuVisible] = useState(false);
+
+    // toggle khi matchMedia '(min-width: 1025px)'
     const toggle = () => {
         if (mq.matches) {
-            setMenuvisible('hideMobileMenu');
-            setTimeout(() => setMenuvisible('MobileMenu__NavBar'), 0);
+            setIsClicked(false);
+            setMenuVisible(false);
         }
     };
 
+    //đóng MobileMenu khi nhấn ra ngoài
     useEffect(() => {
         if (isClicked) {
-            setMenuvisible('MobileMenu__NavBar-actived');
+            setMenuVisible(true);
         } else {
-            setMenuvisible('MobileMenu__NavBar');
+            setMenuVisible(false);
         }
 
         const mobileMenu = document.getElementById('MobileMenu');
 
-        window.addEventListener('click', (event) => {
+        const checkDimension = (event) => {
             const mbDimensons = mobileMenu.getBoundingClientRect();
             if (
                 (event.clientX < mbDimensons.left ||
@@ -66,57 +44,58 @@ const NavBar = () => {
                 isClicked
             ) {
                 setIsClicked(false);
+                // hạn chế gọi hàm
+                window.removeEventListener('click', checkDimension);
             }
-        });
+        };
+
+        window.addEventListener('click', checkDimension);
     }, [isClicked]);
 
     useEffect(() => {
-        // initial check to toggle something on or off
         toggle();
 
-        // returns true when window is => 1025px
         mq.addListener(toggle);
 
-        // unmount cleanup handler
         return () => mq.removeListener(toggle);
     });
 
     return (
         <>
-            <nav className='NavBar'>
+            <nav
+                className='NavBar'
+                style={{
+                    backgroundColor: isClicked && 'var(--color-default)',
+                }}
+            >
                 <button
                     id='MobileMenu'
                     className='MobileMenu'
                     onClick={() => setIsClicked(!isClicked)}
                     aria-label='MobileMenuToggle'
                     style={{
-                        backgroundColor: isClicked
-                            ? 'rgba(0, 0, 0, 0.3)'
-                            : null,
+                        backgroundColor: isClicked && 'rgba(0, 0, 0, 0.3)',
                     }}
                 >
                     <div
                         className='MenuIcon1 MenuIcon '
                         style={{
-                            backgroundColor: isClicked
-                                ? 'var(--color-default)'
-                                : null,
+                            backgroundColor:
+                                isClicked && 'var(--color-default)',
                         }}
                     ></div>
                     <div
                         className='MenuIcon2 MenuIcon '
                         style={{
-                            backgroundColor: isClicked
-                                ? 'var(--color-default)'
-                                : null,
+                            backgroundColor:
+                                isClicked && 'var(--color-default)',
                         }}
                     ></div>
                     <div
                         className='MenuIcon3 MenuIcon '
                         style={{
-                            backgroundColor: isClicked
-                                ? 'var(--color-default)'
-                                : null,
+                            backgroundColor:
+                                isClicked && 'var(--color-default)',
                         }}
                     ></div>
                 </button>
@@ -158,18 +137,24 @@ const NavBar = () => {
                     >
                         <div className='Cart_IconContainer'>
                             <i className='fa-solid fa-bag-shopping Icon'></i>
-                            {myCart.length === 0 ? (
-                                <></>
-                            ) : (
+                            {myCart.length !== 0 && (
                                 <div className='Cart_Notify'>
-                                    <span>{myCart.length}</span>
+                                    <div className='Cart_Notify-Number'>
+                                        {myCart.length}
+                                    </div>
                                 </div>
                             )}
                         </div>
                     </NavLink>
                 </div>
             </nav>
-            <div className={menuvisible}>
+            <div
+                className={
+                    menuVisible
+                        ? 'MobileMenu__NavBar-actived'
+                        : 'MobileMenu__NavBar'
+                }
+            >
                 {nav_Items.map((item) => (
                     <NavLink
                         to={item.path}

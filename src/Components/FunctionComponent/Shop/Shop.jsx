@@ -7,6 +7,8 @@ import Product from '../../RepeatComponent/Product';
 import { useEffect, useMemo, useState } from 'react';
 import { debounce } from 'lodash';
 //
+import { fetchProductApi } from '../../../Data/productData';
+//
 
 const Shop = () => {
     const [productApi, setProductApi] = useState([]);
@@ -32,21 +34,22 @@ const Shop = () => {
             const productName = product.name
                 .replace(/\s+/g, '')
                 .toLocaleLowerCase();
-
             return productName.includes(query);
         });
     };
 
     const filtered = getFilterItems(searchValue, result);
 
-    useEffect(() => {
-        async function getApi() {
-            const fetchAPI = await fetch('https://fe21-db.vercel.app/gummi');
-            const fetchedAPI = await fetchAPI.json();
-            const results = fetchedAPI;
-            setProductApi(results);
+    const getProducts = async () => {
+        let result = await fetchProductApi();
+
+        if (result) {
+            setProductApi(result);
         }
-        getApi();
+    };
+
+    useEffect(() => {
+        getProducts();
 
         return () => {
             debounceChange.cancel();
@@ -55,34 +58,37 @@ const Shop = () => {
 
     return (
         <section className='Shop container'>
-            <form
-                className='SearchForm'
-                action=''
-                autoComplete='off'
-                onSubmit={handleSubmit}
-            >
-                <input
-                    type='text'
-                    name='searchkw'
-                    id='searchkw'
-                    placeholder="Search by Product's name"
-                    required
-                    className='SearchInput '
-                    onChange={debounceChange}
-                />
-            </form>
+            {productApi.length !== 0 && (
+                <form
+                    className='SearchForm'
+                    action=''
+                    autoComplete='off'
+                    onSubmit={handleSubmit}
+                >
+                    <input
+                        type='text'
+                        name='searchkw'
+                        id='searchkw'
+                        placeholder="Search by Product's name"
+                        required
+                        className='SearchInput '
+                        onChange={debounceChange}
+                    />
+                </form>
+            )}
             {productApi.length === 0 && (
                 <div className='WaitAPI'>
                     Loading Products... Please Wait A Second
+                    <div className='WaitAPI__LoadingAnimation'></div>
                 </div>
             )}
             {searchValue !== '' && (
                 <div>
-                    {filtered.length} product{filtered.length > 1 && "'s"} found
+                    {filtered.length} product{filtered.length > 1 && 's'} found
                 </div>
             )}
             {filtered.length !== 0 && searchValue === '' ? (
-                <div>{filtered.length} product's available</div>
+                <div>{filtered.length} products available</div>
             ) : null}
             <div className='ProductContainer ShopProductContainer'>
                 {filtered.map((product) => (

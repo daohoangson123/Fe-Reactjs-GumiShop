@@ -1,15 +1,20 @@
 import './App.css';
 //
 import Header from './Components/LayoutComponent/Header/Header/Header';
-import Footer from './Components/LayoutComponent/Footer/Footer/Footer';
 import LandingPage from './Components/LayoutComponent/Main/Main/LandingPage';
-import Contact from './Components/LayoutComponent/Main/Contact/Contact';
+import Footer from './Components/LayoutComponent/Footer/Footer/Footer';
+//
+// import SignBar from './Components/LayoutComponent/Header/SignBar/SignBar';
+import ProductDetail from './Components/FunctionComponent/ProductDetail/ProductDetail';
+import NewsDetail from './Components/LayoutComponent/Main/LatestNew/NewsDetail/NewDetail';
+//
+import ContactPage from './Components/LayoutComponent/Main/Pages/ContactPage/ContactPage';
+import StockistPage from './Components/LayoutComponent/Main/Pages/Stockist/StockistPage';
+//
 import Shop from './Components/FunctionComponent/Shop/Shop';
 import Cart from './Components/FunctionComponent/Cart/Cart';
 import User from './Components/FunctionComponent/User/User';
-import NewsDetail from './Components/LayoutComponent/Main/LatestNew/NewsDetail/NewDetail';
 //
-// import Preloader from './Components/SupportComponent/Preloader/Preloader';
 import BackTopBtn from './Components/SupportComponent/BackTopBtn/BackTopBtn';
 import BackTopWrapper from './Components/SupportComponent/BackTopWrapper/BackTopWrapper';
 //
@@ -19,7 +24,7 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
     return (
         <div className='App'>
-            {/* <Preloader /> */}
+            {/* <SignBar /> */}
             <Header />
             <main>
                 <BackTopWrapper>
@@ -38,7 +43,7 @@ function App() {
                         />
                         <Route
                             path='/stockist'
-                            element={null}
+                            element={<StockistPage />}
                         />
                         <Route
                             path='/wholesale'
@@ -46,19 +51,19 @@ function App() {
                         />
                         <Route
                             path='/contact'
-                            element={<Contact />}
+                            element={<ContactPage />}
                         />
                         <Route
-                            path='/userLogin'
-                            element={<User user={true} />}
-                        />
-                        <Route
-                            path='/userRegister'
-                            element={<User user={false} />}
+                            path='/user'
+                            element={<User />}
                         />
                         <Route
                             path='/cart'
                             element={<Cart />}
+                        />
+                        <Route
+                            path='/product/:id'
+                            element={<ProductDetail />}
                         />
                         <Route
                             path='/news/:id'

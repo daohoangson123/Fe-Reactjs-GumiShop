@@ -27,19 +27,28 @@
 }
 
 .Product__Btn {
+    position: relative;
     display: inline-block;
+    font-weight: 500;
     font-family: var(--font-default);
+    background: var(--color-primary);
     padding: 13px 25px;
     border: none;
-    font-weight: 500;
-    color: var(--color-default);
-    background: var(--color-primary);
     cursor: pointer;
     transition: all linear 0.2s;
 }
 
+.Product__Btn a {
+    text-decoration: none;
+    color: var(--color-default);
+}
+
 .Product__Btn:hover {
-    background: rgba(246, 98, 62, 0.8);
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-start-end-radius: 75%;
+    border-end-start-radius: 75%;
+    box-shadow: 1px 2px 5px 2px var(--color-text);
 }
 
 @media only screen and (max-width: 768px) {

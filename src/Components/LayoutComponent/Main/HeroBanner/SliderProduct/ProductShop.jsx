@@ -7,12 +7,9 @@ const ProductToShop = ({ ...props }) => {
             <div className='ProductBanner__Title'>{props.title}</div>
             <div className='ProductBanner__Name'>{props.name}</div>
             <p className='ProductBanner__Des'>{props.des}</p>
-            <Link
-                to='/shop'
-                className='Product__Btn'
-            >
-                {props.btn}
-            </Link>
+            <div className='Product__Btn'>
+                <Link to='/shop'>{props.btn}</Link>
+            </div>
         </div>
     );
 };

@@ -1,68 +1,67 @@
 import './Cart.css';
 //
+import emptyCart from '../../../Assets/img/emptycart.png';
+import removeItem from '../../../Assets/img/removeitem.png';
+//
 import { useDispatch, useSelector } from 'react-redux';
 import { myCartSelector } from '../../../Redux/Selectors/Selector';
 import { removeInCart } from '../../../Redux/Actions/Action';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 const CartForm = () => {
     const dispatch = useDispatch();
     const myCart = useSelector(myCartSelector);
-    const [isPurchased, setIsPurchased] = useState(false);
+    // eslint-disable-next-line
     const [quantity, setQuantity] = useState(1);
+
+    const itemQuantity = myCart.length;
 
     const totalPrice =
         myCart &&
-        myCart.reduce((sum, item) => sum + +item.price * +item.amount, 0);
+        myCart.reduce((sum, item) => sum + item.price * item.amount, 0);
+
+    const saving =
+        myCart &&
+        myCart.reduce(
+            (sum, item) => +(sum + item.discount * item.amount).toFixed(2),
+            0,
+        );
 
     const handleChange = (event, product) => {
-        let newAmount = +event.target.value;
+        let newAmount = event.target.value;
         product.amount = newAmount;
-        setQuantity((preAmount) => preAmount + newAmount);
+        setQuantity(newAmount);
     };
 
     function handleSubmit(event) {
         event.preventDefault();
-        setIsPurchased(true);
-        setTimeout(() => {
-            this.submit();
-        }, 2000);
     }
 
     function handleRemove(product) {
         dispatch(removeInCart(product));
     }
 
-    useEffect(() => {
-        const submitForm = document.getElementById('delayedForm');
-        submitForm.addEventListener('submit', handleSubmit);
-    }, []);
-
     return (
         <form
             className='Cart-Item_Form container'
-            id='delayedForm'
+            onSubmit={handleSubmit}
         >
-            <div className={isPurchased ? 'Purchased' : 'NotPurchased'}>
-                <div className='Purchased__Notify'>
-                    {myCart.length} Items Purchased!
-                    <br />
-                    Total Prices: {totalPrice}
-                </div>
-            </div>
             <div className='Product-In-Cart'>
                 You Have {}
-                {myCart.length} Product
-                {myCart.length === 0 ? null : 's'} In Cart
-                <div>
-                    Note: item's minimum quantity must be 1 and maximum is 1000
-                </div>
+                {itemQuantity} Product
+                {itemQuantity < 2 ? null : 's'} In Cart
             </div>
-            <div className='Cart__Layout'>
+            <div
+                className='Cart__Layout'
+                style={itemQuantity === 0 ? { display: 'block' } : null}
+            >
                 <div className='Cart-Item-List'>
-                    {myCart &&
+                    {itemQuantity !== 0 ? (
                         myCart.map((item, index) => {
-                            const cost = +item.amount * +item.price;
+                            const cost = item.amount * item.price;
+                            const saved =
+                                Math.round(item.amount * item.discount * 100) /
+                                100;
                             return (
                                 <div
                                     className='Cart-Item'
@@ -75,27 +74,62 @@ const CartForm = () => {
                                     <div className='Cart-Item_Name'>
                                         {item.name}
                                     </div>
-                                    <span className='Cart-Item_Price'>
-                                        Price: {+item.price}
-                                    </span>
+                                    <div className='Cart-Item_Price'>
+                                        <span>Price: {item.price}</span>
+                                        <br />
+                                        {item.discount !== 0 && (
+                                            <span className='Discounted'>
+                                                Discounted: {item.discount}
+                                            </span>
+                                        )}
+                                    </div>
                                     <div className='Cart-Item_Quantity'>
                                         <label htmlFor={`quantity${index}`}>
                                             Quantity:{' '}
                                         </label>
+                                        <button
+                                            onClick={() => {
+                                                if (item.amount > 1) {
+                                                    setQuantity(
+                                                        (amount) =>
+                                                            amount +
+                                                            item.amount--,
+                                                    );
+                                                }
+                                            }}
+                                        >
+                                            -
+                                        </button>
                                         <input
                                             type='number'
                                             name={`quantity${index}`}
                                             id={`quantity${index}`}
                                             min='1'
-                                            max='1000'
-                                            value={+item.amount}
+                                            max='100'
+                                            value={item.amount}
+                                            disabled
                                             onChange={(event) => {
                                                 handleChange(event, item);
                                             }}
                                         />
+                                        <button
+                                            onClick={() => {
+                                                if (item.amount < 100) {
+                                                    setQuantity(
+                                                        (amount) =>
+                                                            amount +
+                                                            item.amount++,
+                                                    );
+                                                }
+                                            }}
+                                        >
+                                            +
+                                        </button>
                                     </div>
                                     <div className='Cart-Item_Cost'>
                                         Cost: {cost}
+                                        <br />
+                                        Saving: {saved}
                                     </div>
                                     <button
                                         className='Remove_Item'
@@ -106,24 +140,41 @@ const CartForm = () => {
                                             });
                                         }}
                                     >
-                                        Remove Item
+                                        <img
+                                            src={removeItem}
+                                            alt='Remove'
+                                        />
                                     </button>
                                 </div>
                             );
-                        })}
+                        })
+                    ) : (
+                        <div className='EmptyCart'>
+                            <img
+                                src={emptyCart}
+                                alt='EmptyCart'
+                            ></img>
+                        </div>
+                    )}
                 </div>
-                <div className='Purchase-Check'>
-                    <div className='Total-Price'>
-                        Total Prices: {totalPrice}
+                {itemQuantity !== 0 && (
+                    <div className='Purchase-Check'>
+                        <div>Check-Out Form</div>
+                        <div>
+                            Total: {itemQuantity} Item{itemQuantity > 1 && 's'}
+                        </div>
+                        <div className='Total-Price'>
+                            <div>Total Prices: {totalPrice}</div>
+                            <div>Total Saving: {saving}</div>
+                        </div>
+                        <button
+                            className='Buy_Btn'
+                            type='submit'
+                        >
+                            Purchase
+                        </button>
                     </div>
-                    <button
-                        className='Buy_Btn'
-                        disabled={myCart.length === 0 ? true : false}
-                        type='submit'
-                    >
-                        Purchase
-                    </button>
-                </div>
+                )}
             </div>
         </form>
     );

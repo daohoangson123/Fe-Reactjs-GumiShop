@@ -1,18 +1,25 @@
 import './Product.css';
+//
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+//
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../Redux/Actions/Action';
-import { useState } from 'react';
+import { removeInCart } from '../../Redux/Actions/Action';
 
 const Product = ({ ...props }) => {
     const dispatch = useDispatch();
-    const [added, setAdded] = useState(false);
+    const [isAdded, setIsAdded] = useState(false);
+
     function handleAddToCart(product) {
-        if (!added) {
+        if (!isAdded) {
             dispatch(addToCart(product));
-            setAdded(true);
-        } else {
-            setAdded(false);
+            setIsAdded(true);
         }
+    }
+
+    function handleRemove(product) {
+        dispatch(removeInCart(product));
     }
 
     return (
@@ -24,25 +31,39 @@ const Product = ({ ...props }) => {
                 />
                 <div
                     className='AddToCart_Bg'
-                    style={{ top: added ? 0 : null }}
+                    style={{ top: isAdded && 0 }}
                 >
+                    <Link
+                        className='ProductLink'
+                        to={`/product/${props.id}`}
+                    >
+                        Detail
+                    </Link>
                     <button
                         className='AddToCart'
                         style={{
-                            background: added ? '#F6623E' : null,
-                            borderRadius: added ? '100%' : null,
+                            background: isAdded && '#F6623E',
+                            borderRadius: isAdded && '100%',
                         }}
-                        onClick={() =>
-                            handleAddToCart({
-                                id: props.id,
-                                img: props.url,
-                                name: props.name,
-                                price: props.saleprices,
-                                amount: 1,
-                            })
-                        }
+                        onClick={() => {
+                            if (!isAdded) {
+                                handleAddToCart({
+                                    id: props.id,
+                                    img: props.url,
+                                    name: props.name,
+                                    price: props.saleprices,
+                                    discount: props.prices,
+                                    amount: 1,
+                                });
+                            } else {
+                                handleRemove({
+                                    id: props.id,
+                                });
+                                setIsAdded(false);
+                            }
+                        }}
                     >
-                        {!added ? 'Add' : 'Added'}
+                        {!isAdded ? 'Add' : 'Added'}
                     </button>
                 </div>
                 {props.sale ? (
@@ -59,9 +80,9 @@ const Product = ({ ...props }) => {
                 <span className='SalePrices'>
                     {'$' + props.saleprices + ' NZD'}
                 </span>
-                <span className='Prices'>
-                    {props.prices === 0 ? null : '$' + props.prices + ' NZD'}
-                </span>
+                {props.prices === 0 ? null : (
+                    <span className='Prices'>${props.prices} NZD</span>
+                )}
             </div>
         </div>
     );

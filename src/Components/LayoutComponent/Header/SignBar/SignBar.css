@@ -6,6 +6,7 @@
     color: var(--color-default);
     background-color: var(--color-primary);
     padding: 15px 120px;
+    z-index: 100;
 }
 
 .SignBar__Text {
@@ -21,7 +22,7 @@
     gap: 10px;
 }
 
-.SignBar__SignRegis--Component {
+.SignBar__SignRegis-Link {
     display: flex;
     flex-wrap: wrap;
     gap: 3px;
@@ -36,32 +37,29 @@
     border-right: solid 1px var(--color-default);
 }
 
-.SignBar__SignRegis--Component .active {
+.SignBar__SignRegis-Link .active {
     font-weight: 500;
     text-decoration: underline;
 }
 
-.SignBar__SignRegis--Component .inactive {
+.SignBar__SignRegis-Link .inactive {
     color: var(--color-default);
 }
 
-.SignBar__SignRegis--Component > a:visited {
+.SignBar__SignRegis-Link > a:visited {
     color: var(--color-default);
 }
 
-.SignBar__SignRegis--Languages {
+.SignBar__Languages {
     display: flex;
     align-items: center;
     gap: 5px;
 }
 
-.LangLabel > img {
+.LangLabel img {
     display: grid;
     place-items: center;
     width: 30px;
-    height: 30px;
-    object-position: center;
-    object-fit: contain;
 }
 
 .LangSelect {

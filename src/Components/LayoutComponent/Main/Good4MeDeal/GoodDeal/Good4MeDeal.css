@@ -1,6 +1,5 @@
 .Good4MeDeal {
     text-align: center;
-    margin-top: 60px;
     font-family: var(--font-default);
 }
 
@@ -10,11 +9,11 @@
     line-height: 25px;
 }
 
-.Good4MeDeal > hr {
+.Good4MeDeal hr {
     width: 127px;
     height: 4px;
     margin: 25px auto;
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     border: none;
 }
 

@@ -15,6 +15,10 @@
     text-align: center;
 }
 
+.FooterTop_Item1-Logo {
+    display: block;
+}
+
 .FooterTop_Item1-content {
     font-family: var(--font-default);
     font-size: 16px;

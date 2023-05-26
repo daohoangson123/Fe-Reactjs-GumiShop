@@ -12,9 +12,11 @@ const text =
 const langs = [
     {
         name: 'USA',
+        flag: usa,
     },
     {
         name: 'VNM',
+        flag: vnm,
     },
 ];
 
@@ -30,10 +32,10 @@ const SignBar = () => {
     };
 
     return (
-        <div className='SignBar '>
+        <div className='SignBar'>
             <div className='SignBar__Text'>{text}</div>
             <div className='SignBar__SignRegis '>
-                <div className='SignBar__SignRegis--Component'>
+                <div className='SignBar__SignRegis-Link'>
                     <NavLink
                         to='/userLogin'
                         className={({ isActive }) =>
@@ -52,7 +54,7 @@ const SignBar = () => {
                         Register
                     </NavLink>
                 </div>
-                <div className='SignBar__SignRegis--Languages '>
+                <div className='SignBar__Languages '>
                     <label
                         htmlFor='lang'
                         className='LangLabel '

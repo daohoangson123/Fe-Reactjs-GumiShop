@@ -1,11 +1,10 @@
-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
-}
-
 .NavBar a {
     transition: all ease-in-out 0.2s;
+    text-decoration: none;
+}
+
+.NavBar a:hover {
+    color: var(--color-primary);
 }
 
 .NavBar {
@@ -15,11 +14,11 @@ header {
     gap: 10px;
     background-color: rgba(255, 255, 255, 0.9);
     padding: 30px 60px;
-    transition: all ease-in-out 0.3s;
+    transition: all 0.2s ease-in-out;
 }
 
 .NavBar:hover {
-    background-color: rgba(255, 255, 255, 1);
+    background-color: var(--color-default);
 }
 
 .MobileMenu {
@@ -61,10 +60,6 @@ header {
     width: 20px;
 }
 
-.hideMobileMenu {
-    display: none;
-}
-
 .MobileMenu__NavBar {
     display: grid;
     position: absolute;
@@ -79,11 +74,11 @@ header {
     display: grid;
     position: absolute;
     width: 100%;
-    height: 318px;
+    height: 324px;
     overflow: hidden;
     font-family: var(--font-default);
     font-weight: 500;
-    background: rgba(255, 255, 255, 0.9);
+    background: var(--color-default);
     transition: all ease-in-out 0.3s;
 }
 
@@ -94,7 +89,7 @@ header {
 .MobileMenu__Item {
     position: relative;
     padding: 15px;
-    transition: padding ease-in-out 0.3s 0.1s;
+    transition: padding ease-in-out 0.3s 0.2s;
 }
 
 .MobileMenu__Item::before {
@@ -102,9 +97,9 @@ header {
     content: '';
     top: 0;
     left: 0;
-    width: 2px;
+    width: 3px;
     height: 0;
-    background: var(--color-alt);
+    background: var(--color-text);
     transition: all ease-in-out 0.5s;
 }
 
@@ -114,8 +109,8 @@ header {
     bottom: 0;
     left: 0;
     width: 0;
-    height: 2px;
-    background: var(--color-alt);
+    height: 3px;
+    background: var(--color-text);
     transition: all ease-in-out 0.5s;
 }
 
@@ -129,22 +124,20 @@ header {
 
 .NavBar__Logo {
     display: flex;
-    justify-content: center;
+    align-items: center;
     font-size: clamp(26px, 4vw, 36px);
     font-weight: 600;
     line-height: 24px;
     color: var(--color-alt);
-    transition: all ease-in-out 0.2s;
-}
-
-.NavBar__Logo:hover {
-    background: linear-gradient(120deg, red, orange);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    transition: all 0.2s ease-in-out;
 }
 
 .NavBar__Logo span {
-    font-size: clamp(20px, 1vw, 26px);
+    font-size: clamp(16px, 2vw, 20px);
+}
+
+.NavBar__Logo:hover {
+    color: var(--color-primary);
 }
 
 .NavBar__List {
@@ -197,11 +190,7 @@ header {
 }
 
 .Icon:hover {
-    transform: translateY(-5px);
-}
-
-.Icon:hover + .Cart_Notify {
-    transform: translateY(-5px);
+    color: var(--color-primary);
 }
 
 .NavBar__UserIcon {
@@ -214,23 +203,22 @@ header {
 
 .Cart_Notify {
     position: absolute;
+    top: -7px;
+    right: -11px;
     display: grid;
     place-items: center;
-    width: 20px;
-    height: 20px;
+    width: 22px;
+    height: 22px;
     border-radius: 100%;
     border: 2px solid var(--color-default);
     background: var(--color-primary);
     color: var(--color-default);
-    top: -5px;
-    right: -10px;
     transition: all ease-in-out 0.3s;
 }
 
-.Cart_Notify span {
-    font-size: 14px;
+.Cart_Notify-Number {
+    font-size: 12px;
     font-weight: 600;
-    transform: translateY(1px);
 }
 
 @media only screen and (max-width: 1024px) {

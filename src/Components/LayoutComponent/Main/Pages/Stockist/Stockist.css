@@ -1,0 +1,41 @@
+.StockistPage {
+    padding: 0 30px;
+}
+
+.table td:first-child {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    font-size: 20px;
+}
+
+@media only screen and (max-width: 425px) {
+    .StockistPage {
+        width: 280px;
+        overflow-y: hidden;
+        overflow-x: auto;
+        padding: 0;
+    }
+
+    .table {
+        width: 700px;
+        margin-bottom: 0;
+        max-width: none;
+    }
+
+    .StockistPage {
+        &::-webkit-scrollbar {
+            width: 10px;
+        }
+        &::-webkit-scrollbar:horizontal {
+            height: 10px;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        &::-webkit-scrollbar-thumb {
+            background-color: gray;
+        }
+    }
+}
