@@ -4,7 +4,7 @@ import Product from '../../../RepeatComponent/Product';
 //
 import { useEffect, useState } from 'react';
 //
-import { fetchProductApi } from '../../../../Data/productData';
+import { fetchProductApi } from '../../../../Data/axiosAPI/productData';
 //
 
 const OurProduct = () => {

@@ -7,7 +7,7 @@ import Product from '../../RepeatComponent/Product';
 import { useEffect, useMemo, useState } from 'react';
 import { debounce } from 'lodash';
 //
-import { fetchProductApi } from '../../../Data/productData';
+import { fetchProductApi } from '../../../Data/axiosAPI/productData';
 //
 
 const Shop = () => {

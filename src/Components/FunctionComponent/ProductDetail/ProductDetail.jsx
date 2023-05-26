@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../Redux/Actions/Action';
 //
-import { fetchProductApi } from '../../../Data/productData';
+import { fetchProductApi } from '../../../Data/axiosAPI/productData';
 //
 
 const ProductDetail = () => {

@@ -4,7 +4,7 @@ import Table from 'react-bootstrap/Table';
 //
 import { useEffect, useState } from 'react';
 //
-import { fetchProductApi } from '../../../../../Data/productData';
+import { fetchProductApi } from '../../../../../Data/axiosAPI/productData';
 //
 
 const StockistPage = () => {

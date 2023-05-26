@@ -14,7 +14,7 @@ const CartForm = () => {
     // eslint-disable-next-line
     const [quantity, setQuantity] = useState(1);
 
-    const itemQuantity = myCart.length;
+    const totalItem = myCart.length;
 
     const totalPrice =
         myCart &&
@@ -48,20 +48,20 @@ const CartForm = () => {
         >
             <div className='Product-In-Cart'>
                 You Have {}
-                {itemQuantity} Product
-                {itemQuantity < 2 ? null : 's'} In Cart
+                {totalItem} Product
+                {totalItem < 2 || 's'} In Cart
             </div>
             <div
                 className='Cart__Layout'
-                style={itemQuantity === 0 ? { display: 'block' } : null}
+                style={{ display: totalItem < 1 && 'block' }}
             >
                 <div className='Cart-Item-List'>
-                    {itemQuantity !== 0 ? (
+                    {totalItem > 0 ? (
                         myCart.map((item, index) => {
                             const cost = item.amount * item.price;
-                            const saved =
-                                Math.round(item.amount * item.discount * 100) /
-                                100;
+                            const saved = +(
+                                item.amount * item.discount
+                            ).toFixed(2);
                             return (
                                 <div
                                     className='Cart-Item'
@@ -157,11 +157,11 @@ const CartForm = () => {
                         </div>
                     )}
                 </div>
-                {itemQuantity !== 0 && (
+                {totalItem > 0 && (
                     <div className='Purchase-Check'>
                         <div>Check-Out Form</div>
                         <div>
-                            Total: {itemQuantity} Item{itemQuantity > 1 && 's'}
+                            Total: {totalItem} Item{totalItem > 1 && 's'}
                         </div>
                         <div className='Total-Price'>
                             <div>Total Prices: {totalPrice}</div>
