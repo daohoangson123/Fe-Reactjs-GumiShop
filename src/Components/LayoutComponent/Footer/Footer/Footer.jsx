@@ -1,6 +1,7 @@
+import './Footer.css';
+//
 import FooterTop from '../FooterTop/FooterTop';
 import FooterBot from '../FooterBot/FooterBot';
-import './Footer.css';
 
 const Footer = () => {
     return (

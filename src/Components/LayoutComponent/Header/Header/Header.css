@@ -2,6 +2,7 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: all 0.2s ease-in-out;
     animation: header-appear 1s ease-in-out both;
 }
 

@@ -1,5 +1,6 @@
-import { useState } from 'react';
 import './BackTopBtn.css';
+//
+import { useState } from 'react';
 
 const BackTopBtn = () => {
     const [showBacktop, setShowBacktop] = useState(false);
@@ -26,9 +27,7 @@ const BackTopBtn = () => {
     window.addEventListener('scroll', scrollAlt);
 
     const scrollToTop = () => {
-        window.scrollTo({
-            top: 0,
-        });
+        window.scrollTo(0, 0);
     };
 
     return (
@@ -36,7 +35,7 @@ const BackTopBtn = () => {
             className={showBacktop ? 'BackTopBtn-actived' : 'BackTopBtn'}
             onClick={scrollToTop}
         >
-            Up
+            <i className='fa-sharp fa-regular fa-circle-up'></i>
         </div>
     );
 };

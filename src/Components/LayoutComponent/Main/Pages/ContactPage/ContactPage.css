@@ -3,7 +3,6 @@
     flex-wrap: wrap;
     gap: 50px;
     justify-content: center;
-    font-family: var(--font-default);
     font-weight: 500;
 }
 
@@ -32,7 +31,6 @@
 
 .Contact-Form form input {
     font-size: 16px;
-    font-family: var(--font-default);
     padding: 10px;
     outline: none;
     border: none;
@@ -46,7 +44,7 @@
     place-items: center;
     font-size: 40px;
     padding: 20px;
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     color: var(--color-default);
     border-radius: 10px;
     border-top-left-radius: 0;
@@ -57,7 +55,6 @@
 
 .Issue {
     font-size: 16px;
-    font-family: var(--font-default);
     grid-column-start: 2;
     grid-column-end: 4;
     grid-row-start: 2;
@@ -72,7 +69,6 @@
 
 .Contact-Btn {
     font-size: 16px;
-    font-family: var(--font-default);
     font-weight: 600;
     justify-self: end;
     grid-column-start: 3;
@@ -80,7 +76,7 @@
     grid-row-start: 3;
     width: 70%;
     padding: 10px;
-    background: rgba(246, 98, 62, 0.7);
+    background-color: rgba(246, 98, 62, 0.7);
     color: var(--color-default);
     border: none;
     border-radius: 20px;
@@ -128,7 +124,7 @@
         grid-column-end: 1;
         grid-row-start: 6;
         width: 40%;
-        background: var(--color-text);
+        background-color: var(--color-text);
         color: var(--color-default);
         border-radius: 0;
         border-top-right-radius: 10px;
@@ -136,7 +132,7 @@
     }
 
     .Contact-Btn:hover {
-        background: rgba(255, 255, 255, 0.5);
+        background-color: rgba(255, 255, 255, 0.5);
         color: var(--color-alt);
         border-top-right-radius: 10px;
         border-bottom-left-radius: 20px;

@@ -99,7 +99,6 @@ const NavBar = () => {
                         }}
                     ></div>
                 </button>
-
                 <NavLink to='/'>
                     <h1 className='NavBar__Logo'>
                         GOOD<span>4</span>ME.

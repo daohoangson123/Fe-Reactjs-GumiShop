@@ -1,0 +1,41 @@
+.Breadcrumbs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    list-style-type: none;
+}
+
+.CrumbItem a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 20px;
+    line-height: 32px;
+    text-decoration: none;
+    color: var(--color-alt);
+    transition: all 0.1s ease-in-out;
+}
+
+.CrumbItem img {
+    width: 8px;
+    height: 14px;
+}
+
+.CrumbItem:last-child a {
+    color: var(--color-text);
+    cursor: default;
+}
+
+.CrumbItem:last-child img {
+    display: none;
+}
+
+.CrumbItem:hover a {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.CrumbItem:last-child:hover a {
+    color: var(--color-text);
+    text-decoration: none;
+}

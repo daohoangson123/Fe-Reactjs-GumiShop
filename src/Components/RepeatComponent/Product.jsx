@@ -35,7 +35,7 @@ const Product = ({ ...props }) => {
                 >
                     <Link
                         className='ProductLink'
-                        to={`/product/${props.id}`}
+                        to={`/shop/${props.name.split(' ').join('-')}`}
                     >
                         Detail
                     </Link>

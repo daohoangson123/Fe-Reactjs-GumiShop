@@ -3,16 +3,8 @@
     margin-bottom: 85px;
 }
 
-.Loading {
-    font-family: var(--font-default);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 25px;
-}
-
 .LoadMore {
     display: inline-block;
-    font-family: var(--font-default);
     font-size: 16px;
     font-weight: 500;
     line-height: 25px;
@@ -24,5 +16,5 @@
 
 .LoadMore:hover {
     color: var(--color-default);
-    background: var(--color-primary);
+    background-color: var(--color-primary);
 }

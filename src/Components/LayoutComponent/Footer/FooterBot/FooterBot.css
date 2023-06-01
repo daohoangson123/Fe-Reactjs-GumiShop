@@ -1,10 +1,7 @@
 .FooterBot {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
     gap: 20px;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px !important;
+    padding: 0 20px 30px;
     text-align: center;
 }
 
@@ -29,15 +26,15 @@
 }
 
 .SocialIcons img {
-    width: 17px;
+    width: 15px;
     height: 15px;
 }
 
 .CopyRight {
-    font-family: var(--font-default);
     font-size: 16px;
     font-weight: 400;
     line-height: 26px;
+    grid-row: 3;
 }
 
 .CopyRight span {
@@ -46,11 +43,13 @@
 
 .PaymentIcons img {
     width: 30px;
-    height: 20px;
+    aspect-ratio: 3 / 2;
 }
 
-@media only screen and (max-width: 768px) {
+@media (width > 768px) {
     .FooterBot {
-        justify-content: space-evenly;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
 }

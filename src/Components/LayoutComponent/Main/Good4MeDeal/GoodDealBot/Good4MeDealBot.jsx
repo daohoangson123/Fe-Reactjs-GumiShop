@@ -1,50 +1,27 @@
 import './Good4MeDealBot.css';
-import plane from '../../../../../Assets/icon/plane.png';
-import money from '../../../../../Assets/icon/money.png';
-import lock from '../../../../../Assets/icon/lock.png';
-
-const items_List = [
-    {
-        url: plane,
-        title: 'WORLDWIDE SHIPPING',
-        content:
-            'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean',
-    },
-    {
-        url: money,
-        title: '30 DAYS GUARANTEE',
-        content:
-            'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean',
-    },
-    {
-        url: lock,
-        title: 'SECURED PAYMENTS',
-        content:
-            'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean',
-        width: '50px',
-    },
-];
+//
+import { g4mBot_items } from '../../../../../Data/g4mBot';
 
 const Good4MeDealBot = () => {
     return (
         <div className='Good4MeDealBot'>
-            {items_List.map((item) => (
+            {g4mBot_items.map((item) => (
                 <div
                     className='Good4MeDealBot_Item'
                     key={item.title}
                 >
                     <div className='Img_Container'>
-                        <span></span>
+                        <span className='Good4MeDealBot_Item-Circle'></span>
                         <img
                             src={item.url}
                             alt={item.title}
                             style={{ width: item.width }}
                         />
                     </div>
-                    <div className='Good4MeDealBot_Item-title'>
+                    <div className='Good4MeDealBot_Item-Title'>
                         {item.title}
                     </div>
-                    <p className='Good4MeDealBot_Item-content'>
+                    <p className='Good4MeDealBot_Item-Content'>
                         {item.content}
                     </p>
                 </div>

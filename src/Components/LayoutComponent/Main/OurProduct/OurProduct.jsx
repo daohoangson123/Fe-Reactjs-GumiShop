@@ -5,6 +5,7 @@ import Product from '../../../RepeatComponent/Product';
 import { useEffect, useState } from 'react';
 //
 import { fetchProductApi } from '../../../../Data/axiosAPI/productData';
+import Loading from '../../../SupportComponent/Loading/Loading';
 //
 
 const OurProduct = () => {
@@ -38,7 +39,7 @@ const OurProduct = () => {
             <h2>OUR PRODUCTS ARE</h2>
             <div className='ProductContainer'>
                 {load.length === 0 ? (
-                    <div className='Loading'>Loading Products...</div>
+                    <Loading />
                 ) : (
                     load.map((product) => (
                         <div

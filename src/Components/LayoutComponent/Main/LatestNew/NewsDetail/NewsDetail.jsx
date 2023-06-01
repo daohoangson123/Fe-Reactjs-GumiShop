@@ -1,5 +1,7 @@
 import './NewsDetail.css';
-import { news_List } from '../LatestNew/LatestNew';
+//
+import { news_Items } from '../../../../../Data/news';
+//
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
@@ -12,9 +14,11 @@ const NewsDetail = () => {
     };
 
     useEffect(() => {
-        const newsTemp = news_List.find((news) => news.id.toString() === id);
+        const newsTemp = news_Items.find((news) => news.id.toString() === id);
+        console.log(newsTemp);
         setNewsdetail([newsTemp]);
     }, [id]);
+
     return (
         <section className='NewDetail container'>
             {newsdetail.map((news) => (

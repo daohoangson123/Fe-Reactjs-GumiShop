@@ -1,7 +1,6 @@
 .NewDetail__Item {
     display: grid;
     gap: 20px;
-    font-family: var(--font-default);
 }
 
 .NewDetail__Item img {
@@ -39,7 +38,7 @@
     width: fit-content;
     height: fit-content;
     padding: 10px;
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     color: var(--color-default);
     border: none;
     cursor: pointer;

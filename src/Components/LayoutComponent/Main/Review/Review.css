@@ -6,8 +6,7 @@
     gap: 106px;
     justify-content: center;
     align-items: center;
-    margin-bottom: 82px;
-    padding: 216px 120px !important;
+    padding: 216px 0 !important;
 }
 .Review__Slider-BgTop {
     background-image: url(../../../../Assets/img/ReviewTop.webp);
@@ -53,7 +52,7 @@
 }
 
 .Review__Slider .owl-theme .owl-nav [class*='owl-']:hover {
-    background: var(--color-primary);
+    background-color: var(--color-primary);
 }
 
 .Review__Slider .owl-theme .owl-nav button span {
@@ -77,7 +76,6 @@
 }
 
 .Review__Slider-Item-SubTitle {
-    font-family: var(--font-default);
     font-size: clamp(24px, 4vw, 30px);
     font-weight: 500;
     line-height: 25px;
@@ -99,7 +97,6 @@
 }
 
 .Review__Slider-Item-Name {
-    font-family: var(--font-default);
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;
@@ -110,7 +107,7 @@
 
 .Review__Img {
     width: 534px;
-    height: 539px;
+    aspect-ratio: 1;
 }
 
 @media only screen and (max-width: 768px) {

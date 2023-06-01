@@ -3,11 +3,11 @@
     grid-template-columns: repeat(auto-fit, 280px);
     justify-content: center;
     gap: 30px;
-    font-family: var(--font-default);
     margin: 30px 0;
 }
 
 .Product {
+    min-height: 325px;
     animation: productIn 0.3s both ease-in-out;
 }
 
@@ -45,7 +45,7 @@
     gap: 20px;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.5);
     z-index: 1;
     transition: all ease-in-out 0.4s;
 }
@@ -61,10 +61,8 @@
     border-bottom-right-radius: 50%;
     border-bottom-left-radius: 200%;
     transition: all ease-in-out 0.3s;
-
     font-size: 16px;
     font-weight: 600;
-
     color: var(--color-default);
     text-decoration: none;
 }
@@ -73,7 +71,7 @@
     font-size: 16px;
     font-weight: 600;
     color: var(--color-default);
-    background: transparent;
+    background-color: transparent;
     width: 70px;
     height: 70px;
     border: 1px solid var(--color-default);
@@ -87,7 +85,7 @@
 
 .AddToCart:hover,
 .ProductLink:hover {
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     color: var(--color-default);
 }
 
@@ -100,7 +98,7 @@
     line-height: 10px;
     padding: 6px 8px;
     color: var(--color-default);
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     z-index: 10;
 }
 

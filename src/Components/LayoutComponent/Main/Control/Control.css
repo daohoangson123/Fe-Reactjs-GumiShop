@@ -8,6 +8,7 @@
     grid-template-columns: repeat(auto-fit, clamp(280px, 40vw, 400px));
     gap: 20px;
     justify-content: center;
+    align-items: center;
     padding: 120px 20px;
 }
 
@@ -16,7 +17,6 @@
 }
 
 .Cotrol__Content-Title {
-    font-family: var(--font-default);
     font-size: clamp(26px, 4vw, 50px);
     font-weight: 600;
     line-height: 72px;
@@ -24,7 +24,6 @@
 }
 
 .Cotrol__Content-Text {
-    font-family: var(--font-default);
     font-size: 16px;
     font-weight: 500;
     line-height: 25px;
@@ -33,12 +32,11 @@
 }
 
 .Cotrol__Content-Btn {
-    font-family: var(--font-default);
     font-size: 16px;
     font-weight: 500;
     line-height: 25px;
     padding: 18px 45px 13px 45px;
-    background: transparent;
+    background-color: transparent;
     border: 2px solid var(--color-primary);
     transition: all ease-in-out 0.2s;
     cursor: pointer;
@@ -46,14 +44,13 @@
 
 .Cotrol__Content-Btn:hover {
     color: var(--color-default);
-    background: var(--color-primary);
+    background-color: var(--color-primary);
 }
 
 .Control__Img {
     display: grid;
     gap: 20px;
     justify-content: center;
-    grid-template-rows: repeat(2, calc(var(--img-width) / 4 * 3));
 }
 
 .Control__Img-1,
@@ -63,11 +60,15 @@
 }
 
 .Control__Img-3 {
-    width: 280px;
-    height: calc(280px / 4 * 3 * 2 + 20px);
+    width: var(--img-width);
+    height: calc(var(--img-width) / 4 * 3 * 2 + 20px);
 }
 
 @media (width > 768px) {
+    :root {
+        --img-width: 240px;
+    }
+
     .Control {
         grid-template-columns: 1fr;
     }

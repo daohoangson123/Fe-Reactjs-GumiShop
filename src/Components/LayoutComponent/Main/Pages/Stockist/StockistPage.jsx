@@ -1,6 +1,7 @@
-import './Stockist.css';
+import './StockistPage.css';
 //
 import Table from 'react-bootstrap/Table';
+import Loading from '../../../../SupportComponent/Loading/Loading';
 //
 import { useEffect, useState } from 'react';
 //
@@ -64,10 +65,7 @@ const StockistPage = () => {
                     </tbody>
                 </Table>
             ) : (
-                <div className='WaitAPI'>
-                    Loading Data... Please Wait A Second
-                    <div className='WaitAPI__LoadingAnimation'></div>
-                </div>
+                <Loading />
             )}
         </section>
     );

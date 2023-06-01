@@ -1,7 +1,6 @@
 .Cart-Item_Form {
     display: grid;
     gap: 20px;
-    font-family: var(--font-default);
 }
 
 .Product-In-Cart {
@@ -52,14 +51,14 @@
     grid-row: 1;
     grid-column: 2 / 4;
     text-align: center;
-    font-size: clamp(14px, 3vw, 20px);
+    font-size: clamp(16px, 3vw, 20px);
     font-weight: 700;
 }
 
 .Cart-Item_Price {
     grid-row: 1;
     grid-column: 2;
-    font-size: clamp(14px, 2vw, 18px);
+    font-size: clamp(16px, 2vw, 18px);
     font-weight: 600;
     padding: 5px;
 }
@@ -70,29 +69,22 @@
 
 .Cart-Item_Quantity {
     grid-row: 2;
-    grid-column: 2;
+    grid-column: 1;
     display: flex;
-    justify-content: center;
-    align-items: baseline;
+    align-items: center;
     gap: 10px;
     font-weight: 600;
     padding: 5px;
 }
 
 .Cart-Item_Quantity input {
-    font-size: clamp(14px, 2vw, 16px);
+    font-size: clamp(16px, 2vw, 18px);
     font-weight: 600;
     color: var(--color-alt);
-    width: 45px;
+    width: 50px;
     height: 30px;
     text-align: center;
     border-radius: 5px;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
 }
 
 .Cart-Item_Quantity button {
@@ -112,10 +104,10 @@ input::-webkit-inner-spin-button {
 
 .Cart-Item_Cost {
     grid-row: 2;
-    grid-column: 3;
-    font-size: clamp(14px, 2vw, 18px);
+    grid-column: 2;
+    font-size: clamp(16px, 2vw, 18px);
     font-weight: 500;
-    background: var(--color-primary);
+    background-color: var(--color-primary);
     color: var(--color-default);
     border-radius: 10px;
     padding: 5px;
@@ -123,19 +115,18 @@ input::-webkit-inner-spin-button {
 
 .Remove_Item {
     background-color: transparent;
-    border: none;
+    /* border: none; */
     cursor: pointer;
     transition: all ease-in-out 0.2s;
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    padding: 10px;
+    padding: 5px;
     justify-self: center;
-    align-self: center;
 }
 
 .Remove_Item:hover {
-    background-color: var(--color-primary-rbga);
+    background-color: var(--color-alt-rgba-3);
 }
 
 .Remove_Item > img {
@@ -146,7 +137,8 @@ input::-webkit-inner-spin-button {
     position: sticky;
     top: 150px;
     display: grid;
-    height: fit-content;
+    min-width: fit-content;
+    height: 300px;
     border: 2px solid var(--color-primary);
     border-radius: 10px;
     padding: 20px;
@@ -163,15 +155,15 @@ input::-webkit-inner-spin-button {
 
 .Buy_Btn {
     justify-self: center;
-    font-family: var(--font-default);
     font-weight: 600;
     font-size: 20px;
     padding: 10px;
-    background-color: var(--color-primary-rbga);
+    background-color: var(--color-alt-rgba-3);
     color: var(--color-default);
     border: none;
     border-radius: 5px;
     width: 100px;
+    height: 50px;
     cursor: pointer;
     transition: all ease-in-out 0.2s;
 }
@@ -180,17 +172,9 @@ input::-webkit-inner-spin-button {
     background-color: var(--color-primary);
 }
 
-.Buy_Btn:disabled {
-    background: var(--color-alt);
-    box-shadow: none;
-    pointer-events: none;
-}
-
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 1024px) {
     .Cart__Layout {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
+        grid-template-columns: auto;
     }
 
     .Cart-Item {
@@ -221,6 +205,11 @@ input::-webkit-inner-spin-button {
 
     .Remove_Item {
         grid-area: 3 / 1;
+    }
+
+    .Purchase-Check {
+        justify-self: center;
+        width: 300px;
     }
 }
 

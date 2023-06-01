@@ -1,36 +1,8 @@
-import { Link } from 'react-router-dom';
 import './FooterTop.css';
-
-const info_List = [
-    {
-        path: '/',
-        name: 'Shipping & Delivery',
-    },
-    {
-        path: '/',
-        name: 'Refund Policy',
-    },
-    {
-        path: '/',
-        name: 'Partner Program',
-    },
-    {
-        path: '/',
-        name: 'Wholesale Portal',
-    },
-    {
-        path: '/',
-        name: 'You Buy, We Donate',
-    },
-    {
-        path: '/',
-        name: 'Privacy Policy',
-    },
-    {
-        path: '/',
-        name: 'Terms & Conditions',
-    },
-];
+//
+import { info_List } from '../../../../Data/footer_sublinks';
+//
+import { Link } from 'react-router-dom';
 
 const FooterTop = () => {
     return (

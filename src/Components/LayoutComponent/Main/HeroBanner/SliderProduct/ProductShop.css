@@ -3,7 +3,6 @@
 }
 
 .ProductBanner__Title {
-    font-family: var(--font-default);
     font-size: clamp(20px, 3vw, 26px);
     font-weight: 600;
     line-height: 42px;
@@ -11,14 +10,12 @@
 }
 
 .ProductBanner__Name {
-    font-family: var(--font-default);
     font-size: clamp(28px, 3vw, 56px);
     font-weight: 600;
     line-height: 72px;
 }
 
 .ProductBanner__Des {
-    font-family: var(--font-default);
     font-size: 16px;
     font-weight: 400;
     line-height: 29px;
@@ -30,8 +27,8 @@
     position: relative;
     display: inline-block;
     font-weight: 500;
-    font-family: var(--font-default);
-    background: var(--color-primary);
+    background-color: var(--color-primary-rgba);
+    box-shadow: -2px 2px 5px 2px var(--color-text);
     padding: 13px 25px;
     border: none;
     cursor: pointer;
@@ -48,7 +45,8 @@
     border-bottom-right-radius: 50%;
     border-start-end-radius: 75%;
     border-end-start-radius: 75%;
-    box-shadow: 1px 2px 5px 2px var(--color-text);
+    box-shadow: 2px 2px 5px 2px var(--color-text);
+    background-color: var(--color-primary);
 }
 
 @media only screen and (max-width: 768px) {

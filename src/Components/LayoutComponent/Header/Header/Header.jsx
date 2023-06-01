@@ -51,7 +51,7 @@ const Header = () => {
     //Nav SideEff khi scroll
     useEffect(() => {
         function checkNavDown() {
-            if (window.pageYOffset > 0) {
+            if (window.pageYOffset > 50) {
                 setIsDown(true);
                 window.removeEventListener('scroll', checkNavDown);
             }
@@ -83,10 +83,10 @@ const Header = () => {
     useEffect(() => {
         checkView();
 
-        mq.addListener(checkView);
+        mq.addEventListener('change', checkView);
 
-        return () => mq.removeListener(checkView);
-    });
+        return () => mq.removeEventListener('change', checkView);
+    }, []);
 
     return (
         <header

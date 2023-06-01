@@ -1,89 +1,76 @@
 import './ShopAll.css';
+//
 import Product from '../../../RepeatComponent/Product';
+import Loading from '../../../SupportComponent/Loading/Loading';
+//
 import { useEffect, useState } from 'react';
+//
 
 const ShopAll = () => {
     const [productApi, setProductApi] = useState([]);
 
-    const fisrtLoad = productApi.slice(0, 0);
+    const [loadMore, setLoadMore] = useState(0);
 
-    const fullLoad = productApi.slice(0, 4);
+    let productLength = productApi.length;
 
-    const [load, setLoad] = useState(fisrtLoad);
-
-    const [isCLicked, setIsClicked] = useState('VIEW ALL PRODUCTS');
-
-    const loadmore = () => {
-        if (load.length === 0) {
-            setLoad(fullLoad);
-            setIsClicked('VIEW LESS PRODUCTS');
-        } else if (load.length !== 0) {
-            setLoad(fisrtLoad);
-            setIsClicked('VIEW ALL PRODUCTS');
-        }
-    };
+    const load = productApi.toSpliced(
+        productLength / 2 + loadMore,
+        productLength,
+    );
 
     useEffect(() => {
         (async function () {
             let fetchAPI = await fetch('https://fe21-db.vercel.app/gummi');
             let fetchedAPI = await fetchAPI.json();
             let results = fetchedAPI;
-            setProductApi([...results]);
+            setProductApi(results);
         })();
     }, []);
 
     return (
         <section className='OurProduct container'>
             <h2>SHOP ALL</h2>
-            {productApi.length === 0 ? (
-                <div className='Loading'>Loading Products...</div>
-            ) : null}
-            <div className='ProductContainer'>
-                {productApi.slice(4, 8).map((product) => (
-                    <div
-                        className='ProductItem'
-                        key={product._id}
-                    >
-                        <Product
-                            id={product._id}
-                            url={product.img}
-                            name={product.name}
-                            sale={product.sale}
-                            prices={product.discouter}
-                            saleprices={product.price}
-                            style={{
-                                fontSize: '14px',
-                                lineHeight: '20px',
-                            }}
-                        />
+            {productLength === 0 ? (
+                <Loading />
+            ) : (
+                <>
+                    <div className='ProductContainer'>
+                        {load.map((product) => (
+                            <div
+                                className='ProductItem'
+                                key={product._id}
+                            >
+                                <Product
+                                    id={product._id}
+                                    url={product.img}
+                                    name={product.name}
+                                    sale={product.sale}
+                                    prices={product.discouter}
+                                    saleprices={product.price}
+                                    style={{
+                                        fontSize: '14px',
+                                        lineHeight: '20px',
+                                    }}
+                                />
+                            </div>
+                        ))}
                     </div>
-                ))}
-                {load.map((product) => (
                     <div
-                        className='ProductItem'
-                        key={product._id}
+                        className='LoadMore'
+                        onClick={() => {
+                            if (loadMore < productLength / 2) {
+                                setLoadMore((pre) => pre + 1);
+                            } else {
+                                setLoadMore(0);
+                            }
+                        }}
                     >
-                        <Product
-                            id={product._id}
-                            url={product.img}
-                            name={product.name}
-                            sale={product.sale}
-                            prices={product.discouter}
-                            saleprices={product.price}
-                            style={{
-                                fontSize: '14px',
-                                lineHeight: '20px',
-                            }}
-                        />
+                        {loadMore < productLength / 2
+                            ? 'Load more'
+                            : 'Show less'}
                     </div>
-                ))}
-            </div>
-            <div
-                className='LoadMore'
-                onClick={loadmore}
-            >
-                {isCLicked}
-            </div>
+                </>
+            )}
         </section>
     );
 };

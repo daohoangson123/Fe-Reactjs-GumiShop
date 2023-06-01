@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
-// import '../src/index.css'; tailwind
+import './index.css';
 import store from './Redux/Store/Store';
 import { Provider } from 'react-redux';
 

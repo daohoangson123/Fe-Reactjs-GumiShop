@@ -2,13 +2,14 @@ import './Shop.css';
 //
 import noitem from '../../../Assets/img/noitem.webp';
 //
-import Product from '../../RepeatComponent/Product';
-//
-import { useEffect, useMemo, useState } from 'react';
-import { debounce } from 'lodash';
+import Loading from '../../SupportComponent/Loading/Loading';
 //
 import { fetchProductApi } from '../../../Data/axiosAPI/productData';
 //
+import { Suspense, lazy, useEffect, useMemo, useState } from 'react';
+import { debounce } from 'lodash';
+//
+const Product = lazy(() => import('../../RepeatComponent/Product'));
 
 const Shop = () => {
     const [productApi, setProductApi] = useState([]);
@@ -51,6 +52,8 @@ const Shop = () => {
     useEffect(() => {
         getProducts();
 
+        document.title = 'Gumi Shopify - Shopping Page';
+
         return () => {
             debounceChange.cancel();
         };
@@ -58,66 +61,67 @@ const Shop = () => {
 
     return (
         <section className='Shop container'>
-            {productApi.length !== 0 && (
-                <form
-                    className='SearchForm'
-                    action=''
-                    autoComplete='off'
-                    onSubmit={handleSubmit}
-                >
-                    <input
-                        type='text'
-                        name='searchkw'
-                        id='searchkw'
-                        placeholder="Search by Product's name"
-                        required
-                        className='SearchInput '
-                        onChange={debounceChange}
-                    />
-                </form>
-            )}
-            {productApi.length === 0 && (
-                <div className='WaitAPI'>
-                    Loading Products... Please Wait A Second
-                    <div className='WaitAPI__LoadingAnimation'></div>
-                </div>
-            )}
-            {searchValue !== '' && (
-                <div>
-                    {filtered.length} product{filtered.length > 1 && 's'} found
-                </div>
-            )}
-            {filtered.length !== 0 && searchValue === '' ? (
-                <div>{filtered.length} products available</div>
-            ) : null}
-            <div className='ProductContainer ShopProductContainer'>
-                {filtered.map((product) => (
-                    <div
-                        className='ProductItem'
-                        key={product._id}
+            <Suspense>
+                {productApi.length !== 0 && (
+                    <form
+                        className='SearchForm'
+                        action=''
+                        autoComplete='off'
+                        onSubmit={handleSubmit}
                     >
-                        <Product
-                            id={product._id}
-                            url={product.img}
-                            name={product.name}
-                            sale={product.sale}
-                            prices={product.discouter}
-                            saleprices={product.price}
-                            style={{
-                                fontSize: '14px',
-                                lineHeight: '20px',
-                            }}
+                        <input
+                            type='text'
+                            name='searchkw'
+                            id='searchkw'
+                            placeholder="Search by Product's name"
+                            required
+                            className='SearchInput '
+                            onChange={debounceChange}
                         />
-                    </div>
-                ))}
-            </div>
-            {filtered.length === 0 && searchValue !== '' && (
-                <img
-                    src={noitem}
-                    alt='NoItemFound'
-                    style={{ width: '300px', height: '300px' }}
-                />
-            )}
+                        {searchValue !== '' && (
+                            <div>
+                                {filtered.length} product
+                                {filtered.length > 1 && 's'} found
+                            </div>
+                        )}
+                        {filtered.length !== 0 && searchValue === '' ? (
+                            <div>{filtered.length} products available</div>
+                        ) : null}
+                    </form>
+                )}
+                {productApi.length === 0 && (
+                    <Loading loadingContent='Loading Product Data...' />
+                )}
+
+                <div className='ProductContainer ShopProductContainer'>
+                    {filtered.map((product) => (
+                        <div
+                            className='ProductItem'
+                            key={product._id}
+                        >
+                            <Product
+                                id={product._id}
+                                url={product.img}
+                                name={product.name}
+                                sale={product.sale}
+                                prices={product.discouter}
+                                saleprices={product.price}
+                                style={{
+                                    fontSize: '14px',
+                                    lineHeight: '20px',
+                                }}
+                            />
+                        </div>
+                    ))}
+                </div>
+                {filtered.length === 0 && searchValue !== '' && (
+                    <img
+                        src={noitem}
+                        alt='NoItemFound'
+                        style={{ width: '300px', height: '300px' }}
+                    />
+                )}
+            </Suspense>
         </section>
     );
 };

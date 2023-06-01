@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
 import './NewsItem.css';
+//
+import { Link } from 'react-router-dom';
 
 const NewsItem = ({ ...props }) => {
     return (
@@ -16,7 +17,7 @@ const NewsItem = ({ ...props }) => {
                     to={`/news/${props.id}`}
                     className='News_Btn'
                 >
-                    READ MORE
+                    Latest Product's News
                 </Link>
             </div>
         </div>
