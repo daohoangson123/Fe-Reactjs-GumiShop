@@ -1,0 +1,67 @@
+.BannerContainer {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    width: 100%;
+    height: 700px;
+    background-repeat: no-repeat;
+}
+
+.Img_as_Background1 {
+    position: absolute;
+    inset: 0;
+    object-fit: cover;
+    height: 100%;
+    z-index: -1;
+}
+
+.Img_as_Background2 {
+    position: absolute;
+    inset: 0;
+    object-fit: contain;
+    object-position: 80%;
+    height: 100%;
+    z-index: -1;
+}
+
+.emptyContent {
+    width: 330px;
+}
+
+@media only screen and (max-width: 1440px) {
+    .BannerContainer {
+        height: 480px;
+    }
+
+    .Img_as_Background1 {
+        object-position: 30%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .BannerContainer {
+        grid-template-columns: auto;
+    }
+
+    .Img_as_Background1 {
+        object-position: 15%;
+    }
+
+    .Img_as_Background2 {
+        object-fit: cover;
+        object-position: center 0%;
+    }
+
+    .emptyContent {
+        width: 0;
+        display: none;
+    }
+
+    .SliderBanner_1,
+    .SliderBanner_2 {
+        padding: 15px;
+        min-height: 350px;
+        background-color: rgba(0, 0, 0, 0.6);
+    }
+}

@@ -1,0 +1,31 @@
+.NewDetail__Item {
+    display: grid;
+    gap: 20px;
+    place-items: center;
+}
+
+.NewDetail__Item img {
+    width: clamp(280px, 40vw, 400px);
+}
+
+.NewDetail__Item-Date {
+    justify-self: end;
+}
+
+.NewDetail__Item-Title {
+    font-weight: 600;
+    font-size: 20px;
+}
+
+.NewDetail__Item-Content {
+}
+
+.NewDetail__Item-Btn {
+    font-size: 16px;
+    font-weight: 500;
+    width: 70px;
+    height: 40px;
+    background-color: var(--color-primary);
+    color: var(--color-default);
+    cursor: pointer;
+}

@@ -1,0 +1,53 @@
+.FooterBot {
+    display: grid;
+    gap: 20px;
+    text-align: center;
+}
+
+.FooterIcons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.FooterIcons > a {
+    transition: transform 0.3s ease-in-out;
+}
+
+.FooterIcons > a:hover {
+    transform: translateY(-3px);
+}
+
+.SocialIcons > a {
+    width: 20px;
+    aspect-ratio: 1;
+}
+
+.SocialIcons img {
+    width: 15px;
+    aspect-ratio: 1;
+}
+
+.CopyRight {
+    font-weight: 400;
+    line-height: 26px;
+    grid-row: 3;
+}
+
+.CopyRight span {
+    color: var(--color-primary);
+}
+
+.PaymentIcons img {
+    width: 30px;
+    aspect-ratio: 3 / 2;
+}
+
+@media (width > 768px) {
+    .FooterBot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+}

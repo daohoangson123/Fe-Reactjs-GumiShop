@@ -1,0 +1,9 @@
+.Loading {
+    text-align: center;
+    transition: all 0.2s ease-in-out;
+}
+
+.Loading__Animation i {
+    font-size: 40px;
+    color: var(--color-alt);
+}

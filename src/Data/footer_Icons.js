@@ -1,15 +1,15 @@
-import fb from '../Assets/icon/fb.png';
-import ig from '../Assets/icon/ig.png';
-import tw from '../Assets/icon/tw.png';
-import pi from '../Assets/icon/pi.png';
-import yt from '../Assets/icon/yt.png';
-import amex from '../Assets/icon/amex.png';
-import apay from '../Assets/icon/apay.png';
-import gpay from '../Assets/icon/ggpay.jpg';
-import mc from '../Assets/icon/mc.png';
-import pp from '../Assets/icon/pp.png';
-import spay from '../Assets/icon/shoppay.png';
-import visa from '../Assets/icon/visa.png';
+import fb from '../assets/icon/fb.png';
+import ig from '../assets/icon/ig.png';
+import tw from '../assets/icon/tw.png';
+import pi from '../assets/icon/pi.png';
+import yt from '../assets/icon/yt.png';
+import amex from '../assets/icon/amex.png';
+import apay from '../assets/icon/apay.png';
+import gpay from '../assets/icon/ggpay.jpg';
+import mc from '../assets/icon/mc.png';
+import pp from '../assets/icon/pp.png';
+import spay from '../assets/icon/shoppay.png';
+import visa from '../assets/icon/visa.png';
 
 export const social_Icons = [
     {

@@ -1,6 +1,6 @@
-import plane from '../Assets/icon/plane.png';
-import money from '../Assets/icon/money.png';
-import lock from '../Assets/icon/lock.png';
+import plane from '../assets/icon/plane.png';
+import money from '../assets/icon/money.png';
+import lock from '../assets/icon/lock.png';
 
 export const g4mBot_items = [
     {
