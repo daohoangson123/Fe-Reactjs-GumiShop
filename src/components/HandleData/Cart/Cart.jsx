@@ -1,4 +1,4 @@
-import emptyCart from '../../../assets/img/noitem.webp';
+import emptyCart from '../../../assets/img/emptycart.png';
 //
 import { useDispatch, useSelector } from 'react-redux';
 import { myCartSelector } from '../../../redux/Selectors/Selector';

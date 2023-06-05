@@ -32,23 +32,24 @@
     gap: 10px;
     align-items: center;
     border-bottom: 2px solid var(--color-primary);
+    border-top: 2px solid var(--color-primary);
 }
 
 .Cart-Item > img {
     grid-area: 2 / 1;
-    justify-self: center;
     width: 120px;
     aspect-ratio: 1;
 }
 
 .Cart-Item_Name {
     grid-area: 1 / 1;
-    font-size: clamp(16px, 3vw, 20px);
+    font-size: clamp(18px, 3vw, 24px);
     font-weight: 700;
 }
 
 .Cart-Item_Price {
-    grid-area: 3 / 1;
+    grid-area: 2 / 1;
+    justify-self: end;
     font-weight: 600;
 }
 
@@ -57,7 +58,7 @@
 }
 
 .Cart-Item_Cost {
-    grid-area: 5 / 1;
+    grid-area: 4 / 1;
     font-size: clamp(16px, 2vw, 18px);
     font-weight: 500;
     border-radius: 10px;
@@ -65,7 +66,8 @@
 }
 
 .Cart-Item_Quantity {
-    grid-area: 4 / 1;
+    grid-area: 3 / 1;
+    justify-self: center;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -99,18 +101,20 @@
 }
 
 .Remove_Item {
-    justify-self: center;
+    grid-area: 4/1;
+    justify-self: end;
     background-color: transparent;
     border-radius: 100%;
     width: 40px;
     height: 40px;
+    font-size: 20px;
     padding: 5px;
     transition: all 0.2s ease-in-out;
-    cursor: pointer;
 }
 
 .Remove_Item:hover {
-    background-color: var(--color-alt-rgba-3);
+    background-color: var(--color-primary);
+    color: var(--color-default);
 }
 
 .Remove_Item > img {
@@ -153,4 +157,21 @@
 
 .Buy_Btn:hover {
     background-color: var(--color-primary);
+}
+
+@media (width > 1024px) {
+    .Cart-Item_Price {
+        justify-self: center;
+    }
+
+    .Cart-Item_Quantity {
+        grid-area: 2 / 1;
+        justify-self: end;
+        align-self: flex-end;
+    }
+
+    .Cart-Item_Cost,
+    .Remove_Item {
+        grid-area: 3 / 1;
+    }
 }

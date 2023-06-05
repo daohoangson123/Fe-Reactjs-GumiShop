@@ -118,9 +118,7 @@ const CartForm = ({
                                             });
                                         }}
                                     >
-                                        <div className='Remove_Item'>
-                                            <i className='fa-solid fa-trash-can'></i>
-                                        </div>
+                                        <i className='fa-solid fa-trash-can'></i>
                                     </button>
                                 </div>
                             );
