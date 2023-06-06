@@ -20,6 +20,5 @@ export const g4mBot_items = [
         title: 'SECURED PAYMENTS',
         content:
             'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean',
-        width: '50px',
     },
 ];

@@ -10,6 +10,7 @@ import { removeInCart } from '../../../../redux/Actions/Action';
 const Product = ({ ...props }) => {
     const dispatch = useDispatch();
     const [isAdded, setIsAdded] = useState(false);
+    const [isload, setIsLoad] = useState(false);
 
     function handleAddToCart(product) {
         if (!isAdded) {
@@ -49,8 +50,14 @@ const Product = ({ ...props }) => {
             <div className='Product__Img-Container'>
                 <img
                     src={null}
-                    alt={props.name}
+                    alt=''
                     lazysrc={props.url}
+                    style={{
+                        animation: !isload && 'var(--imgLoading)',
+                    }}
+                    onLoad={() => {
+                        setIsLoad(true);
+                    }}
                 />
                 <div
                     className='AddToCart_Bg'

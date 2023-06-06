@@ -12,24 +12,19 @@
 .Img_Container {
     position: relative;
     width: 60px;
-    height: 60px;
     margin: 25px auto;
 }
 
 .Img_Container img {
-    width: 60px;
+    width: 100%;
     aspect-ratio: 1;
     opacity: 0.9;
-}
-
-.Good4MeDealBot_Item:last-child img {
-    transform: translateY(10px);
 }
 
 .Good4MeDealBot_Item-Circle {
     position: absolute;
     bottom: 0;
-    right: -12px;
+    right: -10px;
     width: 45px;
     height: 45px;
     border-radius: 100%;

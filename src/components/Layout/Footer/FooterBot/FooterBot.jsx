@@ -3,8 +3,11 @@ import './FooterBot.css';
 import { social_Icons, payment_Icons } from '../../../../data/footer_Icons';
 //
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const FooterBot = () => {
+    const [isload, setIsLoad] = useState(false);
+
     return (
         <div className='FooterBot'>
             <div className='SocialIcons FooterIcons'>
@@ -17,8 +20,14 @@ const FooterBot = () => {
                     >
                         <img
                             src={null}
-                            alt='icon'
+                            alt='link'
                             lazysrc={icon.url}
+                            style={{
+                                animation: !isload && 'var(--imgLoading)',
+                            }}
+                            onLoad={() => {
+                                setIsLoad(true);
+                            }}
                         />
                     </a>
                 ))}
@@ -34,8 +43,14 @@ const FooterBot = () => {
                     >
                         <img
                             src={null}
-                            alt='icon'
+                            alt='link'
                             lazysrc={icon.url}
+                            style={{
+                                animation: !isload && 'var(--imgLoading)',
+                            }}
+                            onLoad={() => {
+                                setIsLoad(true);
+                            }}
                         />
                     </Link>
                 ))}

@@ -39,18 +39,16 @@
         max-width: none;
     }
 
-    .StockistPage {
-        &::-webkit-scrollbar {
-            width: 10px;
-        }
-        &::-webkit-scrollbar:horizontal {
-            height: 10px;
-        }
-        &::-webkit-scrollbar-track {
-            background-color: rgba(0, 0, 0, 0.2);
-        }
-        &::-webkit-scrollbar-thumb {
-            background-color: gray;
-        }
+    .StockistPage-webkit-scrollbar {
+        width: 10px;
+    }
+    .StockistPage-webkit-scrollbar:horizontal {
+        height: 10px;
+    }
+    .StockistPage-webkit-scrollbar-track {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+    .StockistPage-webkit-scrollbar-thumb {
+        background-color: gray;
     }
 }

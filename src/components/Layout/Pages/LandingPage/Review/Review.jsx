@@ -5,15 +5,20 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 //
 import review_img from '../../../../../assets/img/review.webp';
+import reviewBgTop from '../../../../../assets/img/ReviewTop.webp';
+import reviewBgBot from '../../../../../assets/img/ReviewBot.webp';
 //
 import { reviewData } from '../../../../../data/review';
+import { useState } from 'react';
 
 const Review = () => {
+    const [isload, setIsLoad] = useState(false);
+
     return (
         <section className='Review Container'>
             <img
-                className='Review__Slider-BgTop'
-                src={null}
+                className='Review__BgTop'
+                src={reviewBgTop}
                 alt=''
             />
             <div className='Review__Slider'>
@@ -66,13 +71,19 @@ const Review = () => {
             <div className='Review__Img'>
                 <img
                     src={null}
-                    alt='review_img'
+                    alt=''
                     lazysrc={review_img}
+                    style={{
+                        animation: !isload && 'var(--imgLoading)',
+                    }}
+                    onLoad={() => {
+                        setIsLoad(true);
+                    }}
                 />
             </div>
             <img
-                className='Review__Slider-BgBot'
-                src={null}
+                className='Review__BgBot'
+                src={reviewBgBot}
                 alt=''
             />
         </section>

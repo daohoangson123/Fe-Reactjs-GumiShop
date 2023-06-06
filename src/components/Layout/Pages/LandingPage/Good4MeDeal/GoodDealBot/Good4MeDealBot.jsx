@@ -1,8 +1,12 @@
 import './Good4MeDealBot.css';
 //
+import { useState } from 'react';
+//
 import { g4mBot_items } from '../../../../../../data/g4mBot';
 
 const Good4MeDealBot = () => {
+    const [isload, setIsLoad] = useState(false);
+
     return (
         <div className='Good4MeDealBot'>
             {g4mBot_items.map((item) => (
@@ -14,9 +18,12 @@ const Good4MeDealBot = () => {
                         <span className='Good4MeDealBot_Item-Circle'></span>
                         <img
                             src={null}
-                            alt={item.title}
-                            style={{ width: item.width }}
+                            alt=''
+                            style={{
+                                animation: !isload && 'var(--imgLoading)',
+                            }}
                             lazysrc={item.url}
+                            onLoad={() => setIsLoad(true)}
                         />
                     </div>
                     <div className='Good4MeDealBot_Item-Title'>

@@ -12,6 +12,16 @@
     --color-text: #454545;
     --color-icon: #9d9d9d;
     --font-default: 'Jost', sans-serif;
+    --imgLoading: imgLoading 1s linear infinite alternate;
+}
+
+@keyframes imgLoading {
+    0% {
+        background-color: #c0c0c0;
+    }
+    100% {
+        background-color: #dcdcdc;
+    }
 }
 
 * {
@@ -32,6 +42,11 @@ html::-webkit-scrollbar-thumb {
 
 body {
     font-family: var(--font-default);
+}
+
+main {
+    max-width: 1920px;
+    margin: 0 auto;
 }
 
 h1 {

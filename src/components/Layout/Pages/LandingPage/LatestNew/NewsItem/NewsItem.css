@@ -1,11 +1,10 @@
 .NewsItem_Container {
-    text-align: center;
     width: clamp(280px, 50vw, 400px);
 }
 
 .NewsItem_Container img {
     width: 100%;
-    aspect-ratio: 3 / 2;
+    min-height: 200px;
 }
 .News_Date {
     font-size: 12px;

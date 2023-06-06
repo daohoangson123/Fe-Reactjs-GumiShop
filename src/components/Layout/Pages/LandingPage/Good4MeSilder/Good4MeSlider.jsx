@@ -7,6 +7,7 @@ import './Good4MeSilder.css';
 import good4me from '../../../../../assets/img/good4me.webp';
 import good4me2 from '../../../../../assets/img/good4me2.webp';
 import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
+import { useState } from 'react';
 
 const hashtag_Img = [
     {
@@ -20,6 +21,7 @@ const hashtag_Img = [
 ];
 
 const Good4MeSilder = ({ title }) => {
+    const [isload, setIsLoad] = useState(false);
     return (
         <section className='Good4MeSilder'>
             <SectionTitle content={title} />
@@ -42,8 +44,14 @@ const Good4MeSilder = ({ title }) => {
                     >
                         <img
                             src={null}
-                            alt={img.id}
+                            alt=''
                             lazysrc={img.url}
+                            style={{
+                                animation: !isload && 'var(--imgLoading)',
+                            }}
+                            onLoad={() => {
+                                setIsLoad(true);
+                            }}
                         />
                     </div>
                 ))}

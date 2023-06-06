@@ -4,6 +4,9 @@
 
 .owl-control .item {
     width: 318px;
+}
+
+.owl-control .item img {
     aspect-ratio: 1;
 }
 

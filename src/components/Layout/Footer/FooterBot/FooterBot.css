@@ -11,15 +11,15 @@
     gap: 20px;
 }
 
-.FooterIcons > a {
+.FooterIcons a {
     transition: transform 0.3s ease-in-out;
 }
 
-.FooterIcons > a:hover {
+.FooterIcons a:hover {
     transform: translateY(-3px);
 }
 
-.SocialIcons > a {
+.SocialIcons a {
     width: 20px;
     aspect-ratio: 1;
 }
@@ -41,7 +41,7 @@
 
 .PaymentIcons img {
     width: 30px;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 3;
 }
 
 @media (width > 768px) {

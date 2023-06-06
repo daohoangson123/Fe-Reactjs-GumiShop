@@ -8,21 +8,17 @@
     background-repeat: no-repeat;
 }
 
-.Img_as_Background1 {
-    position: absolute;
-    inset: 0;
-    object-fit: cover;
-    height: 100%;
-    z-index: -1;
+.BannerContainer_1 {
+    background-image: url(../../../../../assets/img/HeroBanner.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
-.Img_as_Background2 {
-    position: absolute;
-    inset: 0;
-    object-fit: contain;
-    object-position: 80%;
-    height: 100%;
-    z-index: -1;
+.BannerContainer_2 {
+    background-image: url(../../../../../assets/img/HeroBanner1.webp);
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
 }
 
 .emptyContent {
@@ -31,11 +27,7 @@
 
 @media only screen and (max-width: 1440px) {
     .BannerContainer {
-        height: 480px;
-    }
-
-    .Img_as_Background1 {
-        object-position: 30%;
+        height: 450px;
     }
 }
 
@@ -44,24 +36,22 @@
         grid-template-columns: auto;
     }
 
-    .Img_as_Background1 {
-        object-position: 15%;
-    }
-
-    .Img_as_Background2 {
-        object-fit: cover;
-        object-position: center 0%;
-    }
-
     .emptyContent {
         width: 0;
         display: none;
     }
 
+    .BannerContainer_1 {
+        background-position-x: 17%;
+    }
+
+    .BannerContainer_2 {
+        background-position-x: center;
+    }
+
     .SliderBanner_1,
     .SliderBanner_2 {
-        padding: 15px;
-        min-height: 350px;
+        min-height: 300px;
         background-color: rgba(0, 0, 0, 0.6);
     }
 }
