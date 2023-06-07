@@ -84,7 +84,7 @@ const NavBar = () => {
                                 ? {
                                       backgroundColor: 'var(--color-default)',
                                       transform:
-                                          'rotate(45deg) translateX(2px) translateY(-4px)',
+                                          'rotate(45deg) translateX(1px) translateY(-5px)',
                                   }
                                 : null
                         }
@@ -103,7 +103,7 @@ const NavBar = () => {
                                       backgroundColor: 'var(--color-default)',
                                       width: '30px',
                                       transform:
-                                          'rotate(-45deg) translateX(2px) translateY(4px)',
+                                          'rotate(-45deg) translateX(1px) translateY(5px)',
                                   }
                                 : null
                         }

@@ -11,15 +11,16 @@ footer > hr {
 }
 
 .FooterTopBG {
+    position: absolute;
     width: 100%;
 }
 
 .Footer__Container {
-    padding: 30px 40px;
+    padding: 80px 20px 30px;
 }
 
 @media (width > 1024px) {
     .Footer__Container {
-        padding: 50px 120px 30px;
+        padding: 150px 120px 30px;
     }
 }
