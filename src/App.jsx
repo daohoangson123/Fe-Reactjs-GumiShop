@@ -4,8 +4,10 @@ import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 //
 import Loading from './components/Layout/UI/Loading/Loading';
+import NotFoundPage from './components/Layout/Pages/NotFoundPage/NotFoundPage';
 //
-const Header = lazy(() => import('./components/Layout/Header/Header'));
+import Header from './components/Layout/Header/Header';
+// const Header = lazy(() => import('./components/Layout/Header/Header'));
 const LandingPage = lazy(() =>
     import('./components/Layout/Pages/LandingPage/LandingPage'),
 );
@@ -44,12 +46,7 @@ function App() {
         <div className='App'>
             <Header />
             <Suspense
-                fallback={
-                    <Loading
-                        loadingContent='Page is Loading...'
-                        height='100vh'
-                    />
-                }
+                fallback={<Loading loadingContent='Page is Loading...' />}
             >
                 <main>
                     <BackTopWrapper>
@@ -94,12 +91,16 @@ function App() {
                                 path='/news/:id'
                                 element={<NewsDetail />}
                             />
+                            <Route
+                                path='*'
+                                element={<NotFoundPage />}
+                            />
                         </Routes>
                     </BackTopWrapper>
                 </main>
                 <BackTopBtn />
+                <Footer />
             </Suspense>
-            <Footer />
         </div>
     );
 }

@@ -1,6 +1,7 @@
 footer {
     background-image: url(../../../assets/img/Footer.webp);
     margin-top: 60px;
+    position: relative;
 }
 
 footer > hr {
@@ -19,6 +20,6 @@ footer > hr {
 
 @media (width > 1024px) {
     .Footer__Container {
-        padding: 50px 120px;
+        padding: 50px 120px 30px;
     }
 }

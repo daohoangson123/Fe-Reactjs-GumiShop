@@ -109,6 +109,6 @@
 
     .Review__Slider-Item,
     .Review__Img {
-        width: max(280px, 60vw);
+        width: max(280px, 70vw);
     }
 }

@@ -79,24 +79,34 @@ const NavBar = () => {
                 >
                     <div
                         className='MenuIcon1 MenuIcon '
-                        style={{
-                            backgroundColor:
-                                isClicked && 'var(--color-default)',
-                        }}
+                        style={
+                            isClicked
+                                ? {
+                                      backgroundColor: 'var(--color-default)',
+                                      transform:
+                                          'rotate(45deg) translateX(2px) translateY(-4px)',
+                                  }
+                                : null
+                        }
                     ></div>
                     <div
                         className='MenuIcon2 MenuIcon '
                         style={{
-                            backgroundColor:
-                                isClicked && 'var(--color-default)',
+                            display: isClicked && 'none',
                         }}
                     ></div>
                     <div
                         className='MenuIcon3 MenuIcon '
-                        style={{
-                            backgroundColor:
-                                isClicked && 'var(--color-default)',
-                        }}
+                        style={
+                            isClicked
+                                ? {
+                                      backgroundColor: 'var(--color-default)',
+                                      width: '30px',
+                                      transform:
+                                          'rotate(-45deg) translateX(2px) translateY(4px)',
+                                  }
+                                : null
+                        }
                     ></div>
                 </button>
                 <NavLink to='/'>

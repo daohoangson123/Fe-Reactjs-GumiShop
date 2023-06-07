@@ -23,11 +23,9 @@
 
 .MobileMenu {
     display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: end;
+    place-items: center;
     width: 40px;
-    height: 35px;
+    height: 40px;
     gap: 5px;
     padding: 5px;
     border: none;
@@ -45,10 +43,15 @@
     background-color: var(--color-default);
 }
 
+.MobileMenu:hover .MenuIcon3 {
+    width: 30px;
+}
+
 .MenuIcon {
     height: 2px;
     background-color: var(--color-text);
     transition: all ease-in-out 0.2s;
+    transform-origin: left;
 }
 
 .MenuIcon1,
@@ -58,6 +61,7 @@
 
 .MenuIcon3 {
     width: 20px;
+    justify-self: end;
 }
 
 .MobileMenu__NavBar {
@@ -226,7 +230,7 @@
     }
 
     .MobileMenu {
-        display: flex;
+        display: grid;
     }
 
     .NavBar__List {
