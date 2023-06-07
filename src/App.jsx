@@ -4,7 +4,7 @@ import { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 //
 import Loading from './components/Layout/UI/Loading/Loading';
-import NotFoundPage from './components/Layout/Pages/NotFoundPage/NotFoundPage';
+
 //
 import Header from './components/Layout/Header/Header';
 // const Header = lazy(() => import('./components/Layout/Header/Header'));
@@ -27,6 +27,9 @@ const StockistPage = lazy(() =>
 );
 const ContactPage = lazy(() =>
     import('./components/Layout/Pages/ContactPage/ContactPage'),
+);
+const NotFoundPage = lazy(() =>
+    import('./components/Layout/Pages/NotFoundPage/NotFoundPage'),
 );
 //
 const Shop = lazy(() => import('./components/HandleData/Shop/Shop'));

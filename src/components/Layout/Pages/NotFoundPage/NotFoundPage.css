@@ -10,25 +10,21 @@
     font-weight: 900;
 }
 
-.NotFoundPage__Btn {
+.NotFoundPage__BackHome {
+    display: grid;
+    place-items: center;
+    color: var(--color-alt);
+    background-color: #e0e0e0;
+    font-size: 18px;
+    font-weight: 600;
     width: 100px;
     height: 50px;
     border-radius: 5px;
-    transition: all 0.2s ease-in-out;
-}
-
-.NotFoundPage__Btn:hover {
-    background-color: var(--color-icon);
-}
-
-.NotFoundPage__Btn:hover a {
-    color: var(--color-default);
-}
-
-.NotFoundPage__Btn a {
-    color: var(--color-alt);
-    font-size: 18px;
-    font-weight: 600;
     text-decoration: none;
     transition: all 0.2s ease-in-out;
+}
+
+.NotFoundPage__BackHome:hover {
+    color: var(--color-default);
+    background-color: var(--color-primary);
 }

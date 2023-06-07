@@ -5,12 +5,13 @@ function NotFoundPage() {
     return (
         <section className='NotFoundPage'>
             <div className='NotFoundPage__Content'># 404 Page Not Found</div>
-            <button
-                type='button'
-                className='NotFoundPage__Btn'
+
+            <Link
+                to='/'
+                className='NotFoundPage__BackHome'
             >
-                <Link to='/'>Go Home</Link>
-            </button>
+                Go Home
+            </Link>
         </section>
     );
 }
