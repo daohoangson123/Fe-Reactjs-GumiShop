@@ -4,24 +4,11 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 //
 import './Good4MeSilder.css';
 //
-import good4me from '../../../../../assets/img/good4me.webp';
-import good4me2 from '../../../../../assets/img/good4me2.webp';
+import { bottom_Slider } from '../../../../../data/bottomSlider';
+//
 import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
-import { useState } from 'react';
-
-const hashtag_Img = [
-    {
-        id: 1,
-        url: good4me,
-    },
-    {
-        id: 2,
-        url: good4me2,
-    },
-];
 
 const Good4MeSilder = ({ title }) => {
-    const [isload, setIsLoad] = useState(false);
     return (
         <section className='Good4MeSilder'>
             <SectionTitle content={title} />
@@ -29,29 +16,22 @@ const Good4MeSilder = ({ title }) => {
                 className='owl-theme owl-control'
                 autoWidth={true}
                 dots={false}
-                margin={30}
-                items={6}
+                margin={20}
+                items={4}
                 autoplay
-                autoplaySpeed={2000}
                 autoplayHoverPause
-                autoplayTimeout={2500}
+                autoplaySpeed={3000}
+                autoplayTimeout={4000}
                 loop
             >
-                {hashtag_Img.map((img) => (
+                {bottom_Slider.map((img) => (
                     <div
-                        className='item item1'
+                        className='item'
                         key={img.id}
                     >
                         <img
-                            src={null}
+                            src={img.url}
                             alt=''
-                            lazysrc={img.url}
-                            style={{
-                                animation: !isload && 'var(--imgLoading)',
-                            }}
-                            onLoad={() => {
-                                setIsLoad(true);
-                            }}
                         />
                     </div>
                 ))}

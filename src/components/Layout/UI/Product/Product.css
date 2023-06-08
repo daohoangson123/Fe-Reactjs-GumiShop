@@ -56,12 +56,14 @@
 }
 
 .ProductLink {
+    display: grid;
+    place-items: center;
     border-top-left-radius: 100%;
     border-bottom-left-radius: 100%;
     background-color: var(--color-default);
 }
 
-.ProductLink a {
+.ProductLink {
     color: var(--color-primary);
     text-decoration: none;
 }
@@ -76,7 +78,8 @@
     text-decoration: underline;
 }
 
-.ProductLink:hover a {
+.ProductLink:hover {
+    color: var(--color-primary);
     text-decoration: underline;
 }
 

@@ -65,22 +65,21 @@
 
 .MobileMenu__NavBar {
     position: absolute;
-    left: -150%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
     background-color: var(--color-default);
-    transition: all ease-in-out 1s;
+    transform: translateX(-150%);
+    transition: all 1s ease;
 }
 
 .MobileMenu__NavBar-actived {
     position: absolute;
-    left: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
     width: 100%;
     background-color: var(--color-default);
-    transition: all ease-in-out 0.5s;
+    transition: all 0.5s ease;
 }
 
 .MobileMenu__NavBar a,
@@ -92,7 +91,7 @@
 .MobileMenu__Item {
     position: relative;
     padding: 10px;
-    transition: padding ease-in-out 0.3s 0.2s;
+    transition: all ease-in-out 0.3s;
 }
 
 .MobileMenu__Item::before {
@@ -102,7 +101,7 @@
     left: 0;
     width: 3px;
     height: 0;
-    background-color: var(--color-default);
+    background-color: var(--color-alt);
     transition: all ease-in-out 0.5s;
 }
 
@@ -113,7 +112,7 @@
     left: 0;
     width: 0;
     height: 3px;
-    background-color: var(--color-default);
+    background-color: var(--color-alt);
     transition: all ease-in-out 0.5s;
 }
 
@@ -223,7 +222,7 @@
 
 @media only screen and (max-width: 1024px) {
     .NavBar {
-        padding: 10px 20px;
+        padding: 20px;
     }
 
     .MobileMenu {

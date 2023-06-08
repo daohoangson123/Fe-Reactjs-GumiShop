@@ -63,11 +63,12 @@ const Product = ({ ...props }) => {
                     className='AddToCart_Bg'
                     style={{ top: isAdded && 0 }}
                 >
-                    <button className='ProductLink'>
-                        <Link to={`/shop/${props.name.split(' ').join('-')}`}>
-                            Detail
-                        </Link>
-                    </button>
+                    <Link
+                        className='ProductLink'
+                        to={`/shop/${props.name.split(' ').join('-')}`}
+                    >
+                        Detail
+                    </Link>
                     <button
                         className='AddToCart'
                         style={{
