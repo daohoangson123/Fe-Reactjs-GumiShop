@@ -1,28 +1,20 @@
-import { lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 //
-
-const LandingPage = lazy(() => import('../Pages/LandingPage/LandingPage'));
+import LandingPage from '../Pages/LandingPage/LandingPage';
 //
-const ProductDetail = lazy(() =>
-    import('../../HandleData/ProductDetail/ProductDetail'),
-);
-const NewsDetail = lazy(() =>
-    import('../Pages/LandingPage/LatestNew/NewsDetail/NewsDetail'),
-);
+import ProductDetail from '../../HandleData/ProductDetail/ProductDetail';
+import NewsDetail from '../Pages/LandingPage/LatestNew/NewsDetail/NewsDetail';
 //
-const StockistPage = lazy(() => import('../Pages/Stockist/StockistPage'));
-const ContactPage = lazy(() => import('../Pages/ContactPage/ContactPage'));
-const NotFoundPage = lazy(() => import('../Pages/NotFoundPage/NotFoundPage'));
+import StockistPage from '../Pages/Stockist/StockistPage';
+import ContactPage from '../Pages/ContactPage/ContactPage';
+import NotFoundPage from '../Pages/NotFoundPage/NotFoundPage';
 //
-const Shop = lazy(() => import('../../HandleData/Shop/Shop'));
-const Cart = lazy(() => import('../../HandleData/Cart/Cart'));
-const User = lazy(() => import('../../HandleData/User/User'));
+import Shop from '../../HandleData/Shop/Shop';
+import Cart from '../../HandleData/Cart/Cart';
+import User from '../../HandleData/User/User';
 //
-const BackTopWrapper = lazy(() =>
-    import('../../Support/BackTopWrapper/BackTopWrapper'),
-);
-const BackTopBtn = lazy(() => import('../../Support/BackTopBtn/BackTopBtn'));
+import BackTopWrapper from '../../Support/BackTopWrapper/BackTopWrapper';
+import BackTopBtn from '../../Support/BackTopBtn/BackTopBtn';
 //
 
 function Main() {

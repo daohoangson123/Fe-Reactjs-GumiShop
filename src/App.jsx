@@ -1,29 +1,40 @@
 import './App.css';
 //
-import { Suspense, lazy } from 'react';
-//
-import Loading from './components/Layout/UI/Loading/Loading';
-
+import { useEffect } from 'react';
 //
 import Header from './components/Layout/Header/Header';
-
-const Main = lazy(() => import('./components/Layout/Main/Main'));
-
-const Footer = lazy(() => import('./components/Layout/Footer/Footer'));
+import Main from './components/Layout/Main/Main';
+import Footer from './components/Layout/Footer/Footer';
 //
 
 function App() {
+    useEffect(() => {
+        document.title = 'Gumi Shopify';
+        function load(img) {
+            const url = img.getAttribute('lazysrc');
+            img.setAttribute('src', url);
+        }
+
+        var lazyImgs = document.querySelectorAll('[lazysrc]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    load(entry.target);
+                }
+            });
+        });
+
+        lazyImgs.forEach((img) => {
+            observer.observe(img);
+        });
+
+        return () => observer.disconnect();
+    }, []);
     return (
         <div className='App'>
             <Header />
-            <Suspense
-                fallback={
-                    <Loading loadingContent='Gumi is loading data, please wait a sec...' />
-                }
-            >
-                <Main />
-                <Footer />
-            </Suspense>
+            <Main />
+            <Footer />
         </div>
     );
 }

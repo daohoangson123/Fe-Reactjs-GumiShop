@@ -2,14 +2,13 @@ import './Shop.css';
 //
 import noitem from '../../../assets/img/noitem.webp';
 //
-import Loading from '../../Layout/UI/Loading/Loading';
-//
 import { fetchProductApi } from '../../../data/axiosAPI/productData';
 //
-import { Suspense, lazy, useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { debounce } from 'lodash';
 //
-const Product = lazy(() => import('../../Layout/UI/Product/Product'));
+import Product from '../../Layout/UI/Product/Product';
+import Loading from '../../Layout/UI/Loading/Loading';
 
 const Shop = () => {
     const [productApi, setProductApi] = useState([]);
@@ -52,17 +51,15 @@ const Shop = () => {
     useEffect(() => {
         getProducts();
 
-        document.title = 'Gumi Shopify - Shopping Page';
-
         return () => {
             debounceChange.cancel();
         };
     }, [debounceChange]);
 
     return (
-        <section className='Shop Container'>
-            <Suspense>
-                {productApi.length !== 0 && (
+        <>
+            {productApi.length !== 0 ? (
+                <section className='Shop Container'>
                     <form
                         className='SearchForm'
                         action=''
@@ -88,41 +85,39 @@ const Shop = () => {
                             <div>{filtered.length} products available</div>
                         ) : null}
                     </form>
-                )}
-                {productApi.length === 0 && (
-                    <Loading loadingContent='Loading Product Data...' />
-                )}
-
-                <div className='ProductContainer ShopProductContainer'>
-                    {filtered.map((product) => (
-                        <div
-                            className='ProductItem'
-                            key={product._id}
-                        >
-                            <Product
-                                id={product._id}
-                                url={product.img}
-                                name={product.name}
-                                sale={product.sale}
-                                prices={product.discouter}
-                                saleprices={product.price}
-                                style={{
-                                    fontSize: '14px',
-                                    lineHeight: '20px',
-                                }}
-                            />
-                        </div>
-                    ))}
-                </div>
-                {filtered.length === 0 && searchValue !== '' && (
-                    <img
-                        className='EmptyCardImg'
-                        src={noitem}
-                        alt='NoItemFound'
-                    />
-                )}
-            </Suspense>
-        </section>
+                    <div className='ProductContainer ShopProductContainer'>
+                        {filtered.map((product) => (
+                            <div
+                                className='ProductItem'
+                                key={product._id}
+                            >
+                                <Product
+                                    id={product._id}
+                                    url={product.img}
+                                    name={product.name}
+                                    sale={product.sale}
+                                    prices={product.discouter}
+                                    saleprices={product.price}
+                                    style={{
+                                        fontSize: '14px',
+                                        lineHeight: '20px',
+                                    }}
+                                />
+                            </div>
+                        ))}
+                    </div>
+                    {filtered.length === 0 && searchValue !== '' && (
+                        <img
+                            className='EmptyCardImg'
+                            src={noitem}
+                            alt='NoItemFound'
+                        />
+                    )}
+                </section>
+            ) : (
+                <Loading loadingContent={"Loading products's data"} />
+            )}
+        </>
     );
 };
 

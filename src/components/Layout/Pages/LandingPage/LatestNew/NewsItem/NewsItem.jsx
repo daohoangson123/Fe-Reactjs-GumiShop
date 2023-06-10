@@ -1,10 +1,8 @@
-import { useState } from 'react';
 import './NewsItem.css';
 //
 import { Link } from 'react-router-dom';
 
 const NewsItem = ({ id, url, date, title, content }) => {
-    const [isload, setIsLoad] = useState(false);
     return (
         <div className='NewsItem'>
             <div className='NewsItem_Container'>
@@ -12,12 +10,6 @@ const NewsItem = ({ id, url, date, title, content }) => {
                     src={null}
                     alt=''
                     lazysrc={url}
-                    style={{
-                        animation: !isload && 'var(--imgLoading)',
-                    }}
-                    onLoad={() => {
-                        setIsLoad(true);
-                    }}
                 />
                 <div className='News_Date'>{date}</div>
                 <div className='News_Title'>{title}</div>

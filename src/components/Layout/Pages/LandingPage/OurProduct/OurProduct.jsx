@@ -1,12 +1,13 @@
 import './OurProduct.css';
 //
+import { useEffect, useState } from 'react';
+//
+import { fetchProductApi } from '../../../../../data/axiosAPI/productData';
+//
 import Loading from '../../../UI/Loading/Loading';
 import Product from '../../../UI/Product/Product';
 import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
 //
-import { fetchProductApi } from '../../../../../data/axiosAPI/productData';
-//
-import { useEffect, useState } from 'react';
 
 const OurProduct = ({ title }) => {
     const [productApi, setProductApi] = useState([]);

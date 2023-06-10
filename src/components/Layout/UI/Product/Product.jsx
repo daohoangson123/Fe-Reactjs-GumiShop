@@ -9,21 +9,8 @@ import { removeInCart } from '../../../../redux/Actions/Action';
 
 const Product = ({ ...props }) => {
     const dispatch = useDispatch();
-    const [isAdded, setIsAdded] = useState(false);
-    const [isload, setIsLoad] = useState(false);
-
-    function handleAddToCart(product) {
-        if (!isAdded) {
-            dispatch(addToCart(product));
-            setIsAdded(true);
-        }
-    }
-
-    function handleRemove(product) {
-        dispatch(removeInCart(product));
-    }
-
     useEffect(() => {
+        document.title = 'Gumi Shopify';
         function load(img) {
             const url = img.getAttribute('lazysrc');
             img.setAttribute('src', url);
@@ -44,6 +31,17 @@ const Product = ({ ...props }) => {
 
         return () => observer.disconnect();
     }, []);
+    const [isAdded, setIsAdded] = useState(false);
+    function handleAddToCart(product) {
+        if (!isAdded) {
+            dispatch(addToCart(product));
+            setIsAdded(true);
+        }
+    }
+
+    function handleRemove(product) {
+        dispatch(removeInCart(product));
+    }
 
     return (
         <div className='Product'>
@@ -52,12 +50,6 @@ const Product = ({ ...props }) => {
                     src={null}
                     alt=''
                     lazysrc={props.url}
-                    style={{
-                        animation: !isload && 'var(--imgLoading)',
-                    }}
-                    onLoad={() => {
-                        setIsLoad(true);
-                    }}
                 />
                 <div
                     className='AddToCart_Bg'

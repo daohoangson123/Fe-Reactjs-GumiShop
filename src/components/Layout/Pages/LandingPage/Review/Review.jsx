@@ -9,11 +9,8 @@ import reviewBgTop from '../../../../../assets/img/ReviewTop.webp';
 import reviewBgBot from '../../../../../assets/img/ReviewBot.webp';
 //
 import { reviewData } from '../../../../../data/review';
-import { useState } from 'react';
 
 const Review = () => {
-    const [isload, setIsLoad] = useState(false);
-
     return (
         <section className='Review Container'>
             <img
@@ -73,12 +70,6 @@ const Review = () => {
                     src={null}
                     alt=''
                     lazysrc={review_img}
-                    style={{
-                        animation: !isload && 'var(--imgLoading)',
-                    }}
-                    onLoad={() => {
-                        setIsLoad(true);
-                    }}
                 />
             </div>
             <img
