@@ -1,16 +1,14 @@
 .Product {
     min-height: 325px;
     transition: all 0.3s ease-in-out;
-    animation: productIn 0.2s ease-in-out;
+    animation: productIn 0.3s ease-in-out;
 }
 
 @keyframes productIn {
     from {
-        transform: scale(0);
         opacity: 0;
     }
     to {
-        transform: scale(1);
         opacity: 1;
     }
 }

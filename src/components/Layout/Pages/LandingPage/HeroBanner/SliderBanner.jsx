@@ -15,7 +15,7 @@ const SliderBanner = () => {
             <OwlCarousel
                 className='owl-theme'
                 responsiveRefreshRate={0}
-                autoplay
+                // autoplay
                 autoplayHoverPause
                 autoplaySpeed={3000}
                 autoplayTimeout={4000}
@@ -26,7 +26,6 @@ const SliderBanner = () => {
             >
                 <div className='SliderContainer'>
                     <div className='BannerContainer BannerContainer_1'>
-                        <div className='emptyContent'></div>
                         <div className='SliderBanner_1'>
                             <SliderItem
                                 title={banner_1.title}
@@ -47,7 +46,6 @@ const SliderBanner = () => {
                                 btn='SHOP NOW'
                             />
                         </div>
-                        <div className='emptyContent'></div>
                     </div>
                 </div>
             </OwlCarousel>

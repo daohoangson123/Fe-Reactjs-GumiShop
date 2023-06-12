@@ -1,10 +1,19 @@
+.ProductDetail__Breadcrumbs {
+    width: clamp(280px, 50vw, 100%);
+}
+
+.grid-container {
+    display: grid;
+}
+
 .ProductDetailLayout__Box {
     display: grid;
     gap: 10px;
     background-color: var(--color-default);
 }
 
-.ProductDetailLayout__Box img {
+.ProductDetailLayout__Box img,
+.ProductDetail__Img {
     justify-self: center;
     align-self: center;
     width: 220px;
@@ -87,13 +96,4 @@
 }
 
 @media (width > 768px) {
-    .ProductDetailBox__AddToCart button:first-child::after {
-        top: 5px;
-        left: 3px;
-    }
-
-    .ProductDetailBox__AddToCart button:nth-child(5)::after {
-        top: 5px;
-        left: 3px;
-    }
 }

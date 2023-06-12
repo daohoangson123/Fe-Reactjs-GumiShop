@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 //
 import { fetchProductApi } from '../../../../../data/axiosAPI/productData';
 //
-import Loading from '../../../UI/Loading/Loading';
-import Product from '../../../UI/Product/Product';
 import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
+import Product from '../../../UI/Product/Product';
+import ProductSkeleton from '../../../UI/Skeleton/ProductSkeleton';
 //
 
 const OurProduct = ({ title }) => {
@@ -40,7 +40,7 @@ const OurProduct = ({ title }) => {
             <SectionTitle content={title} />
             <div className='ProductContainer'>
                 {load.length === 0 ? (
-                    <Loading />
+                    <ProductSkeleton />
                 ) : (
                     load.map((product) => (
                         <div

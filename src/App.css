@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@600&display=swap');
 @import 'bootstrap/dist/css/bootstrap.css';
+@import 'react-loading-skeleton/dist/skeleton.css';
 
 :root {
     --color-primary: #f6623e;
@@ -15,20 +16,15 @@
     --imgLoading: imgLoading 1s linear infinite alternate;
 }
 
-@keyframes imgLoading {
-    0% {
-        background-color: #c0c0c0;
-    }
-    100% {
-        background-color: #dcdcdc;
-    }
-}
-
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     text-decoration: none;
+}
+
+html {
+    scrollbar-gutter: stable;
 }
 
 html::-webkit-scrollbar {
@@ -51,6 +47,12 @@ main {
 
 h1 {
     margin-bottom: 0;
+}
+
+ul,
+ol,
+li {
+    list-style-type: none;
 }
 
 .ProductContainer {

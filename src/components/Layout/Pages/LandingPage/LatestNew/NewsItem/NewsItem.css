@@ -1,10 +1,10 @@
-.NewsItem_Container {
+.NewsItem {
     width: clamp(280px, 50vw, 400px);
 }
 
-.NewsItem_Container img {
+.NewsItem img {
     width: 100%;
-    min-height: 280px;
+    min-height: 200px;
 }
 .News_Date {
     font-size: 12px;
@@ -41,8 +41,15 @@
 
 .News_Btn:hover {
     box-shadow: 0px 4px 4px 1px var(--color-alt);
+    color: var(--color-default);
 }
 
 .News_Btn:visited {
     color: var(--color-default);
+}
+
+@media (width > 768px) {
+    .NewsItem img {
+        min-height: 300px;
+    }
 }

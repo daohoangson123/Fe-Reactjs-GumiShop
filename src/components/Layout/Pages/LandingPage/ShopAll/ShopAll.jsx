@@ -1,12 +1,12 @@
 import './ShopAll.css';
 //
-import Loading from '../../../UI/Loading/Loading';
-import Product from '../../../UI/Product/Product';
-import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
+import { useEffect, useState } from 'react';
 //
 import { fetchProductApi } from '../../../../../data/axiosAPI/productData';
 //
-import { useEffect, useState } from 'react';
+import Product from '../../../UI/Product/Product';
+import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
+import ProductSkeleton from '../../../UI/Skeleton/ProductSkeleton';
 //
 
 const ShopAll = ({ title }) => {
@@ -32,7 +32,9 @@ const ShopAll = ({ title }) => {
         <section className='ShopAll Container'>
             <SectionTitle content={title} />
             {productLength === 0 ? (
-                <Loading />
+                <div className='ProductContainer'>
+                    <ProductSkeleton />
+                </div>
             ) : (
                 <>
                     <div className='ProductContainer'>

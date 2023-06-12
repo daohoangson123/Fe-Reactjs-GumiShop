@@ -1,12 +1,12 @@
 import { useParams } from 'react-router-dom';
-import { Suspense, lazy, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 //
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../redux/Actions/Action';
 //
 import { fetchProductApi } from '../../../data/axiosAPI/productData';
 //
-const ProductDetailLayout = lazy(() => import('./ProductDetailLayout'));
+import ProductDetailLayout from './ProductDetailLayout';
 //
 
 const ProductDetail = () => {
@@ -32,24 +32,16 @@ const ProductDetail = () => {
 
     useEffect(() => {
         getProducts();
-
-        if (productDetail.name !== undefined) {
-            document.title = `Gumi Shopify - ${productDetail.name}`;
-        } else {
-            document.title = 'Gumi Shopify';
-        }
-    }, [productDetail.name]);
+    }, [id]);
 
     return (
         <section>
-            <Suspense>
-                <ProductDetailLayout
-                    productDetail={productDetail}
-                    quantity={quantity}
-                    setQuantity={setQuantity}
-                    handleAddToCart={handleAddToCart}
-                />
-            </Suspense>
+            <ProductDetailLayout
+                productDetail={productDetail}
+                quantity={quantity}
+                setQuantity={setQuantity}
+                handleAddToCart={handleAddToCart}
+            />
         </section>
     );
 };

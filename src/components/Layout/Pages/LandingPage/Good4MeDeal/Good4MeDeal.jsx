@@ -1,13 +1,14 @@
 import './Good4MeDeal.css';
 //
-import Product from '../../../UI/Product/Product';
-import Good4MeDealBot from './GoodDealBot/Good4MeDealBot';
-import Loading from '../../../UI/Loading/Loading';
+import { useEffect, useState } from 'react';
 //
 import { fetchProductApi } from '../../../../../data/axiosAPI/productData';
 //
-import { useEffect, useState } from 'react';
+import Product from '../../../UI/Product/Product';
+import Good4MeDealBot from './GoodDealBot/Good4MeDealBot';
+//
 import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
+import ProductSkeleton from '../../../UI/Skeleton/ProductSkeleton';
 
 const Good4MeDeal = ({ tittle, content }) => {
     const [productApi, setProductApi] = useState([]);
@@ -30,11 +31,11 @@ const Good4MeDeal = ({ tittle, content }) => {
             <SectionTitle content={tittle} />
             <hr />
             <p>{content}</p>
-            {productApi.length === 0 ? (
-                <Loading />
-            ) : (
-                <div className='ProductContainer'>
-                    {productApi.map((product) => (
+            <div className='ProductContainer'>
+                {productApi.length === 0 ? (
+                    <ProductSkeleton />
+                ) : (
+                    productApi.map((product) => (
                         <div
                             className='ProductItem'
                             key={product._id}
@@ -48,9 +49,9 @@ const Good4MeDeal = ({ tittle, content }) => {
                                 saleprices={product.price / 2}
                             />
                         </div>
-                    ))}
-                </div>
-            )}
+                    ))
+                )}
+            </div>
             <Good4MeDealBot />
         </section>
     );

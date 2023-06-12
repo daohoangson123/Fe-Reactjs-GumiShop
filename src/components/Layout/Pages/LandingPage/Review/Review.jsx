@@ -5,19 +5,12 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 //
 import review_img from '../../../../../assets/img/review.webp';
-import reviewBgTop from '../../../../../assets/img/ReviewTop.webp';
-import reviewBgBot from '../../../../../assets/img/ReviewBot.webp';
 //
 import { reviewData } from '../../../../../data/review';
 
 const Review = () => {
     return (
         <section className='Review Container'>
-            <img
-                className='Review__BgTop'
-                src={reviewBgTop}
-                alt=''
-            />
             <div className='Review__Slider'>
                 <OwlCarousel
                     className='owl-theme'
@@ -65,18 +58,7 @@ const Review = () => {
                     ))}
                 </OwlCarousel>
             </div>
-            <div className='Review__Img'>
-                <img
-                    src={null}
-                    alt=''
-                    lazysrc={review_img}
-                />
-            </div>
-            <img
-                className='Review__BgBot'
-                src={reviewBgBot}
-                alt=''
-            />
+            <div className='Review__Img'></div>
         </section>
     );
 };

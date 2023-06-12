@@ -9,6 +9,7 @@ import { debounce } from 'lodash';
 //
 import Product from '../../Layout/UI/Product/Product';
 import Loading from '../../Layout/UI/Loading/Loading';
+import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
 
 const Shop = () => {
     const [productApi, setProductApi] = useState([]);
@@ -57,34 +58,45 @@ const Shop = () => {
     }, [debounceChange]);
 
     return (
-        <>
+        <section className='Shop Container'>
+            <form
+                className='SearchForm'
+                action=''
+                autoComplete='off'
+                onSubmit={handleSubmit}
+            >
+                <input
+                    className='SearchInput '
+                    disabled={productApi.length !== 0 ? false : true}
+                    type='text'
+                    name='searchkw'
+                    id='searchkw'
+                    placeholder={
+                        productApi.length !== 0
+                            ? `Enter product's name`
+                            : 'Please wait a sec...'
+                    }
+                    required
+                    onChange={debounceChange}
+                />
+            </form>
             {productApi.length !== 0 ? (
-                <section className='Shop Container'>
-                    <form
-                        className='SearchForm'
-                        action=''
-                        autoComplete='off'
-                        onSubmit={handleSubmit}
-                    >
-                        <input
-                            type='text'
-                            name='searchkw'
-                            id='searchkw'
-                            placeholder="Search by Product's name"
-                            required
-                            className='SearchInput '
-                            onChange={debounceChange}
-                        />
-                        {searchValue !== '' && (
+                <>
+                    {searchValue !== '' && (
+                        <>
                             <div>
                                 {filtered.length} product
                                 {filtered.length > 1 && 's'} found
                             </div>
-                        )}
-                        {filtered.length !== 0 && searchValue === '' ? (
+                            <br />
+                        </>
+                    )}
+                    {filtered.length !== 0 && searchValue === '' ? (
+                        <>
                             <div>{filtered.length} products available</div>
-                        ) : null}
-                    </form>
+                            <br />
+                        </>
+                    ) : null}
                     <div className='ProductContainer ShopProductContainer'>
                         {filtered.map((product) => (
                             <div
@@ -113,11 +125,17 @@ const Shop = () => {
                             alt='NoItemFound'
                         />
                     )}
-                </section>
+                </>
             ) : (
-                <Loading loadingContent={"Loading products's data"} />
+                <>
+                    <Loading />
+                    <div className='ProductContainer ShopProductContainer'>
+                        <ProductSkeleton />
+                        <ProductSkeleton />
+                    </div>
+                </>
             )}
-        </>
+        </section>
     );
 };
 

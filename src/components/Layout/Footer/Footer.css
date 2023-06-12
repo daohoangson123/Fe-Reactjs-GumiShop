@@ -1,18 +1,17 @@
 footer {
-    background-image: url(../../../assets/img/Footer.webp);
-    margin-top: 60px;
+    background-image: url(../../../assets/img/Footer.webp),
+        url(../../../assets/img/FooterTop.webp);
+    background-repeat: no-repeat;
+    background-blend-mode: screen;
+    background-size: cover, contain;
     position: relative;
+    margin-top: 30px;
 }
 
 footer > hr {
     opacity: 0.2;
     border: 1px solid var(--color-text);
     margin: 30px 0;
-}
-
-.FooterTopBG {
-    position: absolute;
-    width: 100%;
 }
 
 .Footer__Container {

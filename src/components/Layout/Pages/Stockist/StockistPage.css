@@ -3,16 +3,19 @@
 }
 
 .StockistPage .table {
-    animation: table-in 0.5s ease-in-out;
+    animation: table-in 0.3s ease-in-out;
+}
+
+.Table-Skeleton {
+    width: clamp(280px, 100%, 1920px);
+    height: 400px;
 }
 
 @keyframes table-in {
     0% {
-        transform: translateX(-50%);
         opacity: 0;
     }
     100% {
-        transform: translateX(0);
         opacity: 1;
     }
 }
