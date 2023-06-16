@@ -1,7 +1,3 @@
-.StockistPage {
-    padding: 20px 30px 0;
-}
-
 .StockistPage .table {
     animation: table-in 0.3s ease-in-out;
 }
@@ -22,14 +18,13 @@
 
 @media only screen and (max-width: 425px) {
     .StockistPage {
-        width: 280px;
+        width: clamp(280px, 100%, 1920px);
         overflow-y: hidden;
         overflow-x: auto;
-        padding: 0;
     }
 
     .table {
-        width: 700px;
+        width: max-content;
         margin-bottom: 0;
         max-width: none;
     }

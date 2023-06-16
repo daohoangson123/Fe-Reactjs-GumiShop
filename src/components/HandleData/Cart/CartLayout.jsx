@@ -62,11 +62,14 @@ const CartForm = ({
                                             -
                                         </button>
                                         <input
-                                            type='text'
+                                            type='number'
                                             name={`quantity${index}`}
                                             id={`quantity${index}`}
                                             value={item.amount}
                                             autoComplete='off'
+                                            onWheel={(event) =>
+                                                event.target.blur()
+                                            }
                                             onChange={(event) => {
                                                 let newAmount = Math.round(
                                                     event.target.value,

@@ -74,11 +74,12 @@ const ProductDetailLayout = ({
                             </button>
                             <input
                                 className='Quantity_Input'
-                                type='text'
+                                type='number'
                                 name='quantity'
                                 id='quantity'
                                 value={quantity}
                                 autoComplete='off'
+                                onWheel={(event) => event.target.blur()}
                                 onChange={(event) => {
                                     let newAmount = Math.round(
                                         event.target.value,

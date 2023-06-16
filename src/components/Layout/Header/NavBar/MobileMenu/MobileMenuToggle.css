@@ -90,10 +90,6 @@
     background-color: var(--color-primary);
 }
 
-.MobileMenu__Item.active:last-child {
-    border-bottom-right-radius: 18px;
-}
-
 .MobileMenu__Item:not(.active):hover {
     color: var(--color-default);
     background-color: var(--color-primary-rgba);
