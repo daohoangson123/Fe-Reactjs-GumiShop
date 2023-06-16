@@ -1,0 +1,106 @@
+.MobileMenu {
+    display: none;
+    place-items: center;
+    width: 40px;
+    height: 40px;
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    background: none;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+}
+
+.MobileMenu:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.MobileMenu:hover .MenuIcon {
+    background-color: var(--color-default);
+}
+
+.MobileMenu:hover .MenuIcon3 {
+    width: 30px;
+}
+
+.MenuIcon {
+    height: 2px;
+    background-color: var(--color-text);
+    transition: all ease-in-out 0.2s;
+    transform-origin: left;
+}
+
+.MenuIcon1,
+.MenuIcon2 {
+    width: 30px;
+}
+
+.MenuIcon3 {
+    width: 20px;
+    justify-self: end;
+}
+
+.MobileMenu__Nav {
+    text-align: center;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 40px);
+    width: 200px;
+    border: 2px solid var(--color-primary);
+    border-top: none;
+    border-left: none;
+    background-color: var(--color-default);
+    transition: all 0.4s ease-in-out;
+    transform: translateX(-120%);
+}
+
+.MobileMenu__Nav.active {
+    text-align: center;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 40px);
+    width: 200px;
+    border: 2px solid var(--color-primary);
+    border-top: none;
+    border-left: none;
+    background-color: var(--color-default);
+    transition: all 0.4s ease-in-out;
+    transform: translateX(0);
+}
+
+.MobileMenu__Nav a {
+    color: var(--color-text);
+    text-decoration: none;
+}
+
+.MobileMenu__Item {
+    position: relative;
+    font-weight: 600;
+    color: var(--color-text);
+    padding: 10px;
+    transition: all ease-in-out 0.3s;
+}
+
+.MobileMenu__Item.active {
+    color: var(--color-default);
+    background-color: var(--color-primary);
+}
+
+.MobileMenu__Item.active:last-child {
+    border-bottom-right-radius: 18px;
+}
+
+.MobileMenu__Item:not(.active):hover {
+    color: var(--color-default);
+    background-color: var(--color-primary-rgba);
+}
+
+@media only screen and (max-width: 1024px) {
+    .MobileMenu {
+        display: grid;
+    }
+}

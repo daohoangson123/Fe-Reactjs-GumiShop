@@ -1,0 +1,17 @@
+.NavBar__Logo {
+    display: flex;
+    align-items: center;
+    font-size: clamp(26px, 4vw, 36px);
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--color-alt);
+    transition: all 0.2s ease-in-out;
+}
+
+.NavBar__Logo span {
+    font-size: clamp(16px, 2vw, 20px);
+}
+
+.NavBar__Logo:hover {
+    color: var(--color-primary);
+}

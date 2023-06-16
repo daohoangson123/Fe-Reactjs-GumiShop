@@ -1,3 +1,7 @@
+.ProductDetailLayout {
+    margin-top: 20px;
+}
+
 .ProductDetail__Breadcrumbs {
     width: clamp(280px, 50vw, 100%);
 }

@@ -1,0 +1,28 @@
+.NavBar__List {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    font-family: var(--font-default);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.NavBar__List .active {
+    color: var(--color-primary) !important;
+}
+
+.NavBar__List a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+}
+
+.NavBar__List .inactive {
+    color: var(--color-text);
+}
+
+@media only screen and (max-width: 1024px) {
+    .NavBar__List {
+        display: none;
+    }
+}

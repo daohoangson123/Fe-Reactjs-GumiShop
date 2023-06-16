@@ -4,10 +4,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { myCartSelector } from '../../../redux/Selectors/Selector';
 import { removeInCart } from '../../../redux/Actions/Action';
 //
-import { Suspense, lazy, useState } from 'react';
+import { useState } from 'react';
 //
 
-const CartLayout = lazy(() => import('./CartLayout'));
+import CartLayout from './CartLayout';
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -46,21 +46,19 @@ const Cart = () => {
 
     return (
         <section className='CartPage'>
-            <Suspense>
-                <CartLayout
-                    myCart={myCart}
-                    totalItem={totalItem}
-                    totalPrice={totalPrice}
-                    saving={saving}
-                    quantity={quantity}
-                    setQuantity={setQuantity}
-                    handleInc={handleInc}
-                    handleDec={handleDec}
-                    handleRemove={handleRemove}
-                    handleSubmit={handleSubmit}
-                    emptyCart={emptyCart}
-                />
-            </Suspense>
+            <CartLayout
+                myCart={myCart}
+                totalItem={totalItem}
+                totalPrice={totalPrice}
+                saving={saving}
+                quantity={quantity}
+                setQuantity={setQuantity}
+                handleInc={handleInc}
+                handleDec={handleDec}
+                handleRemove={handleRemove}
+                handleSubmit={handleSubmit}
+                emptyCart={emptyCart}
+            />
         </section>
     );
 };

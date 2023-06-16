@@ -13,17 +13,19 @@ const ProductDetailLayout = ({
     return (
         <div className='ProductDetailLayout'>
             {productDetail.length === 0 ? (
-                <div className='ProductDetailLayout__Box Container'>
+                <>
                     <Skeleton className='ProductDetail__Breadcrumbs' />
-                    <Skeleton
-                        containerClassName='grid-container'
-                        className='ProductDetail__Img'
-                    />
-                    <Skeleton
-                        width={280}
-                        count={6}
-                    />
-                </div>
+                    <div className='ProductDetailLayout__Box Container'>
+                        <Skeleton
+                            containerClassName='grid-container'
+                            className='ProductDetail__Img'
+                        />
+                        <Skeleton
+                            width={280}
+                            count={6}
+                        />
+                    </div>
+                </>
             ) : (
                 <>
                     <Breadcrumbs />

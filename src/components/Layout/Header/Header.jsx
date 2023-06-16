@@ -45,7 +45,7 @@ const Header = () => {
     //Nav SideEff khi scroll
     useEffect(() => {
         function checkNavDown() {
-            if (window.pageYOffset > 50) {
+            if (window.pageYOffset > 55) {
                 setIsDown(true);
                 window.removeEventListener('scroll', checkNavDown);
             }
@@ -62,7 +62,7 @@ const Header = () => {
         window.addEventListener('scroll', checkNavUp);
     }, [isDown]);
 
-    const mq = window.matchMedia('(min-width: 1025px)');
+    const mq = window.matchMedia('(max-width: 1025px)');
 
     const [isMobileView, setIsMobileView] = useState(false);
 
@@ -86,7 +86,7 @@ const Header = () => {
         <header
             style={{
                 animation: pageAccessedByReload && 'none',
-                top: isDown && isMobileView && '-55px',
+                top: isDown && !isMobileView && '-55px',
             }}
         >
             <SignBar />

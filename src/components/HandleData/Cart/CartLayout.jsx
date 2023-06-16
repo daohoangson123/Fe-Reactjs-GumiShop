@@ -6,7 +6,6 @@ const CartForm = ({
     totalItem,
     totalPrice,
     saving,
-    quantity,
     setQuantity,
     handleInc,
     handleDec,
@@ -19,7 +18,7 @@ const CartForm = ({
             className='Cart-Item_Form Container'
             onSubmit={handleSubmit}
         >
-            {totalItem > 0 ? (
+            {totalItem > 0 && totalItem ? (
                 <div className='Cart__Layout'>
                     <div className='Cart-Item-List'>
                         {myCart.map((item, index) => {
