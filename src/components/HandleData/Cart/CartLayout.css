@@ -85,6 +85,11 @@
     border-radius: 5px;
 }
 
+.Cart-Item_Quantity input::-webkit-outer-spin-button,
+.Cart-Item_Quantity input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 .Cart-Item_Quantity button {
     width: 25px;
     height: 25px;

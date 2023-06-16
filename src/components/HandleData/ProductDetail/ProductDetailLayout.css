@@ -94,6 +94,11 @@
     width: 50px;
 }
 
+.Quantity_Input::-webkit-outer-spin-button,
+.Quantity_Input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
 .AddToCart_Btn {
     width: 50px;
     font-weight: 700;

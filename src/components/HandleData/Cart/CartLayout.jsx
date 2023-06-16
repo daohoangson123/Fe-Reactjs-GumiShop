@@ -66,6 +66,8 @@ const CartForm = ({
                                             name={`quantity${index}`}
                                             id={`quantity${index}`}
                                             value={item.amount}
+                                            min={1}
+                                            max={1000}
                                             autoComplete='off'
                                             onWheel={(event) =>
                                                 event.target.blur()
@@ -126,7 +128,6 @@ const CartForm = ({
                             );
                         })}
                     </div>
-
                     <div className='Purchase-Check'>
                         <div>Check-Out Form</div>
                         <div>

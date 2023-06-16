@@ -7,20 +7,29 @@
     height: 600px;
 }
 
-.BannerContainer_1 {
-    background-image: url(../../../../../assets/img/HeroBanner.webp);
-    background-size: cover;
+.BannerContainer img {
+    height: 450px;
+}
+
+.BannerContainer_1 img {
+    object-position: 20% center;
+    object-fit: cover;
+    grid-area: 1 / 1 / 1 / 3;
+}
+
+.BannerContainer_2 img {
+    object-position: 90% center;
+    object-fit: contain;
+    grid-area: 1 / 2;
 }
 
 .SliderBanner_1 {
     grid-area: 1 / 2;
+    z-index: 10;
 }
 
-.BannerContainer_2 {
-    background-image: url(../../../../../assets/img/HeroBanner1.webp);
-    background-size: contain;
-    background-position-x: 80%;
-    background-repeat: no-repeat;
+.SliderBanner_2 {
+    z-index: 10;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -34,21 +43,33 @@
         grid-template-columns: 1fr;
     }
 
-    .BannerContainer_1 {
-        background-position-x: 17%;
+    .BannerContainer_1 img {
+        object-position: 20% center;
+        grid-area: 1 / 1;
     }
 
-    .BannerContainer_2 {
-        background-position-x: center;
+    .BannerContainer_2 img {
+        object-position: initial;
+        grid-area: 1 / 1;
     }
 
     .SliderBanner_1 {
-        grid-area: 1;
+        grid-area: 1 / 1;
+    }
+
+    .SliderBanner_2 {
+        grid-area: 1 / 1;
     }
 
     .SliderBanner_1,
     .SliderBanner_2 {
         min-height: 300px;
         background-color: rgba(0, 0, 0, 0.6);
+    }
+}
+
+@media only screen and (max-width: 375px) {
+    .BannerContainer_2 img {
+        object-fit: cover;
     }
 }

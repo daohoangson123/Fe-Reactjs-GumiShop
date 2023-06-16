@@ -52,7 +52,7 @@ const ProductDetailLayout = ({
                                 </span>
                             )}
                         </div>
-                        <div className='ProductDetailBox__AddToCart'>
+                        <form className='ProductDetailBox__AddToCart'>
                             <button
                                 className='Quantity_Btn'
                                 type='button'
@@ -77,6 +77,8 @@ const ProductDetailLayout = ({
                                 type='number'
                                 name='quantity'
                                 id='quantity'
+                                min={1}
+                                max={1000}
                                 value={quantity}
                                 autoComplete='off'
                                 onWheel={(event) => event.target.blur()}
@@ -86,6 +88,8 @@ const ProductDetailLayout = ({
                                     );
                                     if (newAmount < 1) {
                                         newAmount = 1;
+                                    } else if (newAmount > 1000) {
+                                        newAmount = 1000;
                                     } else if (!isNaN(newAmount)) {
                                         newAmount = Math.round(
                                             event.target.value,
@@ -105,7 +109,9 @@ const ProductDetailLayout = ({
                                 className='Quantity_Btn'
                                 type='button'
                                 onClick={() => {
-                                    setQuantity((pre) => pre + 1);
+                                    if (quantity < 1000) {
+                                        setQuantity((pre) => pre + 1);
+                                    }
                                 }}
                             >
                                 +
@@ -114,7 +120,11 @@ const ProductDetailLayout = ({
                                 className='Quantity_Btn'
                                 type='button'
                                 onClick={() => {
-                                    setQuantity((pre) => pre + 10);
+                                    if (quantity < 991) {
+                                        setQuantity((pre) => pre + 10);
+                                    } else {
+                                        setQuantity(1000);
+                                    }
                                 }}
                             ></button>
                             <button
@@ -133,7 +143,7 @@ const ProductDetailLayout = ({
                             >
                                 Add
                             </button>
-                        </div>
+                        </form>
                     </div>
                 </>
             )}
