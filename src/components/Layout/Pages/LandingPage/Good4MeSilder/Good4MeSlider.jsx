@@ -17,7 +17,7 @@ const Good4MeSilder = ({ title }) => {
                 autoWidth={true}
                 dots={false}
                 margin={20}
-                items={4}
+                items={8}
                 autoplay
                 autoplayHoverPause
                 autoplaySpeed={3000}

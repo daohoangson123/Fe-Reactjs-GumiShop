@@ -21,7 +21,7 @@
     color: var(--color-text);
 }
 
-@media only screen and (max-width: 1024px) {
+@media (width < 1024px) {
     .NavBar__List {
         display: none;
     }

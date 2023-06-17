@@ -19,7 +19,7 @@ const SearchModal = ({
     return (
         <div
             className='Nav-Search'
-            style={{ transform: isSearching && 'rotateX(0)' }}
+            style={{ scale: isSearching && '1' }}
         >
             <form className='Nav-Search-Form'>
                 <div className='Nav-Search-Container'>

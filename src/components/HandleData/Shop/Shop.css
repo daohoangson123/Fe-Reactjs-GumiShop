@@ -16,7 +16,7 @@
     border: 2px solid var(--color-text);
     border-radius: 5px;
     outline: none;
-    transition: all 0.2s ease-in-out;
+    transition: var(--transiton-fast);
 }
 
 .SearchInput:focus {

@@ -29,7 +29,7 @@ const CartForm = ({
                             return (
                                 <div
                                     className='Cart-Item'
-                                    key={index}
+                                    key={item.id}
                                 >
                                     <img
                                         src={item.img}

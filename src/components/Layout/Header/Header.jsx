@@ -45,24 +45,18 @@ const Header = () => {
     //Nav SideEff khi scroll
     useEffect(() => {
         function checkNavDown() {
-            if (window.pageYOffset > 55) {
+            if (window.pageYOffset > 0) {
                 setIsDown(true);
                 window.removeEventListener('scroll', checkNavDown);
-            }
-        }
-
-        function checkNavUp() {
-            if (window.pageYOffset === 0) {
+            } else {
                 setIsDown(false);
-                window.removeEventListener('scroll', checkNavUp);
             }
         }
 
         window.addEventListener('scroll', checkNavDown);
-        window.addEventListener('scroll', checkNavUp);
     }, [isDown]);
 
-    const mq = window.matchMedia('(max-width: 1025px)');
+    const mq = window.matchMedia('(width <= 1024px)');
 
     const [isMobileView, setIsMobileView] = useState(false);
 
@@ -87,6 +81,7 @@ const Header = () => {
             style={{
                 animation: pageAccessedByReload && 'none',
                 top: isDown && !isMobileView && '-55px',
+                transition: isDown && 'none',
             }}
         >
             <SignBar />

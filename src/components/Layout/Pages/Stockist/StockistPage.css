@@ -1,5 +1,5 @@
 .StockistPage .table {
-    animation: table-in 0.3s ease-in-out;
+    animation: tableIn 0.3s ease-in-out;
 }
 
 .Table-Skeleton {
@@ -7,7 +7,7 @@
     height: 380px;
 }
 
-@keyframes table-in {
+@keyframes tableIn {
     0% {
         opacity: 0;
     }
@@ -16,7 +16,7 @@
     }
 }
 
-@media only screen and (max-width: 425px) {
+@media (width < 425px) {
     .StockistPage {
         width: clamp(280px, 100%, 1920px);
         overflow-y: hidden;
@@ -36,9 +36,9 @@
         height: 10px;
     }
     .StockistPage-webkit-scrollbar-track {
-        background-color: rgba(0, 0, 0, 0.2);
+        background-color: var(--color-alt-rgba-3);
     }
     .StockistPage-webkit-scrollbar-thumb {
-        background-color: gray;
+        background-color: var(--color-icon);
     }
 }

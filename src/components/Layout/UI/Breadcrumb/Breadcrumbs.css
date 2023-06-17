@@ -13,7 +13,7 @@
     line-height: 32px;
     text-decoration: none;
     color: var(--color-alt);
-    transition: all 0.1s ease-in-out;
+    transition: var(--transition-fast);
 }
 
 .CrumbItem img {

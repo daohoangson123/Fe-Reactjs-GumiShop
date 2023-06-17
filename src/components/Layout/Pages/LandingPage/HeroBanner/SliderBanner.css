@@ -8,7 +8,7 @@
 }
 
 .BannerContainer img {
-    height: 450px;
+    height: 600px;
 }
 
 .BannerContainer_1 img {
@@ -32,13 +32,17 @@
     z-index: 10;
 }
 
-@media only screen and (max-width: 1440px) {
+@media (width < 1440px) {
     .BannerContainer {
+        height: 450px;
+    }
+
+    .BannerContainer img {
         height: 450px;
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media (width < 768px) {
     .BannerContainer {
         grid-template-columns: 1fr;
     }
@@ -68,7 +72,7 @@
     }
 }
 
-@media only screen and (max-width: 375px) {
+@media (width < 375px) {
     .BannerContainer_2 img {
         object-fit: cover;
     }

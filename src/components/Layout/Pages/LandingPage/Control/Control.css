@@ -37,7 +37,7 @@
     padding: 18px 45px 13px 45px;
     background-color: transparent;
     border: 2px solid var(--color-primary);
-    transition: all ease-in-out 0.2s;
+    transition: var(--transiton-fast);
     cursor: pointer;
 }
 

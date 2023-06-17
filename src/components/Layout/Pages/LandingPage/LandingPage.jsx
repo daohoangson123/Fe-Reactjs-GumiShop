@@ -1,3 +1,7 @@
+import './LandingPage.css';
+//
+import { useEffect } from 'react';
+//
 import SliderBanner from './HeroBanner/SliderBanner';
 import Good4MeDeal from './Good4MeDeal/Good4MeDeal';
 import Control from './Control/Control';
@@ -9,6 +13,51 @@ import Good4MeSlider from './Good4MeSilder/Good4MeSlider';
 //
 
 const LandingPage = () => {
+    useEffect(() => {
+        function load(img) {
+            const url = img.getAttribute('lazysrc');
+            img.setAttribute('src', url);
+        }
+
+        const lazyImgs = document.querySelectorAll('[lazysrc]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    load(entry.target);
+                }
+            });
+        });
+
+        lazyImgs.forEach((img) => {
+            observer.observe(img);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
+    useEffect(() => {
+        function show(sect) {
+            sect.classList.add('show');
+            sect.classList.remove('hide');
+        }
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    show(entry.target);
+                }
+            });
+        });
+
+        const sectList = document.querySelectorAll('section');
+
+        sectList.forEach((sect) => {
+            observer.observe(sect);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <>
             <SliderBanner />

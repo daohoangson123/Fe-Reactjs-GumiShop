@@ -7,7 +7,10 @@ const rootReducer = (state = initState, action) => {
     switch (action.type) {
         case 'Add_To_Cart':
             for (let i = 0; i < state.myCart.length; i++) {
-                if (state.myCart[i].id === action.payload.id) {
+                if (
+                    state.myCart[i].id === action.payload.id &&
+                    state.myCart[i].amount === action.payload.amount
+                ) {
                     return {
                         ...state,
                     };
@@ -15,7 +18,12 @@ const rootReducer = (state = initState, action) => {
             }
             return {
                 ...state,
-                myCart: [...state.myCart, action.payload],
+                myCart: [
+                    ...state.myCart.filter(
+                        (item) => item.id !== action.payload.id,
+                    ),
+                    action.payload,
+                ],
             };
         case 'Remove_In_Cart':
             return {

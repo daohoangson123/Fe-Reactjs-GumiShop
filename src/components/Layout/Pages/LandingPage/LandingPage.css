@@ -1,0 +1,20 @@
+.hide {
+    transform: translateY(10%);
+    opacity: 0;
+}
+
+.show {
+    transition: var(--transition-fast);
+    animation: sectIn 1s ease-in-out forwards;
+}
+
+@keyframes sectIn {
+    0% {
+        transform: translateY(50%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

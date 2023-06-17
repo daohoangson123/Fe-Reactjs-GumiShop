@@ -13,7 +13,17 @@
     --color-text: #454545;
     --color-icon: #9d9d9d;
     --font-default: 'Jost', sans-serif;
-    --imgLoading: imgLoading 1s linear infinite alternate;
+    --transiton-fast: all 0.2s ease-in-out;
+    --imgLoading: imgLoading 0.7s linear infinite alternate;
+}
+
+@keyframes imgLoading {
+    from {
+        background-color: var(--color-icon);
+    }
+    to {
+        background-color: var(--color-text);
+    }
 }
 
 * {

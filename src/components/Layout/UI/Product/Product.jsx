@@ -9,14 +9,27 @@ import { removeInCart } from '../../../../redux/Actions/Action';
 
 const Product = ({ ...props }) => {
     const dispatch = useDispatch();
+
+    const [isAdded, setIsAdded] = useState(false);
+
+    function handleAddToCart(product) {
+        if (!isAdded) {
+            dispatch(addToCart(product));
+            setIsAdded(true);
+        }
+    }
+
+    function handleRemove(product) {
+        dispatch(removeInCart(product));
+    }
+
     useEffect(() => {
-        document.title = 'Gumi Shopify';
         function load(img) {
             const url = img.getAttribute('lazysrc');
             img.setAttribute('src', url);
         }
 
-        var lazyImgs = document.querySelectorAll('[lazysrc]');
+        const lazyImgs = document.querySelectorAll('[lazysrc]');
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -31,17 +44,6 @@ const Product = ({ ...props }) => {
 
         return () => observer.disconnect();
     }, []);
-    const [isAdded, setIsAdded] = useState(false);
-    function handleAddToCart(product) {
-        if (!isAdded) {
-            dispatch(addToCart(product));
-            setIsAdded(true);
-        }
-    }
-
-    function handleRemove(product) {
-        dispatch(removeInCart(product));
-    }
 
     return (
         <div className='Product'>

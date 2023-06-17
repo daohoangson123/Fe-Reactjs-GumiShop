@@ -43,7 +43,7 @@
     line-height: 20px;
 }
 
-@media only screen and (max-width: 1024px) {
+@media (width < 1024px) {
     .Good4MeDealBot {
         flex-wrap: wrap;
         gap: 100px;

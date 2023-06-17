@@ -3,6 +3,7 @@ header {
     top: 0;
     z-index: 100;
     animation: header-appear 0.7s ease-in-out forwards;
+    transition: var(--transiton-fast);
 }
 
 @keyframes header-appear {

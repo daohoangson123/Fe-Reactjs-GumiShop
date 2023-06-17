@@ -8,9 +8,9 @@
     width: 40px;
     height: 40px;
     border-radius: 100%;
-    color: var(--color-default);
-    background-color: var(--color-primary);
-    transition: all ease-in-out 0.2s;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+    transition: all 0.2s ease-in-out;
     transform: scale(0);
     z-index: 20;
     cursor: pointer;

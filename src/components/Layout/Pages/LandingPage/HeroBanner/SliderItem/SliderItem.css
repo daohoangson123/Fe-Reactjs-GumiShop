@@ -28,12 +28,11 @@
     position: relative;
     display: inline-block;
     font-weight: 500;
-    background-color: var(--color-primary-rgba);
-    box-shadow: -2px 2px 5px 2px var(--color-text);
+    background-color: var(--color-primary);
     padding: 13px 25px;
     border: none;
     cursor: pointer;
-    transition: all linear 0.2s;
+    transition: var(--transiton-fast);
 }
 
 .Product__Btn a {
@@ -47,10 +46,9 @@
     border-start-end-radius: 75%;
     border-end-start-radius: 75%;
     box-shadow: 2px 2px 5px 2px var(--color-text);
-    background-color: var(--color-primary);
 }
 
-@media only screen and (max-width: 768px) {
+@media (width < 768px) {
     .ProductBanner__Name,
     .ProductBanner__Des {
         color: var(--color-default);

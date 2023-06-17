@@ -1,7 +1,6 @@
 import './StockistPage.css';
 //
 import Table from 'react-bootstrap/Table';
-import Loading from '../../UI/Loading/Loading';
 //
 import { useEffect, useState } from 'react';
 //

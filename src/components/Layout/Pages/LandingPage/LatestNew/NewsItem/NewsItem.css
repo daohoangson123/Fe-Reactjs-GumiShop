@@ -36,11 +36,11 @@
     border: 1px solid var(--color-primary);
     color: var(--color-default);
     background-color: var(--color-primary);
-    transition: all ease-in-out 0.2s;
+    transition: var(--transiton-fast);
 }
 
 .News_Btn:hover {
-    box-shadow: 0px 4px 4px 1px var(--color-alt);
+    box-shadow: 0px 6px 4px 0px var(--color-text);
     color: var(--color-default);
 }
 
