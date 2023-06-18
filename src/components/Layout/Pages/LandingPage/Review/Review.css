@@ -94,12 +94,9 @@
 }
 
 .Review__Img {
-    background-image: url(../../../../../assets/img/review.webp);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
     width: 400px;
     aspect-ratio: 1;
+    object-fit: contain;
 }
 
 @media (width < 768px) {

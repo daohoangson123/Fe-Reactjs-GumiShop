@@ -7,7 +7,7 @@ import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
 
 const LatestNew = ({ title }) => {
     return (
-        <section className='LatestNew Container'>
+        <section className='LatestNew Container hide'>
             <SectionTitle content={title} />
             <div className='LatestNew_Container'>
                 {news_Items.map((item) => (

@@ -10,7 +10,7 @@ import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
 
 const Good4MeSilder = ({ title }) => {
     return (
-        <section className='Good4MeSilder'>
+        <section className='Good4MeSilder hide'>
             <SectionTitle content={title} />
             <OwlCarousel
                 className='owl-theme owl-control'

@@ -58,7 +58,12 @@ const Review = () => {
                     ))}
                 </OwlCarousel>
             </div>
-            <div className='Review__Img'></div>
+            <img
+                className='Review__Img'
+                src={null}
+                alt=''
+                lazysrc={review_img}
+            />
         </section>
     );
 };
