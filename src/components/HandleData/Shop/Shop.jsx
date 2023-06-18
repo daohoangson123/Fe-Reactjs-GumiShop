@@ -14,6 +14,7 @@ import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
 const Shop = () => {
     const [productApi, setProductApi] = useState([]);
     const [searchValue, setSearchValue] = useState('');
+    const [onSale, setOnSale] = useState(false);
     const result = [...productApi];
 
     const handleSubmit = (event) => {
@@ -26,11 +27,28 @@ const Shop = () => {
 
     const debounceChange = useMemo(() => debounce(handleChange, 500), []);
 
-    const getFilterItems = (searchValue, result) => {
+    const getFilterItems = (searchValue, result, onSale) => {
         const query = searchValue.replace(/\s+/g, '').toLocaleLowerCase();
-        if (!searchValue) {
+        const onSaleProduct = result.filter((product) => product.sale === true);
+        //default
+        if (!searchValue && !onSale) {
             return result;
         }
+        //sale
+        if (!searchValue && onSale) {
+            return onSaleProduct;
+        }
+        //search&sale
+        if (searchValue && onSale) {
+            const filteredName = result.filter((product) => {
+                const productName = product.name
+                    .replace(/\s+/g, '')
+                    .toLocaleLowerCase();
+                return productName.includes(query);
+            });
+            return filteredName.filter((product) => product.sale === true);
+        }
+        //search
         return result.filter((product) => {
             const productName = product.name
                 .replace(/\s+/g, '')
@@ -39,7 +57,7 @@ const Shop = () => {
         });
     };
 
-    const filtered = getFilterItems(searchValue, result);
+    const filtered = getFilterItems(searchValue, result, onSale);
 
     const getProducts = async () => {
         let result = await fetchProductApi();
@@ -66,7 +84,7 @@ const Shop = () => {
                 onSubmit={handleSubmit}
             >
                 <input
-                    className='SearchInput '
+                    className='NameFilterInput'
                     disabled={productApi.length !== 0 ? false : true}
                     type='text'
                     name='searchkw'
@@ -79,6 +97,21 @@ const Shop = () => {
                     required
                     onChange={debounceChange}
                 />
+                <div className='FiltersInputs'>
+                    <div>
+                        <input
+                            type='checkbox'
+                            name='onSale'
+                            id='onSale'
+                            checked={onSale}
+                            disabled={productApi.length !== 0 ? false : true}
+                            onChange={(event) =>
+                                setOnSale(event.target.checked)
+                            }
+                        />
+                        <label htmlFor='onSale'>On Sale Products</label>
+                    </div>
+                </div>
             </form>
             {productApi.length !== 0 ? (
                 <>
