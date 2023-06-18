@@ -153,7 +153,7 @@ const Shop = () => {
                     </div>
                     {filtered.length === 0 && searchValue !== '' && (
                         <img
-                            className='EmptyCardImg'
+                            className='NoItemImg'
                             src={noitem}
                             alt='NoItemFound'
                         />
