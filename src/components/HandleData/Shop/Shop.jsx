@@ -11,15 +11,137 @@ import Product from '../../Layout/UI/Product/Product';
 import Loading from '../../Layout/UI/Loading/Loading';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
 
+const ShopFilter = ({
+    productApi,
+    debounceChange,
+    onSale,
+    setOnSale,
+    filter,
+    setFilter,
+}) => {
+    const filterOpt = [
+        { type: 'Default' },
+        { type: 'PriceUp' },
+        { type: 'PriceDown' },
+        { type: 'NameUp' },
+        { type: 'NameDown' },
+    ];
+
+    return (
+        <form
+            className='SearchForm'
+            action=''
+            autoComplete='off'
+        >
+            <input
+                className='NameFilterInput'
+                disabled={productApi.length !== 0 ? false : true}
+                type='text'
+                name='searchkw'
+                id='searchkw'
+                placeholder={
+                    productApi.length !== 0
+                        ? `Enter product's name`
+                        : 'Please wait a sec...'
+                }
+                required
+                onChange={debounceChange}
+            />
+            <div className='FiltersInputs'>
+                <div>
+                    <input
+                        type='checkbox'
+                        name='onSale'
+                        id='onSale'
+                        checked={onSale}
+                        disabled={productApi.length !== 0 ? false : true}
+                        onChange={(event) => setOnSale(event.target.checked)}
+                    />
+                    <label htmlFor='onSale'>On Sale Products</label>
+                </div>
+                <div>
+                    <label htmlFor='sortFilter'>Sort by: </label>
+                    <select
+                        id='sortFilter'
+                        className='sortFilter'
+                        disabled={productApi.length !== 0 ? false : true}
+                        defaultChecked={filter}
+                        value={filter}
+                        onChange={(event) => setFilter(event.target.value)}
+                    >
+                        {filterOpt.map((opt) => (
+                            <option
+                                key={opt.type}
+                                style={
+                                    opt.type === filter
+                                        ? {
+                                              backgroundColor:
+                                                  'var(--color-primary)',
+                                              color: 'var(--color-default)',
+                                          }
+                                        : null
+                                }
+                            >
+                                {opt.type}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </div>
+        </form>
+    );
+};
+
+const ProductDisplay = ({ searchValue, filtered }) => {
+    return (
+        <>
+            {searchValue !== '' && (
+                <div>
+                    {filtered.length} product
+                    {filtered.length > 1 && 's'} found
+                </div>
+            )}
+            {filtered.length !== 0 && searchValue === '' ? (
+                <div>{filtered.length} products available</div>
+            ) : null}
+            <div className='ProductContainer ShopProductContainer'>
+                {filtered.map((product) => (
+                    <div
+                        className='ProductItem'
+                        key={product._id}
+                    >
+                        <Product
+                            id={product._id}
+                            url={product.img}
+                            name={product.name}
+                            sale={product.sale}
+                            prices={product.discouter}
+                            saleprices={product.price}
+                            style={{
+                                fontSize: '14px',
+                                lineHeight: '20px',
+                            }}
+                        />
+                    </div>
+                ))}
+            </div>
+            {filtered.length === 0 && searchValue !== '' && (
+                <img
+                    className='NoItemImg'
+                    src={noitem}
+                    alt='NoItemFound'
+                />
+            )}
+        </>
+    );
+};
+
 const Shop = () => {
     const [productApi, setProductApi] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [onSale, setOnSale] = useState(false);
+    const [filter, setFilter] = useState('Default');
     const result = [...productApi];
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-    };
 
     const handleChange = (event) => {
         setSearchValue(event.target.value);
@@ -27,37 +149,181 @@ const Shop = () => {
 
     const debounceChange = useMemo(() => debounce(handleChange, 500), []);
 
-    const getFilterItems = (searchValue, result, onSale) => {
-        const query = searchValue.replace(/\s+/g, '').toLocaleLowerCase();
-        const onSaleProduct = result.filter((product) => product.sale === true);
-        //default
-        if (!searchValue && !onSale) {
-            return result;
-        }
-        //sale
-        if (!searchValue && onSale) {
-            return onSaleProduct;
-        }
-        //search&sale
-        if (searchValue && onSale) {
-            const filteredName = result.filter((product) => {
-                const productName = product.name
-                    .replace(/\s+/g, '')
-                    .toLocaleLowerCase();
-                return productName.includes(query);
-            });
-            return filteredName.filter((product) => product.sale === true);
-        }
-        //search
-        return result.filter((product) => {
-            const productName = product.name
-                .replace(/\s+/g, '')
-                .toLocaleLowerCase();
+    const getFilterItems = (searchValue, result, onSale, filter) => {
+        const query = searchValue.replace(/\s+/g, '').toLowerCase();
+        const searchByName = result.filter((product) => {
+            const productName = product.name.replace(/\s+/g, '').toLowerCase();
             return productName.includes(query);
         });
+        const saleOnly = result.filter((product) => product.sale === true);
+        const searchByNameSale = searchByName.filter(
+            (product) => product.sale === true,
+        );
+        //
+        //default
+        if (!searchValue && !onSale && filter === 'Default') {
+            return result;
+        }
+        //searchOnly
+        if (searchValue && !onSale && filter === 'Default') {
+            return searchByName;
+        }
+        //saleOnly
+        if (!searchValue && onSale && filter === 'Default') {
+            return saleOnly;
+        }
+        //search&onsale
+        if (searchValue && onSale && filter === 'Default') {
+            return searchByName.filter((product) => product.sale === true);
+        }
+        //filter
+        switch (filter !== 'Default') {
+            case !searchValue && !onSale:
+                switch (true) {
+                    case filter === 'PriceUp':
+                        return result.toSorted((a, b) => a.price - b.price);
+                    case filter === 'PriceDown':
+                        return result.toSorted((a, b) => b.price - a.price);
+                    case filter === 'NameUp':
+                        return result.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return -1;
+                            }
+                            if (nameA > nameB) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                    case filter === 'NameDown':
+                        return result.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return 1;
+                            }
+                            if (nameA > nameB) {
+                                return -1;
+                            }
+                            return 0;
+                        });
+                    default:
+                        return;
+                }
+            case searchValue && onSale:
+                switch (true) {
+                    case filter === 'PriceUp':
+                        return searchByNameSale.toSorted(
+                            (a, b) => a.price - b.price,
+                        );
+                    case filter === 'PriceDown':
+                        return searchByNameSale.toSorted(
+                            (a, b) => b.price - a.price,
+                        );
+                    case filter === 'NameUp':
+                        return searchByNameSale.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return -1;
+                            }
+                            if (nameA > nameB) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                    case filter === 'NameDown':
+                        return searchByNameSale.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return 1;
+                            }
+                            if (nameA > nameB) {
+                                return -1;
+                            }
+                            return 0;
+                        });
+                    default:
+                        return;
+                }
+            case !searchValue:
+                switch (true) {
+                    case filter === 'PriceUp':
+                        return saleOnly.toSorted((a, b) => a.price - b.price);
+                    case filter === 'PriceDown':
+                        return saleOnly.toSorted((a, b) => b.price - a.price);
+                    case filter === 'NameUp':
+                        return saleOnly.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return -1;
+                            }
+                            if (nameA > nameB) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                    case filter === 'NameDown':
+                        return saleOnly.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return 1;
+                            }
+                            if (nameA > nameB) {
+                                return -1;
+                            }
+                            return 0;
+                        });
+                    default:
+                        return;
+                }
+            case !onSale:
+                switch (true) {
+                    case filter === 'PriceUp':
+                        return searchByName.toSorted(
+                            (a, b) => a.price - b.price,
+                        );
+                    case filter === 'PriceDown':
+                        return searchByName.toSorted(
+                            (a, b) => b.price - a.price,
+                        );
+                    case filter === 'NameUp':
+                        return searchByName.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return -1;
+                            }
+                            if (nameA > nameB) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                    case filter === 'NameDown':
+                        return searchByName.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return 1;
+                            }
+                            if (nameA > nameB) {
+                                return -1;
+                            }
+                            return 0;
+                        });
+                    default:
+                        return;
+                }
+            default:
+                return result;
+        }
     };
 
-    const filtered = getFilterItems(searchValue, result, onSale);
+    const filtered = getFilterItems(searchValue, result, onSale, filter);
 
     const getProducts = async () => {
         let result = await fetchProductApi();
@@ -77,88 +343,19 @@ const Shop = () => {
 
     return (
         <section className='Shop Container'>
-            <form
-                className='SearchForm'
-                action=''
-                autoComplete='off'
-                onSubmit={handleSubmit}
-            >
-                <input
-                    className='NameFilterInput'
-                    disabled={productApi.length !== 0 ? false : true}
-                    type='text'
-                    name='searchkw'
-                    id='searchkw'
-                    placeholder={
-                        productApi.length !== 0
-                            ? `Enter product's name`
-                            : 'Please wait a sec...'
-                    }
-                    required
-                    onChange={debounceChange}
-                />
-                <div className='FiltersInputs'>
-                    <div>
-                        <input
-                            type='checkbox'
-                            name='onSale'
-                            id='onSale'
-                            checked={onSale}
-                            disabled={productApi.length !== 0 ? false : true}
-                            onChange={(event) =>
-                                setOnSale(event.target.checked)
-                            }
-                        />
-                        <label htmlFor='onSale'>On Sale Products</label>
-                    </div>
-                </div>
-            </form>
+            <ShopFilter
+                productApi={productApi}
+                debounceChange={debounceChange}
+                onSale={onSale}
+                setOnSale={setOnSale}
+                filter={filter}
+                setFilter={setFilter}
+            />
             {productApi.length !== 0 ? (
-                <>
-                    {searchValue !== '' && (
-                        <>
-                            <div>
-                                {filtered.length} product
-                                {filtered.length > 1 && 's'} found
-                            </div>
-                            <br />
-                        </>
-                    )}
-                    {filtered.length !== 0 && searchValue === '' ? (
-                        <>
-                            <div>{filtered.length} products available</div>
-                            <br />
-                        </>
-                    ) : null}
-                    <div className='ProductContainer ShopProductContainer'>
-                        {filtered.map((product) => (
-                            <div
-                                className='ProductItem'
-                                key={product._id}
-                            >
-                                <Product
-                                    id={product._id}
-                                    url={product.img}
-                                    name={product.name}
-                                    sale={product.sale}
-                                    prices={product.discouter}
-                                    saleprices={product.price}
-                                    style={{
-                                        fontSize: '14px',
-                                        lineHeight: '20px',
-                                    }}
-                                />
-                            </div>
-                        ))}
-                    </div>
-                    {filtered.length === 0 && searchValue !== '' && (
-                        <img
-                            className='NoItemImg'
-                            src={noitem}
-                            alt='NoItemFound'
-                        />
-                    )}
-                </>
+                <ProductDisplay
+                    searchValue={searchValue}
+                    filtered={filtered}
+                />
             ) : (
                 <>
                     <Loading />
