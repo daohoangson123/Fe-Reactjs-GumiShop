@@ -103,7 +103,9 @@ const Product = ({ ...props }) => {
                 <span className='SalePrices'>${props.saleprices} NZD</span>
                 <span className='Prices'>
                     {props.prices !== 0 ? (
-                        <span>{props.prices} NZD</span>
+                        <span style={{ textDecoration: 'line-through' }}>
+                            {props.prices} NZD
+                        </span>
                     ) : (
                         <span style={{ textDecoration: 'none' }}>
                             Not on Sale

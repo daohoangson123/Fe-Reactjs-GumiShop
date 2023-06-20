@@ -33,61 +33,62 @@ const ShopFilter = ({
             action=''
             autoComplete='off'
         >
-            <input
-                className='NameFilterInput'
-                disabled={productApi.length !== 0 ? false : true}
-                type='text'
-                name='searchkw'
-                id='searchkw'
-                placeholder={
-                    productApi.length !== 0
-                        ? `Enter product's name`
-                        : 'Please wait a sec...'
-                }
-                required
-                onChange={debounceChange}
-            />
-            <div className='FiltersInputs'>
-                <div>
-                    <input
-                        type='checkbox'
-                        name='onSale'
-                        id='onSale'
-                        checked={onSale}
-                        disabled={productApi.length !== 0 ? false : true}
-                        onChange={(event) => setOnSale(event.target.checked)}
-                    />
-                    <label htmlFor='onSale'>On Sale Products</label>
+            <fieldset disabled={productApi.length !== 0 ? false : true}>
+                <input
+                    className='NameFilterInput'
+                    type='text'
+                    name='searchkw'
+                    id='searchkw'
+                    placeholder={
+                        productApi.length !== 0
+                            ? `Enter product's name`
+                            : 'Please wait a sec...'
+                    }
+                    required
+                    onChange={debounceChange}
+                />
+                <div className='FiltersInputs'>
+                    <div>
+                        <input
+                            type='checkbox'
+                            name='onSale'
+                            id='onSale'
+                            checked={onSale}
+                            onChange={(event) =>
+                                setOnSale(event.target.checked)
+                            }
+                        />
+                        <label htmlFor='onSale'>On Sale Products</label>
+                    </div>
+                    <div>
+                        <label htmlFor='sortFilter'>Sort by: </label>
+                        <select
+                            id='sortFilter'
+                            className='sortFilter'
+                            defaultChecked={filter}
+                            value={filter}
+                            onChange={(event) => setFilter(event.target.value)}
+                        >
+                            {filterOpt.map((opt) => (
+                                <option
+                                    key={opt.type}
+                                    style={
+                                        opt.type === filter
+                                            ? {
+                                                  backgroundColor:
+                                                      'var(--color-primary)',
+                                                  color: 'var(--color-default)',
+                                              }
+                                            : null
+                                    }
+                                >
+                                    {opt.type}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
-                <div>
-                    <label htmlFor='sortFilter'>Sort by: </label>
-                    <select
-                        id='sortFilter'
-                        className='sortFilter'
-                        disabled={productApi.length !== 0 ? false : true}
-                        defaultChecked={filter}
-                        value={filter}
-                        onChange={(event) => setFilter(event.target.value)}
-                    >
-                        {filterOpt.map((opt) => (
-                            <option
-                                key={opt.type}
-                                style={
-                                    opt.type === filter
-                                        ? {
-                                              backgroundColor:
-                                                  'var(--color-primary)',
-                                              color: 'var(--color-default)',
-                                          }
-                                        : null
-                                }
-                            >
-                                {opt.type}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            </div>
+            </fieldset>
         </form>
     );
 };
