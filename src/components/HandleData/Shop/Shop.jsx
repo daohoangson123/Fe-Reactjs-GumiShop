@@ -98,7 +98,7 @@ const ProductDisplay = ({ searchValue, filtered }) => {
             {searchValue !== '' && (
                 <div>
                     {filtered.length} product
-                    {filtered.length > 1 && 's'} found
+                    {filtered.length > 1 && 's'} found!
                 </div>
             )}
             {filtered.length !== 0 && searchValue === '' ? (
@@ -159,58 +159,19 @@ const Shop = () => {
         const searchByNameSale = searchByName.filter(
             (product) => product.sale === true,
         );
-        //
         //default
-        if (!searchValue && !onSale && filter === 'Default') {
+        if (filter === 'Default') {
+            if (searchValue && onSale) {
+                return searchByName.filter((product) => product.sale === true);
+            } else if (!searchValue && onSale) {
+                return saleOnly;
+            } else if (searchValue && !onSale) {
+                return searchByName;
+            }
             return result;
-        }
-        //searchOnly
-        if (searchValue && !onSale && filter === 'Default') {
-            return searchByName;
-        }
-        //saleOnly
-        if (!searchValue && onSale && filter === 'Default') {
-            return saleOnly;
-        }
-        //search&onsale
-        if (searchValue && onSale && filter === 'Default') {
-            return searchByName.filter((product) => product.sale === true);
         }
         //filter
         switch (filter !== 'Default') {
-            case !searchValue && !onSale:
-                switch (true) {
-                    case filter === 'PriceUp':
-                        return result.toSorted((a, b) => a.price - b.price);
-                    case filter === 'PriceDown':
-                        return result.toSorted((a, b) => b.price - a.price);
-                    case filter === 'NameUp':
-                        return result.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return -1;
-                            }
-                            if (nameA > nameB) {
-                                return 1;
-                            }
-                            return 0;
-                        });
-                    case filter === 'NameDown':
-                        return result.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return 1;
-                            }
-                            if (nameA > nameB) {
-                                return -1;
-                            }
-                            return 0;
-                        });
-                    default:
-                        return;
-                }
             case searchValue && onSale:
                 switch (true) {
                     case filter === 'PriceUp':
@@ -248,7 +209,7 @@ const Shop = () => {
                     default:
                         return;
                 }
-            case !searchValue:
+            case !searchValue && onSale:
                 switch (true) {
                     case filter === 'PriceUp':
                         return saleOnly.toSorted((a, b) => a.price - b.price);
@@ -281,7 +242,7 @@ const Shop = () => {
                     default:
                         return;
                 }
-            case !onSale:
+            case searchValue && !onSale:
                 switch (true) {
                     case filter === 'PriceUp':
                         return searchByName.toSorted(
@@ -319,7 +280,38 @@ const Shop = () => {
                         return;
                 }
             default:
-                return result;
+                switch (true) {
+                    case filter === 'PriceUp':
+                        return result.toSorted((a, b) => a.price - b.price);
+                    case filter === 'PriceDown':
+                        return result.toSorted((a, b) => b.price - a.price);
+                    case filter === 'NameUp':
+                        return result.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return -1;
+                            }
+                            if (nameA > nameB) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                    case filter === 'NameDown':
+                        return result.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return 1;
+                            }
+                            if (nameA > nameB) {
+                                return -1;
+                            }
+                            return 0;
+                        });
+                    default:
+                        return;
+                }
         }
     };
 
