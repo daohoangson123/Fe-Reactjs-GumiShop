@@ -31,6 +31,8 @@ const SearchModal = ({
                         required
                         autoComplete='off'
                         onChange={debounceChange}
+                        onFocus={() => console.log(123)}
+                        onBlur={() => console.log(456)}
                     />
                     <ul className='Nav-Search__Result'>
                         <div style={{ textAlign: 'center' }}>
@@ -115,6 +117,17 @@ const SearchCart = () => {
         const searchIcon = document.getElementById('SearchIcon');
         const searchModal = document.getElementById('searchquery');
 
+        function focusSearchInput() {
+            if (!isSearching) {
+                searchModal.focus();
+                searchIcon.removeEventListener('click', focusSearchInput);
+            } else {
+                searchModal.blur();
+            }
+        }
+
+        searchIcon.addEventListener('click', focusSearchInput);
+
         const checkSearchDimension = (event) => {
             const smDimensons = searchModal.getBoundingClientRect();
             const smIDimensons = searchIcon.getBoundingClientRect();
@@ -142,13 +155,13 @@ const SearchCart = () => {
     return (
         <>
             <div className='SearchCart'>
-                <label
+                <div
                     id='SearchIcon'
                     htmlFor='searchquery'
                     onClick={() => setIsSearching(!isSearching)}
                 >
                     <i className='fa-solid fa-magnifying-glass Icon'></i>
-                </label>
+                </div>
                 <NavLink
                     to='/userLogin'
                     aria-label='User-Page'

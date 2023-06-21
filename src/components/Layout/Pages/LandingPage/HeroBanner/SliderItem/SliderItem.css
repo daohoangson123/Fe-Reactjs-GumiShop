@@ -32,7 +32,7 @@
     padding: 13px 25px;
     border: none;
     cursor: pointer;
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .Product__Btn a {

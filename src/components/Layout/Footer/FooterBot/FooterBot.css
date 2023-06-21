@@ -12,7 +12,7 @@
 }
 
 .FooterIcons a {
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .FooterIcons a:hover {

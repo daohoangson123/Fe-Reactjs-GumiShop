@@ -20,7 +20,7 @@
     border: 1px solid var(--color-text);
     border-radius: 2px;
     outline: none;
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .NameFilterInput:focus {

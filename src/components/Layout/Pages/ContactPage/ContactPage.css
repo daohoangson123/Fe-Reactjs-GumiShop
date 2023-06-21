@@ -84,7 +84,7 @@
     color: var(--color-default);
     border: none;
     border-radius: 20px;
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
     cursor: pointer;
 }
 

@@ -10,6 +10,7 @@ import { debounce } from 'lodash';
 import Product from '../../Layout/UI/Product/Product';
 import Loading from '../../Layout/UI/Loading/Loading';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
+import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 
 const ShopFilter = ({
     productApi,
@@ -336,28 +337,30 @@ const Shop = () => {
 
     return (
         <section className='Shop Container'>
-            <ShopFilter
-                productApi={productApi}
-                debounceChange={debounceChange}
-                onSale={onSale}
-                setOnSale={setOnSale}
-                filter={filter}
-                setFilter={setFilter}
-            />
-            {productApi.length !== 0 ? (
-                <ProductDisplay
-                    searchValue={searchValue}
-                    filtered={filtered}
+            <ErrorBoundary>
+                <ShopFilter
+                    productApi={productApi}
+                    debounceChange={debounceChange}
+                    onSale={onSale}
+                    setOnSale={setOnSale}
+                    filter={filter}
+                    setFilter={setFilter}
                 />
-            ) : (
-                <>
-                    <Loading />
-                    <div className='ProductContainer ShopProductContainer'>
-                        <ProductSkeleton />
-                        <ProductSkeleton />
-                    </div>
-                </>
-            )}
+                {productApi.length !== 0 ? (
+                    <ProductDisplay
+                        searchValue={searchValue}
+                        filtered={filtered}
+                    />
+                ) : (
+                    <>
+                        <Loading />
+                        <div className='ProductContainer ShopProductContainer'>
+                            <ProductSkeleton />
+                            <ProductSkeleton />
+                        </div>
+                    </>
+                )}
+            </ErrorBoundary>
         </section>
     );
 };

@@ -50,7 +50,7 @@
 
 .ProductDetailBox__AddToCart button {
     border-radius: 5px;
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .ProductDetailBox__AddToCart button:hover {

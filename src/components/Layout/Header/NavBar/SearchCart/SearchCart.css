@@ -7,7 +7,7 @@
 .Icon {
     font-size: 20px;
     color: var(--color-text);
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
     cursor: pointer;
 }
 
@@ -64,7 +64,7 @@
 }
 
 .Nav-Search__Result li {
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .Nav-Search__Result li img {
@@ -79,7 +79,7 @@
     width: 100%;
     color: var(--color-text);
     text-decoration: none;
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .Nav-Search__Result li:hover {
@@ -106,7 +106,7 @@
     border: 2px solid var(--color-default);
     background-color: var(--color-primary);
     color: var(--color-default);
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .Cart_Notify-Number {

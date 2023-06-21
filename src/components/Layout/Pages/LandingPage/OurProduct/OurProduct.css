@@ -9,7 +9,7 @@
     padding: 15px 45px;
     border: 2px solid var(--color-primary);
     cursor: pointer;
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .LoadMore:hover {

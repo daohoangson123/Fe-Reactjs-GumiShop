@@ -8,7 +8,7 @@
     border-radius: 2px;
     background: none;
     cursor: pointer;
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .MobileMenu:hover {
@@ -26,7 +26,7 @@
 .MenuIcon {
     height: 2px;
     background-color: var(--color-text);
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
     transform-origin: left;
 }
 
@@ -52,7 +52,7 @@
     border-top: none;
     border-left: none;
     background-color: var(--color-default);
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
     transform: translateX(-120%);
 }
 
@@ -68,7 +68,7 @@
     border-top: none;
     border-left: none;
     background-color: var(--color-default);
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
     transform: translateX(0);
 }
 
@@ -82,7 +82,7 @@
     font-weight: 600;
     color: var(--color-text);
     padding: 10px;
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .MobileMenu__Item.active {

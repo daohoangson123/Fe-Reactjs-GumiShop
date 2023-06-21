@@ -1,5 +1,7 @@
 import React from 'react';
 //
+import { pageAccessedByReload } from '../../../data/isPageReloaded';
+//
 import './ErrorBoundary.css';
 
 class ErrorBoundary extends React.Component {
@@ -9,31 +11,38 @@ class ErrorBoundary extends React.Component {
     }
 
     componentDidCatch(error, errorInfo) {
-        // Catch errors in any components below and re-render with error message
         this.setState({
             error: error,
             errorInfo: errorInfo,
         });
-        // You can also log error messages to an error reporting service here
+    }
+
+    componentDidUpdate() {
+        if (pageAccessedByReload) {
+            window.scrollTo(0, 0);
+        }
     }
 
     render() {
         if (this.state.errorInfo) {
             // Error path
             return (
-                <div>
-                    <h2>Something went wrong.</h2>
-                    <details>
-                        {this.state.error && this.state.error.toString()}
-                        <br />
-                        {this.state.errorInfo.componentStack}
-                    </details>
+                <div className='ErrorBoundary Container'>
+                    <h2>
+                        Something went wrong !?! Please try to reload this page
+                        or contact us for support.
+                    </h2>
                     <button
                         type='button'
                         onClick={() => window.location.reload()}
                     >
                         Reload Page
                     </button>
+                    <details>
+                        <summary>Error's details</summary>
+                        <p>{this.state.error && this.state.error.toString()}</p>
+                        <p>{this.state.errorInfo.componentStack}</p>
+                    </details>
                 </div>
             );
         }

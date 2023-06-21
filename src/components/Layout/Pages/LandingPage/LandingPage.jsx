@@ -11,6 +11,7 @@ import ShopAll from './ShopAll/ShopAll';
 import LatestNews from './LatestNew/LatestNews';
 import Good4MeSlider from './Good4MeSilder/Good4MeSlider';
 //
+import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
 
 const LandingPage = () => {
     useEffect(() => {
@@ -59,7 +60,7 @@ const LandingPage = () => {
     }, []);
 
     return (
-        <>
+        <ErrorBoundary>
             <SliderBanner />
             <Good4MeDeal
                 tittle='GOOD4ME DEAL'
@@ -80,7 +81,7 @@ const LandingPage = () => {
             <ShopAll title='SHOP ALL' />
             <LatestNews title='LATEST NEWS' />
             <Good4MeSlider title='#GOOD4ME' />
-        </>
+        </ErrorBoundary>
     );
 };
 

@@ -36,7 +36,7 @@
     border: 1px solid var(--color-primary);
     color: var(--color-default);
     background-color: var(--color-primary);
-    transition: var(--transiton-fast);
+    transition: var(--transition-fast);
 }
 
 .News_Btn:hover {

@@ -6,8 +6,9 @@ import { removeInCart } from '../../../redux/Actions/Action';
 //
 import { useState } from 'react';
 //
-
 import CartLayout from './CartLayout';
+//
+import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -46,19 +47,21 @@ const Cart = () => {
 
     return (
         <section className='CartPage'>
-            <CartLayout
-                myCart={myCart}
-                totalItem={totalItem}
-                totalPrice={totalPrice}
-                saving={saving}
-                quantity={quantity}
-                setQuantity={setQuantity}
-                handleInc={handleInc}
-                handleDec={handleDec}
-                handleRemove={handleRemove}
-                handleSubmit={handleSubmit}
-                emptyCart={emptyCart}
-            />
+            <ErrorBoundary>
+                <CartLayout
+                    myCart={myCart}
+                    totalItem={totalItem}
+                    totalPrice={totalPrice}
+                    saving={saving}
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                    handleInc={handleInc}
+                    handleDec={handleDec}
+                    handleRemove={handleRemove}
+                    handleSubmit={handleSubmit}
+                    emptyCart={emptyCart}
+                />
+            </ErrorBoundary>
         </section>
     );
 };

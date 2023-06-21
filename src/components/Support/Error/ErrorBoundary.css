@@ -1,0 +1,27 @@
+.ErrorBoundary {
+    display: grid;
+    place-items: center;
+    gap: 20px;
+}
+
+.ErrorBoundary h2 {
+    text-align: center;
+    text-wrap: balance;
+}
+
+.ErrorBoundary button {
+    font-weight: 700;
+    padding: 5px;
+    border-radius: 5px;
+    transition: var(--transition-fast);
+}
+
+.ErrorBoundary button:hover {
+    background-color: var(--color-primary);
+    color: var(--color-default);
+}
+
+.ErrorBoundary p {
+    text-align: left;
+    word-break: break-word;
+}

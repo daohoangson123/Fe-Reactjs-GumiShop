@@ -8,6 +8,7 @@
 
 .Good4MeSilder {
     text-align: center;
+    margin-block: 40px;
 }
 
 @media (width < 1024px) {
