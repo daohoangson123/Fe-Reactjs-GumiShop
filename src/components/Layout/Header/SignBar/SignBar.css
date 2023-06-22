@@ -72,7 +72,7 @@
     color: var(--color-alt);
 }
 
-@media (width < 1024px) {
+@media (width <= 1024px) {
     .SignBar {
         display: none;
     }

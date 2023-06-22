@@ -5,28 +5,18 @@ import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 //
 import { banner_1, banner_2 } from '../../../../../data/banner';
-import { pageAccessedByReload } from '../../../../../data/isPageReloaded';
 //
 import banner_1bg from '../../../../../assets/img/HeroBanner.webp';
 import banner_2bg from '../../../../../assets/img/HeroBanner1.webp';
 //
 import SliderItem from './SliderItem/SliderItem';
 import { useState } from 'react';
-import Loading from '../../../UI/Loading/Loading';
 //
 
 const SliderBanner = () => {
     const [isBannerLoaded, setIsBannerLoaded] = useState(false);
     return (
         <article className='HeroBanner'>
-            <div
-                className='BannerFisrtLoad'
-                style={{
-                    opacity: !isBannerLoaded && !pageAccessedByReload ? 1 : 0,
-                }}
-            >
-                <Loading />
-            </div>
             <div
                 style={{
                     opacity: isBannerLoaded ? 1 : 0,

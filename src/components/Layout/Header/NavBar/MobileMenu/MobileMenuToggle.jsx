@@ -3,12 +3,18 @@ import './MobileMenuToggle.css';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const MobileMenuRouting = ({ menuVisible, setIsClicked, navlinkData }) => {
+const MobileMenuRouting = ({
+    isMobileView,
+    menuVisible,
+    setIsClicked,
+    navlinkData,
+}) => {
     return (
         <div
             className={
                 menuVisible ? 'MobileMenu__Nav active' : 'MobileMenu__Nav'
             }
+            style={{ transition: !isMobileView && 'none' }}
         >
             {navlinkData.map((item) => (
                 <NavLink
@@ -24,7 +30,7 @@ const MobileMenuRouting = ({ menuVisible, setIsClicked, navlinkData }) => {
     );
 };
 
-const MobileMenuToggle = ({ navlinkData }) => {
+const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
     const [isClicked, setIsClicked] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
 
@@ -118,6 +124,7 @@ const MobileMenuToggle = ({ navlinkData }) => {
                 ></div>
             </button>
             <MobileMenuRouting
+                isMobileView={isMobileView}
                 menuVisible={menuVisible}
                 setIsClicked={setIsClicked}
                 navlinkData={navlinkData}

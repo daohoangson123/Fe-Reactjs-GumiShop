@@ -31,8 +31,6 @@ const SearchModal = ({
                         required
                         autoComplete='off'
                         onChange={debounceChange}
-                        onFocus={() => console.log(123)}
-                        onBlur={() => console.log(456)}
                     />
                     <ul className='Nav-Search__Result'>
                         <div style={{ textAlign: 'center' }}>

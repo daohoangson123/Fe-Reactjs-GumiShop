@@ -95,7 +95,7 @@
     background-color: var(--color-primary-rgba);
 }
 
-@media (width < 1024px) {
+@media (width <= 1024px) {
     .MobileMenu {
         display: grid;
     }

@@ -1,12 +1,3 @@
-.HeroBanner {
-    position: relative;
-}
-
-.BannerFisrtLoad {
-    position: absolute;
-    inset: 0;
-}
-
 .BannerContainer {
     position: relative;
     display: grid;

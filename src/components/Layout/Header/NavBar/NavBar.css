@@ -13,7 +13,7 @@
     text-decoration: none;
 }
 
-@media only screen and (max-width: 1024px) {
+@media (width <= 1024px) {
     .NavBar {
         padding: 20px;
     }

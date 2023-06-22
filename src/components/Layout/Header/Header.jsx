@@ -74,7 +74,7 @@ const Header = () => {
         mq.addEventListener('change', checkView);
 
         return () => mq.removeEventListener('change', checkView);
-    }, []);
+    });
 
     return (
         <header
@@ -85,7 +85,7 @@ const Header = () => {
             }}
         >
             <SignBar />
-            <NavBar />
+            <NavBar isMobileView={isMobileView} />
         </header>
     );
 };

@@ -7,11 +7,14 @@ import Logo from './Logo/Logo';
 import NavRouting from './NavRouting/NavRouting';
 import SearchCart from './SearchCart/SearchCart';
 
-const NavBar = () => {
+const NavBar = ({ isMobileView }) => {
     return (
         <>
             <nav className='NavBar'>
-                <MobileMenuToggle navlinkData={nav_Items} />
+                <MobileMenuToggle
+                    isMobileView={isMobileView}
+                    navlinkData={nav_Items}
+                />
                 <Logo />
                 <NavRouting navlinkData={nav_Items} />
                 <SearchCart />
