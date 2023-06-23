@@ -19,6 +19,8 @@ const ShopFilter = ({
     setOnSale,
     filter,
     setFilter,
+    filtered,
+    searchValue,
 }) => {
     const filterOpt = [
         { type: 'Default' },
@@ -33,6 +35,7 @@ const ShopFilter = ({
             className='SearchForm'
             action=''
             autoComplete='off'
+            onSubmit={(event) => event.preventDefault()}
         >
             <fieldset disabled={productApi.length !== 0 ? false : true}>
                 <input
@@ -59,7 +62,7 @@ const ShopFilter = ({
                                 setOnSale(event.target.checked)
                             }
                         />
-                        <label htmlFor='onSale'>On Sale Products</label>
+                        <label htmlFor='onSale'>SaleOnly</label>
                     </div>
                     <div>
                         <label htmlFor='sortFilter'>Sort by: </label>
@@ -90,6 +93,11 @@ const ShopFilter = ({
                     </div>
                 </div>
             </fieldset>
+            {filtered.length > 0 && (
+                <div>
+                    Found {filtered.length} product{filtered.length > 1 && 's'}.
+                </div>
+            )}
         </form>
     );
 };
@@ -97,15 +105,6 @@ const ShopFilter = ({
 const ProductDisplay = ({ searchValue, filtered }) => {
     return (
         <>
-            {searchValue !== '' && (
-                <div>
-                    {filtered.length} product
-                    {filtered.length > 1 && 's'} found!
-                </div>
-            )}
-            {filtered.length !== 0 && searchValue === '' ? (
-                <div>{filtered.length} products available</div>
-            ) : null}
             <div className='ProductContainer ShopProductContainer'>
                 {filtered.map((product) => (
                     <div
@@ -174,43 +173,6 @@ const Shop = () => {
         }
         //filter
         switch (filter !== 'Default') {
-            case searchValue && onSale:
-                switch (true) {
-                    case filter === 'PriceUp':
-                        return searchByNameSale.toSorted(
-                            (a, b) => a.price - b.price,
-                        );
-                    case filter === 'PriceDown':
-                        return searchByNameSale.toSorted(
-                            (a, b) => b.price - a.price,
-                        );
-                    case filter === 'NameUp':
-                        return searchByNameSale.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return -1;
-                            }
-                            if (nameA > nameB) {
-                                return 1;
-                            }
-                            return 0;
-                        });
-                    case filter === 'NameDown':
-                        return searchByNameSale.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return 1;
-                            }
-                            if (nameA > nameB) {
-                                return -1;
-                            }
-                            return 0;
-                        });
-                    default:
-                        return;
-                }
             case !searchValue && onSale:
                 switch (true) {
                     case filter === 'PriceUp':
@@ -281,6 +243,43 @@ const Shop = () => {
                     default:
                         return;
                 }
+            case searchValue && onSale:
+                switch (true) {
+                    case filter === 'PriceUp':
+                        return searchByNameSale.toSorted(
+                            (a, b) => a.price - b.price,
+                        );
+                    case filter === 'PriceDown':
+                        return searchByNameSale.toSorted(
+                            (a, b) => b.price - a.price,
+                        );
+                    case filter === 'NameUp':
+                        return searchByNameSale.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return -1;
+                            }
+                            if (nameA > nameB) {
+                                return 1;
+                            }
+                            return 0;
+                        });
+                    case filter === 'NameDown':
+                        return searchByNameSale.toSorted((a, b) => {
+                            const nameA = a.name.toLowerCase();
+                            const nameB = b.name.toLowerCase();
+                            if (nameA < nameB) {
+                                return 1;
+                            }
+                            if (nameA > nameB) {
+                                return -1;
+                            }
+                            return 0;
+                        });
+                    default:
+                        return;
+                }
             default:
                 switch (true) {
                     case filter === 'PriceUp':
@@ -336,7 +335,7 @@ const Shop = () => {
     }, [debounceChange]);
 
     return (
-        <section className='Shop Container'>
+        <div className='Shop Container'>
             <ErrorBoundary>
                 <ShopFilter
                     productApi={productApi}
@@ -345,6 +344,8 @@ const Shop = () => {
                     setOnSale={setOnSale}
                     filter={filter}
                     setFilter={setFilter}
+                    filtered={filtered}
+                    searchValue={searchValue}
                 />
                 {productApi.length !== 0 ? (
                     <ProductDisplay
@@ -361,7 +362,7 @@ const Shop = () => {
                     </>
                 )}
             </ErrorBoundary>
-        </section>
+        </div>
     );
 };
 

@@ -36,14 +36,14 @@ const ProductDetail = () => {
     }, [id]);
 
     return (
-        <section>
+        <div>
             <ProductDetailLayout
                 productDetail={productDetail}
                 quantity={quantity}
                 setQuantity={setQuantity}
                 handleAddToCart={handleAddToCart}
             />
-        </section>
+        </div>
     );
 };
 

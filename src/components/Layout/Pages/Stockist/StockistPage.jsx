@@ -27,7 +27,7 @@ const StockistPage = () => {
     }, []);
 
     return (
-        <section className='StockistPage Container'>
+        <div className='StockistPage Container'>
             {tableRowData.length !== 0 ? (
                 <Table
                     striped
@@ -64,7 +64,7 @@ const StockistPage = () => {
             ) : (
                 <Skeleton className='Table-Skeleton' />
             )}
-        </section>
+        </div>
     );
 };
 

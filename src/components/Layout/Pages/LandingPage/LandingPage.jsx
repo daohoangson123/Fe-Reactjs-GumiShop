@@ -36,29 +36,6 @@ const LandingPage = () => {
         return () => observer.disconnect();
     }, []);
 
-    useEffect(() => {
-        function show(sect) {
-            sect.classList.add('show');
-            sect.classList.remove('hide');
-        }
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    show(entry.target);
-                }
-            });
-        });
-
-        const sectList = document.querySelectorAll('section');
-
-        sectList.forEach((sect) => {
-            observer.observe(sect);
-        });
-
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <ErrorBoundary>
             <SliderBanner />

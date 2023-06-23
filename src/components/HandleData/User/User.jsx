@@ -1,7 +1,7 @@
 import './User.css';
 //
 
-const User = ({ ...props }) => {
+const User = () => {
     return <div className='User'></div>;
 };
 

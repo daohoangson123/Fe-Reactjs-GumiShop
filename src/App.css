@@ -65,16 +65,6 @@ li {
     list-style-type: none;
 }
 
-.PageFisrtLoad {
-    position: fixed;
-    inset: 0;
-    height: 100vh;
-    display: grid;
-    place-items: center;
-    background-color: var(--color-alt-rgba-3);
-    z-index: 1000;
-}
-
 .ProductContainer {
     display: grid;
     grid-template-columns: repeat(auto-fit, 240px);

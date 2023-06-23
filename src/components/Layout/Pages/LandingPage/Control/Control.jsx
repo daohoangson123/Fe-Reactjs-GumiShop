@@ -7,7 +7,7 @@ import control3 from '../../../../../assets/img/control3.webp';
 
 const Control = ({ title, content, btn }) => {
     return (
-        <section className='Control Container hide'>
+        <section className='Control Container'>
             <div className='Control__Content'>
                 <div className='Cotrol__Content-Title'>{title}</div>
                 <p className='Cotrol__Content-Text'>{content}</p>

@@ -3,7 +3,7 @@ import './NotFoundPage.css';
 
 function NotFoundPage() {
     return (
-        <section className='NotFoundPage'>
+        <div className='NotFoundPage'>
             <div className='NotFoundPage__Content'># 404 Page Not Found</div>
 
             <Link
@@ -12,7 +12,7 @@ function NotFoundPage() {
             >
                 Go Home
             </Link>
-        </section>
+        </div>
     );
 }
 

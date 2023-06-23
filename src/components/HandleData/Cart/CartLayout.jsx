@@ -23,9 +23,6 @@ const CartForm = ({
                     <div className='Cart-Item-List'>
                         {myCart.map((item, index) => {
                             const cost = item.amount * item.price;
-                            const saved = +(
-                                item.amount * item.discount
-                            ).toFixed(2);
                             return (
                                 <div
                                     className='Cart-Item'
@@ -39,17 +36,11 @@ const CartForm = ({
                                         {item.name}
                                     </div>
                                     <div className='Cart-Item_Price'>
-                                        <span>Price: {item.price}</span>
-                                        <br />
-                                        {item.discount !== 0 && (
-                                            <span className='Discounted'>
-                                                Discounted: {item.discount}
-                                            </span>
-                                        )}
+                                        <span>Price: ${item.price}</span>
                                     </div>
                                     <div className='Cart-Item_Quantity'>
                                         <label htmlFor={`quantity${index}`}>
-                                            Quantity:{' '}
+                                            <i className='fa-solid fa-cubes-stacked'></i>
                                         </label>
                                         <button
                                             type='button'
@@ -80,22 +71,23 @@ const CartForm = ({
                                                     newAmount < 1 ||
                                                     newAmount > 1000
                                                 ) {
-                                                    newAmount = 1;
-                                                } else if (!isNaN(newAmount)) {
+                                                    return newAmount;
+                                                }
+                                                if (!isNaN(newAmount)) {
                                                     item.amount = newAmount;
                                                 }
                                                 setQuantity(newAmount);
                                             }}
-                                            onInput={(event) =>
-                                                (event.currentTarget.value =
-                                                    event.currentTarget.value
-                                                        .replace(/[^0-9.]/g, '')
-                                                        .replace(
-                                                            /(\..*?)\..*/g,
-                                                            '$1',
-                                                        )
-                                                        .replace(/^0[^.]/, '0'))
-                                            }
+                                            // onInput={(event) =>
+                                            //     (event.currentTarget.value =
+                                            //         event.currentTarget.value
+                                            //             .replace(/[^0-9.]/g, '')
+                                            //             .replace(
+                                            //                 /(\..*?)\..*/g,
+                                            //                 '$1',
+                                            //             )
+                                            //             .replace(/^0[^.]/, '0'))
+                                            // }
                                         />
                                         <button
                                             type='button'
@@ -109,9 +101,7 @@ const CartForm = ({
                                         </button>
                                     </div>
                                     <div className='Cart-Item_Cost'>
-                                        Cost: {cost}
-                                        <br />
-                                        Saving: {saved}
+                                        Cost: ${cost}
                                     </div>
                                     <button
                                         className='Remove_Item'
@@ -134,8 +124,8 @@ const CartForm = ({
                             Total: {totalItem} Item{totalItem > 1 && 's'}
                         </div>
                         <div className='Total-Price'>
-                            <div>Total Prices: {totalPrice}</div>
-                            <div>Total Saving: {saving}</div>
+                            <div>Total Cost: {totalPrice}</div>
+                            <div>Saving: {saving}</div>
                         </div>
                         <button
                             className='Buy_Btn'

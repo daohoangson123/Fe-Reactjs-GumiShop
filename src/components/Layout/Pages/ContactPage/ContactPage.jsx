@@ -7,7 +7,7 @@ const ContactPage = () => {
     const [mapLoaded, setMapLoaded] = useState(false);
 
     return (
-        <section className='ContactPage'>
+        <div className='ContactPage'>
             <div className='Contact__Content container'>
                 <div className='Contact__Info'>
                     <div className='Contact-ShopName'>
@@ -85,7 +85,7 @@ const ContactPage = () => {
                     onLoad={() => setMapLoaded(true)}
                 ></iframe>
             </div>
-        </section>
+        </div>
     );
 };
 

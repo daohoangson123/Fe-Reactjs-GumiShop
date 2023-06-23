@@ -27,7 +27,7 @@ const Good4MeDeal = ({ tittle, content }) => {
     }, []);
 
     return (
-        <section className='Good4MeDeal Container hide'>
+        <section className='Good4MeDeal Container'>
             <SectionTitle content={tittle} />
             <hr />
             <p>{content}</p>

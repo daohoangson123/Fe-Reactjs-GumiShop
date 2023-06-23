@@ -36,7 +36,7 @@ const OurProduct = ({ title }) => {
     }, []);
 
     return (
-        <section className='OurProduct Container hide'>
+        <section className='OurProduct Container'>
             <SectionTitle content={title} />
             <div className='ProductContainer'>
                 {load.length === 0 ? (

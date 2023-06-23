@@ -1,0 +1,34 @@
+.PageFisrtLoad {
+    position: fixed;
+    inset: 0;
+    height: 100vh;
+    display: none;
+    place-items: center;
+    background-color: var(--color-alt-rgba-3);
+    z-index: 1000;
+}
+
+.AdBanner {
+    position: relative;
+    background-image: url('../../../../assets/img/HeroBanner1.webp');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: clamp(280px, 40vw, 700px);
+    aspect-ratio: 3 / 2;
+}
+
+.AdBanner__Btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    background-color: transparent;
+    border: none;
+}
+
+.AdBanner__Btn:hover {
+    color: var(--color-default);
+}

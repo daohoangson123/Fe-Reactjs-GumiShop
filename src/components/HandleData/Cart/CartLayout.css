@@ -1,7 +1,13 @@
 .Cart-Item_Form {
     display: grid;
     place-items: center;
-    gap: 20px;
+}
+
+.CartToShop__Btn a {
+    background-color: var(--color-primary);
+    color: var(--color-default);
+    padding: 10px;
+    text-decoration: none;
 }
 
 .Cart__Layout {
@@ -9,11 +15,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 30px;
+    gap: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 300px;
 }
 
 .EmptyCart {
-    width: clamp(280px, 30vw, 600px);
+    width: 300px;
 }
 
 .EmptyCart > img {
@@ -24,65 +33,53 @@
 .Cart-Item-List {
     display: grid;
     gap: 20px;
+    grid-template-rows: min-content;
 }
 
 .Cart-Item {
     display: grid;
-    grid-template-columns: clamp(280px, 50vw, 900px);
-    gap: 10px;
+    grid-template-columns: repeat(6, min-content);
+    gap: 20px;
     align-items: center;
-    border-bottom: 2px solid var(--color-primary);
-    border-top: 2px solid var(--color-primary);
+    padding: 5px;
+    border-bottom: 1px solid var(--color-primary);
+    border-top: 1px solid var(--color-primary);
+    height: fit-content;
 }
 
 .Cart-Item > img {
-    grid-area: 2 / 1;
-    width: 120px;
+    grid-row: 1 / 3;
+    align-self: center;
+    width: 70px;
     aspect-ratio: 1;
 }
 
 .Cart-Item_Name {
-    grid-area: 1 / 1;
-    font-size: clamp(18px, 3vw, 24px);
-    font-weight: 700;
+    font-size: clamp(16px, 2vw, 20px);
+    min-width: 280px;
 }
 
 .Cart-Item_Price {
-    grid-area: 2 / 1;
-    justify-self: end;
-    font-weight: 600;
-}
-
-.Discounted {
-    color: var(--color-primary);
-}
-
-.Cart-Item_Cost {
-    grid-area: 4 / 1;
-    font-size: clamp(16px, 2vw, 18px);
-    font-weight: 500;
-    border-radius: 10px;
-    padding: 5px;
+    grid-area: 2 / 2;
 }
 
 .Cart-Item_Quantity {
-    grid-area: 3 / 1;
-    justify-self: center;
+    grid-row: 1 / 3;
     display: flex;
     align-items: center;
-    gap: 10px;
-    font-weight: 600;
-    padding: 5px;
+}
+
+.Cart-Item_Quantity label {
+    margin-right: 10px;
 }
 
 .Cart-Item_Quantity input {
     font-size: clamp(16px, 2vw, 18px);
-    font-weight: 600;
     color: var(--color-alt);
     width: 50px;
     height: 30px;
     text-align: center;
-    border-radius: 5px;
+    border: 1px solid var(--color-alt);
 }
 
 .Cart-Item_Quantity input::-webkit-outer-spin-button,
@@ -91,22 +88,26 @@
 }
 
 .Cart-Item_Quantity button {
-    width: 25px;
-    height: 25px;
-    border-radius: 20%;
-    background-color: var(--color-text);
-    color: var(--color-default);
-    border: none;
-    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: 1px solid var(--color-alt);
     transition: var(--transition-fast);
+    cursor: pointer;
 }
 
 .Cart-Item_Quantity button:hover {
     background-color: var(--color-primary);
 }
 
+.Cart-Item_Cost {
+    grid-row: 1 / 3;
+    border-radius: 10px;
+    padding: 5px;
+    width: 120px;
+}
+
 .Remove_Item {
-    grid-area: 4/1;
+    grid-row: 1 / 3;
     justify-self: end;
     background-color: transparent;
     border-radius: 100%;
@@ -141,10 +142,6 @@
     justify-self: center;
 }
 
-.Total-Price {
-    font-weight: 600;
-}
-
 .Buy_Btn {
     justify-self: center;
     font-weight: 600;
@@ -164,19 +161,10 @@
     background-color: var(--color-primary);
 }
 
-@media (width > 1024px) {
-    .Cart-Item_Price {
-        justify-self: center;
-    }
-
-    .Cart-Item_Quantity {
-        grid-area: 2 / 1;
-        justify-self: end;
-        align-self: flex-end;
-    }
-
-    .Cart-Item_Cost,
-    .Remove_Item {
-        grid-area: 3 / 1;
+@media (width <= 1024px) {
+    .Cart-Item {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
