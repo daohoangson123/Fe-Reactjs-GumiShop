@@ -15,19 +15,27 @@ import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 const ShopFilter = ({
     productApi,
     debounceChange,
+    filtered,
     onSale,
     setOnSale,
-    filter,
-    setFilter,
-    filtered,
-    searchValue,
+    sortFilter,
+    setSortFilter,
+    priceFilter,
+    setPriceFilter,
 }) => {
-    const filterOpt = [
-        { type: 'Default' },
-        { type: 'PriceUp' },
-        { type: 'PriceDown' },
-        { type: 'NameUp' },
-        { type: 'NameDown' },
+    const sortFilterOpt = [
+        { value: 'Default' },
+        { value: 'PriceUp' },
+        { value: 'PriceDown' },
+        { value: 'NameUp' },
+        { value: 'NameDown' },
+    ];
+
+    const priceFilterOpt = [
+        { value: 'Default' },
+        { value: '< $100' },
+        { value: '$100 - $200' },
+        { value: '> $200' },
     ];
 
     return (
@@ -37,7 +45,7 @@ const ShopFilter = ({
             autoComplete='off'
             onSubmit={(event) => event.preventDefault()}
         >
-            <fieldset disabled={productApi.length !== 0 ? false : true}>
+            <fieldset disabled={productApi.length === 0 && true}>
                 <input
                     className='NameFilterInput'
                     type='text'
@@ -65,28 +73,41 @@ const ShopFilter = ({
                         <label htmlFor='onSale'>SaleOnly</label>
                     </div>
                     <div>
-                        <label htmlFor='sortFilter'>Sort by: </label>
+                        <label htmlFor='priceFilter'>Price-range: </label>
+                        <select
+                            id='priceFilter'
+                            className='priceFilter'
+                            value={priceFilter}
+                            onChange={(event) =>
+                                setPriceFilter(event.target.value)
+                            }
+                        >
+                            {priceFilterOpt.map((opt) => (
+                                <option
+                                    key={opt.value}
+                                    disabled={opt.value === priceFilter}
+                                >
+                                    {opt.value}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label htmlFor='sortFilter'>Sort-by: </label>
                         <select
                             id='sortFilter'
                             className='sortFilter'
-                            defaultChecked={filter}
-                            value={filter}
-                            onChange={(event) => setFilter(event.target.value)}
+                            value={sortFilter}
+                            onChange={(event) =>
+                                setSortFilter(event.target.value)
+                            }
                         >
-                            {filterOpt.map((opt) => (
+                            {sortFilterOpt.map((opt) => (
                                 <option
-                                    key={opt.type}
-                                    style={
-                                        opt.type === filter
-                                            ? {
-                                                  backgroundColor:
-                                                      'var(--color-primary)',
-                                                  color: 'var(--color-default)',
-                                              }
-                                            : null
-                                    }
+                                    key={opt.value}
+                                    disabled={opt.value === sortFilter}
                                 >
-                                    {opt.type}
+                                    {opt.value}
                                 </option>
                             ))}
                         </select>
@@ -126,7 +147,7 @@ const ProductDisplay = ({ searchValue, filtered }) => {
                     </div>
                 ))}
             </div>
-            {filtered.length === 0 && searchValue !== '' && (
+            {filtered.length === 0 && searchValue && (
                 <img
                     className='NoItemImg'
                     src={noitem}
@@ -141,7 +162,8 @@ const Shop = () => {
     const [productApi, setProductApi] = useState([]);
     const [searchValue, setSearchValue] = useState('');
     const [onSale, setOnSale] = useState(false);
-    const [filter, setFilter] = useState('Default');
+    const [sortFilter, setSortFilter] = useState('Default');
+    const [priceFilter, setPriceFilter] = useState('Default');
     const result = [...productApi];
 
     const handleChange = (event) => {
@@ -150,9 +172,15 @@ const Shop = () => {
 
     const debounceChange = useMemo(() => debounce(handleChange, 500), []);
 
-    const getFilterItems = (searchValue, result, onSale, filter) => {
-        const query = searchValue.replace(/\s+/g, '').toLowerCase();
+    const getFilterItems = (
+        searchValue,
+        result,
+        onSale,
+        sortFilter,
+        priceFilter,
+    ) => {
         const searchByName = result.filter((product) => {
+            const query = searchValue.replace(/\s+/g, '').toLowerCase();
             const productName = product.name.replace(/\s+/g, '').toLowerCase();
             return productName.includes(query);
         });
@@ -161,162 +189,789 @@ const Shop = () => {
             (product) => product.sale === true,
         );
         //default
-        if (filter === 'Default') {
-            if (searchValue && onSale) {
-                return searchByName.filter((product) => product.sale === true);
+        if (sortFilter === 'Default' && priceFilter === 'Default') {
+            //nameOnly
+            if (searchValue && !onSale) {
+                return searchByName;
+                //saleOnly
             } else if (!searchValue && onSale) {
                 return saleOnly;
-            } else if (searchValue && !onSale) {
-                return searchByName;
+                //name&sale
+            } else if (searchValue && onSale) {
+                return searchByNameSale;
             }
+            //default
             return result;
         }
-        //filter
-        switch (filter !== 'Default') {
-            case !searchValue && onSale:
-                switch (true) {
-                    case filter === 'PriceUp':
-                        return saleOnly.toSorted((a, b) => a.price - b.price);
-                    case filter === 'PriceDown':
-                        return saleOnly.toSorted((a, b) => b.price - a.price);
-                    case filter === 'NameUp':
-                        return saleOnly.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return -1;
-                            }
-                            if (nameA > nameB) {
-                                return 1;
-                            }
-                            return 0;
-                        });
-                    case filter === 'NameDown':
-                        return saleOnly.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return 1;
-                            }
-                            if (nameA > nameB) {
-                                return -1;
-                            }
-                            return 0;
-                        });
-                    default:
-                        return;
+        //sortFilter
+        if (sortFilter !== 'Default' && priceFilter === 'Default') {
+            switch (sortFilter !== 'Default') {
+                case !searchValue && onSale:
+                    switch (true) {
+                        case sortFilter === 'PriceUp':
+                            return saleOnly.toSorted(
+                                (a, b) => a.price - b.price,
+                            );
+                        case sortFilter === 'PriceDown':
+                            return saleOnly.toSorted(
+                                (a, b) => b.price - a.price,
+                            );
+                        case sortFilter === 'NameUp':
+                            return saleOnly.toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                        case sortFilter === 'NameDown':
+                            return saleOnly.toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                        default:
+                            return;
+                    }
+                case searchValue && !onSale:
+                    switch (true) {
+                        case sortFilter === 'PriceUp':
+                            return searchByName.toSorted(
+                                (a, b) => a.price - b.price,
+                            );
+                        case sortFilter === 'PriceDown':
+                            return searchByName.toSorted(
+                                (a, b) => b.price - a.price,
+                            );
+                        case sortFilter === 'NameUp':
+                            return searchByName.toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                        case sortFilter === 'NameDown':
+                            return searchByName.toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                        default:
+                            return;
+                    }
+                case searchValue && onSale:
+                    switch (true) {
+                        case sortFilter === 'PriceUp':
+                            return searchByNameSale.toSorted(
+                                (a, b) => a.price - b.price,
+                            );
+                        case sortFilter === 'PriceDown':
+                            return searchByNameSale.toSorted(
+                                (a, b) => b.price - a.price,
+                            );
+                        case sortFilter === 'NameUp':
+                            return searchByNameSale.toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                        case sortFilter === 'NameDown':
+                            return searchByNameSale.toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                        default:
+                            return;
+                    }
+                default:
+                    switch (true) {
+                        case sortFilter === 'PriceUp':
+                            return result.toSorted((a, b) => a.price - b.price);
+                        case sortFilter === 'PriceDown':
+                            return result.toSorted((a, b) => b.price - a.price);
+                        case sortFilter === 'NameUp':
+                            return result.toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                        case sortFilter === 'NameDown':
+                            return result.toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                        default:
+                            return;
+                    }
+            }
+        }
+
+        //priceFilter
+        if (sortFilter === 'Default' && priceFilter !== 'Default') {
+            //priceFilterOnly
+            if (!searchValue && !onSale) {
+                if (priceFilter === '< $100') {
+                    return result.filter((product) => product.price < 100);
+                } else if (priceFilter === '$100 - $200') {
+                    return result.filter(
+                        (product) =>
+                            product.price >= 100 && product.price <= 200,
+                    );
+                } else if (priceFilter === '> $200') {
+                    return result.filter((product) => product.price > 200);
                 }
-            case searchValue && !onSale:
-                switch (true) {
-                    case filter === 'PriceUp':
-                        return searchByName.toSorted(
-                            (a, b) => a.price - b.price,
-                        );
-                    case filter === 'PriceDown':
-                        return searchByName.toSorted(
-                            (a, b) => b.price - a.price,
-                        );
-                    case filter === 'NameUp':
-                        return searchByName.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return -1;
-                            }
-                            if (nameA > nameB) {
-                                return 1;
-                            }
-                            return 0;
-                        });
-                    case filter === 'NameDown':
-                        return searchByName.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return 1;
-                            }
-                            if (nameA > nameB) {
-                                return -1;
-                            }
-                            return 0;
-                        });
-                    default:
-                        return;
+            }
+            //name&price
+            if (searchValue && !onSale) {
+                if (priceFilter === '< $100') {
+                    return searchByName.filter(
+                        (product) => product.price < 100,
+                    );
+                } else if (priceFilter === '$100 - $200') {
+                    return searchByName.filter(
+                        (product) =>
+                            product.price >= 100 && product.price <= 200,
+                    );
+                } else if (priceFilter === '> $200') {
+                    return searchByName.filter(
+                        (product) => product.price > 200,
+                    );
                 }
-            case searchValue && onSale:
-                switch (true) {
-                    case filter === 'PriceUp':
-                        return searchByNameSale.toSorted(
-                            (a, b) => a.price - b.price,
-                        );
-                    case filter === 'PriceDown':
-                        return searchByNameSale.toSorted(
-                            (a, b) => b.price - a.price,
-                        );
-                    case filter === 'NameUp':
-                        return searchByNameSale.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return -1;
-                            }
-                            if (nameA > nameB) {
-                                return 1;
-                            }
-                            return 0;
-                        });
-                    case filter === 'NameDown':
-                        return searchByNameSale.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return 1;
-                            }
-                            if (nameA > nameB) {
-                                return -1;
-                            }
-                            return 0;
-                        });
-                    default:
-                        return;
+            }
+            //sale&price
+            if (!searchValue && onSale) {
+                if (priceFilter === '< $100') {
+                    return saleOnly.filter((product) => product.price < 100);
+                } else if (priceFilter === '$100 - $200') {
+                    return saleOnly.filter(
+                        (product) =>
+                            product.price >= 100 && product.price <= 200,
+                    );
+                } else if (priceFilter === '> $200') {
+                    return saleOnly.filter((product) => product.price > 200);
                 }
-            default:
-                switch (true) {
-                    case filter === 'PriceUp':
-                        return result.toSorted((a, b) => a.price - b.price);
-                    case filter === 'PriceDown':
-                        return result.toSorted((a, b) => b.price - a.price);
-                    case filter === 'NameUp':
-                        return result.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return -1;
-                            }
-                            if (nameA > nameB) {
-                                return 1;
-                            }
-                            return 0;
-                        });
-                    case filter === 'NameDown':
-                        return result.toSorted((a, b) => {
-                            const nameA = a.name.toLowerCase();
-                            const nameB = b.name.toLowerCase();
-                            if (nameA < nameB) {
-                                return 1;
-                            }
-                            if (nameA > nameB) {
-                                return -1;
-                            }
-                            return 0;
-                        });
-                    default:
-                        return;
+            }
+            //name&sale&price
+            if (searchValue && onSale) {
+                if (priceFilter === '< $100') {
+                    return searchByNameSale.filter(
+                        (product) => product.price < 100,
+                    );
+                } else if (priceFilter === '$100 - $200') {
+                    return searchByNameSale.filter(
+                        (product) =>
+                            product.price >= 100 && product.price <= 200,
+                    );
+                } else if (priceFilter === '> $200') {
+                    return searchByNameSale.filter(
+                        (product) => product.price > 200,
+                    );
                 }
+            }
+        }
+        //sort&price
+        if (sortFilter !== 'Default' && priceFilter !== 'Default') {
+            //
+            if (!searchValue && !onSale) {
+                if (sortFilter === 'PriceUp') {
+                    if (priceFilter === '< $100') {
+                        return result
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => a.price - b.price);
+                    } else if (priceFilter === '$100 - $200') {
+                        return result
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => a.price - b.price);
+                    } else if (priceFilter === '> $200') {
+                        return result
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => a.price - b.price);
+                    }
+                } else if (sortFilter === 'PriceDown') {
+                    if (priceFilter === '< $100') {
+                        return result
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => b.price - a.price);
+                    } else if (priceFilter === '$100 - $200') {
+                        return result
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => b.price - a.price);
+                    } else if (priceFilter === '> $200') {
+                        return result
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => b.price - a.price);
+                    }
+                } else if (sortFilter === 'NameUp') {
+                    if (priceFilter === '< $100') {
+                        return result
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '$100 - $200') {
+                        return result
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '> $200') {
+                        return result
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    }
+                } else if (sortFilter === 'NameDown') {
+                    if (priceFilter === '< $100') {
+                        return result
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '$100 - $200') {
+                        return result
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '> $200') {
+                        return result
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    }
+                }
+            }
+            //
+            if (searchValue && !onSale) {
+                if (sortFilter === 'PriceUp') {
+                    if (priceFilter === '< $100') {
+                        return searchByName
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => a.price - b.price);
+                    } else if (priceFilter === '$100 - $200') {
+                        return searchByName
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => a.price - b.price);
+                    } else if (priceFilter === '> $200') {
+                        return searchByName
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => a.price - b.price);
+                    }
+                } else if (sortFilter === 'PriceDown') {
+                    if (priceFilter === '< $100') {
+                        return searchByName
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => b.price - a.price);
+                    } else if (priceFilter === '$100 - $200') {
+                        return searchByName
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => b.price - a.price);
+                    } else if (priceFilter === '> $200') {
+                        return searchByName
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => b.price - a.price);
+                    }
+                } else if (sortFilter === 'NameUp') {
+                    if (priceFilter === '< $100') {
+                        return searchByName
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '$100 - $200') {
+                        return searchByName
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '> $200') {
+                        return searchByName
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    }
+                } else if (sortFilter === 'NameDown') {
+                    if (priceFilter === '< $100') {
+                        return searchByName
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '$100 - $200') {
+                        return searchByName
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '> $200') {
+                        return searchByName
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    }
+                }
+            }
+            //
+            if (!searchValue && onSale) {
+                if (sortFilter === 'PriceUp') {
+                    if (priceFilter === '< $100') {
+                        return saleOnly
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => a.price - b.price);
+                    } else if (priceFilter === '$100 - $200') {
+                        return saleOnly
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => a.price - b.price);
+                    } else if (priceFilter === '> $200') {
+                        return saleOnly
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => a.price - b.price);
+                    }
+                } else if (sortFilter === 'PriceDown') {
+                    if (priceFilter === '< $100') {
+                        return saleOnly
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => b.price - a.price);
+                    } else if (priceFilter === '$100 - $200') {
+                        return result
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => b.price - a.price);
+                    } else if (priceFilter === '> $200') {
+                        return saleOnly
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => b.price - a.price);
+                    }
+                } else if (sortFilter === 'NameUp') {
+                    if (priceFilter === '< $100') {
+                        return saleOnly
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '$100 - $200') {
+                        return saleOnly
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '> $200') {
+                        return saleOnly
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    }
+                } else if (sortFilter === 'NameDown') {
+                    if (priceFilter === '< $100') {
+                        return saleOnly
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '$100 - $200') {
+                        return saleOnly
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '> $200') {
+                        return saleOnly
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    }
+                }
+            }
+            //
+            if (searchValue && onSale) {
+                if (sortFilter === 'PriceUp') {
+                    if (priceFilter === '< $100') {
+                        return searchByNameSale
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => a.price - b.price);
+                    } else if (priceFilter === '$100 - $200') {
+                        return searchByNameSale
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => a.price - b.price);
+                    } else if (priceFilter === '> $200') {
+                        return searchByNameSale
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => a.price - b.price);
+                    }
+                } else if (sortFilter === 'PriceDown') {
+                    if (priceFilter === '< $100') {
+                        return searchByNameSale
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => b.price - a.price);
+                    } else if (priceFilter === '$100 - $200') {
+                        return searchByNameSale
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => b.price - a.price);
+                    } else if (priceFilter === '> $200') {
+                        return searchByNameSale
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => b.price - a.price);
+                    }
+                } else if (sortFilter === 'NameUp') {
+                    if (priceFilter === '< $100') {
+                        return searchByNameSale
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '$100 - $200') {
+                        return searchByNameSale
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '> $200') {
+                        return searchByNameSale
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return -1;
+                                }
+                                if (nameA > nameB) {
+                                    return 1;
+                                }
+                                return 0;
+                            });
+                    }
+                } else if (sortFilter === 'NameDown') {
+                    if (priceFilter === '< $100') {
+                        return searchByNameSale
+                            .filter((product) => product.price < 100)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '$100 - $200') {
+                        return searchByNameSale
+                            .filter(
+                                (product) =>
+                                    product.price >= 100 &&
+                                    product.price <= 200,
+                            )
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    } else if (priceFilter === '> $200') {
+                        return searchByNameSale
+                            .filter((product) => product.price > 200)
+                            .toSorted((a, b) => {
+                                const nameA = a.name.toLowerCase();
+                                const nameB = b.name.toLowerCase();
+                                if (nameA < nameB) {
+                                    return 1;
+                                }
+                                if (nameA > nameB) {
+                                    return -1;
+                                }
+                                return 0;
+                            });
+                    }
+                }
+            }
         }
     };
 
-    const filtered = getFilterItems(searchValue, result, onSale, filter);
+    const filtered = getFilterItems(
+        searchValue,
+        result,
+        onSale,
+        sortFilter,
+        priceFilter,
+    );
 
     const getProducts = async () => {
         let result = await fetchProductApi();
@@ -338,14 +993,16 @@ const Shop = () => {
         <div className='Shop Container'>
             <ErrorBoundary>
                 <ShopFilter
-                    productApi={productApi}
                     debounceChange={debounceChange}
-                    onSale={onSale}
-                    setOnSale={setOnSale}
-                    filter={filter}
-                    setFilter={setFilter}
+                    productApi={productApi}
                     filtered={filtered}
                     searchValue={searchValue}
+                    onSale={onSale}
+                    setOnSale={setOnSale}
+                    sortFilter={sortFilter}
+                    setSortFilter={setSortFilter}
+                    priceFilter={priceFilter}
+                    setPriceFilter={setPriceFilter}
                 />
                 {productApi.length !== 0 ? (
                     <ProductDisplay

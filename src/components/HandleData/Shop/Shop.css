@@ -34,7 +34,7 @@
 
 .NameFilterInput {
     width: 300px;
-    height: 30px;
+    height: 35px;
     padding: 5px;
     border: 1px solid var(--color-text);
     border-radius: 2px;
@@ -59,8 +59,16 @@
     align-items: center;
 }
 
-.sortFilter {
+.FiltersInputs label,
+.FiltersInputs input,
+.FiltersInputs select {
+    text-align: center;
     cursor: pointer;
+}
+
+.FiltersInputs option:disabled {
+    background-color: var(--color-icon);
+    color: var(--color-default);
 }
 
 @media (width <= 1024px) {
