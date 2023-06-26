@@ -86,6 +86,10 @@
     color: var(--color-text);
 }
 
+.FooterTop_Item3-InfoList a {
+    color: var(--color-text);
+}
+
 .FooterTop_Item3-InfoList a:visited {
     color: var(--color-text);
 }

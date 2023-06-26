@@ -169,8 +169,6 @@ const Shop = () => {
     const [priceFilter, setPriceFilter] = useState('Default');
     const result = [...productApi];
 
-    console.log(sortFilter);
-
     const handleChange = (event) => {
         setSearchValue(event.target.value);
     };
