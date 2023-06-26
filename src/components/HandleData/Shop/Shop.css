@@ -1,15 +1,11 @@
 .Shop {
     position: relative;
     text-align: center;
-    padding-top: 20px;
-}
-
-.ShopProductContainer {
-    padding-top: 10px;
+    padding-top: 0;
 }
 
 .ProductAvailableCount {
-    padding-top: 10px;
+    margin-top: 10px;
 }
 
 .NoItemImg {
@@ -21,9 +17,9 @@
     position: sticky;
     top: 86px;
     display: grid;
-    justify-content: center;
     background-color: var(--color-default);
     width: 100%;
+    padding-block: 10px;
     z-index: 50;
 }
 

@@ -13,6 +13,7 @@ import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 
 const ShopFilter = ({
     productApi,
+    filtered,
     debounceChange,
     onSale,
     setOnSale,
@@ -112,6 +113,13 @@ const ShopFilter = ({
                     </div>
                 </div>
             </fieldset>
+            <div className='ProductAvailableCount'>
+                {filtered.length > 0
+                    ? `${filtered.length} product${
+                          filtered.length > 1 && 's'
+                      } available.`
+                    : 'Please wait...'}
+            </div>
         </form>
     );
 };
@@ -119,9 +127,6 @@ const ShopFilter = ({
 const ProductDisplay = ({ filtered }) => {
     return (
         <>
-            <div className='ProductAvailableCount'>
-                {filtered.length} product{filtered.length > 1 && 's'} available.
-            </div>
             <div className='ProductContainer ShopProductContainer'>
                 {filtered.map((product) => (
                     <div
@@ -989,9 +994,9 @@ const Shop = () => {
         <div className='Shop Container'>
             <ErrorBoundary>
                 <ShopFilter
-                    debounceChange={debounceChange}
                     productApi={productApi}
-                    searchValue={searchValue}
+                    debounceChange={debounceChange}
+                    filtered={filtered}
                     onSale={onSale}
                     setOnSale={setOnSale}
                     sortFilter={sortFilter}
