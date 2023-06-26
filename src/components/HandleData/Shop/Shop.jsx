@@ -23,18 +23,18 @@ const ShopFilter = ({
     setPriceFilter,
 }) => {
     const sortFilterOpt = [
-        { value: 'Default' },
-        { value: 'PriceUp' },
-        { value: 'PriceDown' },
-        { value: 'NameUp' },
-        { value: 'NameDown' },
+        { label: 'Default', value: 'Default' },
+        { label: 'PriceUp', value: 'PriceUp' },
+        { label: 'PriceDown', value: 'PriceDown' },
+        { label: 'NameUp', value: 'NameUp' },
+        { label: 'NameDown', value: 'NameDown' },
     ];
 
     const priceFilterOpt = [
-        { value: 'Default' },
-        { value: '< $100' },
-        { value: '$100 - $200' },
-        { value: '> $200' },
+        { label: 'Default', value: 'Default' },
+        { label: '< $100', value: '< $100' },
+        { label: '$100 - $200', value: '$100 - $200' },
+        { label: '> $200', value: '> $200' },
     ];
 
     return (
@@ -85,8 +85,9 @@ const ShopFilter = ({
                                 <option
                                     key={opt.value}
                                     disabled={opt.value === priceFilter}
+                                    value={opt.value}
                                 >
-                                    {opt.value}
+                                    {opt.label}
                                 </option>
                             ))}
                         </select>
@@ -105,8 +106,9 @@ const ShopFilter = ({
                                 <option
                                     key={opt.value}
                                     disabled={opt.value === sortFilter}
+                                    value={opt.value}
                                 >
-                                    {opt.value}
+                                    {opt.label}
                                 </option>
                             ))}
                         </select>
@@ -166,6 +168,8 @@ const Shop = () => {
     const [sortFilter, setSortFilter] = useState('Default');
     const [priceFilter, setPriceFilter] = useState('Default');
     const result = [...productApi];
+
+    console.log(sortFilter);
 
     const handleChange = (event) => {
         setSearchValue(event.target.value);
