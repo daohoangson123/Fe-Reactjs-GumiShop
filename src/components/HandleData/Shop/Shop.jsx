@@ -8,14 +8,12 @@ import { useEffect, useMemo, useState } from 'react';
 import { debounce } from 'lodash';
 //
 import Product from '../../Layout/UI/Product/Product';
-import Loading from '../../Layout/UI/Loading/Loading';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
 import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 
 const ShopFilter = ({
     productApi,
     debounceChange,
-    filtered,
     onSale,
     setOnSale,
     sortFilter,
@@ -114,18 +112,16 @@ const ShopFilter = ({
                     </div>
                 </div>
             </fieldset>
-            {filtered.length > 0 && (
-                <div>
-                    Found {filtered.length} product{filtered.length > 1 && 's'}.
-                </div>
-            )}
         </form>
     );
 };
 
-const ProductDisplay = ({ searchValue, filtered }) => {
+const ProductDisplay = ({ filtered }) => {
     return (
         <>
+            <div className='ProductAvailableCount'>
+                {filtered.length} product{filtered.length > 1 && 's'} available.
+            </div>
             <div className='ProductContainer ShopProductContainer'>
                 {filtered.map((product) => (
                     <div
@@ -147,7 +143,7 @@ const ProductDisplay = ({ searchValue, filtered }) => {
                     </div>
                 ))}
             </div>
-            {filtered.length === 0 && searchValue && (
+            {filtered.length === 0 && (
                 <img
                     className='NoItemImg'
                     src={noitem}
@@ -995,7 +991,6 @@ const Shop = () => {
                 <ShopFilter
                     debounceChange={debounceChange}
                     productApi={productApi}
-                    filtered={filtered}
                     searchValue={searchValue}
                     onSale={onSale}
                     setOnSale={setOnSale}
@@ -1005,18 +1000,11 @@ const Shop = () => {
                     setPriceFilter={setPriceFilter}
                 />
                 {productApi.length !== 0 ? (
-                    <ProductDisplay
-                        searchValue={searchValue}
-                        filtered={filtered}
-                    />
+                    <ProductDisplay filtered={filtered} />
                 ) : (
-                    <>
-                        <Loading />
-                        <div className='ProductContainer ShopProductContainer'>
-                            <ProductSkeleton />
-                            <ProductSkeleton />
-                        </div>
-                    </>
+                    <div className='ProductContainer ShopProductContainer'>
+                        <ProductSkeleton />
+                    </div>
                 )}
             </ErrorBoundary>
         </div>

@@ -5,11 +5,15 @@
 }
 
 .ShopProductContainer {
-    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.ProductAvailableCount {
+    padding-top: 10px;
 }
 
 .NoItemImg {
-    width: 300px;
+    width: 325px;
     aspect-ratio: 1;
 }
 
@@ -18,8 +22,8 @@
     top: 86px;
     display: grid;
     justify-content: center;
-    width: 100%;
     background-color: var(--color-default);
+    width: 100%;
     z-index: 50;
 }
 
@@ -29,7 +33,6 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
-    padding-block: 10px;
 }
 
 .NameFilterInput {
