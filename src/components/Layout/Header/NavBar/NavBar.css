@@ -4,8 +4,8 @@
     align-items: center;
     gap: 10px;
     background-color: var(--color-default);
-    padding: 30px 60px;
     border-bottom: 2px solid var(--color-primary);
+    padding: 30px 60px;
 }
 
 .NavBar a {

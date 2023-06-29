@@ -19,8 +19,7 @@ const SearchModal = ({
     return (
         <div
             className='Nav-Search'
-            style={{ scale: isSearching && '1' }}
-        >
+            style={{ scale: isSearching && '1' }}>
             <form className='Nav-Search-Form'>
                 <div className='Nav-Search-Container'>
                     <input
@@ -48,8 +47,7 @@ const SearchModal = ({
                                 <Link
                                     to={`/shop/${product.name
                                         .split(' ')
-                                        .join('-')}`}
-                                >
+                                        .join('-')}`}>
                                     <img
                                         src={product.img}
                                         alt=''
@@ -156,20 +154,17 @@ const SearchCart = () => {
                 <div
                     id='SearchIcon'
                     htmlFor='searchquery'
-                    onClick={() => setIsSearching(!isSearching)}
-                >
+                    onClick={() => setIsSearching(!isSearching)}>
                     <i className='fa-solid fa-magnifying-glass Icon'></i>
                 </div>
                 <NavLink
                     to='/userLogin'
-                    aria-label='User-Page'
-                >
+                    aria-label='User-Page'>
                     <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
                 </NavLink>
                 <NavLink
                     to='/cart'
-                    aria-label='Cart-Page'
-                >
+                    aria-label='Cart-Page'>
                     <div className='Cart_IconContainer'>
                         <i className='fa-solid fa-bag-shopping Icon'></i>
                         {myCart.length !== 0 && (
