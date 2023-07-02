@@ -1,8 +1,7 @@
 .NavBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    column-gap: 10px;
     background-color: var(--color-default);
     border-bottom: 2px solid var(--color-primary);
     padding: 30px 60px;

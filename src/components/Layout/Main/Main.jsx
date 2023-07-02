@@ -3,9 +3,11 @@ import { Routes, Route } from 'react-router-dom';
 import LandingPage from '../Pages/LandingPage/LandingPage';
 //
 import ProductDetail from '../../HandleData/ProductDetail/ProductDetail';
+import WholesaleProductDetail from '../../HandleData/WholesaleProductDetail/WholesaleProductDetail';
 import NewsDetail from '../Pages/LandingPage/LatestNew/NewsDetail/NewsDetail';
 //
 import StockistPage from '../Pages/Stockist/StockistPage';
+import Wholesale from '../Pages/Wholesale/Wholesale';
 import ContactPage from '../Pages/ContactPage/ContactPage';
 import NotFoundPage from '../Pages/NotFoundPage/NotFoundPage';
 //
@@ -40,7 +42,7 @@ function Main() {
                     />
                     <Route
                         path='/wholesale'
-                        element={null}
+                        element={<Wholesale />}
                     />
                     <Route
                         path='/contact'
@@ -57,6 +59,10 @@ function Main() {
                     <Route
                         path='/shop/:id'
                         element={<ProductDetail />}
+                    />
+                    <Route
+                        path='/wholesale/:id'
+                        element={<WholesaleProductDetail />}
                     />
                     <Route
                         path='/news/:id'

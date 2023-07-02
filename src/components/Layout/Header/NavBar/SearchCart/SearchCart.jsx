@@ -19,46 +19,48 @@ const SearchModal = ({
     return (
         <div
             className='Nav-Search'
-            style={{ scale: isSearching && '1' }}>
+            style={{
+                height: isSearching && 'auto',
+                display: isSearching && 'grid',
+            }}>
             <form className='Nav-Search-Form'>
-                <div className='Nav-Search-Container'>
-                    <input
-                        type='text'
-                        name='searchquery'
-                        id='searchquery'
-                        placeholder="Search by Product's name"
-                        required
-                        autoComplete='off'
-                        onChange={debounceChange}
-                    />
-                    <ul className='Nav-Search__Result'>
-                        <div style={{ textAlign: 'center' }}>
-                            {searchValue ? (
-                                <>
-                                    {filtered.length} item
-                                    {filtered.length > 1 && `'s`} found
-                                </>
-                            ) : (
-                                'result will be show here'
-                            )}
-                        </div>
-                        {filtered.map((product) => (
-                            <li key={product.name}>
-                                <Link
-                                    to={`/shop/${product.name
-                                        .split(' ')
-                                        .join('-')}`}>
-                                    <img
-                                        src={product.img}
-                                        alt=''
-                                    />
-                                    {product.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </ul>
-                </div>
+                <input
+                    type='text'
+                    name='searchquery'
+                    id='searchquery'
+                    placeholder="Search by Product's name"
+                    required
+                    autoComplete='off'
+                    onChange={debounceChange}
+                    style={{
+                        display: isSearching && 'grid',
+                        height: isSearching && '30px',
+                    }}
+                />
             </form>
+            <ul
+                className='Nav-Search__Result'
+                style={{
+                    height: searchValue && 'fit-content',
+                }}>
+                {searchValue && (
+                    <div>
+                        {filtered.length} item
+                        {filtered.length > 1 && `'s`} found
+                    </div>
+                )}
+                {filtered.map((product) => (
+                    <li key={product.name}>
+                        <Link to={`/shop/${product.name.split(' ').join('-')}`}>
+                            <img
+                                src={product.img}
+                                alt=''
+                            />
+                            {product.name}
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </div>
     );
 };

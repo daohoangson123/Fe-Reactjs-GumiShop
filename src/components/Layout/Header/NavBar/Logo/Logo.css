@@ -1,17 +1,28 @@
 .NavBar__Logo {
     display: flex;
-    align-items: center;
+    justify-self: start;
+    align-self: center;
     font-size: clamp(26px, 4vw, 36px);
     font-weight: 600;
     line-height: 24px;
-    color: var(--color-alt);
     transition: var(--transition-fast);
+}
+
+.NavBar__Logo a {
+    display: flex;
+    color: var(--color-alt);
 }
 
 .NavBar__Logo span {
     font-size: clamp(16px, 2vw, 20px);
 }
 
-.NavBar__Logo:hover {
+.NavBar__Logo:hover a {
     color: var(--color-primary);
+}
+
+@media (width <= 1024px) {
+    .NavBar__Logo {
+        justify-self: center;
+    }
 }

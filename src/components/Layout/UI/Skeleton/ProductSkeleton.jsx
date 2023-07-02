@@ -1,12 +1,12 @@
 import Skeleton from 'react-loading-skeleton';
 
-function ProductSkeleton() {
+function ProductSkeleton({ width, height }) {
     return (
         <>
             <div>
                 <Skeleton
-                    width={250}
-                    height={250}
+                    width={width || 250}
+                    height={height || 250}
                 />
                 <Skeleton
                     width={200}
@@ -15,8 +15,8 @@ function ProductSkeleton() {
             </div>
             <div>
                 <Skeleton
-                    width={250}
-                    height={250}
+                    width={width || 250}
+                    height={height || 250}
                 />
                 <Skeleton
                     width={200}
@@ -25,8 +25,8 @@ function ProductSkeleton() {
             </div>
             <div>
                 <Skeleton
-                    width={250}
-                    height={250}
+                    width={width || 250}
+                    height={height || 250}
                 />
                 <Skeleton
                     width={200}
@@ -35,8 +35,8 @@ function ProductSkeleton() {
             </div>
             <div>
                 <Skeleton
-                    width={250}
-                    height={250}
+                    width={width || 250}
+                    height={height || 250}
                 />
                 <Skeleton
                     width={200}

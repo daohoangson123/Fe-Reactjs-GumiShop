@@ -41,9 +41,10 @@
 
 .SignBar__SignRegis-Link .inactive {
     color: var(--color-default);
+    text-decoration: none;
 }
 
-.SignBar__SignRegis-Link > a:visited {
+.SignBar__SignRegis-Link a:visited {
     color: var(--color-default);
 }
 
