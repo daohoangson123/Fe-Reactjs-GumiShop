@@ -16,8 +16,7 @@ const CartForm = ({
     return (
         <form
             className='Cart-Item_Form Container'
-            onSubmit={handleSubmit}
-        >
+            onSubmit={handleSubmit}>
             {totalItem > 0 && totalItem ? (
                 <div className='Cart__Layout'>
                     <div className='Cart-Item-List'>
@@ -26,8 +25,7 @@ const CartForm = ({
                             return (
                                 <div
                                     className='Cart-Item'
-                                    key={item.id}
-                                >
+                                    key={item.id}>
                                     <img
                                         src={item.img}
                                         alt={item.name}
@@ -48,8 +46,7 @@ const CartForm = ({
                                                 if (item.amount > 1) {
                                                     handleDec(item);
                                                 }
-                                            }}
-                                        >
+                                            }}>
                                             -
                                         </button>
                                         <input
@@ -59,24 +56,22 @@ const CartForm = ({
                                             value={item.amount}
                                             min={1}
                                             max={1000}
+                                            disabled
                                             autoComplete='off'
-                                            onWheel={(event) =>
-                                                event.target.blur()
-                                            }
+                                            // onWheel={(event) =>
+                                            //     event.target.blur()
+                                            // }
                                             onChange={(event) => {
-                                                let newAmount = Math.round(
-                                                    event.target.value,
-                                                );
-                                                if (
-                                                    newAmount < 1 ||
-                                                    newAmount > 1000
-                                                ) {
-                                                    return newAmount;
-                                                }
-                                                if (!isNaN(newAmount)) {
-                                                    item.amount = newAmount;
-                                                }
-                                                setQuantity(newAmount);
+                                                // if (
+                                                //     newAmount < 1 ||
+                                                //     newAmount > 1000
+                                                // ) {
+                                                //     return newAmount;
+                                                // }
+                                                // if (!isNaN(newAmount)) {
+                                                //     item.amount = newAmount;
+                                                // }
+                                                setQuantity(event.target.value);
                                             }}
                                             // onInput={(event) =>
                                             //     (event.currentTarget.value =
@@ -95,8 +90,7 @@ const CartForm = ({
                                                 if (item.amount < 1000) {
                                                     handleInc(item);
                                                 }
-                                            }}
-                                        >
+                                            }}>
                                             +
                                         </button>
                                     </div>
@@ -110,8 +104,7 @@ const CartForm = ({
                                             handleRemove({
                                                 id: item.id,
                                             });
-                                        }}
-                                    >
+                                        }}>
                                         <i className='fa-solid fa-trash-can'></i>
                                     </button>
                                 </div>
@@ -129,8 +122,7 @@ const CartForm = ({
                         </div>
                         <button
                             className='Buy_Btn'
-                            type='submit'
-                        >
+                            type='submit'>
                             Purchase
                         </button>
                     </div>
@@ -139,8 +131,7 @@ const CartForm = ({
                 <div className='EmptyCart'>
                     <img
                         src={emptyCart}
-                        alt='EmptyCart'
-                    ></img>
+                        alt='EmptyCart'></img>
                 </div>
             )}
         </form>

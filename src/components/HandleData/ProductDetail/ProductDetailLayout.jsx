@@ -60,16 +60,14 @@ const ProductDetailLayout = ({
                                     quantity > 10
                                         ? setQuantity((pre) => pre - 10)
                                         : setQuantity(1);
-                                }}
-                            ></button>
+                                }}></button>
                             <button
                                 className='Quantity_Btn'
                                 type='button'
                                 onClick={() => {
                                     quantity > 1 &&
                                         setQuantity((pre) => pre - 1);
-                                }}
-                            >
+                                }}>
                                 -
                             </button>
                             <input
@@ -97,13 +95,13 @@ const ProductDetailLayout = ({
                                     }
                                     setQuantity(newAmount);
                                 }}
-                                onInput={(event) =>
-                                    (event.currentTarget.value =
-                                        event.currentTarget.value
-                                            .replace(/[^0-9.]/g, '')
-                                            .replace(/(\..*?)\..*/g, '$1')
-                                            .replace(/^0[^.]/, '0'))
-                                }
+                                // onInput={(event) =>
+                                //     (event.currentTarget.value =
+                                //         event.currentTarget.value
+                                //             .replace(/[^0-9.]/g, '')
+                                //             .replace(/(\..*?)\..*/g, '$1')
+                                //             .replace(/^0[^.]/, '0'))
+                                // }
                             />
                             <button
                                 className='Quantity_Btn'
@@ -112,8 +110,7 @@ const ProductDetailLayout = ({
                                     if (quantity < 1000) {
                                         setQuantity((pre) => pre + 1);
                                     }
-                                }}
-                            >
+                                }}>
                                 +
                             </button>
                             <button
@@ -125,8 +122,7 @@ const ProductDetailLayout = ({
                                     } else {
                                         setQuantity(1000);
                                     }
-                                }}
-                            ></button>
+                                }}></button>
                             <button
                                 className='AddToCart_Btn'
                                 type='button'
@@ -139,8 +135,7 @@ const ProductDetailLayout = ({
                                         discount: productDetail.discouter,
                                         amount: quantity,
                                     });
-                                }}
-                            >
+                                }}>
                                 Add
                             </button>
                         </form>

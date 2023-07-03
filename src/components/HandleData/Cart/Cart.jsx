@@ -13,7 +13,6 @@ import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 const Cart = () => {
     const dispatch = useDispatch();
     const myCart = useSelector(myCartSelector);
-    console.log(myCart);
     // eslint-disable-next-line
     const [quantity, setQuantity] = useState(1);
 
