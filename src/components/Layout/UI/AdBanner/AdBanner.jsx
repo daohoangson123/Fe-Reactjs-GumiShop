@@ -2,7 +2,6 @@ import './AdBanner.css';
 //
 import { useEffect, useState } from 'react';
 //
-import { pageAccessedByReload } from '../../../../data/isPageReloaded';
 
 const AdBanner = () => {
     const [layerClosed, setLayerClosed] = useState(() => {
@@ -27,7 +26,7 @@ const AdBanner = () => {
             htmlBody.forEach((item) => item.classList.remove('preventScroll'));
         }
 
-        if (firstLoadLayer && !layerClosed && !pageAccessedByReload) {
+        if (firstLoadLayer && !layerClosed) {
             setTimeout(() => (firstLoadLayer.style.display = 'grid'), 500);
         }
 
@@ -43,10 +42,6 @@ const AdBanner = () => {
             closeLayerBtn.addEventListener('click', removeFirstLoadLayer);
 
         localStorage.setItem('layerClosed', JSON.stringify(layerClosed));
-
-        window.onunload = () => {
-            localStorage.removeItem('layerClosed');
-        };
     }, [layerClosed]);
 
     return (
