@@ -6,9 +6,9 @@ import Footer from './components/Layout/Footer/Footer';
 //
 import AdBanner from './components/Layout/UI/AdBanner/AdBanner';
 //
-import { pageAccessedByReload } from './data/isPageReloaded';
 import { useEffect } from 'react';
 //
+import { pageAccessedByReload } from './data/isPageReloaded';
 
 function App() {
     useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
     }, []);
     return (
         <div className='App'>
-            {!pageAccessedByReload && <AdBanner />}
+            <AdBanner />
             <Header />
             <Main />
             <Footer />

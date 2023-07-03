@@ -7,6 +7,7 @@ import { addToCart } from '../../../redux/Actions/Action';
 import { fetchProductApi } from '../../../data/axiosAPI/productData';
 //
 import ProductDetailLayout from './ProductDetailLayout';
+import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 //
 
 const ProductDetail = () => {
@@ -36,13 +37,15 @@ const ProductDetail = () => {
     }, [id]);
 
     return (
-        <div>
-            <ProductDetailLayout
-                productDetail={productDetail}
-                quantity={quantity}
-                setQuantity={setQuantity}
-                handleAddToCart={handleAddToCart}
-            />
+        <div className='ProductDetail'>
+            <ErrorBoundary>
+                <ProductDetailLayout
+                    productDetail={productDetail}
+                    quantity={quantity}
+                    setQuantity={setQuantity}
+                    handleAddToCart={handleAddToCart}
+                />
+            </ErrorBoundary>
         </div>
     );
 };

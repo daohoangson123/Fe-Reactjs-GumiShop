@@ -10,11 +10,11 @@
 
 .AdBanner {
     position: relative;
-    background-image: url('../../../../assets/img/HeroBanner1.webp');
+    background-image: url('../../../../assets/img/product1.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: clamp(280px, 40vw, 700px);
+    width: clamp(300px, 50vw, 800px);
     aspect-ratio: 3 / 2;
 }
 

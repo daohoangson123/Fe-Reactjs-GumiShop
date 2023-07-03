@@ -88,3 +88,8 @@ li {
         padding: 60px;
     }
 }
+
+.preventScroll {
+    height: 100%;
+    overflow: hidden;
+}
