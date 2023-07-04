@@ -38,12 +38,11 @@ html {
 }
 
 html::-webkit-scrollbar {
-    width: 5px;
-    background-color: var(--color-primary-rbga);
+    width: 8px;
 }
 
 html::-webkit-scrollbar-thumb {
-    background-color: var(--color-text);
+    background-color: var(--color-primary);
 }
 
 body {

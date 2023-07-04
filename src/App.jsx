@@ -11,6 +11,8 @@ import { useEffect } from 'react';
 import { pageAccessedByReload } from './data/isPageReloaded';
 
 function App() {
+    const saved = localStorage.getItem('layerClosed');
+    const initialValue = JSON.parse(saved);
     useEffect(() => {
         function show(sect) {
             sect.classList.add('show');
@@ -40,7 +42,7 @@ function App() {
     }, []);
     return (
         <div className='App'>
-            <AdBanner />
+            {!initialValue && <AdBanner />}
             <Header />
             <Main />
             <Footer />

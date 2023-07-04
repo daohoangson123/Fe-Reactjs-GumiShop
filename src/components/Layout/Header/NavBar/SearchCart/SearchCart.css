@@ -20,58 +20,80 @@
     display: none;
 }
 
-.Nav-Search {
+.NavSearch {
     display: none;
+    justify-self: end;
     grid-column: 1 / 4;
-    justify-self: center;
-    width: clamp(300px, 40vw, 600px);
+    background-color: rgba(0, 0, 0, 0.1);
     margin-top: 10px;
     transition: var(--transition-fast);
 }
 
-.Nav-Search input {
-    display: none;
-    width: 100%;
-    height: 0;
-    padding: 5px;
-    margin: 2px 0 5px;
-}
-
-.Nav-Search__Result {
-    margin-bottom: 0;
-    padding: 0;
-    transition: var(--transition-fast);
-    overflow-y: scroll;
-}
-
-.Nav-Search__Result div {
+.NavSearch div {
     text-align: center;
 }
 
-.Nav-Search__Result li {
+.NavSearch__Form {
+    display: grid;
+    justify-content: center;
+}
+
+.NavSearch__Form input {
+    display: none;
+    min-width: 280px;
+    height: 0;
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+}
+
+.NavSearch__Form input:focus-visible {
+    outline: 1px solid var(--color-primary);
+}
+
+.NavSearch__Result {
+    margin-bottom: 0;
+    padding: 0;
+    transition: var(--transition-fast);
+    overflow: auto;
+}
+
+.NavSearch__Result {
+    scrollbar-gutter: stable;
+}
+
+.NavSearch__Result::-webkit-scrollbar {
+    width: 5px;
+}
+
+.NavSearch__Result::-webkit-scrollbar-thumb {
+    background-color: var(--color-primary);
+}
+
+.NavSearch__Result li {
     transition: var(--transition-fast);
 }
 
-.Nav-Search__Result li img {
+.NavSearch__Result li img {
     width: 30px;
     aspect-ratio: 1;
     margin-right: 10px;
 }
 
-.Nav-Search__Result li a {
+.NavSearch__Result li a {
     display: inline-block;
-    padding: 10px;
+    padding: 5px;
     width: 100%;
     color: var(--color-text);
     text-decoration: none;
     transition: var(--transition-fast);
 }
 
-.Nav-Search__Result li:hover {
+.NavSearch__Result li:hover {
     background-color: var(--color-primary);
 }
 
-.Nav-Search__Result li:hover a {
+.NavSearch__Result li:hover a {
     color: var(--color-default);
 }
 
@@ -108,5 +130,21 @@
 @media (width <= 768px) {
     .Icon {
         font-size: 16px;
+    }
+}
+
+@media (height < 460px) {
+    .NavSearch__Result li img {
+        display: none;
+    }
+
+    .NavSearch__Result li a {
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        padding: 0;
+        padding-block: 2px;
     }
 }

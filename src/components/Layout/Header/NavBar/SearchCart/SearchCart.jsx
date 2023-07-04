@@ -12,18 +12,19 @@ import { myCartSelector } from '../../../../../redux/Selectors/Selector';
 
 const SearchModal = ({
     isSearching,
+    setIsSearching,
     debounceChange,
     searchValue,
     filtered,
 }) => {
     return (
         <div
-            className='Nav-Search'
+            className='NavSearch'
             style={{
                 height: isSearching && 'auto',
                 display: isSearching && 'grid',
             }}>
-            <form className='Nav-Search-Form'>
+            <form className='NavSearch__Form'>
                 <input
                     type='text'
                     name='searchquery'
@@ -38,19 +39,21 @@ const SearchModal = ({
                     }}
                 />
             </form>
+            {searchValue && (
+                <div>
+                    {filtered.length} item
+                    {filtered.length > 1 && `'s`} found
+                </div>
+            )}
             <ul
-                className='Nav-Search__Result'
+                className='NavSearch__Result'
                 style={{
-                    height: searchValue && 'fit-content',
+                    maxHeight: searchValue && '400px',
                 }}>
-                {searchValue && (
-                    <div>
-                        {filtered.length} item
-                        {filtered.length > 1 && `'s`} found
-                    </div>
-                )}
                 {filtered.map((product) => (
-                    <li key={product.name}>
+                    <li
+                        key={product.name}
+                        onClick={() => setIsSearching(false)}>
                         <Link to={`/shop/${product.name.split(' ').join('-')}`}>
                             <img
                                 src={product.img}
@@ -113,14 +116,15 @@ const SearchCart = () => {
     //đóng Search Modal khi nhấn ra ngoài
     useEffect(() => {
         const searchIcon = document.getElementById('SearchIcon');
-        const searchModal = document.getElementById('searchquery');
+        const searchInput = document.getElementById('searchquery');
+        const searchModal = document.getElementsByClassName('NavSearch')[0];
 
         function focusSearchInput() {
             if (!isSearching) {
-                searchModal.focus();
+                setTimeout(() => searchInput.focus(), 0);
                 searchIcon.removeEventListener('click', focusSearchInput);
             } else {
-                searchModal.blur();
+                searchInput.blur();
             }
         }
 
@@ -181,6 +185,7 @@ const SearchCart = () => {
             </div>
             <SearchModal
                 isSearching={isSearching}
+                setIsSearching={setIsSearching}
                 debounceChange={debounceChange}
                 searchValue={searchValue}
                 filtered={filtered}
