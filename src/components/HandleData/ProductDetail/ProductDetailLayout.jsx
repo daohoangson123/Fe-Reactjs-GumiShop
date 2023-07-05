@@ -15,13 +15,13 @@ const ProductDetailLayout = ({
             {productDetail.length === 0 ? (
                 <>
                     <Skeleton className='ProductDetail__Breadcrumbs' />
-                    <div className='ProductDetailLayout__Box Container'>
+                    <div className='ProductDetailLayout__Box ProductDetailLayoutSkeleton__Box Container'>
                         <Skeleton
                             containerClassName='grid-container'
-                            className='ProductDetail__Img'
+                            className='ProductDetailSkeleton__Img'
                         />
                         <Skeleton
-                            width={280}
+                            width={300}
                             count={6}
                         />
                     </div>
@@ -33,6 +33,7 @@ const ProductDetailLayout = ({
                         <img
                             src={productDetail.img}
                             alt='productImg'
+                            className='ProductDetail__Img'
                         />
                         <div className='ProductDetailBox__Name'>
                             {productDetail.name}

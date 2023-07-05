@@ -13,8 +13,8 @@ import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 
 const ShopFilter = ({
     productApi,
-    filtered,
     debounceChange,
+    filtered,
     onSale,
     setOnSale,
     sortFilter,
@@ -58,7 +58,7 @@ const ShopFilter = ({
                     onChange={debounceChange}
                 />
                 <div className='FiltersInputs'>
-                    <div>
+                    <abbr title='Show only on-sale Products'>
                         <input
                             type='checkbox'
                             name='onSale'
@@ -69,8 +69,8 @@ const ShopFilter = ({
                             }
                         />
                         <label htmlFor='onSale'>SaleOnly</label>
-                    </div>
-                    <div>
+                    </abbr>
+                    <abbr title='Find Products by price-ranges'>
                         <label htmlFor='priceFilter'>Price-range: </label>
                         <select
                             id='priceFilter'
@@ -88,8 +88,8 @@ const ShopFilter = ({
                                 </option>
                             ))}
                         </select>
-                    </div>
-                    <div>
+                    </abbr>
+                    <abbr title='Short Products'>
                         <label htmlFor='sortFilter'>Sort-by: </label>
                         <select
                             id='sortFilter'
@@ -107,7 +107,7 @@ const ShopFilter = ({
                                 </option>
                             ))}
                         </select>
-                    </div>
+                    </abbr>
                 </div>
             </fieldset>
             <div className='ProductAvailableCount'>

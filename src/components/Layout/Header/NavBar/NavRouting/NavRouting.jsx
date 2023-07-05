@@ -6,15 +6,17 @@ const NavRouting = ({ navlinkData }) => {
     return (
         <div className='NavBar__List'>
             {navlinkData.map((item) => (
-                <NavLink
-                    to={item.path}
-                    key={item.name}
-                    className={({ isActive }) =>
-                        isActive ? 'active' : 'inactive'
-                    }
-                >
-                    {item.name}
-                </NavLink>
+                <abbr
+                    title={item.name}
+                    key={item.name}>
+                    <NavLink
+                        to={item.path}
+                        className={({ isActive }) =>
+                            isActive ? 'active' : 'inactive'
+                        }>
+                        {item.name}
+                    </NavLink>
+                </abbr>
             ))}
         </div>
     );

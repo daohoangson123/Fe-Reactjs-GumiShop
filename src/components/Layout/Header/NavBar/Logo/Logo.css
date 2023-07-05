@@ -2,7 +2,7 @@
     display: flex;
     justify-self: start;
     align-self: center;
-    font-size: clamp(26px, 4vw, 36px);
+    font-size: clamp(24px, 4vw, 36px);
     font-weight: 600;
     line-height: 24px;
     transition: var(--transition-fast);

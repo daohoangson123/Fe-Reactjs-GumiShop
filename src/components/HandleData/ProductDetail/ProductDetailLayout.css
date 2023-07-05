@@ -16,8 +16,8 @@
     background-color: var(--color-default);
 }
 
-.ProductDetailLayout__Box img,
-.ProductDetail__Img {
+.ProductDetail__Img,
+.ProductDetailSkeleton__Img {
     justify-self: center;
     align-self: center;
     width: 220px;
@@ -44,12 +44,14 @@
 
 .ProductDetailBox__AddToCart {
     display: flex;
+    align-items: center;
     gap: 10px;
-    height: 32px;
+    height: 30px;
 }
 
 .ProductDetailBox__AddToCart button {
-    border-radius: 5px;
+    aspect-ratio: 1;
+    border-radius: 2px;
     transition: var(--transition-fast);
 }
 
@@ -61,6 +63,8 @@
 .ProductDetailBox__AddToCart button:first-child,
 .ProductDetailBox__AddToCart button:nth-child(5) {
     rotate: 45deg;
+    width: 28px;
+    height: 28px;
 }
 
 .ProductDetailBox__AddToCart button:first-child::after {
@@ -69,8 +73,9 @@
     top: 2px;
     left: 1px;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 1;
     rotate: -45deg;
+    font-size: 14px;
 }
 
 .ProductDetailBox__AddToCart button:nth-child(5)::after {
@@ -79,8 +84,9 @@
     top: 2px;
     left: 1px;
     width: 100%;
-    height: 100%;
+    aspect-ratio: 1;
     rotate: -45deg;
+    font-size: 14px;
 }
 
 .Quantity_Btn {
@@ -101,8 +107,26 @@
 
 .AddToCart_Btn {
     width: 50px;
+    height: 35px;
     font-weight: 700;
 }
 
-@media (width > 1024px) {
+@media (width >= 768px) {
+    .ProductDetailLayout__Box {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .ProductDetailLayout__Box * {
+        grid-column: 2;
+    }
+
+    .ProductDetail__Img,
+    .grid-container {
+        grid-column: 1;
+        grid-row: 1 / 6;
+    }
+
+    .ProductDetailSkeleton__Img {
+        grid-column: 1;
+    }
 }

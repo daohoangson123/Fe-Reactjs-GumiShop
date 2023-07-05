@@ -2,7 +2,6 @@
     width: 200px;
     transition: var(--transition-fast);
     cursor: pointer;
-    text-decoration: none !important;
 }
 
 .WholesaleProduct a {

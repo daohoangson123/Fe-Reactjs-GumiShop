@@ -38,7 +38,7 @@ html {
 }
 
 html::-webkit-scrollbar {
-    width: 8px;
+    width: 5px;
 }
 
 html::-webkit-scrollbar-thumb {
@@ -54,6 +54,12 @@ main {
     margin: 0 auto;
 }
 
+header,
+main,
+footer {
+    min-width: 320px;
+}
+
 h1 {
     margin-bottom: 0;
 }
@@ -64,15 +70,19 @@ li {
     list-style-type: none;
 }
 
+abbr[title] {
+    text-decoration: none;
+}
+
 .ProductContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 240px);
+    grid-template-columns: repeat(auto-fit, 200px);
     justify-content: center;
     gap: 30px;
     transition: all 0.3s ease-in-out;
 }
 
-@media (width > 1024px) {
+@media (width >= 1024px) {
     .ProductContainer {
         grid-template-columns: repeat(auto-fit, 250px);
     }
@@ -82,7 +92,7 @@ li {
     padding: 40px 20px;
 }
 
-@media (width > 1024px) {
+@media (width >= 1024px) {
     .Container {
         padding: 60px;
     }

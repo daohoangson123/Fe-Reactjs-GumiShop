@@ -36,29 +36,30 @@ const SignBar = () => {
             <div className='SignBar__Text'>{text}</div>
             <div className='SignBar__SignRegis '>
                 <div className='SignBar__SignRegis-Link'>
-                    <NavLink
-                        to='/userLogin'
-                        className={({ isActive }) =>
-                            isActive ? 'active' : 'inactive'
-                        }
-                    >
-                        Sign In
-                    </NavLink>
+                    <abbr title='Login'>
+                        <NavLink
+                            to='/userLogin'
+                            className={({ isActive }) =>
+                                isActive ? 'active' : 'inactive'
+                            }>
+                            Sign In
+                        </NavLink>
+                    </abbr>
                     /
-                    <NavLink
-                        to='/userRegister'
-                        className={({ isActive }) =>
-                            isActive ? 'active' : 'inactive'
-                        }
-                    >
-                        Register
-                    </NavLink>
+                    <abbr title='Sign Up'>
+                        <NavLink
+                            to='/userRegister'
+                            className={({ isActive }) =>
+                                isActive ? 'active' : 'inactive'
+                            }>
+                            Register
+                        </NavLink>
+                    </abbr>
                 </div>
                 <div className='SignBar__Languages '>
                     <label
                         htmlFor='lang'
-                        className='LangLabel '
-                    >
+                        className='LangLabel '>
                         <img
                             src={flag}
                             alt='flag'
@@ -68,14 +69,12 @@ const SignBar = () => {
                         className='LangSelect '
                         name='lang'
                         id='lang'
-                        onChange={handelChange}
-                    >
+                        onChange={handelChange}>
                         {langs.map((item) => (
                             <option
                                 className='LangOption '
                                 key={item.name}
-                                value={item.name}
-                            >
+                                value={item.name}>
                                 {item.name}
                             </option>
                         ))}

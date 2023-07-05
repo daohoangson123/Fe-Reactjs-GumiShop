@@ -48,22 +48,39 @@ const SearchModal = ({
             )}
             <ul
                 className='NavSearch__Result'
-                style={{
-                    maxHeight: searchValue && '400px',
-                }}>
-                {filtered.map((product) => (
-                    <li
-                        key={product._id}
-                        onClick={() => setIsSearching(false)}>
-                        <Link to={`/shop/${product.name.split(' ').join('-')}`}>
-                            <img
-                                src={product.img}
-                                alt=''
-                            />
-                            {product.name}
-                        </Link>
-                    </li>
-                ))}
+                style={
+                    searchValue ? { display: 'grid', maxHeight: '400px' } : null
+                }>
+                {filtered
+                    .toSorted((a, b) => {
+                        const nameA = a.name.toLowerCase();
+                        const nameB = b.name.toLowerCase();
+                        if (nameA < nameB) {
+                            return -1;
+                        }
+                        if (nameA > nameB) {
+                            return 1;
+                        }
+                        return 0;
+                    })
+                    .map((product) => (
+                        <li
+                            key={product._id}
+                            onClick={() => setIsSearching(false)}>
+                            <abbr title={product.name}>
+                                <Link
+                                    to={`/shop/${product.name
+                                        .split(' ')
+                                        .join('-')}`}>
+                                    <img
+                                        src={product.img}
+                                        alt=''
+                                    />
+                                    {product.name}
+                                </Link>
+                            </abbr>
+                        </li>
+                    ))}
             </ul>
         </div>
     );
@@ -165,27 +182,33 @@ const SearchCart = () => {
                     id='SearchIcon'
                     htmlFor='searchquery'
                     onClick={() => setIsSearching(!isSearching)}>
-                    <i className='fa-solid fa-magnifying-glass Icon'></i>
+                    <abbr title='Search product'>
+                        <i className='fa-solid fa-magnifying-glass Icon'></i>
+                    </abbr>
                 </div>
-                <NavLink
-                    to='/userLogin'
-                    aria-label='User-Page'>
-                    <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
-                </NavLink>
-                <NavLink
-                    to='/cart'
-                    aria-label='Cart-Page'>
-                    <div className='Cart_IconContainer'>
-                        <i className='fa-solid fa-bag-shopping Icon'></i>
-                        {myCart.length !== 0 && (
-                            <div className='Cart_Notify'>
-                                <div className='Cart_Notify-Number'>
-                                    {myCart.length}
+                <abbr title='User'>
+                    <NavLink
+                        to='/userLogin'
+                        aria-label='User-Page'>
+                        <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
+                    </NavLink>
+                </abbr>
+                <abbr title='Cart'>
+                    <NavLink
+                        to='/cart'
+                        aria-label='Cart-Page'>
+                        <div className='Cart_IconContainer'>
+                            <i className='fa-solid fa-bag-shopping Icon'></i>
+                            {myCart.length !== 0 && (
+                                <div className='Cart_Notify'>
+                                    <div className='Cart_Notify-Number'>
+                                        {myCart.length}
+                                    </div>
                                 </div>
-                            </div>
-                        )}
-                    </div>
-                </NavLink>
+                            )}
+                        </div>
+                    </NavLink>
+                </abbr>
             </div>
             <SearchModal
                 isSearching={isSearching}
