@@ -6,7 +6,7 @@ const CartForm = ({
     totalItem,
     totalPrice,
     saving,
-    setQuantity,
+    // setQuantity,
     handleInc,
     handleDec,
     handleRemove,
@@ -61,18 +61,18 @@ const CartForm = ({
                                             // onWheel={(event) =>
                                             //     event.target.blur()
                                             // }
-                                            onChange={(event) => {
-                                                // if (
-                                                //     newAmount < 1 ||
-                                                //     newAmount > 1000
-                                                // ) {
-                                                //     return newAmount;
-                                                // }
-                                                // if (!isNaN(newAmount)) {
-                                                //     item.amount = newAmount;
-                                                // }
-                                                setQuantity(event.target.value);
-                                            }}
+                                            // onChange={(event) => {
+                                            // if (
+                                            //     newAmount < 1 ||
+                                            //     newAmount > 1000
+                                            // ) {
+                                            //     return newAmount;
+                                            // }
+                                            // if (!isNaN(newAmount)) {
+                                            //     item.amount = newAmount;
+                                            // }
+                                            // setQuantity(event.target.value);
+                                            // }}
                                             // onInput={(event) =>
                                             //     (event.currentTarget.value =
                                             //         event.currentTarget.value

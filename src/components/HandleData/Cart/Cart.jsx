@@ -2,9 +2,13 @@ import emptyCart from '../../../assets/img/emptycart.png';
 //
 import { useDispatch, useSelector } from 'react-redux';
 import { myCartSelector } from '../../../redux/Selectors/Selector';
-import { removeInCart } from '../../../redux/Actions/Action';
+import {
+    newDecAmount,
+    newIncAmount,
+    removeInCart,
+} from '../../../redux/Actions/Action';
 //
-import { useState } from 'react';
+// import { useState } from 'react';
 //
 import CartLayout from './CartLayout';
 //
@@ -14,7 +18,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const myCart = useSelector(myCartSelector);
     // eslint-disable-next-line
-    const [quantity, setQuantity] = useState(1);
+    // const [quantity, setQuantity] = useState(1);
 
     const totalItem = myCart.length;
 
@@ -30,11 +34,11 @@ const Cart = () => {
         );
 
     const handleInc = (product) => {
-        setQuantity((pre) => pre + product.amount++);
+        dispatch(newIncAmount(product));
     };
 
     const handleDec = (product) => {
-        setQuantity((pre) => pre + product.amount--);
+        dispatch(newDecAmount(product));
     };
 
     function handleSubmit(event) {
@@ -53,8 +57,8 @@ const Cart = () => {
                     totalItem={totalItem}
                     totalPrice={totalPrice}
                     saving={saving}
-                    quantity={quantity}
-                    setQuantity={setQuantity}
+                    // quantity={quantity}
+                    // setQuantity={setQuantity}
                     handleInc={handleInc}
                     handleDec={handleDec}
                     handleRemove={handleRemove}

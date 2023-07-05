@@ -8,6 +8,7 @@ import { fetchProductApi } from '../../../../../data/axiosAPI/productData';
 //
 import { useSelector } from 'react-redux';
 import { myCartSelector } from '../../../../../redux/Selectors/Selector';
+import { fetchFurnitureApi } from '../../../../../data/axiosAPI/furnitureData';
 //
 
 const SearchModal = ({
@@ -52,7 +53,7 @@ const SearchModal = ({
                 }}>
                 {filtered.map((product) => (
                     <li
-                        key={product.name}
+                        key={product._id}
                         onClick={() => setIsSearching(false)}>
                         <Link to={`/shop/${product.name.split(' ').join('-')}`}>
                             <img
@@ -73,7 +74,8 @@ const SearchCart = () => {
     const [isSearching, setIsSearching] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [productApi, setProductApi] = useState([]);
-    const result = [...productApi];
+    const [furApi, setFurApi] = useState([]);
+    const result = [...productApi, ...furApi];
 
     const handleChange = (event) => {
         setSearchValue(event.target.value);
@@ -99,9 +101,11 @@ const SearchCart = () => {
 
     const getProducts = async () => {
         let result = await fetchProductApi();
+        let result1 = await fetchFurnitureApi();
 
-        if (result) {
+        if (result || result1) {
             setProductApi(result);
+            setFurApi(result1);
         }
     };
 

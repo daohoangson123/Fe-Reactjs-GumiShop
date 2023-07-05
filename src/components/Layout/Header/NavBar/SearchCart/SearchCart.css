@@ -133,9 +133,9 @@
     }
 }
 
-@media (height < 460px) {
-    .NavSearch__Result li img {
-        display: none;
+@media (height < 530px) {
+    .NavSearch__Result {
+        max-height: 150px !important;
     }
 
     .NavSearch__Result li a {

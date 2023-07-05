@@ -55,12 +55,10 @@ const Product = ({ ...props }) => {
                 />
                 <div
                     className='AddToCart_Bg'
-                    style={{ top: isAdded && 0 }}
-                >
+                    style={{ top: isAdded && 0 }}>
                     <Link
                         className='ProductLink'
-                        to={`/shop/${props.name.split(' ').join('-')}`}
-                    >
+                        to={`/shop/${props.name.split(' ').join('-')}`}>
                         Detail
                     </Link>
                     <button
@@ -84,8 +82,7 @@ const Product = ({ ...props }) => {
                                 });
                                 setIsAdded(false);
                             }
-                        }}
-                    >
+                        }}>
                         {!isAdded ? 'Add' : 'Added'}
                     </button>
                 </div>
@@ -95,8 +92,7 @@ const Product = ({ ...props }) => {
             </div>
             <div
                 className='Product__Name'
-                style={props.style}
-            >
+                style={props.style}>
                 {props.name}
             </div>
             <div className='Product__Prices'>
