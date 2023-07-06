@@ -1,0 +1,16 @@
+.ProductSkeleton__Img {
+    width: 200px;
+    aspect-ratio: 1;
+}
+
+.ProductSkeleton__Content {
+    width: 180px;
+    height: 20px;
+}
+
+@media (width >= 1024px) {
+    .ProductSkeleton__Img {
+        width: 250px;
+        aspect-ratio: 1;
+    }
+}

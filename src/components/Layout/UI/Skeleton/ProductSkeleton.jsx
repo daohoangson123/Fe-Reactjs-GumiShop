@@ -1,46 +1,76 @@
 import Skeleton from 'react-loading-skeleton';
+//
+import './ProductSkeleton.css';
 
-function ProductSkeleton({ width, height }) {
+function ProductSkeleton({
+    imgWidth,
+    imgHeight,
+    contentWidth,
+    contentHeight,
+    count,
+    boderRadius,
+    circle,
+}) {
     return (
         <>
-            <div>
+            <div className='ProductSkeleton'>
                 <Skeleton
-                    width={width || 250}
-                    height={height || 250}
+                    className='ProductSkeleton__Img'
+                    width={imgWidth}
+                    height={imgHeight}
+                    borderRadius={boderRadius}
+                    circle={circle}
                 />
                 <Skeleton
-                    width={200}
-                    count={3}
-                />
-            </div>
-            <div>
-                <Skeleton
-                    width={width || 250}
-                    height={height || 250}
-                />
-                <Skeleton
-                    width={200}
-                    count={3}
+                    className='ProductSkeleton__Content'
+                    width={contentWidth}
+                    height={contentHeight}
+                    count={count || 3}
                 />
             </div>
-            <div>
+            <div className='ProductSkeleton'>
                 <Skeleton
-                    width={width || 250}
-                    height={height || 250}
+                    className='ProductSkeleton__Img'
+                    width={imgWidth}
+                    height={imgHeight}
+                    borderRadius={boderRadius}
+                    circle={circle}
                 />
                 <Skeleton
-                    width={200}
-                    count={3}
+                    className='ProductSkeleton__Content'
+                    width={contentWidth}
+                    height={contentHeight}
+                    count={count || 3}
                 />
             </div>
-            <div>
+            <div className='ProductSkeleton'>
                 <Skeleton
-                    width={width || 250}
-                    height={height || 250}
+                    className='ProductSkeleton__Img'
+                    width={imgWidth}
+                    height={imgHeight}
+                    borderRadius={boderRadius}
+                    circle={circle}
                 />
                 <Skeleton
-                    width={200}
-                    count={3}
+                    className='ProductSkeleton__Content'
+                    width={contentWidth}
+                    height={contentHeight}
+                    count={count || 3}
+                />
+            </div>
+            <div className='ProductSkeleton'>
+                <Skeleton
+                    className='ProductSkeleton__Img'
+                    width={imgWidth}
+                    height={imgHeight}
+                    borderRadius={boderRadius}
+                    circle={circle}
+                />
+                <Skeleton
+                    className='ProductSkeleton__Content'
+                    width={contentWidth}
+                    height={contentHeight}
+                    count={count || 3}
                 />
             </div>
         </>
