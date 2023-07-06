@@ -995,7 +995,7 @@ const Shop = () => {
                     priceFilter={priceFilter}
                     setPriceFilter={setPriceFilter}
                 />
-                {productApi.length < 0 ? (
+                {productApi.length > 0 ? (
                     <ProductDisplay filtered={filtered} />
                 ) : (
                     <div className='ProductContainer ShopProductContainer'>
