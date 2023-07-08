@@ -25,3 +25,17 @@ export const removeInCart = (currentProduct) => {
         payload: currentProduct,
     };
 };
+
+export const userSignIn = (signinData) => {
+    return {
+        type: 'SignIn__Successed',
+        payload: signinData,
+    };
+};
+
+export const userSignOut = (signout) => {
+    return {
+        type: 'SignOut',
+        payload: signout,
+    };
+};

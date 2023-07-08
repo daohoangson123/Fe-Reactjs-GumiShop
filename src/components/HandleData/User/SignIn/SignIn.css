@@ -1,0 +1,169 @@
+.SignIn {
+    display: grid;
+    place-items: center;
+}
+
+.SignIn__Form {
+    border: 1px solid var(--color-alt);
+    border-radius: 10px;
+    width: clamp(300px, 50vw, 400px);
+    padding: 20px;
+}
+
+.SignIn__Form-Title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    min-height: 60px;
+    color: var(--color-primary);
+}
+
+.SignIn__Form-Fieldset {
+    display: grid;
+    gap: 10px;
+}
+
+.SignIn__Form-InputContainer {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.SignIn__Form-InputContainer label {
+    min-width: 85px;
+}
+
+.SignIn__Form-Remember label {
+    text-align: right;
+}
+
+.SignIn__Form-InputContainer input {
+    transition: var(--transition-fast);
+    border: 1px solid var(--color-alt);
+    border-radius: 2px;
+    padding: 0 5px;
+}
+
+.SignIn__Form-InputContainer input:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.SignIn__Form-InputContainer input:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+.SignIn__Form-InputContainer input[type='text'],
+.SignIn__Form-InputContainer .SignIn__Form-InputContainer-Password {
+    width: min(100%, 273px);
+    flex-grow: 1;
+}
+
+.SignIn__Form-InputContainer-Password {
+    position: relative;
+    display: inline-block;
+}
+
+.SignIn__Form-InputContainer-Password input {
+    width: 100%;
+}
+
+.SignIn__Form-InputContainer-Password i {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+}
+
+.SignIn__Form-Remember {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 10px;
+}
+
+.SignIn__Form-Remember * {
+    cursor: pointer;
+}
+
+.SignIn__Form-Remember label {
+    transition: var(--transition-fast);
+}
+
+.SignIn__Form-Remember label:hover {
+    color: var(--color-primary);
+}
+
+.SignIn__Form-Link {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.SignIn__Form-Link a {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: var(--transition-fast);
+}
+
+.SignIn__Form-Link a:hover {
+    color: var(--color-primary);
+}
+
+.SignIn__Btn {
+    width: 100%;
+    justify-self: center;
+    background-color: transparent;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 20px;
+    transition: var(--transition-fast);
+}
+
+.SignIn__Btn:hover {
+    background-color: var(--color-primary-rgba);
+    color: var(--color-default);
+}
+
+.SignIn__Form-OtherDecor {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.SignIn__Form-OtherDecor div {
+    flex-grow: 1;
+    height: 1px;
+    background-color: var(--color-icon);
+}
+
+.SignIn__Form-OtherDecor span {
+    padding-inline: 20px;
+}
+
+.SignIn__Form-OtherSignIn {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.SignIn__Form-OtherSignIn div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--color-icon);
+    flex-grow: 1;
+    padding: 5px;
+    border-radius: 2px;
+    transition: var(--transition-fast);
+}
+
+.SignIn__Form-OtherSignIn div:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.SignIn__Form-OtherSignIn img {
+    width: 40px;
+    aspect-ratio: 1;
+    margin-right: 10px;
+}

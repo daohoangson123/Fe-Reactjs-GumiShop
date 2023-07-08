@@ -22,6 +22,27 @@
     gap: 20px;
 }
 
+.Wholesale__Container
+    .ProductSkeleton
+    span:nth-child(2)
+    .ProductSkeleton__Content:first-child {
+    width: 100%;
+}
+
+.Wholesale__Container
+    .ProductSkeleton
+    span:nth-child(2)
+    .ProductSkeleton__Content:nth-child(3) {
+    width: 70px;
+}
+
+.Wholesale__Container
+    .ProductSkeleton
+    span:nth-child(2)
+    .ProductSkeleton__Content:nth-child(5) {
+    width: 90px;
+}
+
 .Wholesale__NoItem {
     width: 298px;
     aspect-ratio: 1;

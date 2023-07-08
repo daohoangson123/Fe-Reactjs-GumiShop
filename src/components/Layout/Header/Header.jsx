@@ -7,7 +7,7 @@ import { pageAccessedByReload } from '../../../data/isPageReloaded';
 //
 import { useEffect, useState } from 'react';
 
-const Header = () => {
+const Header = ({ isSignIn }) => {
     // const [isUp, setIsUp] = useState(false);
 
     // useEffect(() => {
@@ -82,10 +82,12 @@ const Header = () => {
                 animation: pageAccessedByReload && 'none',
                 top: isDown && !isMobileView && '-55px',
                 transition: isDown && 'none',
-            }}
-        >
-            <SignBar />
-            <NavBar isMobileView={isMobileView} />
+            }}>
+            <SignBar isSignIn={isSignIn} />
+            <NavBar
+                isMobileView={isMobileView}
+                isSignIn={isSignIn}
+            />
         </header>
     );
 };

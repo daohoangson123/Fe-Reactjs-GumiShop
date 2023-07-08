@@ -1,7 +1,10 @@
 import emptyCart from '../../../assets/img/emptycart.png';
 //
 import { useDispatch, useSelector } from 'react-redux';
-import { myCartSelector } from '../../../redux/Selectors/Selector';
+import {
+    myCartSelector,
+    signinSelector,
+} from '../../../redux/Selectors/Selector';
 import {
     newDecAmount,
     newIncAmount,
@@ -13,12 +16,28 @@ import {
 import CartLayout from './CartLayout';
 //
 import ErrorBoundary from '../../Support/Error/ErrorBoundary';
+//
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = () => {
     const dispatch = useDispatch();
     const myCart = useSelector(myCartSelector);
+    const isSignIn = useSelector(signinSelector);
     // eslint-disable-next-line
     // const [quantity, setQuantity] = useState(1);
+
+    const purchasedNotify = () =>
+        toast.success(`Your purchase was successful`, {
+            position: 'top-right',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
 
     const totalItem = myCart.length;
 
@@ -43,6 +62,7 @@ const Cart = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
+        isSignIn && purchasedNotify();
     }
 
     function handleRemove(product) {
@@ -54,6 +74,7 @@ const Cart = () => {
             <ErrorBoundary>
                 <CartLayout
                     myCart={myCart}
+                    isSignIn={isSignIn}
                     totalItem={totalItem}
                     totalPrice={totalPrice}
                     saving={saving}

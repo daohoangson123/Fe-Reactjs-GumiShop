@@ -35,8 +35,8 @@
 }
 
 .SignBar__SignRegis-Link .active {
-    font-weight: 500;
-    text-decoration: underline;
+    font-weight: 600;
+    text-decoration: none;
     color: var(--color-default);
 }
 
@@ -47,6 +47,12 @@
 
 .SignBar__SignRegis-Link a:visited {
     color: var(--color-default);
+}
+
+.UserLogo {
+    width: 22px;
+    aspect-ratio: 1;
+    border-radius: 100%;
 }
 
 .SignBar__Languages {

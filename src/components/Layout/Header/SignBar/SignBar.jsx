@@ -2,11 +2,15 @@ import './SignBar.css';
 //
 import usa from '../../../../assets/img/usa.png';
 import vnm from '../../../../assets/img/vnm.png';
+import userLogo from '../../../../assets/icon/userLogo.png';
 //
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { signinSelector } from '../../../../redux/Selectors/Selector';
 
 const SignBar = () => {
+    const isSignIn = useSelector(signinSelector);
     const text =
         'Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*';
 
@@ -36,19 +40,35 @@ const SignBar = () => {
             <div className='SignBar__Text'>{text}</div>
             <div className='SignBar__SignRegis '>
                 <div className='SignBar__SignRegis-Link'>
-                    <abbr title='Login'>
-                        <NavLink
-                            to='/userLogin'
-                            className={({ isActive }) =>
-                                isActive ? 'active' : 'inactive'
-                            }>
-                            Sign In
-                        </NavLink>
-                    </abbr>
+                    {!isSignIn ? (
+                        <abbr title='Sign In'>
+                            <NavLink
+                                to='/userSignIn'
+                                className={({ isActive }) =>
+                                    isActive ? 'active' : 'inactive'
+                                }>
+                                Sign In
+                            </NavLink>
+                        </abbr>
+                    ) : (
+                        <abbr title='User'>
+                            <NavLink
+                                to='/userProfile'
+                                className={({ isActive }) =>
+                                    isActive ? 'active' : 'inactive'
+                                }>
+                                <img
+                                    className='UserLogo'
+                                    src={userLogo}
+                                    alt='userImg'
+                                />
+                            </NavLink>
+                        </abbr>
+                    )}
                     /
                     <abbr title='Sign Up'>
                         <NavLink
-                            to='/userRegister'
+                            to='/userSignUp'
                             className={({ isActive }) =>
                                 isActive ? 'active' : 'inactive'
                             }>

@@ -3,6 +3,9 @@ import './ProductDetailLayout.css';
 import Breadcrumbs from '../../Layout/UI/Breadcrumb/Breadcrumbs';
 import Skeleton from 'react-loading-skeleton';
 //
+//
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductDetailLayout = ({
     productDetail,
@@ -10,8 +13,24 @@ const ProductDetailLayout = ({
     setQuantity,
     handleAddToCart,
 }) => {
+    const addNotify = () =>
+        toast.success(
+            `${quantity + ' ' + productDetail.name} added to your Cart`,
+            {
+                position: 'top-right',
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: 'light',
+            },
+        );
+
     return (
         <div className='ProductDetailLayout'>
+            <ToastContainer />
             {productDetail.length === 0 ? (
                 <>
                     <Skeleton className='ProductDetail__Breadcrumbs' />
@@ -136,6 +155,7 @@ const ProductDetailLayout = ({
                                         discount: productDetail.discouter,
                                         amount: quantity,
                                     });
+                                    addNotify();
                                 }}>
                                 Add
                             </button>

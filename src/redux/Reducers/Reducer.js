@@ -1,6 +1,7 @@
 const initState = {
     myCart: [],
     purchaseHistory: [],
+    isSignIn: false,
 };
 
 const rootReducer = (state = initState, action) => {
@@ -62,11 +63,21 @@ const rootReducer = (state = initState, action) => {
             return;
         case 'Remove_In_Cart':
             return {
+                ...state,
                 myCart: state.myCart.filter(
                     (item) => item.id !== action.payload.id,
                 ),
             };
-
+        case 'SignIn__Successed':
+            return {
+                ...state,
+                isSignIn: true,
+            };
+        case 'SignOut':
+            return {
+                ...state,
+                isSignIn: false,
+            };
         default:
             return state;
     }

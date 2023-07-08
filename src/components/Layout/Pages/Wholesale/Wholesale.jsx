@@ -161,15 +161,15 @@ const Wholesale = ({ title, productApi }) => {
             <div className='Wholesale__Container'>
                 {productApi.length === 0 ? (
                     <>
-                        <ProductSkeleton
-                            width={200}
-                            height={200}
-                        />
-                        <ProductSkeleton
-                            width={200}
-                            height={200}
-                        />
+                        <ProductSkeleton imgWidth={200} />
+                        <ProductSkeleton imgWidth={200} />
                     </>
+                ) : productLenghtByFilter === 0 ? (
+                    <img
+                        src={noItem}
+                        alt='noProduct'
+                        className='Wholesale__NoItem'
+                    />
                 ) : curCategory === 'All' && curBrand === 'All' ? (
                     productApi.map((item) => (
                         <WholesaleProduct
@@ -191,12 +191,6 @@ const Wholesale = ({ title, productApi }) => {
                             props={item}
                         />
                     ))
-                ) : productLenghtByFilter === 0 ? (
-                    <img
-                        src={noItem}
-                        alt='noProduct'
-                        className='Wholesale__NoItem'
-                    />
                 ) : (
                     mutipleFilter.map((item) => (
                         <WholesaleProduct

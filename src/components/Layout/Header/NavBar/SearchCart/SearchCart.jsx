@@ -7,7 +7,10 @@ import { debounce } from 'lodash';
 import { fetchProductApi } from '../../../../../data/axiosAPI/productData';
 //
 import { useSelector } from 'react-redux';
-import { myCartSelector } from '../../../../../redux/Selectors/Selector';
+import {
+    myCartSelector,
+    signinSelector,
+} from '../../../../../redux/Selectors/Selector';
 import { fetchFurnitureApi } from '../../../../../data/axiosAPI/furnitureData';
 //
 
@@ -88,6 +91,7 @@ const SearchModal = ({
 
 const SearchCart = () => {
     const myCart = useSelector(myCartSelector);
+    const isSignIn = useSelector(signinSelector);
     const [isSearching, setIsSearching] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [productApi, setProductApi] = useState([]);
@@ -186,13 +190,23 @@ const SearchCart = () => {
                         <i className='fa-solid fa-magnifying-glass Icon'></i>
                     </abbr>
                 </div>
-                <abbr title='User'>
-                    <NavLink
-                        to='/userLogin'
-                        aria-label='User-Page'>
-                        <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
-                    </NavLink>
-                </abbr>
+                {!isSignIn ? (
+                    <abbr title='UserSignIn'>
+                        <NavLink
+                            to='/userSignIn'
+                            aria-label='User-Page'>
+                            <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
+                        </NavLink>
+                    </abbr>
+                ) : (
+                    <abbr title='User'>
+                        <NavLink
+                            to='/userProfile'
+                            aria-label='User-Page'>
+                            <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
+                        </NavLink>
+                    </abbr>
+                )}
                 <abbr title='Cart'>
                     <NavLink
                         to='/cart'

@@ -22,7 +22,31 @@
 }
 
 .EmptyCart {
-    width: 300px;
+    width: 280px;
+    aspect-ratio: 1;
+}
+
+.ToShopLink {
+    margin: 0 auto;
+    padding: 5px;
+    width: fit-content;
+    border: 1px solid var(--color-primary);
+    border-radius: 5px;
+    transition: var(--transition-fast);
+}
+
+.ToShopLink:hover {
+    background-color: var(--color-primary-rgba);
+}
+
+.ToShopLink:hover a {
+    color: var(--color-default);
+}
+
+.ToShopLink a {
+    color: var(--color-primary);
+    text-decoration: none;
+    transition: var(--transition-fast);
 }
 
 .EmptyCart > img {
@@ -56,7 +80,7 @@
 
 .Cart-Item_Name {
     font-size: clamp(16px, 2vw, 20px);
-    min-width: 280px;
+    min-width: 260px;
 }
 
 .Cart-Item_Price {
@@ -131,11 +155,11 @@
     position: sticky;
     top: 150px;
     display: grid;
-    min-width: 280px;
+    width: 260px;
     height: 300px;
     border: 2px solid var(--color-primary);
     border-radius: 10px;
-    padding: 20px;
+    padding: 10px 20px;
 }
 
 .Purchase-Check div:first-child {
@@ -161,10 +185,16 @@
     background-color: var(--color-primary);
 }
 
+.Buy_Btn a {
+    color: inherit;
+    text-decoration: none;
+}
+
 @media (width <= 1024px) {
     .Cart-Item {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
+        gap: 10px;
     }
 }

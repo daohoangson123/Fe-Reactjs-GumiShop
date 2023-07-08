@@ -6,21 +6,48 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../../../redux/Actions/Action';
 import { removeInCart } from '../../../../redux/Actions/Action';
+//
+import { ToastContainer, Zoom, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Product = ({ ...props }) => {
     const dispatch = useDispatch();
 
     const [isAdded, setIsAdded] = useState(false);
 
+    const addNotify = () =>
+        toast.success(`1 ${props.name} added to your Cart`, {
+            position: 'top-center',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeButton: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
+
+    const removeNotify = () =>
+        toast.error(`${props.name} removed from your Cart`, {
+            position: 'top-center',
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeButton: false,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
+
     function handleAddToCart(product) {
         if (!isAdded) {
             dispatch(addToCart(product));
             setIsAdded(true);
         }
+        addNotify();
     }
 
     function handleRemove(product) {
         dispatch(removeInCart(product));
+        removeNotify();
     }
 
     useEffect(() => {
@@ -47,6 +74,10 @@ const Product = ({ ...props }) => {
 
     return (
         <div className='Product'>
+            <ToastContainer
+                transition={Zoom}
+                limit={3}
+            />
             <div className='Product__Img-Container'>
                 <img
                     src={null}

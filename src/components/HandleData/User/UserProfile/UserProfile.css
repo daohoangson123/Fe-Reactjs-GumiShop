@@ -1,0 +1,21 @@
+.SignOut__Btn {
+    border-radius: 5px;
+    height: 50px;
+    transition: var(--transition-fast);
+    border: none;
+}
+
+.SignOut__Btn:hover {
+    background-color: var(--color-primary-rgba);
+}
+
+.SignOut__Btn:hover a {
+    color: var(--color-default);
+}
+
+.SignOut__Btn a {
+    padding: 5px;
+    font-size: 20px;
+    color: var(--color-alt);
+    text-decoration: none;
+}

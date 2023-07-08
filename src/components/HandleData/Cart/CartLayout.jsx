@@ -1,8 +1,12 @@
+import { Link } from 'react-router-dom';
 import './CartLayout.css';
 //
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const CartForm = ({
     myCart,
+    isSignIn,
     totalItem,
     totalPrice,
     saving,
@@ -17,11 +21,26 @@ const CartForm = ({
         <form
             className='Cart-Item_Form Container'
             onSubmit={handleSubmit}>
+            <ToastContainer />
             {totalItem > 0 && totalItem ? (
                 <div className='Cart__Layout'>
                     <div className='Cart-Item-List'>
                         {myCart.map((item, index) => {
                             const cost = item.amount * item.price;
+                            const removeNotify = () =>
+                                toast.error(
+                                    `${item.name} removed from your Cart`,
+                                    {
+                                        position: 'top-right',
+                                        autoClose: 2000,
+                                        hideProgressBar: false,
+                                        closeOnClick: true,
+                                        pauseOnHover: true,
+                                        draggable: true,
+                                        progress: undefined,
+                                        theme: 'light',
+                                    },
+                                );
                             return (
                                 <div
                                     className='Cart-Item'
@@ -45,6 +64,10 @@ const CartForm = ({
                                             onClick={() => {
                                                 if (item.amount > 1) {
                                                     handleDec(item);
+                                                } else {
+                                                    window.alert(
+                                                        '1 is minimun',
+                                                    );
                                                 }
                                             }}>
                                             -
@@ -89,6 +112,10 @@ const CartForm = ({
                                             onClick={() => {
                                                 if (item.amount < 1000) {
                                                     handleInc(item);
+                                                } else {
+                                                    window.alert(
+                                                        '1000 is maximum',
+                                                    );
                                                 }
                                             }}>
                                             +
@@ -104,6 +131,7 @@ const CartForm = ({
                                             handleRemove({
                                                 id: item.id,
                                             });
+                                            removeNotify();
                                         }}>
                                         <i className='fa-solid fa-trash-can'></i>
                                     </button>
@@ -111,8 +139,12 @@ const CartForm = ({
                             );
                         })}
                     </div>
-                    <div className='Purchase-Check'>
-                        <div>Check-Out Form</div>
+                    <div
+                        onSubmit={handleSubmit}
+                        className='Purchase-Check'>
+                        <div style={{ fontWeight: 600, fontSize: '24px' }}>
+                            Check-Out
+                        </div>
                         <div>
                             Total: {totalItem} Item{totalItem > 1 && 's'}
                         </div>
@@ -120,15 +152,37 @@ const CartForm = ({
                             <div>Total Cost: {totalPrice}</div>
                             <div>Saving: {saving}</div>
                         </div>
+
                         <button
                             className='Buy_Btn'
                             type='submit'>
-                            Purchase
+                            <abbr
+                                title={!isSignIn ? 'SignIn first' : 'Purchase'}>
+                                {!isSignIn ? (
+                                    <Link to='/userSignIn'>Purchase</Link>
+                                ) : (
+                                    'Purchase'
+                                )}
+                            </abbr>
                         </button>
+                        <div style={{ textAlign: 'center' }}>
+                            {!isSignIn && (
+                                <span>
+                                    Your are not Sign In yet!
+                                    <br />
+                                    Please Sign In to make purchase.
+                                </span>
+                            )}
+                        </div>
                     </div>
                 </div>
             ) : (
                 <div className='EmptyCart'>
+                    <div className='ToShopLink'>
+                        <abbr title='Shopping Now'>
+                            <Link to='/shop'>Shopping Now</Link>
+                        </abbr>
+                    </div>
                     <img
                         src={emptyCart}
                         alt='EmptyCart'></img>
