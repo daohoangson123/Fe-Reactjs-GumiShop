@@ -36,11 +36,20 @@
     text-align: right;
 }
 
+.SignIn__Form-InputContainer div {
+    position: relative;
+    display: flex;
+    width: min(100%, 273px);
+    flex-grow: 1;
+}
+
 .SignIn__Form-InputContainer input {
     transition: var(--transition-fast);
     border: 1px solid var(--color-alt);
     border-radius: 2px;
     padding: 0 5px;
+    width: min(100%, 273px);
+    flex-grow: 1;
 }
 
 .SignIn__Form-InputContainer input:hover {
@@ -51,25 +60,16 @@
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-.SignIn__Form-InputContainer input[type='text'],
-.SignIn__Form-InputContainer .SignIn__Form-InputContainer-Password {
-    width: min(100%, 273px);
-    flex-grow: 1;
-}
-
-.SignIn__Form-InputContainer-Password {
-    position: relative;
-    display: flex;
-}
-
-.SignIn__Form-InputContainer-Password input {
-    width: 100%;
-}
-
-.SignIn__Form-InputContainer-Password i {
+.SignIn__Form-InputContainer i {
     position: absolute;
     top: 6px;
     right: 6px;
+}
+
+.SignIn__Form-InputContainer i::before {
+    display: grid;
+    place-items: center;
+    width: 20px;
 }
 
 .SignIn__Form-Remember {
