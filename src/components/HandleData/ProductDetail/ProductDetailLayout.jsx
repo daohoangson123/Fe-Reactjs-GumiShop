@@ -16,7 +16,7 @@ const ProductDetailLayout = ({
         toast.success(
             `${quantity + ' ' + productDetail.name} added to your Cart`,
             {
-                position: 'bottom-center',
+                position: 'bottom-right',
                 autoClose: 2000,
                 hideProgressBar: false,
                 closeOnClick: true,
@@ -38,7 +38,7 @@ const ProductDetailLayout = ({
                             className='ProductDetailSkeleton__Img'
                         />
                         <Skeleton
-                            width={300}
+                            width={280}
                             count={6}
                         />
                     </div>

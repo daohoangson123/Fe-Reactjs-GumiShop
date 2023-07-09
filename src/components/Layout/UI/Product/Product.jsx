@@ -17,7 +17,7 @@ const Product = ({ ...props }) => {
 
     const addNotify = () =>
         toast.success(`1 ${props.name} added to your Cart`, {
-            position: 'top-center',
+            position: 'bottom-right',
             transition: Zoom,
             autoClose: 1500,
             hideProgressBar: false,
@@ -30,7 +30,7 @@ const Product = ({ ...props }) => {
 
     const removeNotify = () =>
         toast.error(`${props.name} removed from your Cart`, {
-            position: 'top-center',
+            position: 'bottom-right',
             autoClose: 1500,
             hideProgressBar: false,
             pauseOnHover: false,

@@ -30,7 +30,7 @@ const CartForm = ({
                                     `${item.name} removed from your Cart`,
                                     {
                                         transition: Slide,
-                                        position: 'top-center',
+                                        position: 'bottom-center',
                                         autoClose: 1000,
                                         hideProgressBar: false,
                                         closeOnClick: true,
