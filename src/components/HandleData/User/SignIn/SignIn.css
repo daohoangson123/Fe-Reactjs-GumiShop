@@ -59,7 +59,7 @@
 
 .SignIn__Form-InputContainer-Password {
     position: relative;
-    display: inline-block;
+    display: flex;
 }
 
 .SignIn__Form-InputContainer-Password input {
