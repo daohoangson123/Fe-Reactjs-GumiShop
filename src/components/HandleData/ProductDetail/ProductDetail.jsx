@@ -33,7 +33,7 @@ const ProductDetail = () => {
 
     useEffect(() => {
         setProductDetail([]);
-        setTimeout(() => getProducts(), 1000);
+        setTimeout(() => getProducts(), 500);
     }, [id]);
 
     return (

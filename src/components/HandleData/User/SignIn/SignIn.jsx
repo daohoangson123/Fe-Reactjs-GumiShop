@@ -11,7 +11,7 @@ import { signinSelector } from '../../../../redux/Selectors/Selector';
 import { fetchUserData } from '../../../../data/axiosAPI/userSignIn';
 import { userSignIn } from '../../../../redux/Actions/Action';
 //
-import { ToastContainer, Zoom, toast } from 'react-toastify';
+import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignIn = () => {
@@ -25,7 +25,8 @@ const SignIn = () => {
     const [isError, setIsError] = useState(false);
 
     const signinNotify = () =>
-        toast.success(`You have Signed In`, {
+        toast.success(`You have Signed In Successfully`, {
+            transition: Zoom,
             position: 'top-center',
             autoClose: 1000,
             hideProgressBar: true,
@@ -51,13 +52,13 @@ const SignIn = () => {
     const handleSignIn = (event) => {
         event.preventDefault();
         setIsLoading(true);
-        setTimeout(() => signinNotify(), 700);
         setTimeout(() => getUserData(), 1000);
     };
 
     const getUserData = async () => {
         let result = await fetchUserData(username, password);
         if (result.token) {
+            signinNotify();
             return dispatch(userSignIn(result.token));
         }
         if (result.data.error && result.data.error === 'user not found') {
@@ -76,7 +77,6 @@ const SignIn = () => {
 
     return (
         <div className='SignIn'>
-            <ToastContainer transition={Zoom} />
             eve.holt@reqres.in
             <form
                 action=''

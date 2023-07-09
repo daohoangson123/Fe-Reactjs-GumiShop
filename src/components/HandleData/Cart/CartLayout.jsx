@@ -1,8 +1,7 @@
 import { Link } from 'react-router-dom';
 import './CartLayout.css';
 //
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { Slide, toast } from 'react-toastify';
 
 const CartForm = ({
     myCart,
@@ -21,7 +20,6 @@ const CartForm = ({
         <form
             className='Cart-Item_Form Container'
             onSubmit={handleSubmit}>
-            <ToastContainer />
             {totalItem > 0 && totalItem ? (
                 <div className='Cart__Layout'>
                     <div className='Cart-Item-List'>
@@ -31,11 +29,12 @@ const CartForm = ({
                                 toast.error(
                                     `${item.name} removed from your Cart`,
                                     {
-                                        position: 'top-right',
-                                        autoClose: 2000,
+                                        transition: Slide,
+                                        position: 'top-center',
+                                        autoClose: 1000,
                                         hideProgressBar: false,
                                         closeOnClick: true,
-                                        pauseOnHover: true,
+                                        pauseOnHover: false,
                                         draggable: true,
                                         progress: undefined,
                                         theme: 'light',

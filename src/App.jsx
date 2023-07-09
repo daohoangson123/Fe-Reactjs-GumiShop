@@ -6,6 +6,8 @@ import Footer from './components/Layout/Footer/Footer';
 //
 import AdBanner from './components/Layout/UI/AdBanner/AdBanner';
 //
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     const saved = localStorage.getItem('layerClosed');
@@ -13,10 +15,11 @@ function App() {
 
     return (
         <div className='App'>
-            {!initialValue && <AdBanner />}
             <Header />
             <Main />
             <Footer />
+            {!initialValue && <AdBanner />}
+            <ToastContainer />
         </div>
     );
 }

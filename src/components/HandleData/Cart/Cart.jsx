@@ -17,7 +17,7 @@ import CartLayout from './CartLayout';
 //
 import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 //
-import { ToastContainer, toast } from 'react-toastify';
+import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = () => {
@@ -29,8 +29,9 @@ const Cart = () => {
 
     const purchasedNotify = () =>
         toast.success(`Your purchase was successful`, {
-            position: 'top-right',
-            autoClose: 2000,
+            transition: Bounce,
+            position: 'top-center',
+            autoClose: 1500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
