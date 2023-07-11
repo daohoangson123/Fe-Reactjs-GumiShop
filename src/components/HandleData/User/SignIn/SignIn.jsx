@@ -82,8 +82,7 @@ const SignIn = () => {
                 action=''
                 // autoComplete='off'
                 className='SignIn__Form'
-                onSubmit={handleSignIn}
-            >
+                onSubmit={handleSignIn}>
                 <div className='SignIn__Form-Title'>
                     Sign In
                     <div
@@ -91,14 +90,15 @@ const SignIn = () => {
                             fontSize: '16px',
                             fontWeight: 400,
                             color: 'red',
-                        }}
-                    >
+                        }}>
                         {isError && 'Username/ Password is invalid'}
                     </div>
                 </div>
                 <fieldset className='SignIn__Form-Fieldset'>
                     <div className='SignIn__Form-InputContainer'>
-                        <label htmlFor='signInUserName'>UserName: </label>
+                        <label htmlFor='signInUserName'>
+                            <i className='fa-solid fa-user'></i>
+                        </label>
                         <input
                             type='text'
                             id='signInUserName'
@@ -112,7 +112,9 @@ const SignIn = () => {
                         />
                     </div>
                     <div className='SignIn__Form-InputContainer'>
-                        <label htmlFor='signInPassWord'>Password: </label>
+                        <label htmlFor='signInPassWord'>
+                            <i className='fa-solid fa-key'></i>
+                        </label>
                         <div>
                             <input
                                 type={!showPass ? 'password' : 'text'}
@@ -129,9 +131,8 @@ const SignIn = () => {
                             <i
                                 className={`fa-regular ${
                                     !showPass ? 'fa-eye-slash' : 'fa-eye'
-                                }`}
-                                onClick={() => setShowPass(!showPass)}
-                            ></i>
+                                } showpassicon`}
+                                onClick={() => setShowPass(!showPass)}></i>
                         </div>
                     </div>
                     <div className='SignIn__Form-Remember'>
@@ -145,8 +146,7 @@ const SignIn = () => {
                     <button
                         type='submit'
                         disabled={(!username || !password || isLoading) && true}
-                        className='SignIn__Btn'
-                    >
+                        className='SignIn__Btn'>
                         {isLoading ? (
                             <i className='fa-solid fa-spinner fa-spin-pulse'></i>
                         ) : (
@@ -159,8 +159,7 @@ const SignIn = () => {
                         </NavLink>
                         <NavLink
                             to='/userSignUp'
-                            className='toSignUp'
-                        >
+                            className='toSignUp'>
                             Create new account
                         </NavLink>
                     </div>

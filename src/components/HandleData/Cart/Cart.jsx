@@ -1,5 +1,6 @@
 import emptyCart from '../../../assets/img/emptycart.png';
 //
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     myCartSelector,
@@ -9,6 +10,7 @@ import {
     newDecAmount,
     newIncAmount,
     removeInCart,
+    submitCart,
 } from '../../../redux/Actions/Action';
 //
 // import { useState } from 'react';
@@ -24,6 +26,7 @@ const Cart = () => {
     const dispatch = useDispatch();
     const myCart = useSelector(myCartSelector);
     const isSignIn = useSelector(signinSelector);
+    const [purchasing, setPurchasing] = useState(false);
     // eslint-disable-next-line
     // const [quantity, setQuantity] = useState(1);
 
@@ -63,7 +66,11 @@ const Cart = () => {
 
     function handleSubmit(event) {
         event.preventDefault();
-        isSignIn && purchasedNotify();
+        if (isSignIn) {
+            purchasedNotify();
+            setPurchasing(true);
+            setTimeout(() => dispatch(submitCart()), 1000);
+        }
     }
 
     function handleRemove(product) {
@@ -86,6 +93,7 @@ const Cart = () => {
                     handleRemove={handleRemove}
                     handleSubmit={handleSubmit}
                     emptyCart={emptyCart}
+                    purchasing={purchasing}
                 />
             </ErrorBoundary>
         </div>

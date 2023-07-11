@@ -2,6 +2,7 @@ import { Routes, Route } from 'react-router-dom';
 //
 import LandingPage from '../components/Layout/Pages/LandingPage/LandingPage';
 import StockistPage from '../components/Layout/Pages/Stockist/StockistPage';
+import FaqPage from '../components/Layout/Pages/FAQ/FaqPage';
 import Wholesale from '../components/Layout/Pages/Wholesale/Wholesale';
 import ContactPage from '../components/Layout/Pages/ContactPage/ContactPage';
 import NotFoundPage from '../components/Layout/Pages/NotFoundPage/NotFoundPage';
@@ -32,7 +33,7 @@ const PublicRoutes = () => {
                 />
                 <Route
                     path='/faq'
-                    element={null}
+                    element={<FaqPage />}
                 />
                 <Route
                     path='/stockist'

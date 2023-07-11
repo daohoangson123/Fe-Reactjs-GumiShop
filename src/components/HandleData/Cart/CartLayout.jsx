@@ -1,5 +1,6 @@
-import { Link } from 'react-router-dom';
 import './CartLayout.css';
+//
+import { Link } from 'react-router-dom';
 //
 import { Slide, toast } from 'react-toastify';
 
@@ -15,6 +16,7 @@ const CartForm = ({
     handleRemove,
     handleSubmit,
     emptyCart,
+    purchasing,
 }) => {
     return (
         <form
@@ -151,20 +153,31 @@ const CartForm = ({
                             <div>Total Cost: {totalPrice}</div>
                             <div>Saving: {saving}</div>
                         </div>
-
                         <button
                             className='Buy_Btn'
+                            disabled={purchasing}
                             type='submit'>
-                            <abbr
-                                title={!isSignIn ? 'SignIn first' : 'Purchase'}>
-                                {!isSignIn ? (
+                            {!isSignIn ? (
+                                <abbr title='Please SignIn'>
                                     <Link to='/userSignIn'>Purchase</Link>
-                                ) : (
-                                    'Purchase'
-                                )}
-                            </abbr>
+                                </abbr>
+                            ) : (
+                                <abbr title='Purchase'>
+                                    {purchasing ? (
+                                        <i className='fa-solid fa-spinner fa-spin'></i>
+                                    ) : (
+                                        'Purchase'
+                                    )}
+                                </abbr>
+                            )}
                         </button>
-                        <div style={{ textAlign: 'center' }}>
+                        <div
+                            style={{
+                                textAlign: 'center',
+                                fontSize: '14px',
+                                color: 'red',
+                                marginTop: '10px',
+                            }}>
                             {!isSignIn && (
                                 <span>
                                     Your are not Sign In yet!

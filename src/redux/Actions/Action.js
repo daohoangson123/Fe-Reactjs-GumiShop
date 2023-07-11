@@ -26,9 +26,21 @@ export const removeInCart = (currentProduct) => {
     };
 };
 
+export const submitCart = () => {
+    return {
+        type: 'Submit_Cart',
+    };
+};
+
+export const clearHistory = () => {
+    return {
+        type: 'Clear_History',
+    };
+};
+
 export const userSignIn = (signinData) => {
     return {
-        type: 'SignIn__Successed',
+        type: 'SignIn_Successed',
         payload: signinData,
     };
 };

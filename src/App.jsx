@@ -19,7 +19,7 @@ function App() {
             <Main />
             <Footer />
             {!initialValue && <AdBanner />}
-            <ToastContainer />
+            <ToastContainer limit={2} />
         </div>
     );
 }

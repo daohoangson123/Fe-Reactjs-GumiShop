@@ -9,8 +9,8 @@ import PublicRoutes from '../../../routes/publicRoutes';
 function Main() {
     useEffect(() => {
         function show(sect) {
-            sect.classList.add('show');
-            sect.classList.remove('hide');
+            sect.classList.add('sectshow');
+            sect.classList.remove('secthide');
         }
 
         const observer = new IntersectionObserver((entries) => {
@@ -28,7 +28,7 @@ function Main() {
         sectList.forEach((sect) => {
             observer.observe(sect);
             if (!pageAccessedByReload) {
-                sect.classList.add('hide');
+                sect.classList.add('secthide');
             }
         });
 

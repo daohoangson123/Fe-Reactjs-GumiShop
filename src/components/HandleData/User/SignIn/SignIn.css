@@ -26,10 +26,11 @@
 .SignIn__Form-InputContainer {
     display: flex;
     flex-wrap: wrap;
+    gap: 10px;
 }
 
 .SignIn__Form-InputContainer label {
-    min-width: 85px;
+    min-width: 30px;
 }
 
 .SignIn__Form-Remember label {
@@ -60,13 +61,17 @@
     background-color: rgba(0, 0, 0, 0.1);
 }
 
-.SignIn__Form-InputContainer i {
+.SignIn__Form-InputContainer .showpassicon {
     position: absolute;
     top: 6px;
     right: 6px;
 }
 
-.SignIn__Form-InputContainer i::before {
+.SignIn__Form-InputContainer .showpassicon:hover {
+    cursor: pointer;
+}
+
+.SignIn__Form-InputContainer .showpassicon::before {
     display: grid;
     place-items: center;
     width: 20px;
@@ -113,14 +118,21 @@
     justify-self: center;
     background-color: transparent;
     padding: 5px;
-    border-radius: 5px;
+    border-radius: 3px;
     font-size: 20px;
     transition: var(--transition-fast);
+    color: var(--color-text);
 }
 
 .SignIn__Btn:hover {
-    background-color: var(--color-primary-rgba);
+    background-color: var(--color-primary);
     color: var(--color-default);
+}
+
+.SignIn__Btn:disabled:hover {
+    cursor: not-allowed;
+    background-color: transparent;
+    color: var(--color-icon);
 }
 
 .SignIn__Form-OtherDecor {

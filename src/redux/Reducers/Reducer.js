@@ -1,7 +1,7 @@
 const initState = {
     myCart: [],
     purchaseHistory: [],
-    isSignIn: false,
+    isSignIn: undefined,
 };
 
 const rootReducer = (state = initState, action) => {
@@ -68,15 +68,26 @@ const rootReducer = (state = initState, action) => {
                     (item) => item.id !== action.payload.id,
                 ),
             };
-        case 'SignIn__Successed':
+        case 'Submit_Cart':
             return {
                 ...state,
-                isSignIn: true,
+                purchaseHistory: [...state.purchaseHistory, ...state.myCart],
+                myCart: [],
+            };
+        case 'Clear_History':
+            return {
+                ...state,
+                purchaseHistory: [],
+            };
+        case 'SignIn_Successed':
+            return {
+                ...state,
+                isSignIn: action.payload,
             };
         case 'SignOut':
             return {
                 ...state,
-                isSignIn: false,
+                isSignIn: undefined,
             };
         default:
             return state;

@@ -1,0 +1,25 @@
+.FaqPage__Title {
+    background-color: var(--color-primary);
+    color: var(--color-default);
+    font-size: clamp(24px, 10vw, 50px);
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.FaqPage__Content .accordion-button {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.FaqPage__Content .accordion-button:focus {
+    box-shadow: 0 0 2px 2px var(--color-primary);
+}
+
+.FaqPage__Content .accordion-button:not(.collapsed) {
+    color: var(--color-primary);
+    background-color: var(--color-alt-rgba-1);
+}
+
+.FaqPage__Content .accordion-body {
+    text-align: justify;
+}
