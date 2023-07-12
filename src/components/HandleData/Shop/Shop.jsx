@@ -344,7 +344,6 @@ const Shop = () => {
                     }
             }
         }
-
         //priceFilter
         if (sortFilter === 'Default' && priceFilter !== 'Default') {
             //priceFilterOnly

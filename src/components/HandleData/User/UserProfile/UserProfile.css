@@ -1,8 +1,15 @@
+.UserProfile {
+    display: grid;
+    gap: 20px;
+}
+
 .SignOut__Btn {
+    justify-self: end;
     border-radius: 5px;
+    border: none;
+    width: fit-content;
     height: 50px;
     transition: var(--transition-fast);
-    border: none;
 }
 
 .SignOut__Btn:hover {
@@ -18,4 +25,40 @@
     font-size: 20px;
     color: var(--color-alt);
     text-decoration: none;
+}
+
+.UserProfile__PurchaseHistory {
+    display: grid;
+}
+
+.ClearPurchaseHistory__Btn {
+    width: fit-content;
+    padding: 5px;
+}
+
+@media (max-width: 424px) {
+    .UserProfile__PurchaseHistory {
+        width: clamp(280px, 100%, 1920px);
+        overflow-y: hidden;
+        overflow-x: auto;
+    }
+
+    .table {
+        width: max-content;
+        margin-bottom: 0;
+        max-width: none;
+    }
+
+    .UserProfile__PurchaseHistory-webkit-scrollbar {
+        width: 10px;
+    }
+    .UserProfile__PurchaseHistory-webkit-scrollbar:horizontal {
+        height: 10px;
+    }
+    .UserProfile__PurchaseHistory-webkit-scrollbar-track {
+        background-color: var(--color-alt-rgba-3);
+    }
+    .UserProfile__PurchaseHistory-webkit-scrollbar-thumb {
+        background-color: var(--color-icon);
+    }
 }

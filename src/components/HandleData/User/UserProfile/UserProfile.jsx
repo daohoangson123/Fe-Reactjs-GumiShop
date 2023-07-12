@@ -1,5 +1,7 @@
 import './UserProfile.css';
 //
+import Table from 'react-bootstrap/Table';
+//
 import { useDispatch, useSelector } from 'react-redux';
 import { clearHistory, userSignOut } from '../../../../redux/Actions/Action';
 import { Link } from 'react-router-dom';
@@ -28,27 +30,50 @@ const UserProfile = () => {
         });
 
     return (
-        <div className='UserProfile'>
-            <div className='UserProfile__PurchaseHistory'>
-                <h2>My Purchase History</h2>
-                {purchaseHistory.map((item) => (
-                    <div>
-                        {item.name}
-                        <br />
-                        {item.amount}
-                    </div>
-                ))}
-                <button
-                    type='button'
-                    onClick={() => dispatch(clearHistory())}>
-                    Clear History
-                </button>
-            </div>
+        <div className='UserProfile Container'>
             <button
                 onClick={handleSignOut}
                 className='SignOut__Btn'>
                 <Link to='/userSignIn'>Sign Out</Link>
             </button>
+            <div className='UserProfile__PurchaseHistory'>
+                <h2>My Purchase History</h2>
+                <button
+                    type='button'
+                    className='ClearPurchaseHistory__Btn'
+                    onClick={() => dispatch(clearHistory())}>
+                    Clear History
+                </button>
+                <Table
+                    striped
+                    bordered
+                    hover>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Quantities</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {purchaseHistory.length === 0 ? (
+                            <tr>
+                                <td>Null</td>
+                                <td>Null</td>
+                                <td>Null</td>
+                            </tr>
+                        ) : (
+                            purchaseHistory.map((item, index) => (
+                                <tr key={index}>
+                                    <td>{item.name}</td>
+                                    <td>{item.amount}</td>
+                                    <td>{item.price}</td>
+                                </tr>
+                            ))
+                        )}
+                    </tbody>
+                </Table>
+            </div>
         </div>
     );
 };

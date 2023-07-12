@@ -94,71 +94,100 @@ const Wholesale = ({ title, productApi }) => {
         <>
             <h2>{title}</h2>
             {productApi.length > 0 && (
-                <button
-                    className='ToggleFilter'
-                    type='button'
-                    onClick={() => setShowFilter(!showFilter)}>
-                    {showFilter ? 'Hide filter' : 'Show filter'}
-                </button>
+                <>
+                    <button
+                        className='ToggleFilter'
+                        type='button'
+                        onClick={() => setShowFilter(!showFilter)}>
+                        {showFilter ? 'Hide filter' : 'Show filter'}
+                    </button>
+                    <form className='Wholesale__Filter'>
+                        <div
+                            className='Wholesale__Filter-Container'
+                            style={
+                                !showFilter
+                                    ? {
+                                          animation:
+                                              'hideFilter 0.5s ease-in-out forwards',
+                                      }
+                                    : {
+                                          animation:
+                                              'showFilter 0.5s ease-in-out forwards',
+                                      }
+                            }>
+                            {categoriesList.length > 0 && (
+                                <ul className='Wholesale__CategoryFilter__List'>
+                                    <h4>Categories:</h4>
+
+                                    {categoriesList.map((category) => (
+                                        <li
+                                            key={category}
+                                            onClick={() =>
+                                                setCurCategory(category)
+                                            }>
+                                            <button
+                                                type='button'
+                                                disabled={
+                                                    productApi.length === 0
+                                                }
+                                                style={
+                                                    curCategory === category
+                                                        ? {
+                                                              backgroundColor:
+                                                                  'var(--color-primary)',
+                                                              color: 'var(--color-default)',
+                                                          }
+                                                        : null
+                                                }>
+                                                {category
+                                                    .charAt(0)
+                                                    .toUpperCase() +
+                                                    category.slice(1)}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                            {brandsList.length > 0 && (
+                                <ul className='Wholesale__BrandFilter__List'>
+                                    <h4>Brands:</h4>
+                                    {brandsList.map((brand) => (
+                                        <li
+                                            key={brand}
+                                            onClick={() => setCurBrand(brand)}>
+                                            <button
+                                                type='button'
+                                                disabled={
+                                                    productApi.length === 0
+                                                }
+                                                style={
+                                                    curBrand === brand
+                                                        ? {
+                                                              backgroundColor:
+                                                                  'var(--color-primary)',
+                                                              color: 'var(--color-default)',
+                                                          }
+                                                        : null
+                                                }>
+                                                {brand.charAt(0).toUpperCase() +
+                                                    brand.slice(1)}
+                                            </button>
+                                        </li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    </form>
+                    <div style={{ textAlign: 'center', marginBlock: '10px' }}>
+                        {productApi.length !== 0 && (
+                            <span>
+                                Product available: {productLenghtByFilter}
+                            </span>
+                        )}
+                    </div>
+                </>
             )}
-            <form
-                className='Wholesale__Filter'
-                style={{
-                    display:
-                        showFilter && productApi.length !== 0 ? 'grid' : 'none',
-                }}>
-                <ul className='Wholesale__CategoryFilter__List'>
-                    {categoriesList.length > 0 && <h4>Categories:</h4>}
-                    {categoriesList.map((category) => (
-                        <li
-                            key={category}
-                            onClick={() => setCurCategory(category)}>
-                            <button
-                                type='button'
-                                disabled={productApi.length === 0}
-                                style={
-                                    curCategory === category
-                                        ? {
-                                              backgroundColor:
-                                                  'var(--color-primary)',
-                                              color: 'var(--color-default)',
-                                          }
-                                        : null
-                                }>
-                                {category.charAt(0).toUpperCase() +
-                                    category.slice(1)}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-                <ul className='Wholesale__BrandFilter__List'>
-                    {brandsList.length > 0 && <h4>Brands:</h4>}
-                    {brandsList.map((brand) => (
-                        <li
-                            key={brand}
-                            onClick={() => setCurBrand(brand)}>
-                            <button
-                                type='button'
-                                disabled={productApi.length === 0}
-                                style={
-                                    curBrand === brand
-                                        ? {
-                                              backgroundColor:
-                                                  'var(--color-primary)',
-                                              color: 'var(--color-default)',
-                                          }
-                                        : null
-                                }>
-                                {brand.charAt(0).toUpperCase() + brand.slice(1)}
-                            </button>
-                        </li>
-                    ))}
-                </ul>
-                {productApi.length !== 0 && (
-                    <span>Product available: {productLenghtByFilter}</span>
-                )}
-            </form>
-            <div className='Wholesale__Container'>
+            <div className='Wholesale__Product-Container'>
                 {productApi.length === 0 ? (
                     <>
                         <ProductSkeleton imgWidth={200} />

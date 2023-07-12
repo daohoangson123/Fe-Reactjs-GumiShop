@@ -10,14 +10,12 @@ const FaqPage = () => {
             <div className='FaqPage__Content'>
                 <Accordion defaultActiveKey='0'>
                     {faqList.map((faq, index) => (
-                        <>
-                            <Accordion.Item
-                                eventKey={`${index}`}
-                                key={faq.title}>
+                        <div key={faq.title}>
+                            <Accordion.Item eventKey={`${index}`}>
                                 <Accordion.Header>{faq.title}</Accordion.Header>
                                 <Accordion.Body>{faq.content}</Accordion.Body>
                             </Accordion.Item>
-                        </>
+                        </div>
                     ))}
                 </Accordion>
             </div>

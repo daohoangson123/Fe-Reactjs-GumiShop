@@ -67,9 +67,9 @@ const Cart = () => {
     function handleSubmit(event) {
         event.preventDefault();
         if (isSignIn) {
-            purchasedNotify();
             setPurchasing(true);
-            setTimeout(() => dispatch(submitCart()), 1000);
+            setTimeout(() => purchasedNotify(), 1000);
+            setTimeout(() => dispatch(submitCart()), 1500);
         }
     }
 
