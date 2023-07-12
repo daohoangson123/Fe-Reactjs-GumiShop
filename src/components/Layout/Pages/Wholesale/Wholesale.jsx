@@ -108,11 +108,11 @@ const Wholesale = ({ title, productApi }) => {
                                 !showFilter
                                     ? {
                                           animation:
-                                              'hideFilter 0.5s ease-in-out forwards',
+                                              'hideFilter 0.3s ease-in-out forwards',
                                       }
                                     : {
                                           animation:
-                                              'showFilter 0.5s ease-in-out forwards',
+                                              'showFilter 0.7s ease-in-out forwards',
                                       }
                             }>
                             {categoriesList.length > 0 && (

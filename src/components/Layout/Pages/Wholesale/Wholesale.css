@@ -13,6 +13,7 @@
     width: fit-content;
     padding: 5px;
     margin-bottom: 20px;
+    width: 100px;
 }
 
 .Wholesale__Product-Container {
@@ -48,10 +49,20 @@
     aspect-ratio: 1;
 }
 
+.Wholesale__Filter {
+    display: grid;
+    justify-content: center;
+    text-align: center;
+    margin-inline: auto;
+    margin-bottom: 20px;
+    border: 1px solid var(--color-primary);
+}
+
 .Wholesale__Filter-Container {
-    transition: var(--transition-fast);
+    transition: max-height 0.3s ease-in-out;
     scrollbar-gutter: stable;
-    overflow-y: scroll;
+    padding: 0 10px;
+    overflow-y: hidden;
 }
 
 .Wholesale__Filter-Container::-webkit-scrollbar {
@@ -62,31 +73,24 @@
     background-color: var(--color-primary);
 }
 
-.Wholesale__Filter {
-    display: grid;
-    justify-content: center;
-    text-align: center;
-    margin-inline: auto;
-    margin-bottom: 20px;
-    padding: 20px;
-    border: 2px solid var(--color-primary);
-    border-radius: 20px;
-}
-
 @keyframes showFilter {
-    from {
+    0% {
         max-height: 0;
     }
-    to {
-        max-height: 180px;
+    50% {
+        max-height: 220px;
+    }
+    100% {
+        overflow-y: scroll;
+        max-height: 220px;
     }
 }
 
 @keyframes hideFilter {
-    from {
-        max-height: 180px;
+    0% {
+        max-height: 220px;
     }
-    to {
+    100% {
         max-height: 0;
     }
 }

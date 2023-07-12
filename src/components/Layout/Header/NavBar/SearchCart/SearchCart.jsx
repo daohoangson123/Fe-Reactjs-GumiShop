@@ -24,10 +24,11 @@ const SearchModal = ({
     return (
         <div
             className='NavSearch'
-            style={{
-                height: isSearching && 'auto',
-                display: isSearching && 'grid',
-            }}>
+            style={
+                !isSearching
+                    ? { maxHeight: 0 }
+                    : { maxHeight: '300px', paddingBlock: '15px' }
+            }>
             <form className='NavSearch__Form'>
                 <input
                     type='text'
@@ -37,10 +38,6 @@ const SearchModal = ({
                     required
                     autoComplete='off'
                     onChange={debounceChange}
-                    style={{
-                        display: isSearching && 'grid',
-                        height: isSearching && '30px',
-                    }}
                 />
             </form>
             {searchValue && (
