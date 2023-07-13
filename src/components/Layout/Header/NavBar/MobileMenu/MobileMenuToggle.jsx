@@ -14,15 +14,13 @@ const MobileMenuRouting = ({
             className={
                 menuVisible ? 'MobileMenu__Nav active' : 'MobileMenu__Nav'
             }
-            style={{ transition: !isMobileView && 'none' }}
-        >
+            style={{ transition: !isMobileView && 'none' }}>
             {navlinkData.map((item) => (
                 <NavLink
                     to={item.path}
                     key={item.name}
                     className='MobileMenu__Item'
-                    onClick={() => setIsClicked(false)}
-                >
+                    onClick={() => setIsClicked(false)}>
                     {item.name}
                 </NavLink>
             ))}
@@ -50,7 +48,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
         mq.addEventListener('change', toggle);
 
         return () => mq.removeEventListener('change', toggle);
-    });
+    }, []);
 
     //đóng MobileMenu khi nhấn ra ngoài
     useEffect(() => {
@@ -89,8 +87,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                 aria-label='MobileMenuToggle'
                 style={{
                     backgroundColor: isClicked && 'rgba(0, 0, 0, 0.3)',
-                }}
-            >
+                }}>
                 <div
                     className='MenuIcon1 MenuIcon '
                     style={
@@ -101,14 +98,12 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(45deg) translateX(1px) translateY(-5px)',
                               }
                             : null
-                    }
-                ></div>
+                    }></div>
                 <div
                     className='MenuIcon2 MenuIcon '
                     style={{
                         display: isClicked && 'none',
-                    }}
-                ></div>
+                    }}></div>
                 <div
                     className='MenuIcon3 MenuIcon '
                     style={
@@ -120,8 +115,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(-45deg) translateX(1px) translateY(5px)',
                               }
                             : null
-                    }
-                ></div>
+                    }></div>
             </button>
             <MobileMenuRouting
                 isMobileView={isMobileView}

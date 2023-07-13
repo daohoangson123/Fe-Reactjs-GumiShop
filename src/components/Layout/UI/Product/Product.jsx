@@ -10,7 +10,7 @@ import { removeInCart } from '../../../../redux/Actions/Action';
 import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-const Product = ({ ...props }) => {
+const Product = (props) => {
     const dispatch = useDispatch();
 
     const [isAdded, setIsAdded] = useState(false);

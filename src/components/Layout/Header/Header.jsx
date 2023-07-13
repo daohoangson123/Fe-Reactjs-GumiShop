@@ -74,7 +74,7 @@ const Header = ({ isSignIn }) => {
         mq.addEventListener('change', checkView);
 
         return () => mq.removeEventListener('change', checkView);
-    });
+    }, []);
 
     return (
         <header

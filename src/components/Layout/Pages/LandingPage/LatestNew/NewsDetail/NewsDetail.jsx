@@ -15,7 +15,6 @@ const NewsDetail = () => {
 
     useEffect(() => {
         const newsTemp = news_Items.find((news) => news.id.toString() === id);
-        console.log(newsTemp);
         setNewsdetail([newsTemp]);
     }, [id]);
 
@@ -24,8 +23,7 @@ const NewsDetail = () => {
             {newsdetail.map((news) => (
                 <div
                     className='NewDetail__Item'
-                    key={news.id}
-                >
+                    key={news.id}>
                     <div className='NewDetail__Item-Date'>{news.date}</div>
                     <img
                         src={news.url}
@@ -38,8 +36,7 @@ const NewsDetail = () => {
                     <button
                         className='NewDetail__Item-Btn'
                         type='button'
-                        onClick={handleClick}
-                    >
+                        onClick={handleClick}>
                         Go Back
                     </button>
                 </div>

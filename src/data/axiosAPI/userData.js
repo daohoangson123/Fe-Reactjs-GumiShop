@@ -1,7 +1,7 @@
 import axiosInstance from './axiosInstance';
 
-const userData = (id) => {
+const fetchUserData = (id) => {
     return axiosInstance.get(`https://reqres.in/api/users/${id}`);
 };
 
-export { userData };
+export { fetchUserData };

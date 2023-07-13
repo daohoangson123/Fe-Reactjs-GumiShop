@@ -13,6 +13,8 @@ import { userSignIn } from '../../../../redux/Actions/Action';
 //
 import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { fetchUserList } from '../../../../data/axiosAPI/userList';
+import Pagination from 'react-bootstrap/Pagination';
 
 const SignIn = () => {
     const isSignIn = useSelector(signinSelector);
@@ -23,6 +25,16 @@ const SignIn = () => {
     const [showPass, setShowPass] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
+    const [userList, setUserList] = useState();
+
+    const userEmailList = userList && userList.map((user) => user.email);
+
+    const getUserList = async () => {
+        let userListRes = await fetchUserList(active);
+        if (userListRes) {
+            setUserList(userListRes.data);
+        }
+    };
 
     const signinNotify = () =>
         toast.success(`You have Signed In Successfully`, {
@@ -56,12 +68,15 @@ const SignIn = () => {
     };
 
     const postLoginRequest = async () => {
-        let result = await loginRequest(username, password);
-        if (result.token) {
+        let signinRequest = await loginRequest(username, password);
+        if (signinRequest.token) {
             signinNotify();
-            return dispatch(userSignIn(result.token));
+            return dispatch(userSignIn(signinRequest.token));
         }
-        if (result.data.error && result.data.error === 'user not found') {
+        if (
+            signinRequest.data.error &&
+            signinRequest.data.error === 'user not found'
+        ) {
             signinErrorNotify();
             setIsLoading(false);
             setIsError(true);
@@ -69,15 +84,40 @@ const SignIn = () => {
         }
     };
 
+    const [active, setActive] = useState(1);
+
     useEffect(() => {
         if (isSignIn) {
             navigate(-1);
         }
-    }, [isSignIn, navigate]);
+        getUserList();
+    }, [isSignIn, navigate, active]);
+
+    let items = [];
+    for (let number = 1; number <= 2; number++) {
+        items.push(
+            <Pagination.Item
+                key={number}
+                active={number === active}
+                onClick={() => {
+                    setActive(number);
+                }}>
+                {number}
+            </Pagination.Item>,
+        );
+    }
 
     return (
         <div className='SignIn'>
-            eve.holt@reqres.in
+            <div>
+                <ul>
+                    {userEmailList &&
+                        userEmailList.map((email) => (
+                            <li key={email}>{email}</li>
+                        ))}
+                </ul>
+                <Pagination>{items}</Pagination>
+            </div>
             <form
                 action=''
                 // autoComplete='off'

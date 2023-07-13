@@ -2,6 +2,7 @@ const initState = {
     myCart: [],
     purchaseHistory: [],
     isSignIn: undefined,
+    userData: undefined,
 };
 
 const rootReducer = (state = initState, action) => {
@@ -84,10 +85,16 @@ const rootReducer = (state = initState, action) => {
                 ...state,
                 isSignIn: action.payload,
             };
+        case 'Get_User_Data':
+            return {
+                ...state,
+                userData: action.payload,
+            };
         case 'SignOut':
             return {
                 ...state,
                 isSignIn: undefined,
+                userData: [],
             };
         default:
             return state;

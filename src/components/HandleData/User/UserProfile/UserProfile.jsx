@@ -9,18 +9,21 @@ import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import {
     myPurchaseHistorySelector,
-    signinSelector,
+    userSelector,
 } from '../../../../redux/Selectors/Selector';
-import { userData } from '../../../../data/axiosAPI/userData';
-import { useEffect, useState } from 'react';
 import Skeleton from 'react-loading-skeleton';
+import { fetchUserData } from '../../../../data/axiosAPI/userData';
+import { getUserData } from '../../../../redux/Actions/Action';
+import { signinSelector } from '../../../../redux/Selectors/Selector';
+import { useEffect } from 'react';
 
 const UserProfile = () => {
+    const userData = useSelector(userSelector);
     const purchaseHistory = useSelector(myPurchaseHistorySelector);
     const token = useSelector(signinSelector);
-    const id = token.charAt(token.length - 1);
+    const id = token && token.slice(16);
     const dispatch = useDispatch();
-    const [user, setUser] = useState();
+
     const handleSignOut = () => {
         dispatch(userSignOut());
         signoutNotify();
@@ -38,21 +41,22 @@ const UserProfile = () => {
             theme: 'light',
         });
 
-    const fetchUserData = async () => {
-        const result = await userData(id);
-        if (result) {
-            setTimeout(() => setUser(result.data), 1000);
+    const saveUserData = async () => {
+        let userDataRes = await fetchUserData(id);
+        if (userDataRes) {
+            return dispatch(getUserData(userDataRes.data));
         }
+        return;
     };
 
     useEffect(() => {
-        fetchUserData();
+        saveUserData();
     }, []);
 
     return (
         <div className='UserProfile Container'>
             <div className='UserProfile__UserData'>
-                {!user ? (
+                {!userData.avatar ? (
                     <>
                         <Skeleton
                             width={128}
@@ -64,8 +68,8 @@ const UserProfile = () => {
                 ) : (
                     <>
                         <img
-                            src={user && user.avatar}
-                            alt={user && user.first_name}
+                            src={userData.avatar && userData.avatar}
+                            alt={userData && userData.first_name}
                         />
                         <button
                             onClick={handleSignOut}
@@ -73,10 +77,10 @@ const UserProfile = () => {
                             <Link to='/userSignIn'>Sign Out</Link>
                         </button>
                         <div>
-                            User: {user && user.first_name}{' '}
-                            {user && user.last_name}
+                            User: {userData && userData.first_name}{' '}
+                            {userData && userData.last_name}
                             <br />
-                            Id: {user && user.id}
+                            Id: {userData && userData.id}
                         </div>
                     </>
                 )}

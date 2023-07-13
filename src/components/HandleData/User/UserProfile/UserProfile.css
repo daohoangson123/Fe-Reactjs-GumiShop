@@ -3,6 +3,12 @@
     gap: 20px;
 }
 
+.UserProfile__UserData img {
+    width: 128px;
+    aspect-ratio: 1;
+    object-fit: cover;
+}
+
 .SignOut__Btn {
     border-radius: 5px;
     border: none;

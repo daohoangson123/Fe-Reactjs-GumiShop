@@ -45,6 +45,13 @@ export const userSignIn = (signinData) => {
     };
 };
 
+export const getUserData = (userData) => {
+    return {
+        type: 'Get_User_Data',
+        payload: userData,
+    };
+};
+
 export const userSignOut = (signout) => {
     return {
         type: 'SignOut',
