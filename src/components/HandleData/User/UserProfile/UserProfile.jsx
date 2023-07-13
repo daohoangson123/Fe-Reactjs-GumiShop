@@ -7,11 +7,20 @@ import { clearHistory, userSignOut } from '../../../../redux/Actions/Action';
 import { Link } from 'react-router-dom';
 //
 import { toast } from 'react-toastify';
-import { myPurchaseHistorySelector } from '../../../../redux/Selectors/Selector';
+import {
+    myPurchaseHistorySelector,
+    signinSelector,
+} from '../../../../redux/Selectors/Selector';
+import { userData } from '../../../../data/axiosAPI/userData';
+import { useEffect, useState } from 'react';
+import Skeleton from 'react-loading-skeleton';
 
 const UserProfile = () => {
     const purchaseHistory = useSelector(myPurchaseHistorySelector);
+    const token = useSelector(signinSelector);
+    const id = token.charAt(token.length - 1);
     const dispatch = useDispatch();
+    const [user, setUser] = useState();
     const handleSignOut = () => {
         dispatch(userSignOut());
         signoutNotify();
@@ -29,13 +38,49 @@ const UserProfile = () => {
             theme: 'light',
         });
 
+    const fetchUserData = async () => {
+        const result = await userData(id);
+        if (result) {
+            setTimeout(() => setUser(result.data), 1000);
+        }
+    };
+
+    useEffect(() => {
+        fetchUserData();
+    }, []);
+
     return (
         <div className='UserProfile Container'>
-            <button
-                onClick={handleSignOut}
-                className='SignOut__Btn'>
-                <Link to='/userSignIn'>Sign Out</Link>
-            </button>
+            <div className='UserProfile__UserData'>
+                {!user ? (
+                    <>
+                        <Skeleton
+                            width={128}
+                            height={128}
+                        />
+                        User: <Skeleton width={100} />
+                        Id: <Skeleton width={50} />
+                    </>
+                ) : (
+                    <>
+                        <img
+                            src={user && user.avatar}
+                            alt={user && user.first_name}
+                        />
+                        <button
+                            onClick={handleSignOut}
+                            className='SignOut__Btn'>
+                            <Link to='/userSignIn'>Sign Out</Link>
+                        </button>
+                        <div>
+                            User: {user && user.first_name}{' '}
+                            {user && user.last_name}
+                            <br />
+                            Id: {user && user.id}
+                        </div>
+                    </>
+                )}
+            </div>
             <div className='UserProfile__PurchaseHistory'>
                 <h2>My Purchase History</h2>
                 <button

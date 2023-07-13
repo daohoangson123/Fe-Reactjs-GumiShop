@@ -27,7 +27,12 @@ const SearchModal = ({
             style={
                 !isSearching
                     ? { maxHeight: 0 }
-                    : { maxHeight: '300px', paddingBlock: '15px' }
+                    : {
+                          maxHeight: '300px',
+                          marginTop: '5px',
+                          paddingBlock: '15px',
+                          border: '1px solid var(--color-primary)',
+                      }
             }>
             <form className='NavSearch__Form'>
                 <input

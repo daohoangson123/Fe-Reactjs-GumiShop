@@ -8,7 +8,7 @@ import facebook from '../../../../assets/icon/FacebookLogo.png';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { signinSelector } from '../../../../redux/Selectors/Selector';
-import { fetchUserData } from '../../../../data/axiosAPI/userSignIn';
+import { loginRequest } from '../../../../data/axiosAPI/userSignIn';
 import { userSignIn } from '../../../../redux/Actions/Action';
 //
 import { Zoom, toast } from 'react-toastify';
@@ -52,11 +52,11 @@ const SignIn = () => {
     const handleSignIn = (event) => {
         event.preventDefault();
         setIsLoading(true);
-        setTimeout(() => getUserData(), 1000);
+        setTimeout(() => postLoginRequest(), 1000);
     };
 
-    const getUserData = async () => {
-        let result = await fetchUserData(username, password);
+    const postLoginRequest = async () => {
+        let result = await loginRequest(username, password);
         if (result.token) {
             signinNotify();
             return dispatch(userSignIn(result.token));

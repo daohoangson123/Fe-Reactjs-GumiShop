@@ -4,12 +4,12 @@
 }
 
 .SignOut__Btn {
-    justify-self: end;
     border-radius: 5px;
     border: none;
     width: fit-content;
     height: 50px;
     transition: var(--transition-fast);
+    margin-left: 20px;
 }
 
 .SignOut__Btn:hover {

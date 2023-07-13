@@ -1,10 +1,10 @@
 import axiosInstance from './axiosInstance';
 
-const fetchUserData = (username, password) => {
+const loginRequest = (username, password) => {
     return axiosInstance.post('https://reqres.in/api/login', {
         username,
         password,
     });
 };
 
-export { fetchUserData };
+export { loginRequest };
