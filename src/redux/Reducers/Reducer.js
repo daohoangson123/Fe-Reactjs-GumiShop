@@ -94,7 +94,7 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 isSignIn: undefined,
-                userData: [],
+                userData: undefined,
             };
         default:
             return state;

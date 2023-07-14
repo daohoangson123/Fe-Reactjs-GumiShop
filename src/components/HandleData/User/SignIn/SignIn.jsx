@@ -15,6 +15,7 @@ import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { fetchUserList } from '../../../../data/axiosAPI/userList';
 import Pagination from 'react-bootstrap/Pagination';
+import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
 
 const SignIn = () => {
     const isSignIn = useSelector(signinSelector);
@@ -88,7 +89,7 @@ const SignIn = () => {
 
     useEffect(() => {
         if (isSignIn) {
-            navigate(-1);
+            navigate('/userProfile');
         }
         getUserList();
     }, [isSignIn, navigate, active]);
@@ -109,127 +110,131 @@ const SignIn = () => {
 
     return (
         <div className='SignIn'>
-            <div>
-                <ul>
-                    {userEmailList &&
-                        userEmailList.map((email) => (
-                            <li key={email}>{email}</li>
-                        ))}
-                </ul>
-                <Pagination>{items}</Pagination>
-            </div>
-            <form
-                action=''
-                // autoComplete='off'
-                className='SignIn__Form'
-                onSubmit={handleSignIn}>
-                <div className='SignIn__Form-Title'>
-                    Sign In
-                    <div
-                        style={{
-                            fontSize: '16px',
-                            fontWeight: 400,
-                            color: 'red',
-                        }}>
-                        {isError && 'Username/ Password is invalid'}
-                    </div>
+            <ErrorBoundary>
+                <div className='User_List'>
+                    <ol>
+                        {userEmailList &&
+                            userEmailList.map((email) => (
+                                <li key={email}>{email}</li>
+                            ))}
+                    </ol>
+                    <Pagination>{items}</Pagination>
                 </div>
-                <fieldset className='SignIn__Form-Fieldset'>
-                    <div className='SignIn__Form-InputContainer'>
-                        <label htmlFor='signInUserName'>
-                            <i className='fa-solid fa-user'></i>
-                        </label>
-                        <input
-                            type='text'
-                            id='signInUserName'
-                            className='signInUserName'
-                            placeholder='username'
-                            required
-                            onChange={(event) =>
-                                setUsername(event.target.value)
-                            }
-                            onFocus={() => setIsError(false)}
-                        />
+                <form
+                    action=''
+                    // autoComplete='off'
+                    className='SignIn__Form'
+                    onSubmit={handleSignIn}>
+                    <div className='SignIn__Form-Title'>
+                        Sign In
+                        <div
+                            style={{
+                                fontSize: '16px',
+                                fontWeight: 400,
+                                color: 'red',
+                            }}>
+                            {isError && 'Username/ Password is invalid'}
+                        </div>
                     </div>
-                    <div className='SignIn__Form-InputContainer'>
-                        <label htmlFor='signInPassWord'>
-                            <i className='fa-solid fa-key'></i>
-                        </label>
-                        <div>
+                    <fieldset className='SignIn__Form-Fieldset'>
+                        <div className='SignIn__Form-InputContainer'>
+                            <label htmlFor='signInUserName'>
+                                <i className='fa-solid fa-user'></i>
+                            </label>
                             <input
-                                type={!showPass ? 'password' : 'text'}
-                                id='signInPassWord'
-                                className='signInPassWord'
-                                placeholder='password'
+                                type='text'
+                                id='signInUserName'
+                                className='signInUserName'
+                                placeholder='username'
                                 required
-                                autoComplete='on'
                                 onChange={(event) =>
-                                    setPassword(event.target.value)
+                                    setUsername(event.target.value)
                                 }
                                 onFocus={() => setIsError(false)}
                             />
-                            <i
-                                className={`fa-regular ${
-                                    !showPass ? 'fa-eye-slash' : 'fa-eye'
-                                } showpassicon`}
-                                onClick={() => setShowPass(!showPass)}></i>
                         </div>
-                    </div>
-                    <div className='SignIn__Form-Remember'>
-                        <label htmlFor='rememberUser'>Remember me</label>
-                        <input
-                            type='checkbox'
-                            name='rememberUser'
-                            id='rememberUser'
-                        />
-                    </div>
-                    <button
-                        type='submit'
-                        disabled={(!username || !password || isLoading) && true}
-                        className='SignIn__Btn'>
-                        {isLoading ? (
-                            <i className='fa-solid fa-spinner fa-spin-pulse'></i>
-                        ) : (
-                            'Sign In'
-                        )}
-                    </button>
-                    <div className='SignIn__Form-Link'>
-                        <NavLink to='/passwordRetrieve'>
-                            Forgot your password?
-                        </NavLink>
-                        <NavLink
-                            to='/userSignUp'
-                            className='toSignUp'>
-                            Create new account
-                        </NavLink>
-                    </div>
-                    <div className='SignIn__Form-Other'>
-                        <div className='SignIn__Form-OtherDecor'>
-                            <div></div>
-                            <span>OR</span>
-                            <div></div>
-                        </div>
-                        <div className='SignIn__Form-OtherSignIn'>
+                        <div className='SignIn__Form-InputContainer'>
+                            <label htmlFor='signInPassWord'>
+                                <i className='fa-solid fa-key'></i>
+                            </label>
                             <div>
-                                <img
-                                    src={google}
-                                    alt='google'
-                                    className='GoogleIcon'
+                                <input
+                                    type={!showPass ? 'password' : 'text'}
+                                    id='signInPassWord'
+                                    className='signInPassWord'
+                                    placeholder='password'
+                                    required
+                                    autoComplete='on'
+                                    onChange={(event) =>
+                                        setPassword(event.target.value)
+                                    }
+                                    onFocus={() => setIsError(false)}
                                 />
-                                Google
-                            </div>
-                            <div>
-                                <img
-                                    src={facebook}
-                                    alt='google'
-                                    className='FacebookIcon'
-                                />
-                                Facebook
+                                <i
+                                    className={`fa-regular ${
+                                        !showPass ? 'fa-eye-slash' : 'fa-eye'
+                                    } showpassicon`}
+                                    onClick={() => setShowPass(!showPass)}></i>
                             </div>
                         </div>
-                    </div>
-                </fieldset>
-            </form>
+                        <div className='SignIn__Form-Remember'>
+                            <label htmlFor='rememberUser'>Remember me</label>
+                            <input
+                                type='checkbox'
+                                name='rememberUser'
+                                id='rememberUser'
+                            />
+                        </div>
+                        <button
+                            type='submit'
+                            disabled={
+                                (!username || !password || isLoading) && true
+                            }
+                            className='SignIn__Btn'>
+                            {isLoading ? (
+                                <i className='fa-solid fa-spinner fa-spin-pulse'></i>
+                            ) : (
+                                'Sign In'
+                            )}
+                        </button>
+                        <div className='SignIn__Form-Link'>
+                            <NavLink to='/passwordRetrieve'>
+                                Forgot your password?
+                            </NavLink>
+                            <NavLink
+                                to='/userSignUp'
+                                className='toSignUp'>
+                                Create new account
+                            </NavLink>
+                        </div>
+                        <div className='SignIn__Form-Other'>
+                            <div className='SignIn__Form-OtherDecor'>
+                                <div></div>
+                                <span>OR</span>
+                                <div></div>
+                            </div>
+                            <div className='SignIn__Form-OtherSignIn'>
+                                <div>
+                                    <img
+                                        src={google}
+                                        alt='google'
+                                        className='GoogleIcon'
+                                    />
+                                    Google
+                                </div>
+                                <div>
+                                    <img
+                                        src={facebook}
+                                        alt='google'
+                                        className='FacebookIcon'
+                                    />
+                                    Facebook
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </ErrorBoundary>
         </div>
     );
 };

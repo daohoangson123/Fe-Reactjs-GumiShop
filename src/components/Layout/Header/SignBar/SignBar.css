@@ -35,8 +35,7 @@
 }
 
 .SignBar__SignRegis-Link .active {
-    font-weight: 600;
-    text-decoration: none;
+    text-decoration: underline;
     color: var(--color-default);
 }
 

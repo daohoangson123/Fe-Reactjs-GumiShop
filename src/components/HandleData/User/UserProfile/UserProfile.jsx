@@ -16,13 +16,26 @@ import { fetchUserData } from '../../../../data/axiosAPI/userData';
 import { getUserData } from '../../../../redux/Actions/Action';
 import { signinSelector } from '../../../../redux/Selectors/Selector';
 import { useEffect } from 'react';
+import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
 
 const UserProfile = () => {
-    const userData = useSelector(userSelector);
+    const dispatch = useDispatch();
     const purchaseHistory = useSelector(myPurchaseHistorySelector);
+    const userData = useSelector(userSelector);
     const token = useSelector(signinSelector);
     const id = token && token.slice(16);
-    const dispatch = useDispatch();
+
+    const saveUserData = async () => {
+        let userDataRes = await fetchUserData(id);
+        if (userDataRes) {
+            return dispatch(getUserData(userDataRes.data));
+        }
+        return;
+    };
+
+    useEffect(() => {
+        saveUserData();
+    }, []);
 
     const handleSignOut = () => {
         dispatch(userSignOut());
@@ -41,88 +54,78 @@ const UserProfile = () => {
             theme: 'light',
         });
 
-    const saveUserData = async () => {
-        let userDataRes = await fetchUserData(id);
-        if (userDataRes) {
-            return dispatch(getUserData(userDataRes.data));
-        }
-        return;
-    };
-
-    useEffect(() => {
-        saveUserData();
-    }, []);
-
     return (
         <div className='UserProfile Container'>
-            <div className='UserProfile__UserData'>
-                {!userData.avatar ? (
-                    <>
-                        <Skeleton
-                            width={128}
-                            height={128}
-                        />
-                        User: <Skeleton width={100} />
-                        Id: <Skeleton width={50} />
-                    </>
-                ) : (
-                    <>
-                        <img
-                            src={userData.avatar && userData.avatar}
-                            alt={userData && userData.first_name}
-                        />
-                        <button
-                            onClick={handleSignOut}
-                            className='SignOut__Btn'>
-                            <Link to='/userSignIn'>Sign Out</Link>
-                        </button>
-                        <div>
-                            User: {userData && userData.first_name}{' '}
-                            {userData && userData.last_name}
-                            <br />
-                            Id: {userData && userData.id}
-                        </div>
-                    </>
-                )}
-            </div>
-            <div className='UserProfile__PurchaseHistory'>
-                <h2>My Purchase History</h2>
-                <button
-                    type='button'
-                    className='ClearPurchaseHistory__Btn'
-                    onClick={() => dispatch(clearHistory())}>
-                    Clear History
-                </button>
-                <Table
-                    striped
-                    bordered
-                    hover>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Quantities</th>
-                            <th>Price</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {purchaseHistory.length === 0 ? (
+            <ErrorBoundary>
+                <div className='UserProfile__UserData'>
+                    {!userData ? (
+                        <>
+                            <Skeleton
+                                width={128}
+                                height={128}
+                            />
+                            User: <Skeleton width={100} />
+                            Id: <Skeleton width={50} />
+                        </>
+                    ) : (
+                        <>
+                            <img
+                                src={userData.avatar && userData.avatar}
+                                alt={userData && userData.first_name}
+                            />
+                            <button
+                                onClick={handleSignOut}
+                                className='SignOut__Btn'>
+                                <Link to='/userSignIn'>Sign Out</Link>
+                            </button>
+                            <div>
+                                User: {userData && userData.first_name}{' '}
+                                {userData && userData.last_name}
+                                <br />
+                                Id: {userData && userData.id}
+                            </div>
+                        </>
+                    )}
+                </div>
+                <div className='UserProfile__PurchaseHistory'>
+                    <h2>My Purchase History</h2>
+                    <button
+                        type='button'
+                        className='ClearPurchaseHistory__Btn'
+                        onClick={() => dispatch(clearHistory())}>
+                        Clear History
+                    </button>
+                    <Table
+                        striped
+                        bordered
+                        hover>
+                        <thead>
                             <tr>
-                                <td>Null</td>
-                                <td>Null</td>
-                                <td>Null</td>
+                                <th>Name</th>
+                                <th>Quantities</th>
+                                <th>Price</th>
                             </tr>
-                        ) : (
-                            purchaseHistory.map((item, index) => (
-                                <tr key={index}>
-                                    <td>{item.name}</td>
-                                    <td>{item.amount}</td>
-                                    <td>{item.price}</td>
+                        </thead>
+                        <tbody>
+                            {purchaseHistory.length === 0 ? (
+                                <tr>
+                                    <td>Null</td>
+                                    <td>Null</td>
+                                    <td>Null</td>
                                 </tr>
-                            ))
-                        )}
-                    </tbody>
-                </Table>
-            </div>
+                            ) : (
+                                purchaseHistory.map((item, index) => (
+                                    <tr key={index}>
+                                        <td>{item.name}</td>
+                                        <td>{item.amount}</td>
+                                        <td>{item.price}</td>
+                                    </tr>
+                                ))
+                            )}
+                        </tbody>
+                    </Table>
+                </div>
+            </ErrorBoundary>
         </div>
     );
 };

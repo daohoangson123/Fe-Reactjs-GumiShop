@@ -3,6 +3,20 @@
     place-items: center;
 }
 
+.User_List {
+    display: grid;
+    place-items: center;
+    width: 280px;
+    border: 1px solid var(--color-alt);
+    margin-bottom: 20px;
+}
+
+.User_List ol,
+.User_List ol li {
+    padding: 0;
+    list-style: decimal;
+}
+
 .SignIn__Form {
     border: 1px solid var(--color-alt);
     border-radius: 10px;
@@ -27,6 +41,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
+    align-items: center;
 }
 
 .SignIn__Form-InputContainer label {
@@ -50,6 +65,7 @@
     border-radius: 2px;
     padding: 0 5px;
     width: min(100%, 273px);
+    height: 35px;
     flex-grow: 1;
 }
 
@@ -63,7 +79,7 @@
 
 .SignIn__Form-InputContainer .showpassicon {
     position: absolute;
-    top: 6px;
+    top: 10px;
     right: 6px;
 }
 
