@@ -16,6 +16,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { fetchUserList } from '../../../../data/axiosAPI/userList';
 import Pagination from 'react-bootstrap/Pagination';
 import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
+import Skeleton from 'react-loading-skeleton';
 
 const SignIn = () => {
     const isSignIn = useSelector(signinSelector);
@@ -102,7 +103,8 @@ const SignIn = () => {
                 active={number === active}
                 onClick={() => {
                     setActive(number);
-                }}>
+                }}
+            >
                 {number}
             </Pagination.Item>,
         );
@@ -113,10 +115,16 @@ const SignIn = () => {
             <ErrorBoundary>
                 <div className='User_List'>
                     <ol>
-                        {userEmailList &&
+                        {userEmailList ? (
                             userEmailList.map((email) => (
                                 <li key={email}>{email}</li>
-                            ))}
+                            ))
+                        ) : (
+                            <Skeleton
+                                width={200}
+                                count={6}
+                            />
+                        )}
                     </ol>
                     <Pagination>{items}</Pagination>
                 </div>
@@ -124,7 +132,8 @@ const SignIn = () => {
                     action=''
                     // autoComplete='off'
                     className='SignIn__Form'
-                    onSubmit={handleSignIn}>
+                    onSubmit={handleSignIn}
+                >
                     <div className='SignIn__Form-Title'>
                         Sign In
                         <div
@@ -132,7 +141,8 @@ const SignIn = () => {
                                 fontSize: '16px',
                                 fontWeight: 400,
                                 color: 'red',
-                            }}>
+                            }}
+                        >
                             {isError && 'Username/ Password is invalid'}
                         </div>
                     </div>
@@ -174,7 +184,8 @@ const SignIn = () => {
                                     className={`fa-regular ${
                                         !showPass ? 'fa-eye-slash' : 'fa-eye'
                                     } showpassicon`}
-                                    onClick={() => setShowPass(!showPass)}></i>
+                                    onClick={() => setShowPass(!showPass)}
+                                ></i>
                             </div>
                         </div>
                         <div className='SignIn__Form-Remember'>
@@ -190,7 +201,8 @@ const SignIn = () => {
                             disabled={
                                 (!username || !password || isLoading) && true
                             }
-                            className='SignIn__Btn'>
+                            className='SignIn__Btn'
+                        >
                             {isLoading ? (
                                 <i className='fa-solid fa-spinner fa-spin-pulse'></i>
                             ) : (
@@ -203,7 +215,8 @@ const SignIn = () => {
                             </NavLink>
                             <NavLink
                                 to='/userSignUp'
-                                className='toSignUp'>
+                                className='toSignUp'
+                            >
                                 Create new account
                             </NavLink>
                         </div>
