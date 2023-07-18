@@ -73,18 +73,17 @@ const UserProfile = () => {
                                 src={userData.avatar && userData.avatar}
                                 alt={userData && userData.first_name}
                             />
-                            <button
-                                onClick={handleSignOut}
-                                className='SignOut__Btn'
-                            >
-                                <Link to='/userSignIn'>Sign Out</Link>
-                            </button>
                             <div>
                                 User: {userData && userData.first_name}{' '}
                                 {userData && userData.last_name}
                                 <br />
                                 Id: {userData && userData.id}
                             </div>
+                            <button
+                                onClick={handleSignOut}
+                                className='SignOut__Btn'>
+                                <Link to='/userSignIn'>Sign Out</Link>
+                            </button>
                         </>
                     )}
                 </div>
@@ -93,15 +92,13 @@ const UserProfile = () => {
                     <button
                         type='button'
                         className='ClearPurchaseHistory__Btn'
-                        onClick={() => dispatch(clearHistory())}
-                    >
+                        onClick={() => dispatch(clearHistory())}>
                         Clear History
                     </button>
                     <Table
                         striped
                         bordered
-                        hover
-                    >
+                        hover>
                         <thead>
                             <tr>
                                 <th>Name</th>

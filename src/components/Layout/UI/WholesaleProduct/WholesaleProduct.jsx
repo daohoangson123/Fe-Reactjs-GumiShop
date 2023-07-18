@@ -1,13 +1,35 @@
 import './WholesaleProduct.css';
 //
 import brokenImg from '../../../../assets/img/brokenImg.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const WholesaleProduct = ({ props }) => {
-    const [altImg, setAltImg] = useState();
+    const [isImgError, setIsImgError] = useState(false);
     const orgPrice = props.price + props.discouter;
     const salePercent = 100 - (props.price / orgPrice) * 100;
+
+    useEffect(() => {
+        function load(img) {
+            const url = img.getAttribute('lazysrc');
+            img.setAttribute('src', url);
+        }
+
+        const lazyImgs = document.querySelectorAll('[lazysrc]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    load(entry.target);
+                }
+            });
+        });
+
+        lazyImgs.forEach((img) => {
+            observer.observe(img);
+        });
+
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <abbr
@@ -17,9 +39,10 @@ const WholesaleProduct = ({ props }) => {
                 <div className='WholesaleProduct__ImgContainer'>
                     <img
                         className='WholesaleProduct__Img'
-                        src={altImg || props.img}
-                        alt='WholesaleProductImg'
-                        onError={() => setAltImg(brokenImg)}
+                        src={isImgError ? brokenImg : null}
+                        alt={props.name}
+                        lazysrc={isImgError ? brokenImg : props.img}
+                        onError={() => setIsImgError(true)}
                     />
                 </div>
                 <div className='WholesaleProduct__Content'>

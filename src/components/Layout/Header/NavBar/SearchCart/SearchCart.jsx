@@ -46,9 +46,9 @@ const SearchModal = ({
                 />
             </form>
             {searchValue && (
-                <div>
+                <div style={{ marginTop: '10px' }}>
                     {filtered.length} item
-                    {filtered.length > 1 && `'s`} found
+                    {filtered.length > 1 && `s`} found
                 </div>
             )}
             <ul

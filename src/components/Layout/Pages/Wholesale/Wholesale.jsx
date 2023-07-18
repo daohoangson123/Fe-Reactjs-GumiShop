@@ -31,8 +31,6 @@ const Wholesale = ({ title, productApi }) => {
     getAllCategories.forEach((item) => {
         if (!filteredCategories[item]) {
             filteredCategories[item] = 1;
-        } else {
-            filteredCategories[item] = filteredCategories[item] + 1;
         }
     });
     //truy xuất key
@@ -54,8 +52,6 @@ const Wholesale = ({ title, productApi }) => {
     getAllBrands.forEach((item) => {
         if (!filteredBrands[item]) {
             filteredBrands[item] = 1;
-        } else {
-            filteredBrands[item] = filteredBrands[item] + 1;
         }
     });
     const brandsList = Object.keys(filteredBrands);

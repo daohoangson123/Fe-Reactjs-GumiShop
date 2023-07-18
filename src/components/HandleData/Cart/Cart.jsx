@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
     myCartSelector,
     signinSelector,
+    userSelector,
 } from '../../../redux/Selectors/Selector';
 import {
     newDecAmount,
@@ -21,11 +22,13 @@ import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 //
 import { Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { putPurchasedHistory } from '../../../data/axiosAPI/purchaseHistory';
 
 const Cart = () => {
     const dispatch = useDispatch();
     const myCart = useSelector(myCartSelector);
     const isSignIn = useSelector(signinSelector);
+    const userData = useSelector(userSelector);
     const [purchasing, setPurchasing] = useState(false);
     // eslint-disable-next-line
     // const [quantity, setQuantity] = useState(1);
@@ -70,6 +73,10 @@ const Cart = () => {
             setPurchasing(true);
             setTimeout(() => purchasedNotify(), 1000);
             setTimeout(() => dispatch(submitCart()), 1500);
+            setTimeout(
+                () => putPurchasedHistory(userData.id, userData, myCart),
+                1500,
+            );
         }
     }
 

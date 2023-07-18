@@ -29,8 +29,6 @@ const SignIn = () => {
     const [isError, setIsError] = useState(false);
     const [userList, setUserList] = useState();
 
-    const userEmailList = userList && userList.map((user) => user.email);
-
     const getUserList = async () => {
         let userListRes = await fetchUserList(active);
         if (userListRes) {
@@ -119,8 +117,7 @@ const SignIn = () => {
                 active={number === active}
                 onClick={() => {
                     setActive(number);
-                }}
-            >
+                }}>
                 {number}
             </Pagination.Item>,
         );
@@ -129,27 +126,11 @@ const SignIn = () => {
     return (
         <div className='SignIn'>
             <ErrorBoundary>
-                <div className='User_List'>
-                    <ol>
-                        {userEmailList ? (
-                            userEmailList.map((email) => (
-                                <li key={email}>{email}</li>
-                            ))
-                        ) : (
-                            <Skeleton
-                                width={200}
-                                count={6}
-                            />
-                        )}
-                    </ol>
-                    <Pagination>{items}</Pagination>
-                </div>
                 <form
                     action=''
                     // autoComplete='off'
                     className='SignIn__Form'
-                    onSubmit={handleSignIn}
-                >
+                    onSubmit={handleSignIn}>
                     <div className='SignIn__Form-Title'>
                         Sign In
                         <div
@@ -157,8 +138,7 @@ const SignIn = () => {
                                 fontSize: '16px',
                                 fontWeight: 400,
                                 color: 'red',
-                            }}
-                        >
+                            }}>
                             {isError && 'Username/ Password is invalid'}
                         </div>
                     </div>
@@ -172,7 +152,7 @@ const SignIn = () => {
                                 id='signInUserName'
                                 className='signInUserName'
                                 placeholder='username'
-                                // required
+                                required
                                 onChange={(event) =>
                                     setUsername(event.target.value)
                                 }
@@ -189,7 +169,7 @@ const SignIn = () => {
                                     id='signInPassWord'
                                     className='signInPassWord'
                                     placeholder='password'
-                                    // required
+                                    required
                                     autoComplete='on'
                                     onChange={(event) =>
                                         setPassword(event.target.value)
@@ -200,8 +180,7 @@ const SignIn = () => {
                                     className={`fa-regular ${
                                         !showPass ? 'fa-eye-slash' : 'fa-eye'
                                     } showpassicon`}
-                                    onClick={() => setShowPass(!showPass)}
-                                ></i>
+                                    onClick={() => setShowPass(!showPass)}></i>
                             </div>
                         </div>
                         <div className='SignIn__Form-Remember'>
@@ -214,11 +193,10 @@ const SignIn = () => {
                         </div>
                         <button
                             type='submit'
-                            // disabled={
-                            //     (!username || !password || isLoading) && true
-                            // }
-                            className='SignIn__Btn'
-                        >
+                            disabled={
+                                (!username || !password || isLoading) && true
+                            }
+                            className='SignIn__Btn'>
                             {isLoading ? (
                                 <i className='fa-solid fa-spinner fa-spin-pulse'></i>
                             ) : (
@@ -231,8 +209,7 @@ const SignIn = () => {
                             </NavLink>
                             <NavLink
                                 to='/userSignUp'
-                                className='toSignUp'
-                            >
+                                className='toSignUp'>
                                 Create new account
                             </NavLink>
                         </div>
@@ -263,6 +240,23 @@ const SignIn = () => {
                         </div>
                     </fieldset>
                 </form>
+                <div className='User_List'>
+                    <ol>
+                        {userList ? (
+                            userList.map((user) => (
+                                <li key={user.id}>
+                                    {user.id}. {user.email}
+                                </li>
+                            ))
+                        ) : (
+                            <Skeleton
+                                width={200}
+                                count={6}
+                            />
+                        )}
+                    </ol>
+                    <Pagination>{items}</Pagination>
+                </div>
             </ErrorBoundary>
         </div>
     );

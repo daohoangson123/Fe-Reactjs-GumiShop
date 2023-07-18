@@ -3,20 +3,28 @@
     gap: 20px;
 }
 
+.UserProfile__UserData {
+    display: grid;
+    grid-template-columns: 128px max-content;
+    gap: 10px;
+}
+
 .UserProfile__UserData img {
     min-width: 128px;
     width: 128px;
     aspect-ratio: 1;
     object-fit: cover;
+    border-radius: 50%;
+}
+
+.UserProfile__UserData div {
+    align-self: center;
 }
 
 .SignOut__Btn {
-    border-radius: 5px;
+    justify-self: center;
     border: none;
-    width: fit-content;
-    height: 50px;
     transition: var(--transition-fast);
-    margin-left: 20px;
 }
 
 .SignOut__Btn:hover {
@@ -29,7 +37,6 @@
 
 .SignOut__Btn a {
     padding: 5px;
-    font-size: 20px;
     color: var(--color-alt);
     text-decoration: none;
 }
