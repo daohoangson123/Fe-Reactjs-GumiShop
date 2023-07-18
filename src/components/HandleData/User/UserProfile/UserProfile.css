@@ -4,6 +4,7 @@
 }
 
 .UserProfile__UserData img {
+    min-width: 128px;
     width: 128px;
     aspect-ratio: 1;
     object-fit: cover;

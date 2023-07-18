@@ -75,7 +75,8 @@ const UserProfile = () => {
                             />
                             <button
                                 onClick={handleSignOut}
-                                className='SignOut__Btn'>
+                                className='SignOut__Btn'
+                            >
                                 <Link to='/userSignIn'>Sign Out</Link>
                             </button>
                             <div>
@@ -92,13 +93,15 @@ const UserProfile = () => {
                     <button
                         type='button'
                         className='ClearPurchaseHistory__Btn'
-                        onClick={() => dispatch(clearHistory())}>
+                        onClick={() => dispatch(clearHistory())}
+                    >
                         Clear History
                     </button>
                     <Table
                         striped
                         bordered
-                        hover>
+                        hover
+                    >
                         <thead>
                             <tr>
                                 <th>Name</th>

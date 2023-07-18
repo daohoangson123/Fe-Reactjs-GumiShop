@@ -63,10 +63,26 @@ const SignIn = () => {
             theme: 'light',
         });
 
+    const dataRequired = () =>
+        toast.error(`UserName/ Password Required`, {
+            position: 'top-center',
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: 'light',
+        });
+
     const handleSignIn = (event) => {
         event.preventDefault();
-        setIsLoading(true);
-        setTimeout(() => postLoginRequest(), 1000);
+        if (username && password) {
+            setIsLoading(true);
+            setTimeout(() => postLoginRequest(), 1000);
+        } else {
+            dataRequired();
+        }
     };
 
     const postLoginRequest = async () => {
@@ -156,7 +172,7 @@ const SignIn = () => {
                                 id='signInUserName'
                                 className='signInUserName'
                                 placeholder='username'
-                                required
+                                // required
                                 onChange={(event) =>
                                     setUsername(event.target.value)
                                 }
@@ -173,7 +189,7 @@ const SignIn = () => {
                                     id='signInPassWord'
                                     className='signInPassWord'
                                     placeholder='password'
-                                    required
+                                    // required
                                     autoComplete='on'
                                     onChange={(event) =>
                                         setPassword(event.target.value)
@@ -198,9 +214,9 @@ const SignIn = () => {
                         </div>
                         <button
                             type='submit'
-                            disabled={
-                                (!username || !password || isLoading) && true
-                            }
+                            // disabled={
+                            //     (!username || !password || isLoading) && true
+                            // }
                             className='SignIn__Btn'
                         >
                             {isLoading ? (
