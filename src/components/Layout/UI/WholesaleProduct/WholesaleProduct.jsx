@@ -45,6 +45,7 @@ const WholesaleProduct = ({ props }) => {
                         onError={() => setIsImgError(true)}
                     />
                 </div>
+
                 <div className='WholesaleProduct__Content'>
                     <div className='WholesaleProduct__Name'>{props.name}</div>
                     <div className='WholesaleProduct__Price'>

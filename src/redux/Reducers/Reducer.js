@@ -72,7 +72,7 @@ const rootReducer = (state = initState, action) => {
         case 'Submit_Cart':
             return {
                 ...state,
-                purchaseHistory: [...state.purchaseHistory, ...state.myCart],
+                purchaseHistory: [...state.purchaseHistory, ...action.payload],
                 myCart: [],
             };
         case 'Clear_History':

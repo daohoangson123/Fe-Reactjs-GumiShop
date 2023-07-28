@@ -26,12 +26,12 @@ const SearchModal = ({
             className='NavSearch'
             style={
                 !isSearching
-                    ? { maxHeight: 0 }
+                    ? { maxHeight: 0, overflow: 'hidden', opacity: 0 }
                     : {
                           maxHeight: '300px',
-                          marginTop: '5px',
-                          paddingBlock: '15px',
-                          border: '1px solid var(--color-primary)',
+                          marginTop: '10px',
+                          paddingBlock: '10px',
+                          opacity: 1,
                       }
             }>
             <form className='NavSearch__Form'>
@@ -107,14 +107,12 @@ const SearchCart = () => {
     const debounceChange = useMemo(() => debounce(handleChange, 500), []);
 
     const getFilterItems = (searchValue, result) => {
-        const query = searchValue.replace(/\s+/g, '').toLocaleLowerCase();
-        if (!searchValue.trim()) {
+        const query = searchValue.replace(/\s+/g, '').toLowerCase();
+        if (!query) {
             return [];
         }
         return result.filter((product) => {
-            const productName = product.name
-                .replace(/\s+/g, '')
-                .toLocaleLowerCase();
+            const productName = product.name.replace(/\s+/g, '').toLowerCase();
             const productList = productName.includes(query);
             return productList;
         });

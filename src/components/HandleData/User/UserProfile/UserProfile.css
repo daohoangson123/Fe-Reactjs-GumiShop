@@ -51,7 +51,7 @@
 }
 
 @media (max-width: 424px) {
-    .UserProfile__PurchaseHistory {
+    .UserProfile__PurchaseHistory-TableContainer {
         width: clamp(280px, 100%, 1920px);
         overflow-y: hidden;
         overflow-x: auto;
@@ -63,16 +63,16 @@
         max-width: none;
     }
 
-    .UserProfile__PurchaseHistory-webkit-scrollbar {
+    .UserProfile__PurchaseHistory-TableContainer-webkit-scrollbar {
         width: 10px;
     }
-    .UserProfile__PurchaseHistory-webkit-scrollbar:horizontal {
+    .UserProfile__PurchaseHistory-TableContainer-webkit-scrollbar:horizontal {
         height: 10px;
     }
-    .UserProfile__PurchaseHistory-webkit-scrollbar-track {
+    .UserProfile__PurchaseHistory-TableContainer-webkit-scrollbar-track {
         background-color: var(--color-alt-rgba-3);
     }
-    .UserProfile__PurchaseHistory-webkit-scrollbar-thumb {
+    .UserProfile__PurchaseHistory-TableContainer-webkit-scrollbar-thumb {
         background-color: var(--color-icon);
     }
 }

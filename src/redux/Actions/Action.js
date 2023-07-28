@@ -26,9 +26,10 @@ export const removeInCart = (currentProduct) => {
     };
 };
 
-export const submitCart = () => {
+export const submitCart = (currentCart) => {
     return {
         type: 'Submit_Cart',
+        payload: currentCart,
     };
 };
 

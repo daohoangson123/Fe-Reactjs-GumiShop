@@ -6,7 +6,6 @@
     color: var(--color-default);
     background-color: var(--color-primary);
     padding: 15px 120px;
-    z-index: 100;
 }
 
 .SignBar__Text {

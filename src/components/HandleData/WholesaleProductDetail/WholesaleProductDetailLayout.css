@@ -1,0 +1,96 @@
+.WholesaleProductDetail {
+    min-height: 500px;
+}
+
+.WholesaleBreadcrumb__Skeleton {
+    width: 100%;
+    height: 25px;
+    margin-bottom: 10px;
+}
+
+.WholesaleProductDetailLayout__Breadcrumb {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    background-color: var(--color-alt-rgba-1);
+}
+
+.WholesaleProductDetailLayout__Breadcrumb a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.WholesaleProductDetailLayout__Product-Container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.Product-Container__Img img {
+    width: 280px;
+    aspect-ratio: 1;
+    border: 1px solid var(--color-alt);
+}
+
+.Product-Container__Info {
+    width: 280px;
+}
+
+.Product-Container__Info-Name {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.Product-Container__Info-Price {
+    border-top: 1px solid var(--color-alt-rgba-1);
+    border-bottom: 1px solid var(--color-alt-rgba-1);
+}
+
+.Product-Container__Info-Color {
+    padding: 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    min-height: 50px;
+}
+
+.Product-Container__Info-AddToCart-Form button:first-child,
+.Product-Container__Info-AddToCart-Form button:nth-child(3) {
+    width: 30px;
+    aspect-ratio: 1;
+}
+
+.Product-Container__Info-AddToCart-Form button:nth-child(5),
+.Product-Container__Info-AddToCart-Form button:last-child {
+    width: 80px;
+    margin-right: 10px;
+}
+
+.Product-Container__Info-AddToCart-Form input {
+    text-align: center;
+    margin-inline: 5px;
+    margin-bottom: 10px;
+    height: 30px;
+}
+
+.Product-Container__Info-AddToCart-Form input::-webkit-inner-spin-button,
+.Product-Container__Info-AddToCart-Form input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+.Product-Container__Shipping-Info {
+    background-color: var(--color-alt-rgba-1);
+    padding: 5px;
+    min-width: 280px;
+}
+
+.Product-Container__Shipping-Info-Opt {
+    border-bottom: 1px solid var(--color-icon);
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+.Product-Container__Shipping-Info-Opt select {
+    justify-items: end;
+}

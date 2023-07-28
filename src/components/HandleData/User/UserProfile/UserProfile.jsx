@@ -17,6 +17,7 @@ import { getUserData } from '../../../../redux/Actions/Action';
 import { signinSelector } from '../../../../redux/Selectors/Selector';
 import { useEffect } from 'react';
 import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
+import { logoutRequest } from '../../../../data/axiosAPI/userSignout';
 
 const UserProfile = () => {
     const dispatch = useDispatch();
@@ -39,19 +40,13 @@ const UserProfile = () => {
 
     const handleSignOut = () => {
         dispatch(userSignOut());
+        logoutRequest();
         signoutNotify();
     };
 
     const signoutNotify = () =>
         toast.error(`You have been Signed Out`, {
-            position: 'top-center',
-            autoClose: 1000,
-            hideProgressBar: true,
-            closeOnClick: true,
-            pauseOnHover: false,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
+            position: 'top-left',
         });
 
     return (
@@ -63,6 +58,7 @@ const UserProfile = () => {
                             <Skeleton
                                 width={128}
                                 height={128}
+                                rounded
                             />
                             User: <Skeleton width={100} />
                             Id: <Skeleton width={50} />
@@ -95,35 +91,35 @@ const UserProfile = () => {
                         onClick={() => dispatch(clearHistory())}>
                         Clear History
                     </button>
-                    <Table
-                        striped
-                        bordered
-                        hover>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Quantities</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {purchaseHistory.length === 0 ? (
-                                <tr>
-                                    <td>Null</td>
-                                    <td>Null</td>
-                                    <td>Null</td>
-                                </tr>
-                            ) : (
-                                purchaseHistory.map((item, index) => (
-                                    <tr key={index}>
-                                        <td>{item.name}</td>
-                                        <td>{item.amount}</td>
-                                        <td>{item.price}</td>
+                    {purchaseHistory.length > 0 && (
+                        <div className='UserProfile__PurchaseHistory-TableContainer'>
+                            <Table
+                                striped
+                                bordered
+                                hover>
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Quantities</th>
+                                        <th>Price</th>
+                                        <th>Date</th>
                                     </tr>
-                                ))
-                            )}
-                        </tbody>
-                    </Table>
+                                </thead>
+                                {purchaseHistory && (
+                                    <tbody>
+                                        {purchaseHistory.map((item, index) => (
+                                            <tr key={index}>
+                                                <td>{item.name}</td>
+                                                <td>{item.amount}</td>
+                                                <td>{item.price}</td>
+                                                <td>{item.date}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                )}
+                            </Table>
+                        </div>
+                    )}
                 </div>
             </ErrorBoundary>
         </div>

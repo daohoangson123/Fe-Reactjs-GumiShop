@@ -34,6 +34,16 @@
     aspect-ratio: 1;
     object-fit: contain;
     transition: var(--transition-fast);
+    animation: product 0.3s ease-in-out forwards;
+}
+
+@keyframes product {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .WholesaleProduct__Name {

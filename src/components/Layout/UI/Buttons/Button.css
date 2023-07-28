@@ -1,0 +1,44 @@
+.Global__Btn {
+    min-width: 100px;
+    min-height: 40px;
+    transition: var(--transition-fast);
+}
+
+.Global__Btn a {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    text-decoration: none;
+    color: var(--color-alt);
+    transition: var(--transition-fast);
+}
+
+.Global__Btn--default a {
+    color: var(--color-alt);
+}
+
+.Global__Btn--default {
+    background-color: transparent;
+}
+
+.Global__Btn--default:hover {
+    background-color: var(--color-primary);
+    color: var(--color-default);
+}
+
+.Global__Btn--primary a {
+    color: var(--color-default);
+}
+
+.Global__Btn--primary {
+    background-color: var(--color-primary);
+}
+
+.Global__Btn--oval:hover {
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-start-end-radius: 75%;
+    border-end-start-radius: 75%;
+    box-shadow: 2px 2px 5px 2px var(--color-text);
+}

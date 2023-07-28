@@ -87,6 +87,10 @@ abbr {
     transition: all 0.3s ease-in-out;
 }
 
+.Toastify__toast-container--top-center {
+    top: 70px !important;
+}
+
 @media (width >= 1024px) {
     .ProductContainer {
         grid-template-columns: repeat(auto-fit, 250px);

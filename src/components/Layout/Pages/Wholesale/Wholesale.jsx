@@ -8,12 +8,13 @@ import noItem from '../../../../assets/img/noitem.webp';
 //
 import WholesaleProduct from '../../UI/WholesaleProduct/WholesaleProduct';
 import ProductSkeleton from '../../UI/Skeleton/ProductSkeleton';
+import WholesaleFilter from './ToggleFilter';
+import SectionTitle from '../../UI/SectionTitle/SectionTitle';
 //
 
-const Wholesale = ({ title, productApi }) => {
+const WholesaleLayout = ({ title, productApi }) => {
     const [curCategory, setCurCategory] = useState('All');
     const [curBrand, setCurBrand] = useState('All');
-    const [showFilter, setShowFilter] = useState(true);
     //lọc và trả về tất cả value có key categories
     //check trước xem có key ko để tránh error
     //ép kiểu để đồng nhất data
@@ -59,165 +60,70 @@ const Wholesale = ({ title, productApi }) => {
         brandsList.unshift('All');
     }
     //
-    const categoryOnly = productApi.filter(
-        (product) =>
-            product.categories &&
-            product.categories.toString().toLowerCase() === curCategory,
-    );
-    const brandOnly = productApi.filter(
-        (product) =>
-            product.brand &&
-            product.brand.toString().toLowerCase() === curBrand,
-    );
-    const mutipleFilter = productApi.filter(
-        (product) =>
-            product.categories &&
-            product.categories.toString().toLowerCase() === curCategory &&
-            product.brand &&
-            product.brand.toString().toLowerCase() === curBrand,
-    );
 
-    const productLenghtByFilter =
-        curCategory === 'All' && curBrand === 'All'
-            ? productApi.length
-            : curCategory !== 'All' && curBrand === 'All'
-            ? categoryOnly.length
-            : curCategory === 'All' && curBrand !== 'All'
-            ? brandOnly.length
-            : mutipleFilter.length;
+    function getFilterItems(productApi, curCategory, curBrand) {
+        const categoryOnly = productApi.filter(
+            (product) =>
+                product.categories &&
+                product.categories.toString().toLowerCase() === curCategory,
+        );
+        const brandOnly = productApi.filter(
+            (product) =>
+                product.brand &&
+                product.brand.toString().toLowerCase() === curBrand,
+        );
+        const mutipleFilter = productApi.filter(
+            (product) =>
+                product.categories &&
+                product.categories.toString().toLowerCase() === curCategory &&
+                product.brand &&
+                product.brand.toString().toLowerCase() === curBrand,
+        );
+        if (curCategory !== 'All' && curBrand === 'All') {
+            return categoryOnly;
+        }
+        if (curCategory === 'All' && curBrand !== 'All') {
+            return brandOnly;
+        }
+        if (curCategory !== 'All' && curBrand !== 'All') {
+            return mutipleFilter;
+        }
+        return productApi;
+    }
+
+    const filtered = getFilterItems(productApi, curCategory, curBrand);
 
     return (
-        <>
-            <h2>{title}</h2>
+        <div className='WholesaleLayout'>
+            <SectionTitle content={title} />
             {productApi.length > 0 && (
-                <>
-                    <button
-                        className='ToggleFilter'
-                        type='button'
-                        onClick={() => setShowFilter(!showFilter)}>
-                        {showFilter ? 'Hide filter' : 'Show filter'}
-                    </button>
-                    <form className='Wholesale__Filter'>
-                        <div
-                            className='Wholesale__Filter-Container'
-                            style={
-                                !showFilter
-                                    ? {
-                                          animation:
-                                              'hideFilter 0.3s ease-in-out forwards',
-                                      }
-                                    : {
-                                          animation:
-                                              'showFilter 0.7s ease-in-out forwards',
-                                      }
-                            }>
-                            {categoriesList.length > 0 && (
-                                <ul className='Wholesale__CategoryFilter__List'>
-                                    <h4>Categories:</h4>
-
-                                    {categoriesList.map((category) => (
-                                        <li
-                                            key={category}
-                                            onClick={() =>
-                                                setCurCategory(category)
-                                            }>
-                                            <button
-                                                type='button'
-                                                disabled={
-                                                    productApi.length === 0
-                                                }
-                                                style={
-                                                    curCategory === category
-                                                        ? {
-                                                              backgroundColor:
-                                                                  'var(--color-primary)',
-                                                              color: 'var(--color-default)',
-                                                          }
-                                                        : null
-                                                }>
-                                                {category
-                                                    .charAt(0)
-                                                    .toUpperCase() +
-                                                    category.slice(1)}
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                            {brandsList.length > 0 && (
-                                <ul className='Wholesale__BrandFilter__List'>
-                                    <h4>Brands:</h4>
-                                    {brandsList.map((brand) => (
-                                        <li
-                                            key={brand}
-                                            onClick={() => setCurBrand(brand)}>
-                                            <button
-                                                type='button'
-                                                disabled={
-                                                    productApi.length === 0
-                                                }
-                                                style={
-                                                    curBrand === brand
-                                                        ? {
-                                                              backgroundColor:
-                                                                  'var(--color-primary)',
-                                                              color: 'var(--color-default)',
-                                                          }
-                                                        : null
-                                                }>
-                                                {brand.charAt(0).toUpperCase() +
-                                                    brand.slice(1)}
-                                            </button>
-                                        </li>
-                                    ))}
-                                </ul>
-                            )}
-                        </div>
-                    </form>
-                    <div style={{ textAlign: 'center', marginBlock: '10px' }}>
-                        {productApi.length !== 0 && (
-                            <span>
-                                Product available: {productLenghtByFilter}
-                            </span>
-                        )}
-                    </div>
-                </>
+                <WholesaleFilter
+                    productApi={productApi}
+                    filtered={filtered}
+                    categoriesList={categoriesList}
+                    brandsList={brandsList}
+                    curCategory={curCategory}
+                    setCurCategory={setCurCategory}
+                    curBrand={curBrand}
+                    setCurBrand={setCurBrand}
+                />
             )}
             <div className='Wholesale__Product-Container'>
-                {productApi.length === 0 ? (
+                {filtered.length === 0 &&
+                curBrand === 'All' &&
+                curCategory === 'All' ? (
                     <>
                         <ProductSkeleton imgWidth={200} />
                         <ProductSkeleton imgWidth={200} />
                     </>
-                ) : productLenghtByFilter === 0 ? (
+                ) : filtered.length === 0 ? (
                     <img
                         src={noItem}
                         alt='noProduct'
                         className='Wholesale__NoItem'
                     />
-                ) : curCategory === 'All' && curBrand === 'All' ? (
-                    productApi.map((item) => (
-                        <WholesaleProduct
-                            key={item._id}
-                            props={item}
-                        />
-                    ))
-                ) : curBrand === 'All' && curCategory !== 'All' ? (
-                    categoryOnly.map((item) => (
-                        <WholesaleProduct
-                            key={item._id}
-                            props={item}
-                        />
-                    ))
-                ) : curBrand !== 'All' && curCategory === 'All' ? (
-                    brandOnly.map((item) => (
-                        <WholesaleProduct
-                            key={item._id}
-                            props={item}
-                        />
-                    ))
                 ) : (
-                    mutipleFilter.map((item) => (
+                    filtered.map((item) => (
                         <WholesaleProduct
                             key={item._id}
                             props={item}
@@ -225,11 +131,11 @@ const Wholesale = ({ title, productApi }) => {
                     ))
                 )}
             </div>
-        </>
+        </div>
     );
 };
 
-const WholesaleLayout = () => {
+const Wholesale = () => {
     const [hektoApi, setHektoApi] = useState([]);
     const [furApi, setFurApi] = useState([]);
     const getWholesaleApi = async () => {
@@ -248,12 +154,12 @@ const WholesaleLayout = () => {
 
     return (
         <div className='Wholesale Container'>
-            <Wholesale
+            <WholesaleLayout
                 title={'Hekto'}
                 productApi={hektoApi}
             />
             <br />
-            <Wholesale
+            <WholesaleLayout
                 title={'Furniture'}
                 productApi={furApi}
             />
@@ -261,4 +167,4 @@ const WholesaleLayout = () => {
     );
 };
 
-export default WholesaleLayout;
+export default Wholesale;

@@ -19,7 +19,10 @@ function App() {
             <Main />
             <Footer />
             {!initialValue && <AdBanner />}
-            <ToastContainer limit={2} />
+            <ToastContainer
+                autoClose={1500}
+                limit={2}
+            />
         </div>
     );
 }

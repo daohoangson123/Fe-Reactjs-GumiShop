@@ -20,8 +20,8 @@ const SliderBanner = () => {
             <div
                 style={{
                     opacity: isBannerLoaded ? 1 : 0,
-                }}
-            >
+                    transition: '0.3s linear',
+                }}>
                 <OwlCarousel
                     className='owl-theme'
                     responsiveRefreshRate={0}
@@ -32,8 +32,7 @@ const SliderBanner = () => {
                     items={1}
                     nav={false}
                     dots={false}
-                    loop
-                >
+                    loop>
                     <div className='SliderContainer'>
                         <div className='BannerContainer BannerContainer_1'>
                             <img

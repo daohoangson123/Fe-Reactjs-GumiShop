@@ -19,25 +19,11 @@ const Product = (props) => {
         toast.success(`1 ${props.name} added to your Cart`, {
             position: 'bottom-right',
             transition: Zoom,
-            autoClose: 1500,
-            hideProgressBar: false,
-            pauseOnHover: false,
-            closeButton: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
         });
 
     const removeNotify = () =>
         toast.error(`${props.name} removed from your Cart`, {
             position: 'bottom-right',
-            autoClose: 1500,
-            hideProgressBar: false,
-            pauseOnHover: false,
-            closeButton: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
         });
 
     function handleAddToCart(product) {

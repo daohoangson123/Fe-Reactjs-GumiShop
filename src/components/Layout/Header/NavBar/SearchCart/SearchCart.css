@@ -22,12 +22,11 @@
 
 .NavSearch {
     grid-column: 1 / 4;
+    display: grid;
+    place-items: center;
     transition: var(--transition-fast);
-    overflow-y: scroll;
-}
-
-.NavSearch {
-    scrollbar-gutter: stable;
+    overflow: auto;
+    background-color: var(--color-alt-rgba-1);
 }
 
 .NavSearch::-webkit-scrollbar {
@@ -45,13 +44,12 @@
 .NavSearch__Form {
     position: sticky;
     top: 0;
-    display: grid;
-    justify-content: center;
+
     transition: var(--transition-fast);
 }
 
 .NavSearch__Form input {
-    min-width: 280px;
+    min-width: 260px;
     padding: 5px;
     border: none;
     outline: 1px solid var(--color-text);
@@ -64,6 +62,7 @@
 }
 
 .NavSearch__Result {
+    width: 100%;
     grid-template-columns: 1fr 1fr 1fr;
     margin-bottom: 0;
     padding: 0;

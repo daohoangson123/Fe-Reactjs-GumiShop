@@ -37,6 +37,8 @@ const ShopFilter = ({
         { label: '> $200', value: '> $200' },
     ];
 
+    const [showFilter, setShowFilter] = useState(false);
+
     return (
         <form
             className='SearchForm'
@@ -57,7 +59,15 @@ const ShopFilter = ({
                     required
                     onChange={debounceChange}
                 />
-                <div className='FiltersInputs'>
+                <button
+                    type='button'
+                    className='ToggleFilter__Btn'
+                    onClick={() => setShowFilter(!showFilter)}>
+                    {showFilter ? 'Hide' : 'Show'}
+                </button>
+                <div
+                    className='FiltersInputs'
+                    style={{ maxHeight: showFilter && '100px' }}>
                     <abbr title='Show only on-sale Products'>
                         <input
                             type='checkbox'

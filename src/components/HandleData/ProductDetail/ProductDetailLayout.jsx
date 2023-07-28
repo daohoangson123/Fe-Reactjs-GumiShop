@@ -3,7 +3,6 @@ import './ProductDetailLayout.css';
 import Breadcrumbs from '../../Layout/UI/Breadcrumb/Breadcrumbs';
 import Skeleton from 'react-loading-skeleton';
 //
-//
 import { toast } from 'react-toastify';
 
 const ProductDetailLayout = ({
@@ -17,13 +16,6 @@ const ProductDetailLayout = ({
             `${quantity + ' ' + productDetail.name} added to your Cart`,
             {
                 position: 'bottom-right',
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: 'light',
             },
         );
 

@@ -19,7 +19,7 @@
 .SignIn__Form {
     border: 1px solid var(--color-alt);
     border-radius: 10px;
-    width: clamp(300px, 50vw, 400px);
+    width: clamp(280px, 50vw, 400px);
     padding: 20px;
 }
 
@@ -66,6 +66,8 @@
     width: min(100%, 273px);
     height: 35px;
     flex-grow: 1;
+    font: small-caption;
+    font-size: 16px;
 }
 
 .SignIn__Form-InputContainer input:hover {

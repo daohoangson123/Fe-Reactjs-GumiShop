@@ -33,17 +33,12 @@ const Cart = () => {
     // eslint-disable-next-line
     // const [quantity, setQuantity] = useState(1);
 
+    const purchasedDate = new Date();
+
     const purchasedNotify = () =>
         toast.success(`Your purchase was successful`, {
             transition: Bounce,
             position: 'top-center',
-            autoClose: 1500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: 'light',
         });
 
     const totalItem = myCart.length;
@@ -72,7 +67,19 @@ const Cart = () => {
         if (isSignIn) {
             setPurchasing(true);
             setTimeout(() => purchasedNotify(), 1000);
-            setTimeout(() => dispatch(submitCart()), 1500);
+            setTimeout(
+                () =>
+                    dispatch(
+                        submitCart(
+                            myCart,
+                            myCart.map(
+                                (item) =>
+                                    (item.date = purchasedDate.toString()),
+                            ),
+                        ),
+                    ),
+                1500,
+            );
             setTimeout(
                 () => putPurchasedHistory(userData.id, userData, myCart),
                 1500,

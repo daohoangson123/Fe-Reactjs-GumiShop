@@ -16,7 +16,6 @@
 .SearchForm {
     position: sticky;
     top: 80px;
-    display: grid;
     background-color: var(--color-default);
     width: 100%;
     padding-block: 10px;
@@ -50,6 +49,7 @@
     flex-wrap: wrap;
     justify-content: center;
     gap: 10px;
+    transition: var(--transition-fast);
 }
 
 .FiltersInputs * {
@@ -70,15 +70,32 @@
     color: var(--color-default);
 }
 
+.ToggleFilter__Btn {
+    display: none;
+    width: 50px;
+    justify-self: center;
+    padding: 3px;
+}
+
 @media (width <= 520px) {
     .SearchForm fieldset {
         display: grid;
     }
 
+    .NameFilterInput {
+        justify-self: center;
+    }
+
     .FiltersInputs {
-        justify-self: end;
+        max-height: 0;
+        overflow: hidden;
         display: grid;
+        justify-self: end;
         justify-items: end;
+    }
+
+    .ToggleFilter__Btn {
+        display: block;
     }
 }
 

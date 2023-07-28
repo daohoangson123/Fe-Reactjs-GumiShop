@@ -39,12 +39,14 @@
     outline: none;
     border: none;
     border: 1px solid var(--color-primary);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
 }
 
-.Contact-Form form input:first-child {
-    background-color: red;
+.Contact-Form form input:nth-child(2) {
+    border-top-left-radius: 10px;
+}
+
+.Contact-Form form input:nth-child(4) {
+    border-top-right-radius: 10px;
 }
 
 .Contact-Form-Deco {
@@ -81,8 +83,7 @@
     grid-row-start: 3;
     width: 70%;
     padding: 10px;
-    background-color: rgba(246, 98, 62, 0.7);
-    color: var(--color-default);
+    background-color: var(--color-icon);
     border: none;
     border-bottom-right-radius: 10px;
     transition: var(--transition-fast);
@@ -90,9 +91,8 @@
 }
 
 .Contact-Btn:hover {
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
-    background: var(--color-primary);
+    color: var(--color-default);
+    background-color: var(--color-primary);
 }
 
 .Contact__map iframe {
@@ -112,34 +112,36 @@
         place-items: start;
         font-size: 30px;
         padding: 10px;
-        grid-row-start: 6;
-        grid-row-end: 6;
+        grid-row-start: 5;
+        grid-row-end: 5;
         grid-column-start: 1;
         grid-column-end: 1;
+        border-bottom-right-radius: 20px;
+        border-bottom-left-radius: 0;
+    }
+
+    .Contact-Form form input:nth-child(4) {
+        border-top-right-radius: 0;
     }
 
     .Issue {
         grid-column-start: 1;
         grid-column-end: 1;
-        grid-row-start: 5;
+        grid-row-start: 4;
     }
 
     .Contact-Btn {
         grid-column-start: 1;
         grid-column-end: 1;
-        grid-row-start: 6;
+        grid-row-start: 5;
         width: 40%;
-        background-color: var(--color-text);
         color: var(--color-default);
-        border-radius: 0;
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        border-top-left-radius: 20px;
+        border: 2px solid var(--color-alt);
     }
 
     .Contact-Btn:hover {
-        background-color: rgba(255, 255, 255, 0.5);
-        color: var(--color-alt);
-        border-top-right-radius: 10px;
-        border-bottom-left-radius: 20px;
+        background-color: transparent;
     }
 }
