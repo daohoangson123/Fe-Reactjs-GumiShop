@@ -58,10 +58,15 @@ const UserProfile = () => {
                             <Skeleton
                                 width={128}
                                 height={128}
-                                rounded
+                                circle
                             />
-                            User: <Skeleton width={100} />
-                            Id: <Skeleton width={50} />
+                            <div>
+                                <Skeleton width={120} />
+                                <Skeleton width={80} />
+                            </div>
+                            <div style={{ justifySelf: 'center' }}>
+                                <Skeleton width={70} />
+                            </div>
                         </>
                     ) : (
                         <>
@@ -77,7 +82,8 @@ const UserProfile = () => {
                             </div>
                             <button
                                 onClick={handleSignOut}
-                                className='SignOut__Btn'>
+                                className='SignOut__Btn'
+                            >
                                 <Link to='/userSignIn'>Sign Out</Link>
                             </button>
                         </>
@@ -88,7 +94,8 @@ const UserProfile = () => {
                     <button
                         type='button'
                         className='ClearPurchaseHistory__Btn'
-                        onClick={() => dispatch(clearHistory())}>
+                        onClick={() => dispatch(clearHistory())}
+                    >
                         Clear History
                     </button>
                     {purchaseHistory.length > 0 && (
@@ -96,7 +103,8 @@ const UserProfile = () => {
                             <Table
                                 striped
                                 bordered
-                                hover>
+                                hover
+                            >
                                 <thead>
                                     <tr>
                                         <th>Name</th>
