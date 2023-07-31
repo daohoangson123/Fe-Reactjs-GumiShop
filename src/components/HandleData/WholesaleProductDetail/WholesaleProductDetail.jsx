@@ -45,9 +45,10 @@ const WholesaleProductDetail = () => {
         let result1 = await fetchFurnitureApi();
 
         let productRes = [...result, ...result1];
+        console.log(productRes);
 
         const findProductDetail = productRes.find(
-            (product) => product._id === id,
+            (product) => product._id.toString() === id.toString(),
         );
         setProductDetail(findProductDetail);
     };

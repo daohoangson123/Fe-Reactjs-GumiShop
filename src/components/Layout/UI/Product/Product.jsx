@@ -68,6 +68,7 @@ const Product = (props) => {
                     src={null}
                     alt=''
                     lazysrc={props.url}
+                    // style={{ backgroundColor: props.url }}
                 />
                 <div
                     className='AddToCart_Bg'

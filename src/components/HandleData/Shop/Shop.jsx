@@ -10,6 +10,7 @@ import { debounce } from 'lodash';
 import Product from '../../Layout/UI/Product/Product';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
 import ErrorBoundary from '../../Support/Error/ErrorBoundary';
+// import { fetchReqresProducts } from '../../../data/axiosAPI/reqresProductData';
 
 const ShopFilter = ({
     productApi,
@@ -137,10 +138,10 @@ const ProductDisplay = ({ filtered }) => {
                 {filtered.map((product) => (
                     <div
                         className='ProductItem'
-                        key={product._id}>
+                        key={product._id || product.id}>
                         <Product
-                            id={product._id}
-                            url={product.img}
+                            id={product._id || product.id}
+                            url={product.img || product.color}
                             name={product.name}
                             sale={product.sale}
                             prices={product.discouter}
@@ -980,6 +981,12 @@ const Shop = () => {
         if (result) {
             setProductApi(result);
         }
+
+        // let altResult = await fetchReqresProducts();
+
+        // if (altResult) {
+        //     setProductApi(altResult.data);
+        // }
     };
 
     useEffect(() => {

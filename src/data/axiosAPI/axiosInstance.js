@@ -1,20 +1,20 @@
 import axios from 'axios';
 //
 
+import mockData from './mockData.js';
+
 const instance = axios.create({
     baseURL: 'https://reqres.in/',
 });
 
 instance.interceptors.response.use(
     function (response) {
-        // Any status code that lie within the range of 2xx cause this function to trigger
-        // Do something with response data
         return response.data;
     },
     function (error) {
-        // Any status codes that falls outside the range of 2xx cause this function to trigger
-        // Do something with response error
-        // setTimeout(() => window.location.reload(), 1500);
+        if (error.code === 'ERR_NETWORK') {
+            return mockData;
+        }
         const errorRes = {};
         if (error.response) {
             errorRes.data = error.response.data;
@@ -22,7 +22,6 @@ instance.interceptors.response.use(
             errorRes.headers = error.response.headers;
         }
         return errorRes;
-        // return Promise.reject(error);
     },
 );
 
