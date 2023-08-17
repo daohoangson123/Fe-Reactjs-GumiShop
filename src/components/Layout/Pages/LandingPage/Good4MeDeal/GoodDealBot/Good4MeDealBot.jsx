@@ -8,8 +8,7 @@ const Good4MeDealBot = () => {
             {g4mBot_items.map((item) => (
                 <div
                     className='Good4MeDealBot_Item'
-                    key={item.title}
-                >
+                    key={item.title}>
                     <div className='Img_Container'>
                         <span className='Good4MeDealBot_Item-Circle'></span>
                         <img

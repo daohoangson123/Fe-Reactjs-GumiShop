@@ -52,6 +52,10 @@
     justify-content: center;
 }
 
+.Control__Img * {
+    object-fit: cover;
+}
+
 .Control__Img-1,
 .Control__Img-2 {
     width: var(--img-width);
