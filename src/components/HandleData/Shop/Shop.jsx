@@ -45,8 +45,9 @@ const ShopFilter = ({
             className='SearchForm'
             action=''
             autoComplete='off'
-            onSubmit={(event) => event.preventDefault()}>
-            <fieldset disabled={productApi.length === 0 && true}>
+            onSubmit={(event) => event.preventDefault()}
+        >
+            <fieldset disabled={productApi.length === 0}>
                 <input
                     className='NameFilterInput'
                     type='text'
@@ -63,12 +64,14 @@ const ShopFilter = ({
                 <button
                     type='button'
                     className='ToggleFilter__Btn'
-                    onClick={() => setShowFilter(!showFilter)}>
+                    onClick={() => setShowFilter(!showFilter)}
+                >
                     {showFilter ? 'Hide' : 'Show'}
                 </button>
                 <div
                     className='FiltersInputs'
-                    style={{ maxHeight: showFilter && '100px' }}>
+                    style={{ maxHeight: showFilter && '100px' }}
+                >
                     <abbr title='Show only on-sale Products'>
                         <input
                             type='checkbox'
@@ -89,12 +92,14 @@ const ShopFilter = ({
                             value={priceFilter}
                             onChange={(event) =>
                                 setPriceFilter(event.target.value)
-                            }>
+                            }
+                        >
                             {priceFilterOpt.map((opt) => (
                                 <option
                                     key={opt.value}
                                     disabled={opt.value === priceFilter}
-                                    value={opt.value}>
+                                    value={opt.value}
+                                >
                                     {opt.label}
                                 </option>
                             ))}
@@ -108,12 +113,14 @@ const ShopFilter = ({
                             value={sortFilter}
                             onChange={(event) =>
                                 setSortFilter(event.target.value)
-                            }>
+                            }
+                        >
                             {sortFilterOpt.map((opt) => (
                                 <option
                                     key={opt.value}
                                     disabled={opt.value === sortFilter}
-                                    value={opt.value}>
+                                    value={opt.value}
+                                >
                                     {opt.label}
                                 </option>
                             ))}
@@ -138,7 +145,8 @@ const ProductDisplay = ({ filtered }) => {
                 {filtered.map((product) => (
                     <div
                         className='ProductItem'
-                        key={product._id || product.id}>
+                        key={product._id || product.id}
+                    >
                         <Product
                             id={product._id || product.id}
                             url={product.img || product.color}
