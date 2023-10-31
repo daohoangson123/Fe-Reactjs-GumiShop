@@ -15,3 +15,7 @@ export const myCartSelector = (state) => {
 export const myPurchaseHistorySelector = (state) => {
     return state.purchaseHistory;
 };
+
+export const toggleMenuSelector = (state) => {
+    return state.isMenuOpen;
+};

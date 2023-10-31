@@ -1,34 +1,44 @@
 .PageFisrtLoad {
     position: fixed;
     inset: 0;
-    height: 100vh;
     display: none;
-    place-items: center;
-    background-color: var(--color-alt-rgba-3);
+    height: 100vh;
+    gap: 30px;
+    background-color: var(--color-alt-rgba-5);
     z-index: 1000;
 }
 
 .AdBanner {
-    position: relative;
     background-image: url('../../../../assets/img/product3.webp');
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    width: clamp(300px, 50vw, 800px);
-    aspect-ratio: 3 / 2;
+    justify-self: center;
+    width: clamp(200px, 50vw, 400px);
+    aspect-ratio: 1;
+    transition: var(--transition-fast);
+}
+
+.AdBanner:hover {
+    scale: 1.1;
 }
 
 .AdBanner__Btn {
-    position: absolute;
-    top: 0;
-    right: 0;
+    justify-self: center;
+    align-self: self-end;
     width: 30px;
     height: 30px;
-    font-size: 30px;
-    background-color: transparent;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2);
     border: none;
+    transition: var(--transition-fast);
+}
+
+.AdBanner__Btn i {
+    font-size: 30px;
 }
 
 .AdBanner__Btn:hover {
+    background-color: var(--color-primary);
     color: var(--color-default);
 }

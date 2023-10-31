@@ -142,21 +142,22 @@ const ProductDisplay = ({ filtered }) => {
     return (
         <>
             <div className='ProductContainer ShopProductContainer'>
-                {filtered.map((product) => (
-                    <div
-                        className='ProductItem'
-                        key={product._id || product.id}
-                    >
-                        <Product
-                            id={product._id || product.id}
-                            url={product.img || product.color}
-                            name={product.name}
-                            sale={product.sale}
-                            prices={product.discouter}
-                            saleprices={product.price}
-                        />
-                    </div>
-                ))}
+                {filtered &&
+                    filtered.map((product) => (
+                        <div
+                            className='ProductItem'
+                            key={product._id || product.id}
+                        >
+                            <Product
+                                id={product._id || product.id}
+                                url={product.img || product.color}
+                                name={product.name}
+                                sale={product.sale}
+                                prices={product.discouter}
+                                saleprices={product.price}
+                            />
+                        </div>
+                    ))}
             </div>
             {filtered.length === 0 && (
                 <img

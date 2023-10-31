@@ -14,7 +14,6 @@
 
 .NavBar__List a:hover {
     color: var(--color-primary);
-    text-decoration: underline;
 }
 
 .NavBar__List .inactive {

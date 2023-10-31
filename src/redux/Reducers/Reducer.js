@@ -3,6 +3,7 @@ const initState = {
     purchaseHistory: [],
     isSignIn: undefined,
     userData: undefined,
+    isMenuOpen: false,
 };
 
 const rootReducer = (state = initState, action) => {
@@ -95,6 +96,11 @@ const rootReducer = (state = initState, action) => {
                 ...state,
                 isSignIn: undefined,
                 userData: undefined,
+            };
+        case 'ToggleMenu':
+            return {
+                ...state,
+                isMenuOpen: action.payload,
             };
         default:
             return state;

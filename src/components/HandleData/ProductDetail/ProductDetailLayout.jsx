@@ -22,7 +22,7 @@ const ProductDetailLayout = ({
     return (
         <div className='ProductDetailLayout'>
             {productDetail.length === 0 ? (
-                <>
+                <div className='Container'>
                     <Skeleton className='ProductDetail__Breadcrumbs' />
                     <div className='ProductDetailLayout__Box ProductDetailLayoutSkeleton__Box Container'>
                         <Skeleton
@@ -34,7 +34,7 @@ const ProductDetailLayout = ({
                             count={6}
                         />
                     </div>
-                </>
+                </div>
             ) : (
                 <>
                     <Breadcrumbs />
@@ -70,14 +70,16 @@ const ProductDetailLayout = ({
                                     quantity > 10
                                         ? setQuantity((pre) => pre - 10)
                                         : setQuantity(1);
-                                }}></button>
+                                }}
+                            ></button>
                             <button
                                 className='Quantity_Btn'
                                 type='button'
                                 onClick={() => {
                                     quantity > 1 &&
                                         setQuantity((pre) => pre - 1);
-                                }}>
+                                }}
+                            >
                                 -
                             </button>
                             <input
@@ -120,7 +122,8 @@ const ProductDetailLayout = ({
                                     if (quantity < 1000) {
                                         setQuantity((pre) => pre + 1);
                                     }
-                                }}>
+                                }}
+                            >
                                 +
                             </button>
                             <button
@@ -132,7 +135,8 @@ const ProductDetailLayout = ({
                                     } else {
                                         setQuantity(1000);
                                     }
-                                }}></button>
+                                }}
+                            ></button>
                             <button
                                 className='AddToCart_Btn'
                                 type='button'
@@ -146,7 +150,8 @@ const ProductDetailLayout = ({
                                         amount: quantity,
                                     });
                                     addNotify();
-                                }}>
+                                }}
+                            >
                                 Add
                             </button>
                         </form>

@@ -6,30 +6,38 @@ import { NavLink } from 'react-router-dom';
 const MobileMenuRouting = ({
     isMobileView,
     menuVisible,
-    setIsClicked,
+    setMenuOpen,
     navlinkData,
 }) => {
     return (
         <div
-            className={
-                menuVisible ? 'MobileMenu__Nav active' : 'MobileMenu__Nav'
-            }
-            style={{ transition: !isMobileView && 'none' }}>
-            {navlinkData.map((item) => (
-                <NavLink
-                    to={item.path}
-                    key={item.name}
-                    className='MobileMenu__Item'
-                    onClick={() => setIsClicked(false)}>
-                    {item.name}
-                </NavLink>
-            ))}
+            className='MobileMenu__NavContainer'
+            style={{
+                height: menuVisible && '100vh',
+                background: menuVisible && 'var(--color-alt-rgba-3)',
+            }}
+        >
+            <div
+                className={`MobileMenu__Nav ${menuVisible && 'active'}`}
+                style={{ transition: !isMobileView && 'none' }}
+            >
+                {navlinkData.map((item) => (
+                    <NavLink
+                        to={item.path}
+                        key={item.name}
+                        className='MobileMenu__Item'
+                        onClick={() => setMenuOpen(false)}
+                    >
+                        {item.name}
+                    </NavLink>
+                ))}
+            </div>
         </div>
     );
 };
 
 const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
-    const [isClicked, setIsClicked] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
 
     const mq = window.matchMedia('(min-width: 1025px)');
@@ -37,7 +45,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
     // toggle khi matchMedia '(min-width: 1025px)'
     const toggle = () => {
         if (mq.matches) {
-            setIsClicked(false);
+            setMenuOpen(false);
             setMenuVisible(false);
         }
     };
@@ -52,7 +60,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
 
     //đóng MobileMenu khi nhấn ra ngoài
     useEffect(() => {
-        if (isClicked) {
+        if (menuOpen) {
             setMenuVisible(true);
         } else {
             setMenuVisible(false);
@@ -67,47 +75,51 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                     event.clientX > mbDimensons.right ||
                     event.clientY < mbDimensons.top ||
                     event.clientY > mbDimensons.bottom) &&
-                isClicked
+                menuOpen
             ) {
-                setIsClicked(false);
+                setMenuOpen(false);
                 // hạn chế gọi hàm
                 window.removeEventListener('click', checkMenuDimension);
             }
         };
 
         window.addEventListener('click', checkMenuDimension);
-    }, [isClicked]);
+    }, [menuOpen]);
 
     return (
         <>
-            <button
-                id='MobileMenu'
+            <abbr
+                title='Menu'
                 className='MobileMenu'
-                onClick={() => setIsClicked(!isClicked)}
+                id='MobileMenu'
+                onClick={() => setMenuOpen(!menuOpen)}
                 aria-label='MobileMenuToggle'
                 style={{
-                    backgroundColor: isClicked && 'rgba(0, 0, 0, 0.3)',
-                }}>
+                    backgroundColor: menuOpen && 'rgba(0, 0, 0, 0.3)',
+                }}
+            >
                 <div
                     className='MenuIcon1 MenuIcon '
                     style={
-                        isClicked
+                        menuOpen
                             ? {
                                   backgroundColor: 'var(--color-default)',
                                   transform:
                                       'rotate(45deg) translateX(1px) translateY(-5px)',
                               }
                             : null
-                    }></div>
+                    }
+                ></div>
                 <div
-                    className='MenuIcon2 MenuIcon '
+                    className='MenuIcon2 MenuIcon'
                     style={{
-                        display: isClicked && 'none',
-                    }}></div>
+                        display: menuOpen && 'none',
+                    }}
+                ></div>
                 <div
                     className='MenuIcon3 MenuIcon '
                     style={
-                        isClicked
+                        menuOpen
                             ? {
                                   backgroundColor: 'var(--color-default)',
                                   width: '30px',
@@ -115,12 +127,13 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(-45deg) translateX(1px) translateY(5px)',
                               }
                             : null
-                    }></div>
-            </button>
+                    }
+                ></div>
+            </abbr>
             <MobileMenuRouting
                 isMobileView={isMobileView}
                 menuVisible={menuVisible}
-                setIsClicked={setIsClicked}
+                setMenuOpen={setMenuOpen}
                 navlinkData={navlinkData}
             />
         </>

@@ -59,3 +59,10 @@ export const userSignOut = (signout) => {
         payload: signout,
     };
 };
+
+export const toggleMenu = (toggle) => {
+    return {
+        type: 'ToggleMenu',
+        payload: toggle,
+    };
+};

@@ -27,7 +27,7 @@ const AdBanner = () => {
         }
 
         if (firstLoadLayer && !layerClosed) {
-            setTimeout(() => (firstLoadLayer.style.display = 'grid'), 500);
+            setTimeout(() => (firstLoadLayer.style.display = 'grid'), 200);
         }
 
         function removeFirstLoadLayer() {
@@ -47,15 +47,16 @@ const AdBanner = () => {
     return (
         <div
             id='PageFisrtLoad'
-            className='PageFisrtLoad'>
-            <div className='AdBanner'>
-                <button
-                    type='button'
-                    id='AdBanner__Btn'
-                    className='AdBanner__Btn'>
-                    <i className='fa-solid fa-xmark'></i>
-                </button>
-            </div>
+            className='PageFisrtLoad'
+        >
+            <button
+                type='button'
+                id='AdBanner__Btn'
+                className='AdBanner__Btn'
+            >
+                <i className='fa-solid fa-xmark'></i>
+            </button>
+            <div className='AdBanner'></div>
         </div>
     );
 };

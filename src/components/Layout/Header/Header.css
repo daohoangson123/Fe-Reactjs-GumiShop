@@ -15,8 +15,8 @@ header {
     }
 }
 
-@media (height <= 390px) {
+/* @media (height <= 390px) {
     header {
         position: relative;
     }
-}
+} */

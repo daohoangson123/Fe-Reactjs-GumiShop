@@ -47,7 +47,6 @@ const Header = ({ isSignIn }) => {
         function checkNavDown() {
             if (window.pageYOffset > 0) {
                 setIsDown(true);
-                window.removeEventListener('scroll', checkNavDown);
             } else {
                 setIsDown(false);
             }
@@ -82,7 +81,11 @@ const Header = ({ isSignIn }) => {
                 animation: pageAccessedByReload && 'none',
                 top: isDown && !isMobileView && '-55px',
                 transition: isDown && 'none',
-            }}>
+                boxShadow: isDown
+                    ? '0 1px 1px 1px var(--color-primary-rgba)'
+                    : 'none',
+            }}
+        >
             <SignBar isSignIn={isSignIn} />
             <NavBar
                 isMobileView={isMobileView}

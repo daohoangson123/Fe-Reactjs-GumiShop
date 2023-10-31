@@ -6,6 +6,7 @@ import { fetchUserList } from '../../../../data/axiosAPI/userList';
 const UserList = () => {
     const [userList, setUserList] = useState();
     const [active, setActive] = useState(1);
+    const [loadingUserList, setLoadingUserList] = useState(false);
 
     let items = [];
     for (let number = 1; number <= 2; number++) {
@@ -14,8 +15,13 @@ const UserList = () => {
                 key={number}
                 active={number === active}
                 onClick={() => {
+                    setLoadingUserList(true);
+                    setTimeout(() => {
+                        setLoadingUserList(false);
+                    }, 1000);
                     setActive(number);
-                }}>
+                }}
+            >
                 {number}
             </Pagination.Item>,
         );
@@ -33,7 +39,7 @@ const UserList = () => {
     return (
         <div className='User_List'>
             <ol>
-                {userList ? (
+                {userList && !loadingUserList ? (
                     userList.map((user) => (
                         <li key={user.id}>
                             {user.id}. {user.email}

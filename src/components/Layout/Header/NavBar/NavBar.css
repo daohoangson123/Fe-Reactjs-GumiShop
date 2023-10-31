@@ -1,18 +1,19 @@
 .NavBar {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    column-gap: 10px;
+    column-gap: 30px;
     background-color: var(--color-default);
     padding: 30px 60px;
 }
 
 .NavBar a {
-    transition: all ease-in-out 0.2s;
+    transition: var(--transition-fast);
     text-decoration: none;
 }
 
 @media (width <= 1024px) {
     .NavBar {
         padding: 20px;
+        column-gap: 10px;
     }
 }
