@@ -1,4 +1,5 @@
 .NavBar__Logo {
+    position: relative;
     display: flex;
     justify-self: start;
     align-self: center;

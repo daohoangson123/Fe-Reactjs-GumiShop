@@ -100,7 +100,7 @@ const rootReducer = (state = initState, action) => {
         case 'ToggleMenu':
             return {
                 ...state,
-                isMenuOpen: action.payload,
+                isMenuOpen: !state.isMenuOpen,
             };
         default:
             return state;

@@ -14,11 +14,10 @@ const MobileMenuRouting = ({
             className='MobileMenu__NavContainer'
             style={{
                 height: menuVisible && '100vh',
-                background: menuVisible && 'var(--color-alt-rgba-3)',
             }}
         >
             <div
-                className={`MobileMenu__Nav ${menuVisible && 'active'}`}
+                className='MobileMenu__Nav'
                 style={{ transition: !isMobileView && 'none' }}
             >
                 {navlinkData.map((item) => (

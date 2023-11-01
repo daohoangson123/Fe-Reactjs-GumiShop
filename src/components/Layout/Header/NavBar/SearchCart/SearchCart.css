@@ -1,4 +1,5 @@
 .SearchCart {
+    position: relative;
     display: flex;
     justify-self: end;
     align-items: center;
@@ -44,7 +45,6 @@
 .NavSearch__Form {
     position: sticky;
     top: 0;
-
     transition: var(--transition-fast);
 }
 
@@ -109,10 +109,9 @@
     right: -11px;
     display: grid;
     place-items: center;
-    width: 22px;
-    height: 22px;
+    width: 18px;
+    height: 18px;
     border-radius: 100%;
-    border: 2px solid var(--color-default);
     background-color: var(--color-primary);
     color: var(--color-default);
     transition: var(--transition-fast);

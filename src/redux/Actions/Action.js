@@ -60,9 +60,8 @@ export const userSignOut = (signout) => {
     };
 };
 
-export const toggleMenu = (toggle) => {
+export const toggleMenu = () => {
     return {
         type: 'ToggleMenu',
-        payload: toggle,
     };
 };

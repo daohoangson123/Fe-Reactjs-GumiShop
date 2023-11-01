@@ -1,7 +1,7 @@
 header {
     position: sticky;
     top: 0;
-    z-index: 100;
+    z-index: 1000;
     animation: header-appear 0.5s ease-in-out forwards;
     transition: var(--transiton-fast);
 }
@@ -14,9 +14,3 @@ header {
         transform: translateY(0);
     }
 }
-
-/* @media (height <= 390px) {
-    header {
-        position: relative;
-    }
-} */
