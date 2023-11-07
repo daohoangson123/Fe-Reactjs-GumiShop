@@ -6,7 +6,7 @@ const BackTopBtn = () => {
     const [showBacktop, setShowBacktop] = useState(false);
 
     const scrollToTop = () => {
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     };
 
     useEffect(() => {
@@ -35,8 +35,7 @@ const BackTopBtn = () => {
     return (
         <div
             className={showBacktop ? 'BackTopBtn-actived' : 'BackTopBtn'}
-            onClick={scrollToTop}
-        >
+            onClick={scrollToTop}>
             <i className='fa-sharp fa-regular fa-circle-up'></i>
         </div>
     );

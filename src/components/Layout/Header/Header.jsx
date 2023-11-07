@@ -82,10 +82,9 @@ const Header = ({ isSignIn }) => {
                 top: isDown && !isMobileView && '-55px',
                 transition: isDown && 'none',
                 boxShadow: isDown
-                    ? '0 1px 1px 1px var(--color-primary-rgba)'
-                    : 'none',
-            }}
-        >
+                    ? '0 0 5px 5px var(--color-alt-rgba-3)'
+                    : 'var(--color-default)',
+            }}>
             <SignBar isSignIn={isSignIn} />
             <NavBar
                 isMobileView={isMobileView}

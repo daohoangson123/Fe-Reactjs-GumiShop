@@ -11,7 +11,6 @@ import {
     myCartSelector,
     signinSelector,
 } from '../../../../../redux/Selectors/Selector';
-import { fetchFurnitureApi } from '../../../../../data/axiosAPI/furnitureData';
 //
 
 const SearchModal = ({
@@ -97,8 +96,7 @@ const SearchCart = () => {
     const [isSearching, setIsSearching] = useState(false);
     const [searchValue, setSearchValue] = useState('');
     const [productApi, setProductApi] = useState([]);
-    const [furApi, setFurApi] = useState([]);
-    const result = [...productApi, ...furApi];
+    const result = [...productApi];
 
     const handleChange = (event) => {
         setSearchValue(event.target.value);
@@ -122,11 +120,9 @@ const SearchCart = () => {
 
     const getProducts = async () => {
         let result = await fetchProductApi();
-        let result1 = await fetchFurnitureApi();
 
-        if (result || result1) {
+        if (result) {
             setProductApi(result);
-            setFurApi(result1);
         }
     };
 

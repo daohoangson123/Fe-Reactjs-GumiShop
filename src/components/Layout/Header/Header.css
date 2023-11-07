@@ -1,6 +1,7 @@
 header {
     position: sticky;
     top: 0;
+    background-color: var(--color-default);
     z-index: 1000;
     animation: header-appear 0.5s ease-in-out forwards;
     transition: var(--transiton-fast);

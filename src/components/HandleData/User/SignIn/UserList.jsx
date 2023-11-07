@@ -18,10 +18,9 @@ const UserList = () => {
                     setLoadingUserList(true);
                     setTimeout(() => {
                         setLoadingUserList(false);
-                    }, 1000);
+                    }, 500);
                     setActive(number);
-                }}
-            >
+                }}>
                 {number}
             </Pagination.Item>,
         );

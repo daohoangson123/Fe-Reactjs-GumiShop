@@ -2,7 +2,6 @@
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 30px;
-    background-color: var(--color-default);
     padding: 30px 60px;
 }
 
@@ -13,7 +12,7 @@
 
 @media (width <= 1024px) {
     .NavBar {
-        padding: 20px;
+        padding: 10px 20px;
         column-gap: 10px;
     }
 }

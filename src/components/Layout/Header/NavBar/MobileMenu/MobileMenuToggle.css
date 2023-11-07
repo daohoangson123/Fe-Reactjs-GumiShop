@@ -46,6 +46,7 @@
     inset: 0;
     display: flex;
     height: 0;
+    transition: var(--transition-fast);
 }
 
 .MobileMenu__Nav {
@@ -55,10 +56,8 @@
     max-height: 100%;
     grid-template-rows: repeat(auto-fit, 44px);
     background-color: var(--color-default);
-    margin-top: 80px;
-    transition: var(--transition-fast);
-    overflow: hidden;
-    scrollbar-gutter: stable;
+    margin-top: 60px;
+    scrollbar-gutter: stable both-edges;
     overflow: auto;
 }
 
@@ -68,7 +67,7 @@
 }
 
 .MobileMenu__Nav::-webkit-scrollbar {
-    width: 1px;
+    width: 2px;
 }
 
 .MobileMenu__Nav::-webkit-scrollbar-thumb {
