@@ -15,10 +15,10 @@
 
 .SearchForm {
     position: sticky;
-    top: 80px;
+    top: 60px;
     background-color: var(--color-default);
     width: 100%;
-    padding-block: 10px;
+    padding-block: 20px;
     z-index: 50;
     animation: slideDown 1s ease-in-out forwards;
 }
