@@ -32,7 +32,8 @@ const SearchModal = ({
                           paddingBlock: '10px',
                           opacity: 1,
                       }
-            }>
+            }
+        >
             <form className='NavSearch__Form'>
                 <input
                     type='text'
@@ -54,7 +55,8 @@ const SearchModal = ({
                 className='NavSearch__Result'
                 style={
                     searchValue ? { display: 'grid', maxHeight: '400px' } : null
-                }>
+                }
+            >
                 {filtered
                     .toSorted((a, b) => {
                         const nameA = a.name.toLowerCase();
@@ -70,19 +72,20 @@ const SearchModal = ({
                     .map((product) => (
                         <li
                             key={product._id}
-                            onClick={() => setIsSearching(false)}>
-                            <abbr title={product.name}>
-                                <Link
-                                    to={`/shop/${product.name
-                                        .split(' ')
-                                        .join('-')}`}>
-                                    <img
-                                        src={product.img}
-                                        alt=''
-                                    />
-                                    {product.name}
-                                </Link>
-                            </abbr>
+                            onClick={() => setIsSearching(false)}
+                        >
+                            <Link
+                                to={`/shop/${product.name
+                                    .split(' ')
+                                    .join('-')}`}
+                                title={product.name}
+                            >
+                                <img
+                                    src={product.img}
+                                    alt=''
+                                />
+                                {product.name}
+                            </Link>
                         </li>
                     ))}
             </ul>
@@ -181,44 +184,44 @@ const SearchCart = () => {
                 <div
                     id='SearchIcon'
                     htmlFor='searchquery'
-                    onClick={() => setIsSearching(!isSearching)}>
-                    <abbr title='Search product'>
-                        <i className='fa-solid fa-magnifying-glass Icon'></i>
-                    </abbr>
+                    title='Search product'
+                    onClick={() => setIsSearching(!isSearching)}
+                >
+                    <i className='fa-solid fa-magnifying-glass Icon'></i>
                 </div>
                 {!isSignIn ? (
-                    <abbr title='UserSignIn'>
-                        <NavLink
-                            to='/userSignIn'
-                            aria-label='User-Page'>
-                            <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
-                        </NavLink>
-                    </abbr>
-                ) : (
-                    <abbr title='User'>
-                        <NavLink
-                            to='/userProfile'
-                            aria-label='User-Page'>
-                            <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
-                        </NavLink>
-                    </abbr>
-                )}
-                <abbr title='Cart'>
                     <NavLink
-                        to='/cart'
-                        aria-label='Cart-Page'>
-                        <div className='Cart_IconContainer'>
-                            <i className='fa-solid fa-bag-shopping Icon'></i>
-                            {myCart.length !== 0 && (
-                                <div className='Cart_Notify'>
-                                    <div className='Cart_Notify-Number'>
-                                        {myCart.length}
-                                    </div>
-                                </div>
-                            )}
-                        </div>
+                        to='/userSignIn'
+                        aria-label='User-Page'
+                        title='UserSignIn'
+                    >
+                        <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
                     </NavLink>
-                </abbr>
+                ) : (
+                    <NavLink
+                        to='/userProfile'
+                        aria-label='User-Page'
+                        title='User'
+                    >
+                        <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
+                    </NavLink>
+                )}
+                <NavLink
+                    to='/cart'
+                    aria-label='Cart-Page'
+                    title='Your Cart'
+                >
+                    <div className='Cart_IconContainer'>
+                        <i className='fa-solid fa-bag-shopping Icon'></i>
+                        {myCart.length !== 0 && (
+                            <div className='Cart_Notify'>
+                                <div className='Cart_Notify-Number'>
+                                    {myCart.length}
+                                </div>
+                            </div>
+                        )}
+                    </div>
+                </NavLink>
             </div>
             <SearchModal
                 isSearching={isSearching}

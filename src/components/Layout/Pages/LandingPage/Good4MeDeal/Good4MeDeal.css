@@ -13,7 +13,8 @@
     height: 4px;
     margin: 25px auto;
     background-color: var(--color-primary);
-    border: none;
+    border-width: 0;
+    opacity: 1;
 }
 
 .Good4MeDeal > p {

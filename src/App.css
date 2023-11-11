@@ -74,14 +74,6 @@ li {
     list-style-type: none;
 }
 
-abbr[title] {
-    text-decoration: none;
-}
-
-abbr[title] {
-    cursor: default;
-}
-
 .ProductContainer {
     display: grid;
     grid-template-columns: repeat(auto-fit, 200px);

@@ -73,6 +73,7 @@ const Header = ({ isSignIn }) => {
         mq.addEventListener('change', checkView);
 
         return () => mq.removeEventListener('change', checkView);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     return (
@@ -82,9 +83,10 @@ const Header = ({ isSignIn }) => {
                 top: isDown && !isMobileView && '-55px',
                 transition: isDown && 'none',
                 boxShadow: isDown
-                    ? '0 0 5px 5px var(--color-alt-rgba-3)'
-                    : 'var(--color-default)',
-            }}>
+                    ? '0 2px 2px 2px var(--color-alt-rgba-3)'
+                    : null,
+            }}
+        >
             <SignBar isSignIn={isSignIn} />
             <NavBar
                 isMobileView={isMobileView}

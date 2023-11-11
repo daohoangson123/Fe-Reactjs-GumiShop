@@ -41,45 +41,49 @@ const SignBar = () => {
             <div className='SignBar__SignRegis '>
                 <div className='SignBar__SignRegis-Link'>
                     {!isSignIn ? (
-                        <abbr title='Sign In'>
-                            <NavLink
-                                to='/userSignIn'
-                                className={({ isActive }) =>
-                                    isActive ? 'active' : 'inactive'
-                                }>
-                                Sign In
-                            </NavLink>
-                        </abbr>
-                    ) : (
-                        <abbr title='User'>
-                            <NavLink
-                                to='/userProfile'
-                                className={({ isActive }) =>
-                                    isActive ? 'active' : 'inactive'
-                                }>
-                                <img
-                                    className='UserLogo'
-                                    src={userLogo}
-                                    alt='userImg'
-                                />
-                            </NavLink>
-                        </abbr>
-                    )}
-                    /
-                    <abbr title='Sign Up'>
                         <NavLink
-                            to='/userSignUp'
+                            to='/userSignIn'
+                            title='Sign In'
                             className={({ isActive }) =>
                                 isActive ? 'active' : 'inactive'
-                            }>
-                            Register
+                            }
+                        >
+                            Sign In
                         </NavLink>
-                    </abbr>
+                    ) : (
+                        <NavLink
+                            to='/userProfile'
+                            title='User'
+                            className={({ isActive }) =>
+                                isActive ? 'active' : 'inactive'
+                            }
+                        >
+                            <img
+                                className='UserLogo'
+                                src={userLogo}
+                                alt='userImg'
+                            />
+                        </NavLink>
+                    )}
+                    /
+                    <NavLink
+                        to='/userSignUp'
+                        title='Sign Up'
+                        className={({ isActive }) =>
+                            isActive ? 'active' : 'inactive'
+                        }
+                    >
+                        Register
+                    </NavLink>
                 </div>
-                <div className='SignBar__Languages '>
+                <div
+                    className='SignBar__Languages'
+                    title='Change Language'
+                >
                     <label
                         htmlFor='lang'
-                        className='LangLabel '>
+                        className='LangLabel '
+                    >
                         <img
                             src={flag}
                             alt='flag'
@@ -89,12 +93,20 @@ const SignBar = () => {
                         className='LangSelect '
                         name='lang'
                         id='lang'
-                        onChange={handelChange}>
+                        title='Click to select Language'
+                        onChange={handelChange}
+                    >
                         {langs.map((item) => (
                             <option
                                 className='LangOption '
                                 key={item.name}
-                                value={item.name}>
+                                title={
+                                    item.name === 'USA'
+                                        ? 'American English'
+                                        : 'Vietnamese'
+                                }
+                                value={item.name}
+                            >
                                 {item.name}
                             </option>
                         ))}

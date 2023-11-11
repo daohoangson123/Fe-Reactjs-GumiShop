@@ -200,13 +200,6 @@
     color: var(--color-default);
 }
 
-.Buy_Btn abbr {
-    text-decoration: none;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
-
 .Buy_Btn a {
     display: grid;
     align-items: center;

@@ -32,9 +32,10 @@ const WholesaleProduct = ({ props }) => {
     }, []);
 
     return (
-        <abbr
+        <div
             className='WholesaleProduct'
-            title={`Product: ${props.name}`}>
+            title={`Product: ${props.name}`}
+        >
             <Link to={`/wholesale/${props._id}`}>
                 <div className='WholesaleProduct__ImgContainer'>
                     <img
@@ -45,7 +46,6 @@ const WholesaleProduct = ({ props }) => {
                         onError={() => setIsImgError(true)}
                     />
                 </div>
-
                 <div className='WholesaleProduct__Content'>
                     <div className='WholesaleProduct__Name'>{props.name}</div>
                     <div className='WholesaleProduct__Price'>
@@ -61,7 +61,7 @@ const WholesaleProduct = ({ props }) => {
                     ) : null}
                 </div>
             </Link>
-        </abbr>
+        </div>
     );
 };
 

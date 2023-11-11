@@ -14,18 +14,21 @@ const MobileMenuRouting = ({
             className='MobileMenu__NavContainer'
             style={{
                 height: menuVisible && '100vh',
-            }}>
+            }}
+        >
             <div
                 className='MobileMenu__Nav'
                 style={{
                     transition: !isMobileView && 'none',
-                }}>
+                }}
+            >
                 {navlinkData.map((item) => (
                     <NavLink
                         to={item.path}
                         key={item.name}
                         className='MobileMenu__Item'
-                        onClick={() => setMenuOpen(false)}>
+                        onClick={() => setMenuOpen(false)}
+                    >
                         {item.name}
                     </NavLink>
                 ))}
@@ -47,13 +50,13 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
             setMenuVisible(false);
         }
     };
-
     useEffect(() => {
         toggle();
 
         mq.addEventListener('change', toggle);
 
         return () => mq.removeEventListener('change', toggle);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     //đóng MobileMenu khi nhấn ra ngoài
@@ -86,7 +89,8 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
 
     return (
         <>
-            <abbr
+            <button
+                type='button'
                 title='Menu'
                 className='MobileMenu'
                 id='MobileMenu'
@@ -94,7 +98,8 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                 aria-label='MobileMenuToggle'
                 style={{
                     backgroundColor: menuOpen && 'rgba(0, 0, 0, 0.3)',
-                }}>
+                }}
+            >
                 <div
                     className='MenuIcon1 MenuIcon '
                     style={
@@ -105,12 +110,14 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(45deg) translateX(1px) translateY(-5px)',
                               }
                             : null
-                    }></div>
+                    }
+                ></div>
                 <div
                     className='MenuIcon2 MenuIcon'
                     style={{
                         display: menuOpen && 'none',
-                    }}></div>
+                    }}
+                ></div>
                 <div
                     className='MenuIcon3 MenuIcon '
                     style={
@@ -122,8 +129,9 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(-45deg) translateX(1px) translateY(5px)',
                               }
                             : null
-                    }></div>
-            </abbr>
+                    }
+                ></div>
+            </button>
             <MobileMenuRouting
                 isMobileView={isMobileView}
                 menuVisible={menuVisible}

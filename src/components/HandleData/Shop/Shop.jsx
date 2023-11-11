@@ -53,12 +53,12 @@ const ShopFilter = ({
                     type='text'
                     name='searchkw'
                     id='searchkw'
+                    title={`Enter some product's character Ex: vitamin, detox etc`}
                     placeholder={
                         productApi.length !== 0
-                            ? `Enter product's name`
+                            ? `Enter some product's character`
                             : 'Please wait a sec...'
                     }
-                    required
                     onChange={debounceChange}
                 />
                 <button
@@ -72,60 +72,68 @@ const ShopFilter = ({
                     className='FiltersInputs'
                     style={{ maxHeight: showFilter && '100px' }}
                 >
-                    <abbr title='Show only on-sale Products'>
-                        <input
-                            type='checkbox'
-                            name='onSale'
-                            id='onSale'
-                            checked={onSale}
-                            onChange={(event) =>
-                                setOnSale(event.target.checked)
-                            }
-                        />
-                        <label htmlFor='onSale'>SaleOnly</label>
-                    </abbr>
-                    <abbr title='Find Products by price-ranges'>
-                        <label htmlFor='priceFilter'>Price-range: </label>
-                        <select
-                            id='priceFilter'
-                            className='priceFilter'
-                            value={priceFilter}
-                            onChange={(event) =>
-                                setPriceFilter(event.target.value)
-                            }
-                        >
-                            {priceFilterOpt.map((opt) => (
-                                <option
-                                    key={opt.value}
-                                    disabled={opt.value === priceFilter}
-                                    value={opt.value}
-                                >
-                                    {opt.label}
-                                </option>
-                            ))}
-                        </select>
-                    </abbr>
-                    <abbr title='Short Products'>
-                        <label htmlFor='sortFilter'>Sort-by: </label>
-                        <select
-                            id='sortFilter'
-                            className='sortFilter'
-                            value={sortFilter}
-                            onChange={(event) =>
-                                setSortFilter(event.target.value)
-                            }
-                        >
-                            {sortFilterOpt.map((opt) => (
-                                <option
-                                    key={opt.value}
-                                    disabled={opt.value === sortFilter}
-                                    value={opt.value}
-                                >
-                                    {opt.label}
-                                </option>
-                            ))}
-                        </select>
-                    </abbr>
+                    <input
+                        type='checkbox'
+                        name='onSale'
+                        id='onSale'
+                        title='Show only on-sale Products'
+                        checked={onSale}
+                        onChange={(event) => setOnSale(event.target.checked)}
+                    />
+                    <label
+                        htmlFor='onSale'
+                        title='Show only on-sale Products'
+                    >
+                        SaleOnly
+                    </label>
+                    <label
+                        htmlFor='priceFilter'
+                        title='Find Products by price-ranges'
+                    >
+                        Price-range:{' '}
+                    </label>
+                    <select
+                        id='priceFilter'
+                        className='priceFilter'
+                        title='Find Products by price-ranges'
+                        value={priceFilter}
+                        onChange={(event) => setPriceFilter(event.target.value)}
+                    >
+                        {priceFilterOpt.map((opt) => (
+                            <option
+                                key={opt.value}
+                                disabled={opt.value === priceFilter}
+                                value={opt.value}
+                                title={opt.value}
+                            >
+                                {opt.label}
+                            </option>
+                        ))}
+                    </select>
+                    <label
+                        htmlFor='sortFilter'
+                        title='Short Products'
+                    >
+                        Sort-by:{' '}
+                    </label>
+                    <select
+                        id='sortFilter'
+                        className='sortFilter'
+                        title='Short Products'
+                        value={sortFilter}
+                        onChange={(event) => setSortFilter(event.target.value)}
+                    >
+                        {sortFilterOpt.map((opt) => (
+                            <option
+                                key={opt.value}
+                                disabled={opt.value === sortFilter}
+                                value={opt.value}
+                                title={opt.value}
+                            >
+                                {opt.label}
+                            </option>
+                        ))}
+                    </select>
                 </div>
             </fieldset>
             <div className='ProductAvailableCount'>

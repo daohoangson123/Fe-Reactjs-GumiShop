@@ -72,55 +72,59 @@ const Product = (props) => {
                 />
                 <div
                     className='AddToCart_Bg'
-                    style={{ top: isAdded && 0 }}>
-                    <abbr title='Go to Product Detail'>
-                        <Link
-                            className='ProductLink'
-                            to={`/shop/${props.name.split(' ').join('-')}`}>
-                            Detail
-                        </Link>
-                    </abbr>
-                    <abbr
+                    style={{ top: isAdded && 0 }}
+                >
+                    <Link
+                        className='ProductLink'
+                        title='Go to Product Detail'
+                        to={`/shop/${props.name.split(' ').join('-')}`}
+                    >
+                        Detail
+                    </Link>
+                    <button
+                        className='AddToCart'
+                        style={{
+                            background: isAdded && 'var(--color-primary)',
+                        }}
                         title={
                             isAdded
                                 ? 'Remove Product from Cart'
                                 : 'Add Product to Cart'
-                        }>
-                        <button
-                            className='AddToCart'
-                            style={{
-                                background: isAdded && 'var(--color-primary)',
-                            }}
-                            onClick={() => {
-                                if (!isAdded) {
-                                    handleAddToCart({
-                                        id: props.id,
-                                        img: props.url,
-                                        name: props.name,
-                                        price: props.saleprices,
-                                        discount: props.prices,
-                                        amount: 1,
-                                    });
-                                } else {
-                                    handleRemove({
-                                        id: props.id,
-                                    });
-                                    setIsAdded(false);
-                                }
-                            }}>
-                            {!isAdded ? 'Add' : 'Remove'}
-                        </button>
-                    </abbr>
+                        }
+                        onClick={() => {
+                            if (!isAdded) {
+                                handleAddToCart({
+                                    id: props.id,
+                                    img: props.url,
+                                    name: props.name,
+                                    price: props.saleprices,
+                                    discount: props.prices,
+                                    amount: 1,
+                                });
+                            } else {
+                                handleRemove({
+                                    id: props.id,
+                                });
+                                setIsAdded(false);
+                            }
+                        }}
+                    >
+                        {!isAdded ? 'Add' : 'Remove'}
+                    </button>
                 </div>
                 {props.sale ? (
-                    <div className='Product__Sale'>
-                        <abbr title='Product On Sale'>ON SALE</abbr>
+                    <div
+                        className='Product__Sale'
+                        title='Product On Sale'
+                    >
+                        ON SALE
                     </div>
                 ) : null}
             </div>
             <div
                 className='Product__Name'
-                style={props.style}>
+                style={props.style}
+            >
                 {props.name}
             </div>
             <div className='Product__Prices'>

@@ -97,18 +97,20 @@ const WholesaleLayout = ({ title, productApi }) => {
 
     return (
         <div className='WholesaleLayout'>
-            <SectionTitle content={title} />
             {productApi.length > 0 && (
-                <WholesaleFilter
-                    productApi={productApi}
-                    filtered={filtered}
-                    categoriesList={categoriesList}
-                    brandsList={brandsList}
-                    curCategory={curCategory}
-                    setCurCategory={setCurCategory}
-                    curBrand={curBrand}
-                    setCurBrand={setCurBrand}
-                />
+                <>
+                    <SectionTitle content={title} />
+                    <WholesaleFilter
+                        productApi={productApi}
+                        filtered={filtered}
+                        categoriesList={categoriesList}
+                        brandsList={brandsList}
+                        curCategory={curCategory}
+                        setCurCategory={setCurCategory}
+                        curBrand={curBrand}
+                        setCurBrand={setCurBrand}
+                    />
+                </>
             )}
             <div className='Wholesale__Product-Container'>
                 {filtered.length === 0 &&
