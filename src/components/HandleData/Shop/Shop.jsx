@@ -66,74 +66,86 @@ const ShopFilter = ({
                     className='ToggleFilter__Btn'
                     onClick={() => setShowFilter(!showFilter)}
                 >
-                    {showFilter ? 'Hide' : 'Show'}
+                    {showFilter ? 'Hide Filter' : 'Show Filter'}
                 </button>
                 <div
                     className='FiltersInputs'
                     style={{ maxHeight: showFilter && '100px' }}
                 >
-                    <input
-                        type='checkbox'
-                        name='onSale'
-                        id='onSale'
-                        title='Show only on-sale Products'
-                        checked={onSale}
-                        onChange={(event) => setOnSale(event.target.checked)}
-                    />
-                    <label
-                        htmlFor='onSale'
-                        title='Show only on-sale Products'
-                    >
-                        SaleOnly
-                    </label>
-                    <label
-                        htmlFor='priceFilter'
-                        title='Find Products by price-ranges'
-                    >
-                        Price-range:{' '}
-                    </label>
-                    <select
-                        id='priceFilter'
-                        className='priceFilter'
-                        title='Find Products by price-ranges'
-                        value={priceFilter}
-                        onChange={(event) => setPriceFilter(event.target.value)}
-                    >
-                        {priceFilterOpt.map((opt) => (
-                            <option
-                                key={opt.value}
-                                disabled={opt.value === priceFilter}
-                                value={opt.value}
-                                title={opt.value}
-                            >
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select>
-                    <label
-                        htmlFor='sortFilter'
-                        title='Short Products'
-                    >
-                        Sort-by:{' '}
-                    </label>
-                    <select
-                        id='sortFilter'
-                        className='sortFilter'
-                        title='Short Products'
-                        value={sortFilter}
-                        onChange={(event) => setSortFilter(event.target.value)}
-                    >
-                        {sortFilterOpt.map((opt) => (
-                            <option
-                                key={opt.value}
-                                disabled={opt.value === sortFilter}
-                                value={opt.value}
-                                title={opt.value}
-                            >
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select>
+                    <div>
+                        <input
+                            type='checkbox'
+                            name='onSale'
+                            id='onSale'
+                            title='Show only on-sale Products'
+                            checked={onSale}
+                            onChange={(event) =>
+                                setOnSale(event.target.checked)
+                            }
+                        />
+                        <label
+                            htmlFor='onSale'
+                            title='Show only on-sale Products'
+                        >
+                            SaleOnly
+                        </label>
+                    </div>
+                    <div>
+                        <label
+                            htmlFor='priceFilter'
+                            title='Find Products by price-ranges'
+                        >
+                            Price-range:{' '}
+                        </label>
+                        <select
+                            id='priceFilter'
+                            className='priceFilter'
+                            title='Find Products by price-ranges'
+                            value={priceFilter}
+                            onChange={(event) =>
+                                setPriceFilter(event.target.value)
+                            }
+                        >
+                            {priceFilterOpt.map((opt) => (
+                                <option
+                                    key={opt.value}
+                                    disabled={opt.value === priceFilter}
+                                    value={opt.value}
+                                    title={opt.value}
+                                >
+                                    {opt.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <div>
+                        <label
+                            htmlFor='sortFilter'
+                            title='Short Products'
+                        >
+                            Sort-by:{' '}
+                        </label>
+                        <select
+                            id='sortFilter'
+                            className='sortFilter'
+                            title='Short Products'
+                            value={sortFilter}
+                            onChange={(event) =>
+                                setSortFilter(event.target.value)
+                            }
+                        >
+                            {sortFilterOpt.map((opt) => (
+                                <option
+                                    key={opt.value}
+                                    disabled={opt.value === sortFilter}
+                                    value={opt.value}
+                                    title={opt.value}
+                                >
+                                    {opt.label}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
                 </div>
             </fieldset>
             <div className='ProductAvailableCount'>

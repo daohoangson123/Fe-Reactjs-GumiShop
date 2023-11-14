@@ -1,17 +1,17 @@
 .Product {
     min-height: 325px;
     transition: var(--transition-fast);
-    animation: productIn 0.3s linear;
+    /* animation: productIn 0.3s linear; */
 }
 
-@keyframes productIn {
+/* @keyframes productIn {
     from {
         opacity: 0;
     }
     to {
         opacity: 1;
     }
-}
+} */
 
 .Product__Img-Container {
     position: relative;

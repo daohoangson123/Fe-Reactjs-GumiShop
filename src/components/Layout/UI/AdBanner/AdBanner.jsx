@@ -1,5 +1,7 @@
 import './AdBanner.css';
 //
+import ad from '../../../../assets/img/product3.webp';
+//
 import { useEffect, useState } from 'react';
 //
 
@@ -49,14 +51,20 @@ const AdBanner = () => {
             id='PageFisrtLoad'
             className='PageFisrtLoad'
         >
-            <button
-                type='button'
-                id='AdBanner__Btn'
-                className='AdBanner__Btn'
-            >
-                <i className='fa-solid fa-xmark'></i>
-            </button>
-            <div className='AdBanner'></div>
+            <div className='AdBanner-Container'>
+                <button
+                    type='button'
+                    id='AdBanner__Btn'
+                    className='AdBanner__Btn'
+                >
+                    <i className='fa-solid fa-xmark'></i>
+                </button>
+                <img
+                    src={ad}
+                    alt='AD Banner Img'
+                    className='AdBanner_Img'
+                />
+            </div>
         </div>
     );
 };

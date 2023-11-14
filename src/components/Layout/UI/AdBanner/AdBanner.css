@@ -2,30 +2,27 @@
     position: fixed;
     inset: 0;
     display: none;
+    place-items: center;
     height: 100vh;
     gap: 30px;
     background-color: var(--color-alt-rgba-5);
     z-index: 1000;
 }
 
-.AdBanner {
-    background-image: url('../../../../assets/img/product3.webp');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    justify-self: center;
-    width: clamp(200px, 50vw, 400px);
+.AdBanner-Container {
+    position: relative;
+}
+
+.AdBanner_Img {
+    width: clamp(280px, 50vw, 600px);
     aspect-ratio: 1;
     transition: var(--transition-fast);
 }
 
-.AdBanner:hover {
-    scale: 1.1;
-}
-
 .AdBanner__Btn {
-    justify-self: center;
-    align-self: self-end;
+    position: absolute;
+    top: 10px;
+    right: 10px;
     width: 30px;
     height: 30px;
     border-radius: 50%;

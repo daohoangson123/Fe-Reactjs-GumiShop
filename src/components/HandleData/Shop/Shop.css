@@ -84,8 +84,6 @@
 
 .ToggleFilter__Btn {
     display: none;
-    width: 50px;
-    justify-self: center;
     padding: 3px;
 }
 
@@ -100,23 +98,11 @@
 
     .FiltersInputs {
         max-height: 0;
+        justify-content: end;
         overflow: hidden;
-        display: grid;
-        justify-self: end;
-        justify-items: end;
     }
 
     .ToggleFilter__Btn {
         display: block;
-    }
-}
-
-@media (height <= 390px) {
-    .SearchForm {
-        position: static;
-    }
-
-    .ProductAvailableCount {
-        display: none;
     }
 }
