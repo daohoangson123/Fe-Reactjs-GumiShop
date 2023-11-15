@@ -18,7 +18,8 @@ const WholesaleProductDetail = () => {
     const dispatch = useDispatch();
     const [productDetail, setProductDetail] = useState([]);
     const [quantity, setQuantity] = useState(1);
-    const [curColor, setCurColor] = useState(false);
+    const [curColor, setCurColor] = useState(undefined);
+    const [isColorPick, setIsColorPick] = useState(false);
     const [shipOption, setShipOption] = useState(shipOpt[0].label);
     const orgPrice =
         productDetail && productDetail.price + productDetail.discouter;
@@ -33,10 +34,17 @@ const WholesaleProductDetail = () => {
             },
         );
 
+    const colorPickNotify = () =>
+        toast.error(`Please pick color`, {
+            position: 'top-center',
+        });
+
     function handleAddToCart(product) {
-        if (product.color !== false) {
+        if (product.color !== undefined) {
             dispatch(addToCart(product));
             addNotify();
+        } else {
+            colorPickNotify();
         }
     }
 
@@ -45,7 +53,6 @@ const WholesaleProductDetail = () => {
         let result1 = await fetchFurnitureApi();
 
         let productRes = [...result, ...result1];
-        console.log(productRes);
 
         const findProductDetail = productRes.find(
             (product) => product._id.toString() === id.toString(),
@@ -72,6 +79,8 @@ const WholesaleProductDetail = () => {
                     shipOpt={shipOpt}
                     shipOption={shipOption}
                     setShipOption={setShipOption}
+                    isColorPick={isColorPick}
+                    setIsColorPick={setIsColorPick}
                 />
             </ErrorBoundary>
         </div>

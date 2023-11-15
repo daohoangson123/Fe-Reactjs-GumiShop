@@ -16,6 +16,8 @@ const WholesaleProductDetailLayout = ({
     shipOpt,
     shipOption,
     setShipOption,
+    isColorPick,
+    setIsColorPick,
 }) => {
     return (
         <div className='WholesaleProductDetailLayout Container'>
@@ -26,7 +28,6 @@ const WholesaleProductDetailLayout = ({
                             <Link>{productDetail.categories}</Link>
                             <span> &gt;</span>
                         </li>
-
                         <li>
                             <Link>{productDetail.brand || 'No Brand'}</Link>
                             <span> &gt;</span>
@@ -72,138 +73,176 @@ const WholesaleProductDetailLayout = ({
                                 </div>
                             )}
                             <div className='Product-Container__Info-AddToCart'>
-                                <div className='Product-Container__Info-Option'>
-                                    {productDetail.size && (
-                                        <div className='Product-Container__Info-Size'>
-                                            Size: {productDetail.size}
-                                        </div>
-                                    )}
-                                    {productDetail.color && (
-                                        <>
-                                            Color: {curColor}{' '}
-                                            <span>
-                                                {!curColor &&
-                                                    'Please pick color'}
-                                            </span>
-                                            <ul
-                                                className='Product-Container__Info-Color'
-                                                style={{
-                                                    borderBlock: curColor
-                                                        ? '1px solid lime'
-                                                        : '1px solid red',
-                                                }}>
-                                                {productDetail.color &&
-                                                    productDetail.color.map(
-                                                        (item) => (
-                                                            <li
-                                                                key={item}
-                                                                onClick={() =>
-                                                                    setCurColor(
-                                                                        item,
-                                                                    )
-                                                                }
-                                                                style={{
-                                                                    minWidth:
-                                                                        '30px',
-                                                                    aspectRatio: 1,
-                                                                    borderRadius:
-                                                                        '100%',
-                                                                    backgroundColor: `${item}`,
-                                                                    border:
-                                                                        curColor ===
-                                                                            item &&
-                                                                        '2px solid black',
-                                                                }}></li>
-                                                        ),
-                                                    )}
-                                            </ul>
-                                        </>
-                                    )}
-                                </div>
                                 <form
                                     className='Product-Container__Info-AddToCart-Form'
-                                    onSubmit={(event) =>
-                                        event.preventDefault()
-                                    }>
-                                    <button
-                                        className=''
-                                        type='button'
-                                        onClick={() => {
-                                            quantity > 1 &&
-                                                setQuantity((pre) => pre - 1);
-                                        }}>
-                                        -
-                                    </button>
-                                    <input
-                                        className=''
-                                        type='number'
-                                        name='quantity'
-                                        id='quantity'
-                                        min={1}
-                                        max={
-                                            productDetail.store &&
-                                            productDetail.store
-                                        }
-                                        value={quantity}
-                                        autoComplete='off'
-                                        onWheel={(event) => event.target.blur()}
-                                        onChange={(event) => {
-                                            let newAmount = Math.round(
-                                                event.target.value,
-                                            ).toFixed(0);
-                                            if (newAmount < 1) {
-                                                newAmount = 1;
-                                            } else if (
-                                                newAmount > productDetail.store
-                                            ) {
-                                                newAmount = productDetail.store;
+                                    onSubmit={(event) => event.preventDefault()}
+                                >
+                                    <div className='Product-Container__Info-Option'>
+                                        {productDetail.size && (
+                                            <div className='Product-Container__Info-Size'>
+                                                Size: {productDetail.size}
+                                            </div>
+                                        )}
+                                        {productDetail.color && (
+                                            <div
+                                                className={
+                                                    isColorPick === 'picking' &&
+                                                    'colorNote'
+                                                }
+                                            >
+                                                Color: {curColor}{' '}
+                                                <span>
+                                                    {!curColor &&
+                                                        'Please pick color'}
+                                                </span>
+                                                <ul
+                                                    className='Product-Container__Info-Color'
+                                                    style={{
+                                                        borderBlock: curColor
+                                                            ? '1px solid lime'
+                                                            : '1px solid red',
+                                                    }}
+                                                >
+                                                    {productDetail.color &&
+                                                        productDetail.color.map(
+                                                            (item) => (
+                                                                <li
+                                                                    key={item}
+                                                                    title={item}
+                                                                    onClick={() =>
+                                                                        setCurColor(
+                                                                            item,
+                                                                        )
+                                                                    }
+                                                                    style={{
+                                                                        minWidth:
+                                                                            '30px',
+                                                                        aspectRatio: 1,
+                                                                        borderRadius:
+                                                                            '100%',
+                                                                        backgroundColor: `${item}`,
+                                                                        border:
+                                                                            curColor ===
+                                                                                item &&
+                                                                            '2px solid black',
+                                                                    }}
+                                                                ></li>
+                                                            ),
+                                                        )}
+                                                </ul>
+                                            </div>
+                                        )}
+                                    </div>
+                                    <div className='Quantity-Option'>
+                                        <button
+                                            className='Decre'
+                                            type='button'
+                                            onClick={() => {
+                                                quantity > 1 &&
+                                                    setQuantity(
+                                                        (pre) => pre - 1,
+                                                    );
+                                            }}
+                                        >
+                                            -
+                                        </button>
+                                        <input
+                                            className='WholesaleProduct__Quantity'
+                                            type='number'
+                                            name='quantity'
+                                            id='quantity'
+                                            min={1}
+                                            max={
+                                                productDetail.store &&
+                                                productDetail.store
                                             }
-                                            setQuantity(newAmount);
-                                        }}
-                                    />
-                                    <button
-                                        className=''
-                                        type='button'
-                                        onClick={() => {
-                                            if (
-                                                quantity < productDetail.store
-                                            ) {
-                                                setQuantity((pre) => pre + 1);
-                                            } else if (!productDetail.store) {
-                                                setQuantity((pre) => pre + 1);
-                                            } else {
-                                                window.alert('no more');
+                                            value={quantity}
+                                            autoComplete='off'
+                                            onWheel={(event) =>
+                                                event.target.blur()
                                             }
-                                        }}>
-                                        +
-                                    </button>
-                                    <br />
-                                    <button
-                                        className=''
-                                        type='button'>
-                                        Buy Now
-                                    </button>
-                                    <button
-                                        className=''
-                                        type='button'
-                                        onClick={() => {
-                                            handleAddToCart({
-                                                id: productDetail._id,
-                                                img: productDetail.img,
-                                                name: productDetail.name,
-                                                price: productDetail.price,
-                                                discount:
-                                                    productDetail.discouter,
-                                                size: productDetail.size,
-                                                color:
-                                                    productDetail.color &&
-                                                    curColor,
-                                                stock: productDetail.store,
-                                                amount: quantity,
-                                            });
-                                        }}>
-                                        Add
-                                    </button>
+                                            onChange={(event) => {
+                                                let newAmount = Math.round(
+                                                    event.target.value,
+                                                ).toFixed(0);
+                                                if (newAmount < 1) {
+                                                    newAmount = 1;
+                                                } else if (
+                                                    newAmount >
+                                                    productDetail.store
+                                                ) {
+                                                    newAmount =
+                                                        productDetail.store;
+                                                }
+                                                setQuantity(newAmount);
+                                            }}
+                                        />
+                                        <button
+                                            className='Incre'
+                                            type='button'
+                                            onClick={() => {
+                                                if (
+                                                    quantity <
+                                                    productDetail.store
+                                                ) {
+                                                    setQuantity(
+                                                        (pre) => pre + 1,
+                                                    );
+                                                } else if (
+                                                    !productDetail.store
+                                                ) {
+                                                    setQuantity(
+                                                        (pre) => pre + 1,
+                                                    );
+                                                } else {
+                                                    window.alert('Max stock');
+                                                }
+                                            }}
+                                        >
+                                            +
+                                        </button>
+                                    </div>
+                                    <div className='Submit-Option'>
+                                        <button
+                                            className='Wholesale-BuyNow'
+                                            type='button'
+                                        >
+                                            Buy Now
+                                        </button>
+                                        <button
+                                            className='Wholesale-AddToCart'
+                                            type='button'
+                                            disabled={isColorPick === 'picking'}
+                                            onClick={() => {
+                                                if (!curColor) {
+                                                    setIsColorPick('picking');
+                                                    setTimeout(
+                                                        () =>
+                                                            setIsColorPick(
+                                                                false,
+                                                            ),
+                                                        2500,
+                                                    );
+                                                }
+                                                handleAddToCart({
+                                                    id: productDetail._id,
+                                                    img: productDetail.img,
+                                                    name: productDetail.name,
+                                                    price: productDetail.price,
+                                                    discount:
+                                                        productDetail.discouter,
+                                                    size: productDetail.size,
+                                                    color:
+                                                        productDetail.color &&
+                                                        curColor,
+                                                    stock: productDetail.store,
+                                                    amount: quantity,
+                                                });
+                                            }}
+                                        >
+                                            Add
+                                        </button>
+                                    </div>
                                 </form>
                             </div>
                         </div>
@@ -215,11 +254,13 @@ const WholesaleProductDetailLayout = ({
                                     id='shippingOpt'
                                     onChange={(event) =>
                                         setShipOption(event.target.value)
-                                    }>
+                                    }
+                                >
                                     {shipOpt.map((opt) => (
                                         <option
                                             value={opt.value}
-                                            key={opt.label}>
+                                            key={opt.label}
+                                        >
                                             {opt.label}
                                         </option>
                                     ))}

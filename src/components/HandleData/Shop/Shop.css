@@ -18,7 +18,7 @@
     top: 60px;
     background-color: var(--color-default);
     width: 100%;
-    padding-block: 20px;
+    padding: 10px 0 5px;
     z-index: 50;
     animation: slideDown 1s ease-in-out forwards;
 }
@@ -38,7 +38,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    align-items: baseline;
     gap: 10px;
 }
 
@@ -84,10 +84,15 @@
 
 .ToggleFilter__Btn {
     display: none;
-    padding: 3px;
+    width: 280px;
+    justify-self: center;
 }
 
-@media (width <= 520px) {
+@media (width <= 768px) {
+    .ProductAvailableCount {
+        display: none;
+    }
+
     .SearchForm fieldset {
         display: grid;
     }

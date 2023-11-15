@@ -1,3 +1,25 @@
+.colorNote {
+    animation: colorNote 2s ease-in-out forwards;
+}
+
+@keyframes colorNote {
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 0.3;
+    }
+    50% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
 .WholesaleProductDetail {
     min-height: 500px;
 }
@@ -55,23 +77,41 @@
     min-height: 50px;
 }
 
-.Product-Container__Info-AddToCart-Form button:first-child,
-.Product-Container__Info-AddToCart-Form button:nth-child(3) {
-    width: 30px;
-    aspect-ratio: 1;
+.Product-Container__Info-Color li {
+    cursor: pointer;
 }
 
-.Product-Container__Info-AddToCart-Form button:nth-child(5),
-.Product-Container__Info-AddToCart-Form button:last-child {
+.Product-Container__Info-AddToCart-Form {
+    display: grid;
+    gap: 10px;
+}
+
+.Quantity-Option,
+.Submit-Option {
+    display: flex;
+    gap: 10px;
+}
+
+.Product-Container__Info-AddToCart-Form button {
+    border: none;
+}
+
+.Product-Container__Info-AddToCart-Form .Decre,
+.Product-Container__Info-AddToCart-Form .Incre {
+    width: 30px;
+    height: 30px;
+}
+
+.Product-Container__Info-AddToCart-Form .Wholesale-BuyNow,
+.Product-Container__Info-AddToCart-Form .Wholesale-AddToCart {
     width: 80px;
-    margin-right: 10px;
 }
 
 .Product-Container__Info-AddToCart-Form input {
     text-align: center;
-    margin-inline: 5px;
-    margin-bottom: 10px;
-    height: 30px;
+    width: 29px;
+    height: 29px;
+    outline: none;
 }
 
 .Product-Container__Info-AddToCart-Form input::-webkit-inner-spin-button,

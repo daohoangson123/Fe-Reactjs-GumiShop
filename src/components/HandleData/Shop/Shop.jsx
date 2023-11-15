@@ -64,6 +64,11 @@ const ShopFilter = ({
                 <button
                     type='button'
                     className='ToggleFilter__Btn'
+                    title={
+                        showFilter
+                            ? 'Hide filter options'
+                            : 'Show detail filter options'
+                    }
                     onClick={() => setShowFilter(!showFilter)}
                 >
                     {showFilter ? 'Hide Filter' : 'Show Filter'}
@@ -1027,7 +1032,7 @@ const Shop = () => {
     }, [debounceChange]);
 
     return (
-        <div className='Shop Container'>
+        <div className='Shop'>
             <ErrorBoundary>
                 <ShopFilter
                     productApi={productApi}
@@ -1040,13 +1045,15 @@ const Shop = () => {
                     priceFilter={priceFilter}
                     setPriceFilter={setPriceFilter}
                 />
-                {productApi.length > 0 ? (
-                    <ProductDisplay filtered={filtered} />
-                ) : (
-                    <div className='ProductContainer ShopProductContainer'>
-                        <ProductSkeleton />
-                    </div>
-                )}
+                <div className='Container'>
+                    {productApi.length > 0 ? (
+                        <ProductDisplay filtered={filtered} />
+                    ) : (
+                        <div className='ProductContainer ShopProductContainer'>
+                            <ProductSkeleton />
+                        </div>
+                    )}
+                </div>
             </ErrorBoundary>
         </div>
     );
