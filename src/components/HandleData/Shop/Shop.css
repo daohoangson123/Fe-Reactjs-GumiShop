@@ -103,7 +103,6 @@
 
     .FiltersInputs {
         max-height: 0;
-        justify-content: end;
         overflow: hidden;
     }
 

@@ -11,6 +11,7 @@ const AdBanner = () => {
         const initialValue = JSON.parse(saved);
         return initialValue || false;
     });
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         const htmlBody = document.querySelectorAll(['html', 'body']);
@@ -44,25 +45,26 @@ const AdBanner = () => {
             closeLayerBtn.addEventListener('click', removeFirstLoadLayer);
 
         localStorage.setItem('layerClosed', JSON.stringify(layerClosed));
-    }, [layerClosed]);
+    }, [layerClosed, isLoaded]);
 
     return (
         <div
             id='PageFisrtLoad'
-            className='PageFisrtLoad'
-        >
+            className='PageFisrtLoad'>
             <div className='AdBanner-Container'>
-                <button
-                    type='button'
-                    id='AdBanner__Btn'
-                    className='AdBanner__Btn'
-                >
-                    <i className='fa-solid fa-xmark'></i>
-                </button>
+                {isLoaded && (
+                    <button
+                        type='button'
+                        id='AdBanner__Btn'
+                        className='AdBanner__Btn'>
+                        <i className='fa-solid fa-xmark'></i>
+                    </button>
+                )}
                 <img
                     src={ad}
                     alt='AD Banner Img'
                     className='AdBanner_Img'
+                    onLoad={() => setIsLoaded(true)}
                 />
             </div>
         </div>

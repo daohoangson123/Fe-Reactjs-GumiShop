@@ -15,6 +15,7 @@ import { useState } from 'react';
 
 const SliderBanner = () => {
     const [isBannerLoaded, setIsBannerLoaded] = useState(false);
+
     return (
         <article className='HeroBanner'>
             <div
@@ -38,6 +39,7 @@ const SliderBanner = () => {
                             <img
                                 src={banner_1bg}
                                 alt=''
+                                fetchpriority='high'
                                 onLoad={() => setIsBannerLoaded(true)}
                             />
                             <div className='SliderBanner_1'>
@@ -55,6 +57,7 @@ const SliderBanner = () => {
                             <img
                                 src={banner_2bg}
                                 alt=''
+                                fetchpriority='high'
                             />
                             <div className='SliderBanner_2'>
                                 <SliderItem

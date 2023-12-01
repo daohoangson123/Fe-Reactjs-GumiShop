@@ -59,10 +59,10 @@ const WholesaleProductDetail = () => {
         );
         setProductDetail(findProductDetail);
     };
-
     useEffect(() => {
         setProductDetail([]);
         getProducts();
+        // eslint-disable-next-line
     }, [id]);
     return (
         <div className='WholesaleProductDetail'>
