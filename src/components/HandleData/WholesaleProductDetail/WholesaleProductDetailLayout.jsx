@@ -75,8 +75,9 @@ const WholesaleProductDetailLayout = ({
                             <div className='Product-Container__Info-AddToCart'>
                                 <form
                                     className='Product-Container__Info-AddToCart-Form'
-                                    onSubmit={(event) => event.preventDefault()}
-                                >
+                                    onSubmit={(event) =>
+                                        event.preventDefault()
+                                    }>
                                     <div className='Product-Container__Info-Option'>
                                         {productDetail.size && (
                                             <div className='Product-Container__Info-Size'>
@@ -86,10 +87,10 @@ const WholesaleProductDetailLayout = ({
                                         {productDetail.color && (
                                             <div
                                                 className={
-                                                    isColorPick === 'picking' &&
-                                                    'colorNote'
-                                                }
-                                            >
+                                                    isColorPick === 'picking'
+                                                        ? 'colorNote'
+                                                        : 'color'
+                                                }>
                                                 Color: {curColor}{' '}
                                                 <span>
                                                     {!curColor &&
@@ -101,8 +102,7 @@ const WholesaleProductDetailLayout = ({
                                                         borderBlock: curColor
                                                             ? '1px solid lime'
                                                             : '1px solid red',
-                                                    }}
-                                                >
+                                                    }}>
                                                     {productDetail.color &&
                                                         productDetail.color.map(
                                                             (item) => (
@@ -125,8 +125,7 @@ const WholesaleProductDetailLayout = ({
                                                                             curColor ===
                                                                                 item &&
                                                                             '2px solid black',
-                                                                    }}
-                                                                ></li>
+                                                                    }}></li>
                                                             ),
                                                         )}
                                                 </ul>
@@ -142,8 +141,7 @@ const WholesaleProductDetailLayout = ({
                                                     setQuantity(
                                                         (pre) => pre - 1,
                                                     );
-                                            }}
-                                        >
+                                            }}>
                                             -
                                         </button>
                                         <input
@@ -197,16 +195,14 @@ const WholesaleProductDetailLayout = ({
                                                 } else {
                                                     window.alert('Max stock');
                                                 }
-                                            }}
-                                        >
+                                            }}>
                                             +
                                         </button>
                                     </div>
                                     <div className='Submit-Option'>
                                         <button
                                             className='Wholesale-BuyNow'
-                                            type='button'
-                                        >
+                                            type='button'>
                                             Buy Now
                                         </button>
                                         <button
@@ -214,7 +210,11 @@ const WholesaleProductDetailLayout = ({
                                             type='button'
                                             disabled={isColorPick === 'picking'}
                                             onClick={() => {
-                                                if (!curColor) {
+                                                if (
+                                                    productDetail.color !==
+                                                        undefined &&
+                                                    !curColor
+                                                ) {
                                                     setIsColorPick('picking');
                                                     setTimeout(
                                                         () =>
@@ -233,13 +233,14 @@ const WholesaleProductDetailLayout = ({
                                                         productDetail.discouter,
                                                     size: productDetail.size,
                                                     color:
-                                                        productDetail.color &&
-                                                        curColor,
+                                                        productDetail.color !==
+                                                        undefined
+                                                            ? curColor
+                                                            : null,
                                                     stock: productDetail.store,
                                                     amount: quantity,
                                                 });
-                                            }}
-                                        >
+                                            }}>
                                             Add
                                         </button>
                                     </div>
@@ -254,13 +255,11 @@ const WholesaleProductDetailLayout = ({
                                     id='shippingOpt'
                                     onChange={(event) =>
                                         setShipOption(event.target.value)
-                                    }
-                                >
+                                    }>
                                     {shipOpt.map((opt) => (
                                         <option
                                             value={opt.value}
-                                            key={opt.label}
-                                        >
+                                            key={opt.label}>
                                             {opt.label}
                                         </option>
                                     ))}

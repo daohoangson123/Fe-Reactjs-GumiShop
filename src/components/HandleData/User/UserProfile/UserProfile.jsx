@@ -12,31 +12,13 @@ import {
     userSelector,
 } from '../../../../redux/Selectors/Selector';
 import Skeleton from 'react-loading-skeleton';
-import { fetchUserData } from '../../../../data/axiosAPI/userData';
-import { getUserData } from '../../../../redux/Actions/Action';
-import { signinSelector } from '../../../../redux/Selectors/Selector';
-import { useEffect } from 'react';
-import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
 import { logoutRequest } from '../../../../data/axiosAPI/userSignout';
+import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
 
 const UserProfile = () => {
     const dispatch = useDispatch();
     const purchaseHistory = useSelector(myPurchaseHistorySelector);
     const userData = useSelector(userSelector);
-    const token = useSelector(signinSelector);
-    const id = token && token.slice(16);
-
-    const saveUserData = async () => {
-        let userDataRes = await fetchUserData(id);
-        if (userDataRes) {
-            return dispatch(getUserData(userDataRes.data));
-        }
-        return;
-    };
-
-    useEffect(() => {
-        saveUserData();
-    }, []);
 
     const handleSignOut = () => {
         dispatch(userSignOut());
@@ -82,8 +64,7 @@ const UserProfile = () => {
                             </div>
                             <button
                                 onClick={handleSignOut}
-                                className='SignOut__Btn'
-                            >
+                                className='SignOut__Btn'>
                                 <Link to='/userSignIn'>Sign Out</Link>
                             </button>
                         </>
@@ -94,8 +75,7 @@ const UserProfile = () => {
                     <button
                         type='button'
                         className='ClearPurchaseHistory__Btn'
-                        onClick={() => dispatch(clearHistory())}
-                    >
+                        onClick={() => dispatch(clearHistory())}>
                         Clear History
                     </button>
                     {purchaseHistory.length > 0 && (
@@ -103,8 +83,7 @@ const UserProfile = () => {
                             <Table
                                 striped
                                 bordered
-                                hover
-                            >
+                                hover>
                                 <thead>
                                     <tr>
                                         <th>Name</th>

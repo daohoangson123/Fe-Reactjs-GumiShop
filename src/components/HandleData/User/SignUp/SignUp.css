@@ -1,0 +1,20 @@
+.SignUp {
+    display: grid;
+    place-items: center;
+    min-height: 300px;
+}
+
+.SignUp img {
+    width: clamp(280px, 50vw, 1200px);
+    animation: sling 1.5s ease-in-out infinite alternate;
+    transform-origin: top center;
+}
+
+@keyframes sling {
+    from {
+        transform: rotateZ(5deg);
+    }
+    to {
+        transform: rotateZ(-5deg);
+    }
+}

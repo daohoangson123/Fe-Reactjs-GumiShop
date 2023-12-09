@@ -14,21 +14,18 @@ const MobileMenuRouting = ({
             className='MobileMenu__NavContainer'
             style={{
                 height: menuVisible && '100vh',
-            }}
-        >
+            }}>
             <div
                 className='MobileMenu__Nav'
                 style={{
                     transition: !isMobileView && 'none',
-                }}
-            >
+                }}>
                 {navlinkData.map((item) => (
                     <NavLink
                         to={item.path}
                         key={item.name}
                         className='MobileMenu__Item'
-                        onClick={() => setMenuOpen(false)}
-                    >
+                        onClick={() => setMenuOpen(false)}>
                         {item.name}
                     </NavLink>
                 ))}
@@ -98,8 +95,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                 aria-label='MobileMenuToggle'
                 style={{
                     backgroundColor: menuOpen && 'rgba(0, 0, 0, 0.3)',
-                }}
-            >
+                }}>
                 <div
                     className='MenuIcon1 MenuIcon '
                     style={
@@ -110,14 +106,12 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(45deg) translateX(1px) translateY(-5px)',
                               }
                             : null
-                    }
-                ></div>
+                    }></div>
                 <div
                     className='MenuIcon2 MenuIcon'
                     style={{
                         display: menuOpen && 'none',
-                    }}
-                ></div>
+                    }}></div>
                 <div
                     className='MenuIcon3 MenuIcon '
                     style={
@@ -129,8 +123,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(-45deg) translateX(1px) translateY(5px)',
                               }
                             : null
-                    }
-                ></div>
+                    }></div>
             </button>
             <MobileMenuRouting
                 isMobileView={isMobileView}

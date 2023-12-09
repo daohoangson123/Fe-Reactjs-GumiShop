@@ -47,8 +47,8 @@
     color: var(--color-default);
 }
 
-.UserLogo {
-    width: 22px;
+.UserImg {
+    width: 23px;
     aspect-ratio: 1;
     border-radius: 100%;
 }

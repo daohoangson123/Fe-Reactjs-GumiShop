@@ -7,10 +7,14 @@ import userLogo from '../../../../assets/icon/userLogo.png';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { signinSelector } from '../../../../redux/Selectors/Selector';
+import {
+    signinSelector,
+    userSelector,
+} from '../../../../redux/Selectors/Selector';
 
 const SignBar = () => {
     const isSignIn = useSelector(signinSelector);
+    const userData = useSelector(userSelector);
     const text =
         'Afterpay, Laybuy & Genoapay | Free Delivery New Zealand + Australia*';
 
@@ -46,21 +50,23 @@ const SignBar = () => {
                             title='Sign In'
                             className={({ isActive }) =>
                                 isActive ? 'active' : 'inactive'
-                            }
-                        >
+                            }>
                             Sign In
                         </NavLink>
                     ) : (
                         <NavLink
                             to='/userProfile'
-                            title='User'
+                            title={
+                                userData
+                                    ? userData.first_name + userData.last_name
+                                    : 'Sign In'
+                            }
                             className={({ isActive }) =>
                                 isActive ? 'active' : 'inactive'
-                            }
-                        >
+                            }>
                             <img
-                                className='UserLogo'
-                                src={userLogo}
+                                className='UserImg'
+                                src={userData ? userData.avatar : userLogo}
                                 alt='userImg'
                             />
                         </NavLink>
@@ -71,19 +77,16 @@ const SignBar = () => {
                         title='Sign Up'
                         className={({ isActive }) =>
                             isActive ? 'active' : 'inactive'
-                        }
-                    >
+                        }>
                         Register
                     </NavLink>
                 </div>
                 <div
                     className='SignBar__Languages'
-                    title='Change Language'
-                >
+                    title='Change Language'>
                     <label
                         htmlFor='lang'
-                        className='LangLabel '
-                    >
+                        className='LangLabel '>
                         <img
                             src={flag}
                             alt='flag'
@@ -94,8 +97,7 @@ const SignBar = () => {
                         name='lang'
                         id='lang'
                         title='Click to select Language'
-                        onChange={handelChange}
-                    >
+                        onChange={handelChange}>
                         {langs.map((item) => (
                             <option
                                 className='LangOption '
@@ -105,8 +107,7 @@ const SignBar = () => {
                                         ? 'American English'
                                         : 'Vietnamese'
                                 }
-                                value={item.name}
-                            >
+                                value={item.name}>
                                 {item.name}
                             </option>
                         ))}

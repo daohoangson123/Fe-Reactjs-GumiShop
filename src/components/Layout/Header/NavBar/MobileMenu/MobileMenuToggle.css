@@ -8,7 +8,6 @@
     border-radius: 2px;
     background: none;
     cursor: pointer !important;
-    transition: var(--transition-fast);
     z-index: 100;
 }
 
@@ -46,7 +45,6 @@
     inset: 0;
     display: flex;
     height: 0;
-    transition: var(--transition-fast);
 }
 
 .MobileMenu__Nav {
@@ -79,7 +77,6 @@
     font-weight: 600;
     color: var(--color-text);
     padding: 10px;
-    transition: var(--transition-fast);
 }
 
 .MobileMenu__Item.active::before {
@@ -92,7 +89,6 @@
     border-bottom: 1px solid var(--color-default);
     border-bottom-left-radius: 75%;
     border-bottom-right-radius: 400%;
-    transition: var(--transition-fast);
 }
 
 .MobileMenu__Item.active::after {
@@ -105,7 +101,6 @@
     border-top: 1px solid var(--color-default);
     border-top-right-radius: 75%;
     border-top-left-radius: 400%;
-    transition: var(--transition-fast);
 }
 
 .MobileMenu__Item.active {

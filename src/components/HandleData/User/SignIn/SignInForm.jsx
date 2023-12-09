@@ -8,12 +8,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signinSelector } from '../../../../redux/Selectors/Selector';
 import { loginRequest } from '../../../../data/axiosAPI/userSignIn';
 import { userSignIn } from '../../../../redux/Actions/Action';
+import { fetchUserData } from '../../../../data/axiosAPI/userData';
+import { getUserData } from '../../../../redux/Actions/Action';
 //
 import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const SignInForm = () => {
     const isSignIn = useSelector(signinSelector);
+    const id = isSignIn && isSignIn.slice(16);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [username, setUsername] = useState();
@@ -42,7 +45,7 @@ const SignInForm = () => {
         event.preventDefault();
         if (username && password) {
             setIsLoading(true);
-            setTimeout(() => postLoginRequest(), 1000);
+            setTimeout(() => postLoginRequest(), 1500);
         } else {
             dataRequired();
         }
@@ -65,10 +68,20 @@ const SignInForm = () => {
         }
     };
 
+    const saveUserData = async () => {
+        let userDataRes = await fetchUserData(id);
+        if (userDataRes) {
+            return dispatch(getUserData(userDataRes.data));
+        }
+        return;
+    };
+
     useEffect(() => {
         if (isSignIn) {
+            saveUserData();
             navigate('/userProfile');
         }
+        // eslint-disable-next-line
     }, [isSignIn, navigate]);
     return (
         <form
@@ -139,7 +152,10 @@ const SignInForm = () => {
                     disabled={(!username || !password || isLoading) && true}
                     className='SignIn__Btn'>
                     {isLoading ? (
-                        <i className='fa-solid fa-spinner fa-spin-pulse'></i>
+                        <>
+                            <i className='fa-solid fa-spinner fa-spin-pulse'></i>
+                            <span> Logging in</span>
+                        </>
                     ) : (
                         'Sign In'
                     )}
