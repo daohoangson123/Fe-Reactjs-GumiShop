@@ -14,14 +14,106 @@ import { getUserData } from '../../../../redux/Actions/Action';
 import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+const SignInInput = ({
+    inputName,
+    username,
+    setUsername,
+    password,
+    setPassword,
+    setIsError,
+}) => {
+    const [isFocus, setIsFocus] = useState(false);
+    const [showPass, setShowPass] = useState(false);
+
+    return (
+        <>
+            {' '}
+            {inputName === 'signInUserName' ? (
+                <div>
+                    <span
+                        style={{
+                            position: 'absolute',
+                            transform: isFocus
+                                ? 'translate3d(15px, -12px, -10px)'
+                                : 'translate3d(5px, 7px, 0',
+                            background: 'white',
+                            paddingInline: isFocus && '5px',
+                            borderLeft: isFocus && '1px solid black',
+                            borderRight: isFocus && '1px solid black',
+                            zIndex: isFocus ? 0 : -1,
+                            transition: 'all ease-in-out 0.2s',
+                        }}>
+                        username
+                    </span>
+                    <input
+                        type='text'
+                        id='signInUserName'
+                        className='signInUserName'
+                        required
+                        onChange={(event) => setUsername(event.target.value)}
+                        onBlur={() => {
+                            if (username === '') {
+                                setIsFocus(false);
+                            }
+                        }}
+                        onFocus={() => {
+                            setIsError(false);
+                            setIsFocus(true);
+                        }}
+                    />
+                </div>
+            ) : (
+                <div>
+                    <span
+                        style={{
+                            position: 'absolute',
+                            transform: isFocus
+                                ? 'translate3d(15px, -12px, -10px)'
+                                : 'translate3d(5px, 7px, 0',
+                            background: 'white',
+                            paddingInline: isFocus && '5px',
+                            borderLeft: isFocus && '1px solid black',
+                            borderRight: isFocus && '1px solid black',
+                            zIndex: isFocus ? 0 : -1,
+                            transition: 'all ease-in-out 0.2s',
+                        }}>
+                        password
+                    </span>
+                    <input
+                        type={!showPass ? 'password' : 'text'}
+                        id='signInPassWord'
+                        className='signInPassWord'
+                        required
+                        autoComplete='on'
+                        onChange={(event) => setPassword(event.target.value)}
+                        onBlur={() => {
+                            if (password === '') {
+                                setIsFocus(false);
+                            }
+                        }}
+                        onFocus={() => {
+                            setIsError(false);
+                            setIsFocus(true);
+                        }}
+                    />
+                    <i
+                        className={`fa-regular ${
+                            !showPass ? 'fa-eye-slash' : 'fa-eye'
+                        } showpassicon`}
+                        onClick={() => setShowPass(!showPass)}></i>
+                </div>
+            )}
+        </>
+    );
+};
+
 const SignInForm = () => {
     const isSignIn = useSelector(signinSelector);
     const id = isSignIn && isSignIn.slice(16);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [username, setUsername] = useState();
-    const [password, setPassword] = useState();
-    const [showPass, setShowPass] = useState(false);
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isError, setIsError] = useState(false);
 
@@ -105,39 +197,23 @@ const SignInForm = () => {
                     <label htmlFor='signInUserName'>
                         <i className='fa-solid fa-user'></i>
                     </label>
-                    <input
-                        type='text'
-                        id='signInUserName'
-                        className='signInUserName'
-                        placeholder='username'
-                        required
-                        onChange={(event) => setUsername(event.target.value)}
-                        onFocus={() => setIsError(false)}
+                    <SignInInput
+                        inputName='signInUserName'
+                        setIsError={setIsError}
+                        username={username}
+                        setUsername={setUsername}
                     />
                 </div>
                 <div className='SignIn__Form-InputContainer'>
                     <label htmlFor='signInPassWord'>
                         <i className='fa-solid fa-key'></i>
                     </label>
-                    <div>
-                        <input
-                            type={!showPass ? 'password' : 'text'}
-                            id='signInPassWord'
-                            className='signInPassWord'
-                            placeholder='password'
-                            required
-                            autoComplete='on'
-                            onChange={(event) =>
-                                setPassword(event.target.value)
-                            }
-                            onFocus={() => setIsError(false)}
-                        />
-                        <i
-                            className={`fa-regular ${
-                                !showPass ? 'fa-eye-slash' : 'fa-eye'
-                            } showpassicon`}
-                            onClick={() => setShowPass(!showPass)}></i>
-                    </div>
+                    <SignInInput
+                        inputName='signInPassWord'
+                        setIsError={setIsError}
+                        password={password}
+                        setPassword={setPassword}
+                    />
                 </div>
                 <div className='SignIn__Form-Remember'>
                     <label htmlFor='rememberUser'>Remember me</label>

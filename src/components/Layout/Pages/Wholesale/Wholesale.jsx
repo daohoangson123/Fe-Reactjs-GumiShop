@@ -18,7 +18,7 @@ const WholesaleLayout = ({ title, productApi }) => {
     const [curCategory, setCurCategory] = useState('All');
     const [curBrand, setCurBrand] = useState('All');
     //lọc và trả về tất cả value có key categories
-    //check trước xem có key ko để tránh error
+    //check trước xem có key ko để tránh lỗi
     //ép kiểu để đồng nhất data
     const getAllCategories = productApi
         .filter((item) => item.categories)
@@ -26,22 +26,14 @@ const WholesaleLayout = ({ title, productApi }) => {
             if (item.categories) {
                 return item.categories.toString().toLowerCase();
             }
-            return item.categories.toString().toLowerCase();
+            return false;
         });
-    //tạo obj để chứa cộng dồn các key trùng lặp
-    //cú pháp obj[key]
-    const filteredCategories = {};
-    getAllCategories.forEach((item) => {
-        if (!filteredCategories[item]) {
-            filteredCategories[item] = 1;
-        }
+
+    //lọc key trùng lặp
+    const categoriesList = getAllCategories.filter((category, index) => {
+        return index === getAllCategories.indexOf(category);
     });
-    //truy xuất key
-    const categoriesList = Object.keys(filteredCategories);
-    //sau khi load được data mới đẩy key 'All' vào
-    if (productApi.length > 0) {
-        categoriesList.unshift('All');
-    }
+
     //tương tự cho key brand
     const getAllBrands = productApi
         .filter((item) => item.brand)
@@ -49,18 +41,12 @@ const WholesaleLayout = ({ title, productApi }) => {
             if (item.brand) {
                 return item.brand.toString().toLowerCase();
             }
-            return item.brand.toString().toLowerCase();
+            return false;
         });
-    const filteredBrands = {};
-    getAllBrands.forEach((item) => {
-        if (!filteredBrands[item]) {
-            filteredBrands[item] = 1;
-        }
+
+    const brandsList = getAllBrands.filter((brand, index) => {
+        return index === getAllBrands.indexOf(brand);
     });
-    const brandsList = Object.keys(filteredBrands);
-    if (productApi.length > 0 && brandsList.length > 0) {
-        brandsList.unshift('All');
-    }
     //
 
     function getFilterItems(productApi, curCategory, curBrand) {

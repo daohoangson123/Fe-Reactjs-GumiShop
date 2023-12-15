@@ -36,7 +36,7 @@
 
 .SignIn__Form-Fieldset {
     display: grid;
-    gap: 10px;
+    gap: 20px;
 }
 
 .SignIn__Form-InputContainer {
@@ -63,11 +63,12 @@
 
 .SignIn__Form-InputContainer input {
     transition: var(--transition-fast);
+    background: transparent;
     border: 1px solid var(--color-alt);
     border-radius: 2px;
     padding: 0 5px;
     width: min(100%, 273px);
-    height: 35px;
+    height: 40px;
     flex-grow: 1;
     font: small-caption;
     font-size: 16px;
