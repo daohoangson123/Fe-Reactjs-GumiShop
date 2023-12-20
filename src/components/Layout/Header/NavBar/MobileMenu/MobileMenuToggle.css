@@ -1,14 +1,14 @@
 .MobileMenu {
-    display: none;
     place-items: center;
+    display: none;
+    z-index: 100;
     width: 40px;
     height: 40px;
     padding: 5px;
-    border: none;
-    border-radius: 2px;
     background: none;
     cursor: pointer !important;
-    z-index: 100;
+    border: none;
+    border-radius: 2px;
 }
 
 .MobileMenu:hover {
@@ -24,10 +24,10 @@
 }
 
 .MenuIcon {
-    height: 2px;
-    background-color: var(--color-text);
-    transition: var(--transition-fast);
     transform-origin: left;
+    height: 2px;
+    transition: var(--transition-fast);
+    background-color: var(--color-text);
 }
 
 .MenuIcon1,
@@ -36,27 +36,29 @@
 }
 
 .MenuIcon3 {
-    width: 20px;
     justify-self: end;
+    width: 20px;
 }
 
 .MobileMenu__NavContainer {
-    position: absolute;
     inset: 0;
     display: flex;
+    justify-content: flex-end;
+    position: absolute;
     height: 0;
+    background: var(--color-alt-rgba-3);
 }
 
 .MobileMenu__Nav {
-    text-align: center;
-    display: grid;
-    width: 100%;
-    max-height: 100%;
-    grid-template-rows: repeat(auto-fit, 44px);
-    background-color: var(--color-default);
-    margin-top: 60px;
     scrollbar-gutter: stable both-edges;
+    display: grid;
+    grid-template-rows: repeat(auto-fit, 44px);
     overflow: auto;
+    width: 50%;
+    max-height: 100%;
+    background-color: var(--color-default);
+    text-align: center;
+    z-index: 1000;
 }
 
 .MobileMenu__Nav a {
@@ -74,9 +76,9 @@
 
 .MobileMenu__Item {
     position: relative;
+    padding: 10px;
     font-weight: 600;
     color: var(--color-text);
-    padding: 10px;
 }
 
 .MobileMenu__Item.active::before {
@@ -87,8 +89,8 @@
     width: 50%;
     height: 40px;
     border-bottom: 1px solid var(--color-default);
-    border-bottom-left-radius: 75%;
     border-bottom-right-radius: 400%;
+    border-bottom-left-radius: 75%;
 }
 
 .MobileMenu__Item.active::after {
@@ -99,44 +101,44 @@
     width: 50%;
     height: 40px;
     border-top: 1px solid var(--color-default);
-    border-top-right-radius: 75%;
     border-top-left-radius: 400%;
+    border-top-right-radius: 75%;
 }
 
 .MobileMenu__Item.active {
-    color: var(--color-default);
     background-color: var(--color-primary);
+    color: var(--color-default);
 }
 
 .MobileMenu__Item:not(.active)::before {
+    transform-origin: left;
     content: '';
     position: absolute;
     bottom: 8px;
     left: 20px;
+    transform: rotateY(90deg);
     width: 50%;
     height: 2px;
-    background-color: var(--color-default);
-    transform: rotateY(90deg);
-    transform-origin: left;
     transition: all linear 0.7s;
+    background-color: var(--color-default);
 }
 
 .MobileMenu__Item:not(.active)::after {
+    transform-origin: right;
     content: '';
     position: absolute;
     top: 8px;
     right: 20px;
+    transform: rotateY(90deg);
     width: 50%;
     height: 2px;
-    background-color: var(--color-default);
-    transform: rotateY(90deg);
-    transform-origin: right;
     transition: all linear 0.7s;
+    background-color: var(--color-default);
 }
 
 .MobileMenu__Item:not(.active):hover {
-    color: var(--color-default);
     background-color: var(--color-alt-rgba-3);
+    color: var(--color-default);
 }
 
 .MobileMenu__Item:not(.active):hover::before,

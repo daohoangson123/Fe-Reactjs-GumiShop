@@ -2,6 +2,11 @@ import './MobileMenuToggle.css';
 //
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import {
+    disableBodyScroll,
+    enableBodyScroll,
+    clearAllBodyScrollLocks,
+} from 'body-scroll-lock';
 
 const MobileMenuRouting = ({
     isMobileView,
@@ -14,18 +19,24 @@ const MobileMenuRouting = ({
             className='MobileMenu__NavContainer'
             style={{
                 height: menuVisible && '100vh',
-            }}>
+            }}
+        >
             <div
                 className='MobileMenu__Nav'
                 style={{
                     transition: !isMobileView && 'none',
-                }}>
+                }}
+            >
                 {navlinkData.map((item) => (
                     <NavLink
                         to={item.path}
                         key={item.name}
                         className='MobileMenu__Item'
-                        onClick={() => setMenuOpen(false)}>
+                        onClick={() => {
+                            setMenuOpen(false);
+                            clearAllBodyScrollLocks();
+                        }}
+                    >
                         {item.name}
                     </NavLink>
                 ))}
@@ -38,6 +49,10 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [menuVisible, setMenuVisible] = useState(false);
 
+    const openMenu =
+        typeof document !== 'undefined' &&
+        document.querySelector('#MobileMenu');
+
     const mq = window.matchMedia('(min-width: 1025px)');
 
     // toggle khi matchMedia '(min-width: 1025px)'
@@ -45,6 +60,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
         if (mq.matches) {
             setMenuOpen(false);
             setMenuVisible(false);
+            clearAllBodyScrollLocks();
         }
     };
     useEffect(() => {
@@ -52,7 +68,10 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
 
         mq.addEventListener('change', toggle);
 
-        return () => mq.removeEventListener('change', toggle);
+        return () => {
+            mq.removeEventListener('change', toggle);
+            clearAllBodyScrollLocks();
+        };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
@@ -91,11 +110,17 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                 title='Menu'
                 className='MobileMenu'
                 id='MobileMenu'
-                onClick={() => setMenuOpen(!menuOpen)}
+                onClick={() => {
+                    setMenuOpen(!menuOpen);
+                    !menuOpen
+                        ? disableBodyScroll(openMenu)
+                        : enableBodyScroll(openMenu);
+                }}
                 aria-label='MobileMenuToggle'
                 style={{
                     backgroundColor: menuOpen && 'rgba(0, 0, 0, 0.3)',
-                }}>
+                }}
+            >
                 <div
                     className='MenuIcon1 MenuIcon '
                     style={
@@ -106,12 +131,14 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(45deg) translateX(1px) translateY(-5px)',
                               }
                             : null
-                    }></div>
+                    }
+                ></div>
                 <div
                     className='MenuIcon2 MenuIcon'
                     style={{
                         display: menuOpen && 'none',
-                    }}></div>
+                    }}
+                ></div>
                 <div
                     className='MenuIcon3 MenuIcon '
                     style={
@@ -123,7 +150,8 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(-45deg) translateX(1px) translateY(5px)',
                               }
                             : null
-                    }></div>
+                    }
+                ></div>
             </button>
             <MobileMenuRouting
                 isMobileView={isMobileView}

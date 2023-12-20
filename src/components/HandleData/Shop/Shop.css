@@ -15,7 +15,7 @@
 
 .SearchForm {
     position: sticky;
-    top: 60px;
+    top: 84px;
     background-color: var(--color-default);
     width: 100%;
     padding: 10px 0 5px;
@@ -86,6 +86,12 @@
     display: none;
     width: 280px;
     justify-self: center;
+}
+
+@media (width <= 1024px) {
+    .SearchForm {
+        top: 60px;
+    }
 }
 
 @media (width <= 768px) {

@@ -1,6 +1,7 @@
 import './Logo.css';
 //
 import { NavLink } from 'react-router-dom';
+import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 const Logo = () => {
     return (
@@ -8,6 +9,9 @@ const Logo = () => {
             <NavLink
                 to='/'
                 title='Gumi HomePage'
+                onClick={() => {
+                    clearAllBodyScrollLocks();
+                }}
             >
                 GOOD<span>4</span>ME.
             </NavLink>
