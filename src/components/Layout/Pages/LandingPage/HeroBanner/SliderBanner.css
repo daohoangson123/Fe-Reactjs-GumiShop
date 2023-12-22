@@ -7,6 +7,13 @@
     height: 600px;
 }
 
+.owl-item.active .BannerContainer img {
+    -webkit-animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+        both;
+    animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation-delay: 1s;
+}
+
 .BannerContainer img {
     height: inherit;
 }
@@ -18,7 +25,7 @@
 }
 
 .BannerContainer_2 img {
-    object-position: 90% center;
+    object-position: 70% center;
     object-fit: contain;
     grid-area: 1 / 2;
 }
@@ -53,6 +60,13 @@
         grid-area: 1 / 1;
     }
 
+    .owl-item.active .SliderBanner_1,
+    .owl-item.active .SliderBanner_2 {
+        -webkit-animation: blur-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation: blur-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        animation-delay: 0.7s;
+    }
+
     .SliderBanner_1 {
         grid-area: 1 / 1;
     }
@@ -71,5 +85,35 @@
 @media (width < 375px) {
     .BannerContainer_2 img {
         object-fit: cover;
+    }
+}
+
+/**
+ * ----------------------------------------
+ * animation blur-in
+ * ----------------------------------------
+ */
+@-webkit-keyframes blur-in {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+@keyframes blur-in {
+    0% {
+        -webkit-transform: scale(0);
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+        opacity: 1;
     }
 }

@@ -17,7 +17,7 @@ const SliderBanner = () => {
     const [isBannerLoaded, setIsBannerLoaded] = useState(false);
 
     return (
-        <article className='HeroBanner'>
+        <section className='HeroBanner'>
             <div
                 style={{
                     opacity: isBannerLoaded ? 1 : 0,
@@ -35,7 +35,9 @@ const SliderBanner = () => {
                     dots={false}
                     loop>
                     <div className='SliderContainer'>
-                        <div className='BannerContainer BannerContainer_1'>
+                        <div
+                            className='BannerContainer BannerContainer_1'
+                            title='Slider is stopping'>
                             <img
                                 src={banner_1bg}
                                 alt=''
@@ -53,7 +55,9 @@ const SliderBanner = () => {
                         </div>
                     </div>
                     <div className='SliderContainer'>
-                        <div className='BannerContainer BannerContainer_2'>
+                        <div
+                            className='BannerContainer BannerContainer_2'
+                            title='Slider is stopping'>
                             <img
                                 src={banner_2bg}
                                 alt=''
@@ -71,7 +75,7 @@ const SliderBanner = () => {
                     </div>
                 </OwlCarousel>
             </div>
-        </article>
+        </section>
     );
 };
 

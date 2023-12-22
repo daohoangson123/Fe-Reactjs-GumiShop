@@ -1,24 +1,67 @@
-.secthide {
-    transform: translateY(10%);
+/* not working yet */
+
+section {
+    animation-timeline: view() !important;
+    animation-range: entry 200px !important;
+}
+
+.Good4MeDeal {
     opacity: 0;
+    animation: fade-in ease-in-out forwards;
 }
 
-.sectshow {
-    transition: var(--transition-fast);
-    animation: sectIn 1s ease-in-out both;
-    animation-delay: 0.2s;
+.Good4MeDeal .ProductItem {
+    animation: slide-in-left linear forwards;
+    animation-timeline: view() !important;
+    animation-range: entry 200px !important;
 }
 
-@keyframes sectIn {
-    0% {
-        transform: translateY(20%);
-        opacity: 0;
-    }
-    50% {
-        transform: translateY(0);
-        opacity: 0.7;
-    }
-    100% {
+.Control {
+    opacity: 0.5;
+    translate: -100% 0;
+    animation: slide-in-left linear forwards;
+}
+
+.OurProduct {
+    opacity: 0;
+    translate: 0 -100px;
+    animation: slide-down linear forwards;
+}
+
+.Review {
+    opacity: 0;
+    animation: fade-in ease-in-out forwards;
+}
+
+.ShopAll .ProductItem {
+    animation: slide-up linear forwards;
+    animation-timeline: view() !important;
+    animation-range: entry 200px !important;
+}
+
+@keyframes fade-in {
+    to {
         opacity: 1;
+    }
+}
+
+@keyframes slide-in-left {
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes slide-down {
+    to {
+        opacity: 1;
+        translate: 0 0;
+    }
+}
+
+@keyframes slide-up {
+    to {
+        opacity: 1;
+        translate: 0 0;
     }
 }

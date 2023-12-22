@@ -17,16 +17,6 @@
     --font-default: 'Jost', sans-serif;
     --transition-fast: all 0.2s ease-in-out;
     --transition-slow: all 0.5s ease-in-out;
-    --imgLoading: imgLoading 0.7s linear infinite alternate;
-}
-
-@keyframes imgLoading {
-    from {
-        background-color: var(--color-icon);
-    }
-    to {
-        background-color: var(--color-text);
-    }
 }
 
 * {
@@ -76,10 +66,13 @@ li {
 
 .ProductContainer {
     display: grid;
-    grid-template-columns: repeat(auto-fit, 200px);
+    grid-template-columns: repeat(auto-fit, 180px);
     justify-content: center;
     gap: 30px;
-    transition: all 0.3s ease-in-out;
+}
+
+.Container {
+    padding: 40px 20px;
 }
 
 .Toastify__toast-container--top-center {
@@ -88,21 +81,10 @@ li {
 
 @media (width >= 1024px) {
     .ProductContainer {
-        grid-template-columns: repeat(auto-fit, 250px);
+        grid-template-columns: repeat(auto-fit, 200px);
     }
-}
 
-.Container {
-    padding: 40px 20px;
-}
-
-@media (width >= 1024px) {
     .Container {
         padding: 60px;
     }
-}
-
-.preventScroll {
-    height: 100%;
-    overflow: hidden;
 }
