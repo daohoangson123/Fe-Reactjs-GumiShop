@@ -1,5 +1,6 @@
-.ProductDetailLayout {
-    margin-top: 20px;
+.ProductDetail {
+    margin-top: 10px;
+    min-height: 500px;
 }
 
 .ProductDetail__Breadcrumbs {

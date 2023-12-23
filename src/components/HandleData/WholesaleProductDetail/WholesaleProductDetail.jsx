@@ -34,17 +34,26 @@ const WholesaleProductDetail = () => {
             },
         );
 
+    const maxedStockNotify = () =>
+        toast.error(`This product is out of stock`, {
+            position: 'top-center',
+        });
+
     const colorPickNotify = () =>
         toast.error(`Please pick color`, {
             position: 'top-center',
         });
 
     function handleAddToCart(product) {
-        if (product.color !== undefined) {
-            dispatch(addToCart(product));
-            addNotify();
-        } else {
-            colorPickNotify();
+        try {
+            if (product.color !== undefined) {
+                dispatch(addToCart(product));
+                addNotify();
+            } else {
+                colorPickNotify();
+            }
+        } catch (error) {
+            maxedStockNotify();
         }
     }
 

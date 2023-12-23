@@ -4,9 +4,9 @@
 }
 
 .owl-item.active .ProductBanner__Title {
-    -webkit-animation: tilt-in-fwd-tr 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    -webkit-animation: tilt-in-fwd-tr 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
         both;
-    animation: tilt-in-fwd-tr 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: tilt-in-fwd-tr 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation-delay: 1s;
 }
 
@@ -18,9 +18,9 @@
 }
 
 .owl-item.active .ProductBanner__Name {
-    -webkit-animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    -webkit-animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
         both;
-    animation: slide-in-right 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-right 01s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation-delay: 1.5s;
 }
 
@@ -31,9 +31,9 @@
 }
 
 .owl-item.active .ProductBanner__Des {
-    -webkit-animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    -webkit-animation: slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
         both;
-    animation: slide-in-bottom 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation-delay: 1.8s;
 }
 
@@ -46,9 +46,9 @@
 }
 
 .owl-item.active .Product__Btn {
-    -webkit-animation: slide-in-fwd-br 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)
+    -webkit-animation: slide-in-fwd-br 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
         both;
-    animation: slide-in-fwd-br 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+    animation: slide-in-fwd-br 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation-delay: 2s;
 }
 

@@ -1,8 +1,9 @@
 /* not working yet */
 
-section {
+section,
+section .ProductItem {
     animation-timeline: view() !important;
-    animation-range: entry 200px !important;
+    animation-range: entry 150px !important;
 }
 
 .Good4MeDeal {
@@ -12,12 +13,28 @@ section {
 
 .Good4MeDeal .ProductItem {
     animation: slide-in-left linear forwards;
+}
+
+.Good4MeDeal .Good4MeDealBot_Item {
+    opacity: 0;
+    scale: 0;
+    animation: fade-in ease-in-out forwards;
     animation-timeline: view() !important;
-    animation-range: entry 200px !important;
+}
+
+.Good4MeDeal .Good4MeDealBot_Item:first-child {
+    animation-range: entry 50px !important;
+}
+.Good4MeDeal .Good4MeDealBot_Item:nth-child(2) {
+    animation-range: entry 100px !important;
+}
+.Good4MeDeal .Good4MeDealBot_Item:last-child {
+    animation-range: entry 150px !important;
 }
 
 .Control {
     opacity: 0.5;
+    scale: 0.7;
     translate: -100% 0;
     animation: slide-in-left linear forwards;
 }
@@ -28,26 +45,54 @@ section {
     animation: slide-down linear forwards;
 }
 
+.OurProduct .ProductItem {
+    animation: slide-down linear forwards;
+}
+
 .Review {
     opacity: 0;
+    scale: 0;
     animation: fade-in ease-in-out forwards;
+}
+
+.ShopAll {
+    opacity: 0;
+    translate: 0 100px;
+    animation: slide-up linear forwards;
 }
 
 .ShopAll .ProductItem {
     animation: slide-up linear forwards;
+}
+
+.LatestNew .NewsItem {
+    opacity: 0;
+    scale: 0;
+    animation: fade-in ease-in-out forwards;
     animation-timeline: view() !important;
+}
+
+.LatestNew .NewsItem:first-child {
+    animation-range: entry 50px !important;
+}
+.LatestNew .NewsItem:nth-child(2) {
     animation-range: entry 200px !important;
+}
+.LatestNew .NewsItem:last-child {
+    animation-range: entry 350px !important;
 }
 
 @keyframes fade-in {
     to {
         opacity: 1;
+        scale: 1;
     }
 }
 
 @keyframes slide-in-left {
     to {
         opacity: 1;
+        scale: 1;
         translate: 0 0;
     }
 }

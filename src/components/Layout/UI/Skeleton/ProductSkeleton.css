@@ -8,9 +8,8 @@
     height: 20px;
 }
 
-@media (width >= 1024px) {
+@media (width < 1024px) {
     .ProductSkeleton__Img {
-        width: 250px;
-        aspect-ratio: 1;
+        width: 180px;
     }
 }

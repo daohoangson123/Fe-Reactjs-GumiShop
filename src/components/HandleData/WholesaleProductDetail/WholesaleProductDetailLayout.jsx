@@ -162,7 +162,7 @@ const WholesaleProductDetailLayout = ({
                                             onChange={(event) => {
                                                 let newAmount = Math.round(
                                                     event.target.value,
-                                                ).toFixed(0);
+                                                );
                                                 if (newAmount < 1) {
                                                     newAmount = 1;
                                                 } else if (
@@ -171,6 +171,15 @@ const WholesaleProductDetailLayout = ({
                                                 ) {
                                                     newAmount =
                                                         productDetail.store;
+                                                } else if (!isNaN(newAmount)) {
+                                                    newAmount = Math.round(
+                                                        event.target.value,
+                                                    );
+                                                } else {
+                                                    newAmount = quantity;
+                                                    window.alert(
+                                                        'Hey you, you breaking the input!',
+                                                    );
                                                 }
                                                 setQuantity(newAmount);
                                             }}

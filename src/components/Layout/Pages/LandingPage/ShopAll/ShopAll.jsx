@@ -47,7 +47,9 @@ const ShopAll = ({ title }) => {
                                 <div
                                     className='ProductItem'
                                     key={product._id}
-                                    style={{ translate: `0 ${index * 100}%` }}>
+                                    style={{
+                                        translate: `0 ${(index + 1) * 70}px`,
+                                    }}>
                                     <Product
                                         id={product._id}
                                         url={product.img}

@@ -42,11 +42,11 @@ const OurProduct = ({ title }) => {
                 {load.length === 0 ? (
                     <ProductSkeleton />
                 ) : (
-                    load.map((product) => (
+                    load.map((product, index) => (
                         <div
                             className='ProductItem'
                             key={product._id}
-                        >
+                            style={{ translate: `0 -${(index + 1) * 20}px` }}>
                             <Product
                                 id={product._id}
                                 url={product.img}
@@ -66,8 +66,7 @@ const OurProduct = ({ title }) => {
             {load.length !== 0 && (
                 <div
                     className='LoadMore'
-                    onClick={loadmore}
-                >
+                    onClick={loadmore}>
                     {load.length < productApi.length
                         ? 'VIEW ALL PRODUCTS'
                         : 'VIEW LESS PRODUCTS'}

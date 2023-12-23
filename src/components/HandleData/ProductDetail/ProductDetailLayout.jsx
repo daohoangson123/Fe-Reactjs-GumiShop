@@ -13,7 +13,11 @@ const ProductDetailLayout = ({
 }) => {
     const addNotify = () =>
         toast.success(
-            `${quantity + ' ' + productDetail.name} added to your Cart`,
+            `${
+                isNaN(quantity)
+                    ? 1 + ' ' + productDetail.name
+                    : quantity + ' ' + productDetail.name
+            } added to your Cart`,
             {
                 position: 'bottom-right',
             },
@@ -22,19 +26,23 @@ const ProductDetailLayout = ({
     return (
         <div className='ProductDetailLayout'>
             {productDetail.length === 0 ? (
-                <div className='Container'>
-                    <Skeleton className='ProductDetail__Breadcrumbs' />
-                    <div className='ProductDetailLayout__Box ProductDetailLayoutSkeleton__Box Container'>
-                        <Skeleton
-                            containerClassName='grid-container'
-                            className='ProductDetailSkeleton__Img'
-                        />
-                        <Skeleton
-                            width={280}
-                            count={6}
-                        />
+                <>
+                    <div style={{ paddingLeft: '30px' }}>
+                        <Skeleton className='ProductDetail__Breadcrumbs' />
                     </div>
-                </div>
+                    <div className='Container'>
+                        <div className='ProductDetailLayout__Box ProductDetailLayoutSkeleton__Box Container'>
+                            <Skeleton
+                                containerClassName='grid-container'
+                                className='ProductDetailSkeleton__Img'
+                            />
+                            <Skeleton
+                                width={280}
+                                count={6}
+                            />
+                        </div>
+                    </div>
+                </>
             ) : (
                 <>
                     <Breadcrumbs />
@@ -70,16 +78,15 @@ const ProductDetailLayout = ({
                                     quantity > 10
                                         ? setQuantity((pre) => pre - 10)
                                         : setQuantity(1);
-                                }}
-                            ></button>
+                                }}></button>
                             <button
                                 className='Quantity_Btn'
                                 type='button'
                                 onClick={() => {
-                                    quantity > 1 &&
+                                    if (quantity > 1 && !isNaN(quantity)) {
                                         setQuantity((pre) => pre - 1);
-                                }}
-                            >
+                                    } else setQuantity(1);
+                                }}>
                                 -
                             </button>
                             <input
@@ -104,6 +111,11 @@ const ProductDetailLayout = ({
                                         newAmount = Math.round(
                                             event.target.value,
                                         );
+                                    } else {
+                                        newAmount = quantity;
+                                        window.alert(
+                                            'Hey you, you breaking the input!',
+                                        );
                                     }
                                     setQuantity(newAmount);
                                 }}
@@ -119,11 +131,10 @@ const ProductDetailLayout = ({
                                 className='Quantity_Btn'
                                 type='button'
                                 onClick={() => {
-                                    if (quantity < 1000) {
+                                    if (quantity < 1000 && !isNaN(quantity)) {
                                         setQuantity((pre) => pre + 1);
-                                    }
-                                }}
-                            >
+                                    } else setQuantity(1);
+                                }}>
                                 +
                             </button>
                             <button
@@ -135,8 +146,7 @@ const ProductDetailLayout = ({
                                     } else {
                                         setQuantity(1000);
                                     }
-                                }}
-                            ></button>
+                                }}></button>
                             <button
                                 className='AddToCart_Btn'
                                 type='button'
@@ -147,11 +157,10 @@ const ProductDetailLayout = ({
                                         name: productDetail.name,
                                         price: productDetail.price,
                                         discount: productDetail.discouter,
-                                        amount: quantity,
+                                        amount: isNaN(quantity) ? 1 : quantity,
                                     });
                                     addNotify();
-                                }}
-                            >
+                                }}>
                                 Add
                             </button>
                         </form>

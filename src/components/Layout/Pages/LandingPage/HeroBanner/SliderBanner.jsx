@@ -28,8 +28,8 @@ const SliderBanner = () => {
                     responsiveRefreshRate={0}
                     autoplay
                     autoplayHoverPause
-                    autoplaySpeed={3000}
-                    autoplayTimeout={4000}
+                    autoplaySpeed={3500}
+                    autoplayTimeout={5000}
                     items={1}
                     nav={false}
                     dots={false}

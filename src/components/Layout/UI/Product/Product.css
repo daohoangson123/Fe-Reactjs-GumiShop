@@ -1,17 +1,11 @@
 .Product {
-    min-height: 325px;
+    min-height: 270px;
     transition: var(--transition-fast);
-    /* animation: productIn 0.3s linear; */
 }
 
-/* @keyframes productIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-} */
+.Product:hover .AddToCart_Bg {
+    top: 0;
+}
 
 .Product__Img-Container {
     position: relative;
@@ -23,10 +17,6 @@
 .ProductItem img {
     width: 100%;
     aspect-ratio: 1;
-}
-
-.Product__Img-Container:hover .AddToCart_Bg {
-    top: 0;
 }
 
 .AddToCart_Bg {

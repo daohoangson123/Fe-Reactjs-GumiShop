@@ -39,7 +39,7 @@ const Good4MeDeal = ({ tittle, content }) => {
                         <div
                             className='ProductItem'
                             key={product._id}
-                            style={{ translate: `-${(index + 1) * 100}% 0` }}>
+                            style={{ translate: `-${(index + 1) * 500}px 0` }}>
                             <Product
                                 id={product._id}
                                 url={product.img}

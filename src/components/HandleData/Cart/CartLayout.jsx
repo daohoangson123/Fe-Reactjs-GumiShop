@@ -21,8 +21,7 @@ const CartForm = ({
     return (
         <form
             className='Cart-Item_Form Container'
-            onSubmit={handleSubmit}
-        >
+            onSubmit={handleSubmit}>
             {totalItem > 0 && totalItem ? (
                 <>
                     <div className='Cart-Item-List Cart-Item-List-Header'>
@@ -49,12 +48,20 @@ const CartForm = ({
                                 return (
                                     <div
                                         className='Cart-Item'
-                                        key={item.id}
-                                    >
-                                        <img
-                                            src={item.img}
-                                            alt={item.name}
-                                        />
+                                        key={item.id}>
+                                        <Link
+                                            to={
+                                                item.color
+                                                    ? `/wholesale/${item.id}`
+                                                    : `/shop/${item.name
+                                                          .split(' ')
+                                                          .join('-')}`
+                                            }>
+                                            <img
+                                                src={item.img}
+                                                alt={item.name}
+                                            />
+                                        </Link>
                                         <div className='Cart-Item_Name'>
                                             {item.name}
                                         </div>
@@ -75,8 +82,7 @@ const CartForm = ({
                                                             '1 is minimun',
                                                         );
                                                     }
-                                                }}
-                                            >
+                                                }}>
                                                 -
                                             </button>
                                             <input
@@ -129,8 +135,7 @@ const CartForm = ({
                                                             `${item.stock} is max`,
                                                         );
                                                     }
-                                                }}
-                                            >
+                                                }}>
                                                 +
                                             </button>
                                         </div>
@@ -145,8 +150,7 @@ const CartForm = ({
                                                     id: item.id,
                                                 });
                                                 removeNotify();
-                                            }}
-                                        >
+                                            }}>
                                             <i className='fa-solid fa-trash-can'></i>
                                         </button>
                                     </div>
@@ -168,13 +172,11 @@ const CartForm = ({
                                 className='Buy_Btn'
                                 disabled={purchasing}
                                 type='submit'
-                                onSubmit={handleSubmit}
-                            >
+                                onSubmit={handleSubmit}>
                                 {!isSignIn ? (
                                     <Link
                                         to='/userSignIn'
-                                        title='Please SignIn'
-                                    >
+                                        title='Please SignIn'>
                                         Sign In
                                     </Link>
                                 ) : (
@@ -193,8 +195,7 @@ const CartForm = ({
                                     fontSize: '14px',
                                     color: 'red',
                                     marginTop: '10px',
-                                }}
-                            >
+                                }}>
                                 {!isSignIn && (
                                     <span>
                                         Your are not Sign In yet!
@@ -211,15 +212,13 @@ const CartForm = ({
                     <div className='ToShopLink'>
                         <Link
                             to='/shop'
-                            title='Shopping Now'
-                        >
+                            title='Shopping Now'>
                             Shopping Now
                         </Link>
                     </div>
                     <img
                         src={emptyCart}
-                        alt='EmptyCart'
-                    ></img>
+                        alt='EmptyCart'></img>
                 </div>
             )}
         </form>

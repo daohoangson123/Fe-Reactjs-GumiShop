@@ -15,9 +15,26 @@ const rootReducer = (state = initState, action) => {
                         ...state,
                         myCart: [
                             ...state.myCart.filter((item) => {
-                                if (item.id === action.payload.id) {
+                                if (
+                                    item.id === action.payload.id &&
+                                    item.stock === undefined
+                                ) {
                                     return (item.amount +=
                                         action.payload.amount);
+                                }
+                                if (
+                                    item.id === action.payload.id &&
+                                    item.amount + action.payload.amount <=
+                                        item.stock
+                                ) {
+                                    return (item.amount +=
+                                        action.payload.amount);
+                                } else if (
+                                    item.id === action.payload.id &&
+                                    item.amount + action.payload.amount >
+                                        item.stock
+                                ) {
+                                    throw new Error('maxed stock');
                                 }
                                 return state.myCart;
                             }),

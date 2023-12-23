@@ -74,7 +74,7 @@
     text-align: center;
 }
 
-.Cart-Item > img {
+.Cart-Item img {
     grid-area: 1 / 1;
     align-self: center;
     width: 70px;
