@@ -1,18 +1,17 @@
-/* not working yet */
-
 section,
 section .ProductItem {
     animation-timeline: view() !important;
-    animation-range: entry 150px !important;
+    animation-range: 150px 350px !important;
 }
 
-.Good4MeDeal {
+/* .Good4MeDeal {
     opacity: 0;
     animation: fade-in ease-in-out forwards;
-}
+} */
 
 .Good4MeDeal .ProductItem {
-    animation: slide-in-left linear forwards;
+    opacity: 0;
+    animation: slide-in linear forwards;
 }
 
 .Good4MeDeal .Good4MeDealBot_Item {
@@ -36,7 +35,7 @@ section .ProductItem {
     opacity: 0.5;
     scale: 0.7;
     translate: -100% 0;
-    animation: slide-in-left linear forwards;
+    animation: slide-in linear forwards;
 }
 
 .OurProduct {
@@ -89,7 +88,7 @@ section .ProductItem {
     }
 }
 
-@keyframes slide-in-left {
+@keyframes slide-in {
     to {
         opacity: 1;
         scale: 1;

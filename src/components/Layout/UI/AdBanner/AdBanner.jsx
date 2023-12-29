@@ -4,6 +4,7 @@ import ad from '../../../../assets/img/product3.webp';
 //
 import { useEffect, useState } from 'react';
 //
+import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 const AdBanner = () => {
     const [layerClosed, setLayerClosed] = useState(() => {
@@ -11,26 +12,23 @@ const AdBanner = () => {
         const initialValue = JSON.parse(saved);
         return initialValue || false;
     });
-    const [isLoaded, setIsLoaded] = useState(false);
 
+    const [pageLoaded, setPageLoaded] = useState(false);
     useEffect(() => {
-        const htmlBody = document.querySelectorAll(['html', 'body']);
+        setPageLoaded(true);
         const firstLoadLayer = document.getElementById('PageFisrtLoad');
         const closeLayerBtn = document.getElementById('AdBanner__Btn');
 
         function preventScroll() {
-            if (firstLoadLayer && !layerClosed) {
-                htmlBody.forEach((item) => item.classList.add('preventScroll'));
+            if (!layerClosed) {
+                disableBodyScroll(firstLoadLayer);
             }
         }
+
         preventScroll();
 
         function removePreventScroll() {
-            htmlBody.forEach((item) => item.classList.remove('preventScroll'));
-        }
-
-        if (firstLoadLayer && !layerClosed) {
-            setTimeout(() => (firstLoadLayer.style.display = 'grid'), 200);
+            clearAllBodyScrollLocks();
         }
 
         function removeFirstLoadLayer() {
@@ -45,26 +43,23 @@ const AdBanner = () => {
             closeLayerBtn.addEventListener('click', removeFirstLoadLayer);
 
         localStorage.setItem('layerClosed', JSON.stringify(layerClosed));
-    }, [layerClosed, isLoaded]);
+    }, [layerClosed, pageLoaded]);
 
     return (
         <div
             id='PageFisrtLoad'
             className='PageFisrtLoad'>
             <div className='AdBanner-Container'>
-                {isLoaded && (
-                    <button
-                        type='button'
-                        id='AdBanner__Btn'
-                        className='AdBanner__Btn'>
-                        <i className='fa-solid fa-xmark'></i>
-                    </button>
-                )}
+                <button
+                    type='button'
+                    id='AdBanner__Btn'
+                    className='AdBanner__Btn'>
+                    <i className='fa-solid fa-xmark'></i>
+                </button>
                 <img
                     src={ad}
                     alt='AD Banner Img'
                     className='AdBanner_Img'
-                    onLoad={() => setIsLoaded(true)}
                 />
             </div>
         </div>

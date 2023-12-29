@@ -27,6 +27,7 @@ const SliderBanner = () => {
                     className='owl-theme'
                     responsiveRefreshRate={0}
                     autoplay
+                    mouseDrag={false}
                     autoplayHoverPause
                     autoplaySpeed={3500}
                     autoplayTimeout={5000}

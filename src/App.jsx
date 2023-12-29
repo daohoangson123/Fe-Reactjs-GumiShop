@@ -15,10 +15,10 @@ function App() {
 
     return (
         <div className='App'>
+            {!initialValue && <AdBanner />}
             <Header />
             <Main />
             <Footer />
-            {!initialValue && <AdBanner />}
             <ToastContainer
                 autoClose={1500}
                 limit={2}

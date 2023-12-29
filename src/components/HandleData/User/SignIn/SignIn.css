@@ -202,3 +202,8 @@
     aspect-ratio: 1;
     margin-right: 10px;
 }
+
+.page-item.disabled .page-link {
+    background-color: #0d6efd;
+    color: #ffffff;
+}

@@ -1,6 +1,6 @@
 import './MobileMenuToggle.css';
 //
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
     disableBodyScroll,
@@ -14,29 +14,42 @@ const MobileMenuRouting = ({
     setMenuOpen,
     navlinkData,
 }) => {
+    const menuRef = useRef();
+
+    useEffect(() => {
+        const toggleBodyLock = (event) => {
+            if (menuRef.current.contains(event.target)) {
+                clearAllBodyScrollLocks();
+                setMenuOpen(false);
+            }
+        };
+
+        menuRef.current.addEventListener('mousedown', toggleBodyLock);
+    });
+
     return (
         <div
+            ref={menuRef}
+            title='Close Menu'
             className='MobileMenu__NavContainer'
             style={{
                 height: menuVisible && '100vh',
-            }}
-        >
+            }}>
             <div
                 className='MobileMenu__Nav'
                 style={{
                     transition: !isMobileView && 'none',
-                }}
-            >
+                }}>
                 {navlinkData.map((item) => (
                     <NavLink
                         to={item.path}
                         key={item.name}
                         className='MobileMenu__Item'
+                        title={item.name}
                         onClick={() => {
                             setMenuOpen(false);
                             clearAllBodyScrollLocks();
-                        }}
-                    >
+                        }}>
                         {item.name}
                     </NavLink>
                 ))}
@@ -83,31 +96,32 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
             setMenuVisible(false);
         }
 
-        const mobileMenu = document.getElementById('MobileMenu');
+        // const mobileMenu = document.getElementById('MobileMenu');
 
-        const checkMenuDimension = (event) => {
-            const mbDimensons = mobileMenu.getBoundingClientRect();
-            if (
-                (event.clientX < mbDimensons.left ||
-                    event.clientX > mbDimensons.right ||
-                    event.clientY < mbDimensons.top ||
-                    event.clientY > mbDimensons.bottom) &&
-                menuOpen
-            ) {
-                setMenuOpen(false);
-                // hạn chế gọi hàm
-                window.removeEventListener('click', checkMenuDimension);
-            }
-        };
+        // const checkMenuDimension = (event) => {
+        //     const mbDimensons = mobileMenu.getBoundingClientRect();
+        //     if (
+        //         (event.clientX < mbDimensons.left ||
+        //             event.clientX > mbDimensons.right ||
+        //             event.clientY < mbDimensons.top ||
+        //             event.clientY > mbDimensons.bottom) &&
+        //         menuOpen
+        //     ) {
+        //         setMenuOpen(false);
+        //         enableBodyScroll(openMenu);
+        //         // hạn chế gọi hàm
+        //         window.removeEventListener('click', checkMenuDimension);
+        //     }
+        // };
 
-        window.addEventListener('click', checkMenuDimension);
+        // window.addEventListener('click', checkMenuDimension);
     }, [menuOpen]);
 
     return (
         <>
             <button
+                title={menuOpen ? 'Close Menu' : 'Open Menu'}
                 type='button'
-                title='Menu'
                 className='MobileMenu'
                 id='MobileMenu'
                 onClick={() => {
@@ -119,8 +133,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                 aria-label='MobileMenuToggle'
                 style={{
                     backgroundColor: menuOpen && 'rgba(0, 0, 0, 0.3)',
-                }}
-            >
+                }}>
                 <div
                     className='MenuIcon1 MenuIcon '
                     style={
@@ -131,14 +144,12 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(45deg) translateX(1px) translateY(-5px)',
                               }
                             : null
-                    }
-                ></div>
+                    }></div>
                 <div
                     className='MenuIcon2 MenuIcon'
                     style={{
                         display: menuOpen && 'none',
-                    }}
-                ></div>
+                    }}></div>
                 <div
                     className='MenuIcon3 MenuIcon '
                     style={
@@ -150,8 +161,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
                                       'rotate(-45deg) translateX(1px) translateY(5px)',
                               }
                             : null
-                    }
-                ></div>
+                    }></div>
             </button>
             <MobileMenuRouting
                 isMobileView={isMobileView}

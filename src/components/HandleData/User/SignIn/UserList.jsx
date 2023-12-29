@@ -14,6 +14,7 @@ const UserList = () => {
             <Pagination.Item
                 key={number}
                 active={number === active}
+                disabled={number === active}
                 onClick={() => {
                     setLoadingUserList(true);
                     setTimeout(() => {
@@ -34,6 +35,7 @@ const UserList = () => {
     };
     useEffect(() => {
         getUserList();
+        // eslint-disable-next-line
     }, [active]);
     return (
         <div className='User_List'>
