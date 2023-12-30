@@ -6,7 +6,7 @@
     height: 100vh;
     gap: 30px;
     background-color: var(--color-alt-rgba-5);
-    z-index: 1000;
+    z-index: 9999;
 }
 
 .AdBanner-Container {
