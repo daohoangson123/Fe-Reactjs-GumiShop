@@ -1,7 +1,7 @@
 section,
 section .ProductItem {
     animation-timeline: view() !important;
-    animation-range: 150px 350px !important;
+    animation-range: 100px 300px !important;
 }
 
 /* .Good4MeDeal {
@@ -12,6 +12,7 @@ section .ProductItem {
 .Good4MeDeal .ProductItem {
     opacity: 0;
     animation: slide-in linear forwards;
+    animation-range: 50px 200px !important;
 }
 
 .Good4MeDeal .Good4MeDealBot_Item {
@@ -40,12 +41,14 @@ section .ProductItem {
 
 .OurProduct {
     opacity: 0;
-    translate: 0 -100px;
+    translate: 0 -70px;
     animation: slide-down linear forwards;
 }
 
 .OurProduct .ProductItem {
-    animation: slide-down linear forwards;
+    scale: 0;
+    animation-range: 50px 200px !important;
+    animation: fade-in linear forwards;
 }
 
 .Review {
@@ -75,10 +78,10 @@ section .ProductItem {
     animation-range: entry 50px !important;
 }
 .LatestNew .NewsItem:nth-child(2) {
-    animation-range: entry 200px !important;
+    animation-range: entry 100px !important;
 }
 .LatestNew .NewsItem:last-child {
-    animation-range: entry 350px !important;
+    animation-range: entry 150px !important;
 }
 
 @keyframes fade-in {

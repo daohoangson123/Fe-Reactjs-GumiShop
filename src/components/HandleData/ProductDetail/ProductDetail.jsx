@@ -34,6 +34,7 @@ const ProductDetail = () => {
     useEffect(() => {
         setProductDetail([]);
         setTimeout(() => getProducts(), 500);
+        // eslint-disable-next-line
     }, [id]);
 
     return (
