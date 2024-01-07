@@ -30,7 +30,7 @@ const SliderBanner = () => {
                     autoplay
                     autoplayHoverPause
                     // mouseDrag={false}
-                    touchDrag={false}
+                    // touchDrag={false}
                     // pullDrag={false}
                     autoplaySpeed={4000}
                     autoplayTimeout={8000}
