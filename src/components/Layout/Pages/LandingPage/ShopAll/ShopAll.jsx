@@ -48,8 +48,9 @@ const ShopAll = ({ title }) => {
                                     className='ProductItem'
                                     key={product._id}
                                     style={{
-                                        translate: `0 ${(index + 1) * 70}px`,
-                                    }}>
+                                        translate: `0 ${(index + 1) * 20}px`,
+                                    }}
+                                >
                                     <Product
                                         id={product._id}
                                         url={product.img}
@@ -73,7 +74,8 @@ const ShopAll = ({ title }) => {
                             } else {
                                 setLoadMore(0);
                             }
-                        }}>
+                        }}
+                    >
                         {loadMore < productLength / 2
                             ? 'SHOW MORE'
                             : 'SHOW LESS'}

@@ -14,7 +14,7 @@
 }
 
 .AdBanner_Img {
-    width: clamp(280px, 50vw, 600px);
+    width: clamp(280px, 50vw, 400px);
     aspect-ratio: 1;
     transition: var(--transition-fast);
 }

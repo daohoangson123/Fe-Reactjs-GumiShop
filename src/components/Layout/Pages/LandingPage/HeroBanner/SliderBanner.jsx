@@ -22,7 +22,8 @@ const SliderBanner = () => {
                 style={{
                     opacity: isBannerLoaded ? 1 : 0,
                     transition: '0.3s linear',
-                }}>
+                }}
+            >
                 <OwlCarousel
                     className='owl-theme'
                     mouseDrag={false}
@@ -31,16 +32,21 @@ const SliderBanner = () => {
                     responsiveRefreshRate={0}
                     autoplay
                     autoplayHoverPause
-                    autoplaySpeed={3500}
-                    autoplayTimeout={5000}
+                    // mouseDrag={false}
+                    // touchDrag={false}
+                    // pullDrag={false}
+                    autoplaySpeed={4000}
+                    autoplayTimeout={8000}
                     items={1}
                     nav={false}
                     dots={false}
-                    loop>
+                    loop
+                >
                     <div className='SliderContainer'>
                         <div
                             className='BannerContainer BannerContainer_1'
-                            title='Slider is stopping'>
+                            title='Slider is stopping'
+                        >
                             <img
                                 src={banner_1bg}
                                 alt=''
@@ -60,7 +66,8 @@ const SliderBanner = () => {
                     <div className='SliderContainer'>
                         <div
                             className='BannerContainer BannerContainer_2'
-                            title='Slider is stopping'>
+                            title='Slider is stopping'
+                        >
                             <img
                                 src={banner_2bg}
                                 alt=''
