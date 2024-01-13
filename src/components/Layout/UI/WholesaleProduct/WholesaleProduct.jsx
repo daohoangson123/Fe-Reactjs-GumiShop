@@ -1,6 +1,7 @@
 import './WholesaleProduct.css';
 //
 import brokenImg from '../../../../assets/img/brokenImg.png';
+// eslint-disable-next-line
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -9,40 +10,39 @@ const WholesaleProduct = ({ props }) => {
     const orgPrice = props.price + props.discouter;
     const salePercent = 100 - (props.price / orgPrice) * 100;
 
-    useEffect(() => {
-        function load(img) {
-            const url = img.getAttribute('lazysrc');
-            img.setAttribute('src', url);
-        }
+    // useEffect(() => {
+    //     function load(img) {
+    //         const url = img.getAttribute('lazysrc');
+    //         img.setAttribute('src', url);
+    //     }
 
-        const lazyImgs = document.querySelectorAll('[lazysrc]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    load(entry.target);
-                }
-            });
-        });
+    //     const lazyImgs = document.querySelectorAll('[lazysrc]');
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach((entry) => {
+    //             if (entry.isIntersecting) {
+    //                 load(entry.target);
+    //             }
+    //         });
+    //     });
 
-        lazyImgs.forEach((img) => {
-            observer.observe(img);
-        });
+    //     lazyImgs.forEach((img) => {
+    //         observer.observe(img);
+    //     });
 
-        return () => observer.disconnect();
-    }, []);
+    //     return () => observer.disconnect();
+    // }, []);
 
     return (
         <div
             className='WholesaleProduct'
-            title={`Product: ${props.name}`}
-        >
+            title={`Product: ${props.name}`}>
             <Link to={`/wholesale/${props._id}`}>
                 <div className='WholesaleProduct__ImgContainer'>
                     <img
                         className='WholesaleProduct__Img'
-                        src={isImgError ? brokenImg : null}
+                        src={isImgError ? brokenImg : props.img}
                         alt={props.name}
-                        lazysrc={isImgError ? brokenImg : props.img}
+                        // lazysrc={isImgError ? brokenImg : props.img}
                         onError={() => setIsImgError(true)}
                     />
                 </div>

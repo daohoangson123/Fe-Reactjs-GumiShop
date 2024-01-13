@@ -64,7 +64,7 @@
     .owl-item.active .SliderBanner_2 {
         -webkit-animation: blur-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         animation: blur-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        animation-delay: 0.7s;
+        animation-delay: 1s;
     }
 
     .SliderBanner_1 {
@@ -78,7 +78,7 @@
     .SliderBanner_1,
     .SliderBanner_2 {
         min-height: 300px;
-        background-color: rgba(0, 0, 0, 0.6);
+        background-color: rgba(0, 0, 0, 0.7);
     }
 }
 

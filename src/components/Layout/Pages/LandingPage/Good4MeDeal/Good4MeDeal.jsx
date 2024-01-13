@@ -38,8 +38,7 @@ const Good4MeDeal = ({ tittle, content }) => {
                     productApi.map((product, index) => (
                         <div
                             className='ProductItem'
-                            key={product._id}
-                            style={{ translate: `-2000px 0` }}>
+                            key={product._id}>
                             <Product
                                 id={product._id}
                                 url={product.img}

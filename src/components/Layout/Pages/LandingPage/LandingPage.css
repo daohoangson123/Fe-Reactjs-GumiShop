@@ -11,7 +11,8 @@ section .ProductItem {
 
 .Good4MeDeal .ProductItem {
     opacity: 0;
-    animation: slide-in linear forwards;
+    animation: fade-in ease-in-out forwards;
+    animation-range: 250px 350px !important;
 }
 
 .Good4MeDeal .Good4MeDealBot_Item {
@@ -107,5 +108,12 @@ section .ProductItem {
     to {
         opacity: 1;
         translate: 0 0;
+    }
+}
+
+@media (height < 700px) {
+    .OurProduct .ProductItem {
+        animation: fade-in !important;
+        translate: none !important;
     }
 }

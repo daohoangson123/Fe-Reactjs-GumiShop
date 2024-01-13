@@ -1,5 +1,6 @@
 import './Product.css';
 //
+// eslint-disable-next-line
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 //
@@ -39,46 +40,44 @@ const Product = (props) => {
         removeNotify();
     }
 
-    useEffect(() => {
-        function load(img) {
-            const url = img.getAttribute('lazysrc');
-            img.setAttribute('src', url);
-        }
+    // useEffect(() => {
+    //     function load(img) {
+    //         const url = img.getAttribute('lazysrc');
+    //         img.setAttribute('src', url);
+    //     }
 
-        const lazyImgs = document.querySelectorAll('[lazysrc]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    load(entry.target);
-                }
-            });
-        });
+    //     const lazyImgs = document.querySelectorAll('[lazysrc]');
+    //     const observer = new IntersectionObserver((entries) => {
+    //         entries.forEach((entry) => {
+    //             if (entry.isIntersecting) {
+    //                 load(entry.target);
+    //             }
+    //         });
+    //     });
 
-        lazyImgs.forEach((img) => {
-            observer.observe(img);
-        });
+    //     lazyImgs.forEach((img) => {
+    //         observer.observe(img);
+    //     });
 
-        return () => observer.disconnect();
-    }, []);
+    //     return () => observer.disconnect();
+    // }, []);
 
     return (
         <div className='Product'>
             <div className='Product__Img-Container'>
                 <img
-                    src={null}
-                    alt=''
-                    lazysrc={props.url}
+                    src={props.url}
+                    alt={props.name}
+                    // lazysrc={props.url}
                     // style={{ backgroundColor: props.url }}
                 />
                 <div
                     className='AddToCart_Bg'
-                    style={{ top: isAdded && 0 }}
-                >
+                    style={{ top: isAdded && 0 }}>
                     <Link
                         className='ProductLink'
                         title='Go to Product Detail'
-                        to={`/shop/${props.name.split(' ').join('-')}`}
-                    >
+                        to={`/shop/${props.name.split(' ').join('-')}`}>
                         Detail
                     </Link>
                     <button
@@ -107,24 +106,21 @@ const Product = (props) => {
                                 });
                                 setIsAdded(false);
                             }
-                        }}
-                    >
+                        }}>
                         {!isAdded ? 'Add' : 'Remove'}
                     </button>
                 </div>
                 {props.sale ? (
                     <div
                         className='Product__Sale'
-                        title='Product On Sale'
-                    >
+                        title='Product On Sale'>
                         ON SALE
                     </div>
                 ) : null}
             </div>
             <div
                 className='Product__Name'
-                style={props.style}
-            >
+                style={props.style}>
                 {props.name}
             </div>
             <div className='Product__Prices'>

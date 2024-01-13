@@ -25,9 +25,11 @@ const SliderBanner = () => {
                 }}>
                 <OwlCarousel
                     className='owl-theme'
+                    mouseDrag={false}
+                    pullDrag={false}
+                    touchDrag={false}
                     responsiveRefreshRate={0}
                     autoplay
-                    mouseDrag={false}
                     autoplayHoverPause
                     autoplaySpeed={3500}
                     autoplayTimeout={5000}
