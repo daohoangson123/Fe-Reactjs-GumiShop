@@ -12,6 +12,7 @@ import WholesaleFilter from './ToggleFilter';
 import SectionTitle from '../../UI/SectionTitle/SectionTitle';
 import { fetchProductApi } from '../../../../data/axiosAPI/productData';
 import mockData from '../../../../data/axiosAPI/mockData';
+import Skeleton from 'react-loading-skeleton';
 //
 
 const WholesaleLayout = ({ title, productApi }) => {
@@ -83,7 +84,7 @@ const WholesaleLayout = ({ title, productApi }) => {
 
     return (
         <div className='WholesaleLayout'>
-            {productApi.length > 0 && (
+            {productApi.length > 0 ? (
                 <>
                     <SectionTitle content={title} />
                     <WholesaleFilter
@@ -97,11 +98,16 @@ const WholesaleLayout = ({ title, productApi }) => {
                         setCurBrand={setCurBrand}
                     />
                 </>
+            ) : (
+                <div style={{ textAlign: 'center', marginBottom: '20px' }}>
+                    <Skeleton
+                        width={200}
+                        height={50}
+                    />
+                </div>
             )}
             <div className='Wholesale__Product-Container'>
-                {filtered.length === 0 &&
-                curBrand === 'All' &&
-                curCategory === 'All' ? (
+                {filtered.length === 0 ? (
                     <>
                         <ProductSkeleton imgWidth={200} />
                         <ProductSkeleton imgWidth={200} />

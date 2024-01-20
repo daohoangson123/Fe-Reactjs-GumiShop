@@ -33,13 +33,10 @@ const MobileMenuRouting = ({
             title='Close Menu'
             className='MobileMenu__NavContainer'
             style={{
-                height: menuVisible && '100vh',
+                height: menuVisible && '100dvh',
+                transition: !isMobileView && 'none',
             }}>
-            <div
-                className='MobileMenu__Nav'
-                style={{
-                    transition: !isMobileView && 'none',
-                }}>
+            <div className='MobileMenu__Nav'>
                 {navlinkData.map((item) => (
                     <NavLink
                         to={item.path}

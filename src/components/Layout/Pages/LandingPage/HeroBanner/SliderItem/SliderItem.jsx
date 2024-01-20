@@ -8,7 +8,9 @@ const SliderItem = ({ title, name, descript, btn }) => {
             <div className='ProductBanner__Title'>{title}</div>
             <div className='ProductBanner__Name'>{name}</div>
             <p className='ProductBanner__Des'>{descript}</p>
-            <div className='Product__Btn'>
+            <div
+                className='Product__Btn'
+                title='To Shop'>
                 <Link to='/shop'>{btn}</Link>
             </div>
         </div>

@@ -144,10 +144,11 @@ const ShopFilter = ({
                 </div>
             </fieldset>
             <div className='ProductAvailableCount'>
-                {filtered.length > 0 &&
-                    `${filtered.length} product${
-                        filtered.length > 1 && 's'
-                    } available.`}
+                {filtered.length > 0
+                    ? `${filtered.length} product${
+                          filtered.length > 1 && 's'
+                      } available.`
+                    : 'Please try other products'}
             </div>
         </form>
     );

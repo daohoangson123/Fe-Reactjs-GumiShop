@@ -7,13 +7,6 @@
     height: 600px;
 }
 
-/* .owl-item.active .BannerContainer img {
-    -webkit-animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-        both;
-    animation: scale-in-center 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-delay: 1s;
-} */
-
 .BannerContainer img {
     height: inherit;
 }
@@ -33,10 +26,12 @@
 .SliderBanner_1 {
     grid-area: 1 / 2;
     z-index: 10;
+    transition: var(--transition-fast);
 }
 
 .SliderBanner_2 {
     z-index: 10;
+    transition: var(--transition-fast);
 }
 
 @media (width < 1440px) {
@@ -60,13 +55,6 @@
         grid-area: 1 / 1;
     }
 
-    .owl-item.active .SliderBanner_1,
-    .owl-item.active .SliderBanner_2 {
-        -webkit-animation: blur-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        animation: blur-in 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-        animation-delay: 1s;
-    }
-
     .SliderBanner_1 {
         grid-area: 1 / 1;
     }
@@ -78,7 +66,13 @@
     .SliderBanner_1,
     .SliderBanner_2 {
         min-height: 300px;
-        background-color: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        border-radius: 10%;
+    }
+
+    .SliderBanner_1:hover,
+    .SliderBanner_2:hover {
+        backdrop-filter: blur(20px);
     }
 }
 
