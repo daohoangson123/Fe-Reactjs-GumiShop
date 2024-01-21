@@ -6,8 +6,11 @@ import 'owl.carousel/dist/assets/owl.theme.default.css';
 //
 import { banner_1, banner_2 } from '../../../../../data/banner';
 //
-import banner_1bg from '../../../../../assets/img/HeroBanner.webp';
+import banner1_1920 from '../../../../../assets/img/HeroBanner1920.webp';
+import banner1_1024 from '../../../../../assets/img/HeroBanner1024.webp';
+import banner1_425 from '../../../../../assets/img/HeroBanner425.webp';
 import banner_2bg from '../../../../../assets/img/HeroBanner1.webp';
+import banner3 from '../../../../../assets/img/HeroBanner2.webp';
 //
 import SliderItem from './SliderItem/SliderItem';
 import { useState } from 'react';
@@ -29,21 +32,22 @@ const SliderBanner = () => {
                     // pullDrag={false}
                     // touchDrag={false}
                     responsiveRefreshRate={0}
-                    autoplay
+                    // autoplay
                     autoplayHoverPause
-                    autoplaySpeed={4000}
-                    autoplayTimeout={8000}
+                    autoplaySpeed={2000}
+                    autoplayTimeout={10000}
                     items={1}
                     nav={false}
-                    dots={false}
+                    dots
                     loop>
                     <div className='SliderContainer'>
                         <div
                             className='BannerContainer BannerContainer_1'
                             title='Slider is stopping'>
                             <img
-                                src={banner_1bg}
-                                alt=''
+                                src={banner1_1920}
+                                alt={banner_1.name}
+                                srcSet={`${banner1_425} 425w, ${banner1_1024} 1024w, ${banner1_1920} 1920w`}
                                 fetchpriority='high'
                                 onLoad={() => setIsBannerLoaded(true)}
                             />
@@ -71,6 +75,26 @@ const SliderBanner = () => {
                                     title={banner_2.title}
                                     name={banner_2.name}
                                     descript={banner_2.des}
+                                    btn='SHOP NOW'
+                                />
+                            </div>
+                        </div>
+                    </div>
+                    <div className='SliderContainer'>
+                        <div
+                            className='BannerContainer BannerContainer_3'
+                            title='Slider is stopping'>
+                            <img
+                                src={banner3}
+                                alt={banner_1.name}
+                                fetchpriority='high'
+                                onLoad={() => setIsBannerLoaded(true)}
+                            />
+                            <div className='SliderBanner_3'>
+                                <SliderItem
+                                    title={banner_1.title}
+                                    name={banner_1.name}
+                                    descript={banner_1.des}
                                     btn='SHOP NOW'
                                 />
                             </div>

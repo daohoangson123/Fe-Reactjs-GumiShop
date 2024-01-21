@@ -1,13 +1,14 @@
 .Product__Banner {
     width: clamp(300px, 40vw, 500px);
     padding: 10px;
+    transition: var(--transition-fast);
 }
 
 .owl-item.active .ProductBanner__Title {
     -webkit-animation: tilt-in-fwd-tr 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
         both;
     animation: tilt-in-fwd-tr 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-delay: 1s;
+    animation-delay: 0.5s;
 }
 
 .ProductBanner__Title {
@@ -21,7 +22,7 @@
     -webkit-animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
         both;
     animation: slide-in-right 01s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-delay: 1.5s;
+    animation-delay: 0.75s;
 }
 
 .ProductBanner__Name {
@@ -34,7 +35,7 @@
     -webkit-animation: slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
         both;
     animation: slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-delay: 1.8s;
+    animation-delay: 1s;
 }
 
 .ProductBanner__Des {
@@ -49,7 +50,7 @@
     -webkit-animation: slide-in-fwd-br 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
         both;
     animation: slide-in-fwd-br 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
-    animation-delay: 2s;
+    animation-delay: 1.25s;
 }
 
 .Product__Btn {
@@ -79,6 +80,21 @@
 }
 
 @media (width < 768px) {
+    .Product__Banner {
+        min-height: 300px;
+        border-radius: 10%;
+        -webkit-backdrop-filter: blur(50px);
+        backdrop-filter: blur(50px);
+    }
+
+    .Product__Banner:hover {
+        box-shadow: 0 0 10px 2px var(--color-primary-rgba);
+    }
+
+    .Product__Banner * {
+        animation: none !important;
+    }
+
     .ProductBanner__Name,
     .ProductBanner__Des {
         color: var(--color-default);
