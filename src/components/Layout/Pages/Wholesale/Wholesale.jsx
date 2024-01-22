@@ -107,7 +107,9 @@ const WholesaleLayout = ({ title, productApi }) => {
                 </div>
             )}
             <div className='Wholesale__Product-Container'>
-                {filtered.length === 0 ? (
+                {filtered.length === 0 &&
+                curBrand === 'All' &&
+                curCategory === 'All' ? (
                     <>
                         <ProductSkeleton imgWidth={200} />
                         <ProductSkeleton imgWidth={200} />
