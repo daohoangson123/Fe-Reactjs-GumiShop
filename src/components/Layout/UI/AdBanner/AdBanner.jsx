@@ -60,6 +60,7 @@ const AdBanner = () => {
                     src={ad}
                     alt='AD Banner Img'
                     className='AdBanner_Img'
+                    fetchpriority='high'
                 />
             </div>
         </div>

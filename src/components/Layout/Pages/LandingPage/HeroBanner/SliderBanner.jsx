@@ -68,7 +68,7 @@ const SliderBanner = () => {
                             <img
                                 src={banner_2bg}
                                 alt=''
-                                fetchpriority='high'
+                                fetchpriority='low'
                             />
                             <div className='SliderBanner_2'>
                                 <SliderItem
@@ -87,8 +87,7 @@ const SliderBanner = () => {
                             <img
                                 src={banner3}
                                 alt={banner_1.name}
-                                fetchpriority='high'
-                                onLoad={() => setIsBannerLoaded(true)}
+                                fetchpriority='low'
                             />
                             <div className='SliderBanner_3'>
                                 <SliderItem

@@ -68,6 +68,7 @@ const Product = (props) => {
                 <img
                     src={props.url}
                     alt={props.name}
+                    loading='lazy'
                     // lazysrc={props.url}
                     // style={{ backgroundColor: props.url }}
                 />
