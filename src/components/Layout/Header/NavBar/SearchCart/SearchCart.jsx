@@ -181,14 +181,16 @@ const SearchCart = () => {
     return (
         <>
             <div className='SearchCart'>
-                <div
+                <button
+                    type='button'
+                    aria-label='SearchProduct'
                     id='SearchIcon'
                     htmlFor='searchquery'
                     title='Search product'
                     onClick={() => setIsSearching(!isSearching)}
                 >
                     <i className='fa-solid fa-magnifying-glass Icon'></i>
-                </div>
+                </button>
                 {!isSignIn ? (
                     <NavLink
                         to='/userSignIn'

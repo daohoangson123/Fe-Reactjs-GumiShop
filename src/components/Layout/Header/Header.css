@@ -3,7 +3,7 @@ header {
     top: 0;
     background-color: var(--color-default);
     z-index: 1000;
-    animation: header-appear 0.5s ease-in-out forwards;
+    animation: header-appear 0.5s ease-in-out both;
     transition: var(--transiton-fast);
 }
 
@@ -15,3 +15,9 @@ header {
         transform: translateY(0);
     }
 }
+
+/* @media (height < 400px) {
+    header {
+        position: relative;
+    }
+} */

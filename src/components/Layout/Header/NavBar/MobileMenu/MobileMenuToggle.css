@@ -41,6 +41,7 @@
 }
 
 .MobileMenu__NavContainer {
+    display: none;
     inset: 0;
     display: flex;
     justify-content: flex-end;

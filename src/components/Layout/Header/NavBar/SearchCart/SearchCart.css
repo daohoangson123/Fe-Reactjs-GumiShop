@@ -6,6 +6,17 @@
     gap: 10px;
 }
 
+.SearchCart button,
+.SearchCart a {
+    width: 20px;
+    height: 20px;
+}
+
+.SearchCart button {
+    background: none;
+    border: none;
+}
+
 .Icon {
     font-size: 20px;
     color: var(--color-text);
@@ -17,8 +28,9 @@
     color: var(--color-primary);
 }
 
-.NavBar__UserIcon {
+.SearchCart a:has(.NavBar__UserIcon) {
     display: none;
+    visibility: hidden;
 }
 
 .NavSearch {

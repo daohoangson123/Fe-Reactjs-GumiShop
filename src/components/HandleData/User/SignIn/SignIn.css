@@ -166,7 +166,6 @@
 .SignIn__Btn:disabled {
     color: var(--color-text);
     background-color: transparent;
-    text-decoration: line-through;
 }
 
 .SignIn__Btn:disabled:hover {

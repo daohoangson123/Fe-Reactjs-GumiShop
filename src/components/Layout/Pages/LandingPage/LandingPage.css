@@ -1,4 +1,4 @@
-/* section,
+section,
 section .ProductItem {
     animation-timeline: view() !important;
     animation-range: 100px 300px !important;
@@ -33,9 +33,8 @@ section .ProductItem {
 }
 
 .OurProduct .ProductItem {
-    scale: 0;
     animation-range: 50px 200px !important;
-    animation: fade-in linear forwards;
+    animation: fade-in both;
 }
 
 .Review {
@@ -51,8 +50,6 @@ section .ProductItem {
 }
 
 .LatestNew .NewsItem {
-    opacity: 0;
-    scale: 0;
     animation: fade-in both;
     animation-timeline: view() !important;
 }
@@ -65,31 +62,35 @@ section .ProductItem {
 }
 .LatestNew .NewsItem:last-child {
     animation-range: entry 80px !important;
-} */
+}
 
-.animated-section-in {
+/* .animated-section-in {
     animation: fade-in 1s linear both;
 }
 
 .animated-section-out {
     animation: fade-out 0.1s linear forwards;
-}
+} */
 
 @keyframes fade-in {
     from {
         opacity: 0;
+        scale: 0;
     }
     to {
         opacity: 1;
+        scale: 1;
     }
 }
 
 @keyframes fade-out {
     from {
         opacity: 1;
+        scale: 1;
     }
     to {
         opacity: 0;
+        scale: 0;
     }
 }
 
