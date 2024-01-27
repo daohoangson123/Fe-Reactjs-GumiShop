@@ -36,10 +36,12 @@ const SignInInput = ({
                             transform: isFocus
                                 ? 'translate3d(15px, -12px, -10px)'
                                 : 'translate3d(5px, 7px, 0',
+                            fontSize: isFocus ? '14px' : '16px',
+                            color: isFocus
+                                ? 'var(--color-primary)'
+                                : 'var(--color-icon)',
                             background: 'white',
                             paddingInline: isFocus && '5px',
-                            borderLeft: isFocus && '1px solid black',
-                            borderRight: isFocus && '1px solid black',
                             zIndex: isFocus ? 0 : -1,
                             transition: 'all ease-in-out 0.2s',
                         }}>
@@ -70,10 +72,12 @@ const SignInInput = ({
                             transform: isFocus
                                 ? 'translate3d(15px, -12px, -10px)'
                                 : 'translate3d(5px, 7px, 0',
+                            fontSize: isFocus ? '14px' : '16px',
+                            color: isFocus
+                                ? 'var(--color-primary)'
+                                : 'var(--color-icon)',
                             background: 'white',
                             paddingInline: isFocus && '5px',
-                            borderLeft: isFocus && '1px solid black',
-                            borderRight: isFocus && '1px solid black',
                             zIndex: isFocus ? 0 : -1,
                             transition: 'all ease-in-out 0.2s',
                         }}>

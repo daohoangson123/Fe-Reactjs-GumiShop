@@ -5,11 +5,9 @@ function NotFoundPage() {
     return (
         <div className='NotFoundPage'>
             <div className='NotFoundPage__Content'># 404 Page Not Found</div>
-
             <Link
                 to='/'
-                className='NotFoundPage__BackHome'
-            >
+                className='NotFoundPage__BackHome'>
                 Go Home
             </Link>
         </div>

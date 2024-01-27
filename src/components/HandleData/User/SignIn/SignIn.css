@@ -1,6 +1,6 @@
 .SignIn {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -8,10 +8,15 @@
 .User_List {
     display: grid;
     place-items: center;
-    width: 280px;
-    aspect-ratio: 1;
+    width: clamp(280px, 50vw, 400px);
     border: 1px solid var(--color-alt);
-    margin-top: 20px;
+    border-bottom-right-radius: 50px;
+    aspect-ratio: 1;
+    transition: var(--transition-fast);
+}
+
+.User_List:hover {
+    box-shadow: 5px 5px 10px 5px var(--color-primary-rgba);
 }
 
 .User_List ol,
@@ -21,9 +26,15 @@
 
 .SignIn__Form {
     border: 1px solid var(--color-alt);
-    border-radius: 10px;
     width: clamp(280px, 50vw, 400px);
     padding: 20px;
+    border-top-left-radius: 50px;
+    transition: var(--transition-fast);
+}
+
+.SignIn__Form:hover,
+.SignIn__Form:has(input:focus) {
+    box-shadow: -5px -5px 10px 5px var(--color-primary-rgba);
 }
 
 .SignIn__Form-Title {
@@ -64,7 +75,8 @@
 .SignIn__Form-InputContainer input {
     transition: var(--transition-fast);
     background: transparent;
-    border: 1px solid var(--color-alt);
+    border: none;
+    border-bottom: 1px solid var(--color-primary);
     border-radius: 2px;
     padding: 0 5px;
     width: min(100%, 273px);
@@ -75,11 +87,13 @@
 }
 
 .SignIn__Form-InputContainer input:hover {
-    background-color: rgba(0, 0, 0, 0.1);
+    outline: 1px solid var(--color-primary);
+    border: none;
 }
 
 .SignIn__Form-InputContainer input:focus {
-    background-color: rgba(0, 0, 0, 0.1);
+    outline: 1px solid var(--color-primary);
+    border: none;
 }
 
 .SignIn__Form-InputContainer .showpassicon {
@@ -152,6 +166,7 @@
 .SignIn__Btn:disabled {
     color: var(--color-text);
     background-color: transparent;
+    text-decoration: line-through;
 }
 
 .SignIn__Btn:disabled:hover {
@@ -203,7 +218,7 @@
     margin-right: 10px;
 }
 
-.page-item.disabled .page-link {
+.User_List .page-item.disabled .page-link {
     background-color: #0d6efd;
     color: #ffffff;
 }

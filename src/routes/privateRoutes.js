@@ -1,6 +1,10 @@
 import { useSelector } from 'react-redux';
 import { signinSelector } from '../redux/Selectors/Selector';
-import NotFoundPage from '../components/Layout/Pages/NotFoundPage/NotFoundPage';
+import { Suspense, lazy } from 'react';
+import PageLoading from '../components/Layout/UI/Loading/PageLoading';
+const NotFoundPage = lazy(() =>
+    import('../components/Layout/Pages/NotFoundPage/NotFoundPage'),
+);
 
 const PrivateRoutes = (props) => {
     const isSignIn = useSelector(signinSelector);
@@ -8,8 +12,10 @@ const PrivateRoutes = (props) => {
     if (!isSignIn) {
         return (
             <div style={{ textAlign: 'center', fontSize: '30px' }}>
-                Sorry you don't have access to this page, please Sign In!
-                <NotFoundPage />
+                <Suspense fallback={<PageLoading />}>
+                    Sorry you don't have access to this page, please Sign In!
+                    <NotFoundPage />
+                </Suspense>
             </div>
         );
     }

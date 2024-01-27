@@ -36,6 +36,43 @@ const LandingPage = () => {
         return () => observer.disconnect();
     }, []);
 
+    useEffect(() => {
+        function load(sect) {
+            sect.classList.remove('animated-section-out');
+            sect.classList.add('animated-section-in');
+        }
+
+        function reload(sect) {
+            sect.classList.remove('animated-section-in');
+            sect.classList.add('animated-section-out');
+        }
+
+        const animateSect = document.querySelectorAll('section');
+
+        let observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (
+                        entry.isIntersecting &&
+                        !entry.target.className.includes('HeroBanner')
+                    ) {
+                        load(entry.target);
+                    } else if (!entry.target.className.includes('HeroBanner')) {
+                        reload(entry.target);
+                    }
+                    return;
+                });
+            },
+            { threshold: 0.1 },
+        );
+
+        animateSect.forEach((sect) => {
+            observer.observe(sect);
+        });
+
+        return () => observer.disconnect();
+    }, []);
+
     return (
         <ErrorBoundary>
             <SliderBanner />

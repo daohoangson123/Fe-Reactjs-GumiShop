@@ -4,7 +4,7 @@
     grid-template-columns: 1fr 1fr;
     place-items: center;
     width: 100%;
-    height: 600px;
+    height: 80dvh;
 }
 
 .BannerContainer img {
@@ -46,19 +46,13 @@
     transition: var(--transition-fast);
 }
 
-@media (width < 1440px) {
-    .BannerContainer {
-        height: 400px;
-    }
-}
-
 @media (width < 768px) {
     .BannerContainer {
         grid-template-columns: 1fr;
     }
 
     .BannerContainer_1 img {
-        object-position: 10% center;
+        object-position: 20% center;
         grid-area: 1 / 1;
     }
 
@@ -82,6 +76,6 @@
 
 @media (width < 375px) {
     .BannerContainer_1 img {
-        object-position: 15% center;
+        object-position: 20% center;
     }
 }

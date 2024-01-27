@@ -1,6 +1,5 @@
 .Loading {
     text-align: center;
-    transition: var(--transition-fast);
 }
 
 .Loading__Animation i {
