@@ -26,6 +26,31 @@ const Good4MeDeal = ({ tittle, content }) => {
         getProducts();
     }, []);
 
+    useEffect(() => {
+        function load(item) {
+            item.classList.add('animated-slide-up');
+        }
+
+        const animated = document.querySelectorAll(
+            '.Good4MeDeal * .ProductItem',
+        );
+
+        let observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    load(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        animated.forEach((item) => {
+            observer.observe(item);
+        });
+
+        return () => observer.disconnect();
+    }, [productApi]);
+
     return (
         <section className='Good4MeDeal Container'>
             <SectionTitle content={tittle} />
@@ -38,7 +63,8 @@ const Good4MeDeal = ({ tittle, content }) => {
                     productApi.map((product, index) => (
                         <div
                             className='ProductItem'
-                            key={product._id}>
+                            key={product._id}
+                            style={{ animationDelay: `${index * 0.2}s` }}>
                             <Product
                                 id={product._id}
                                 url={product.img}

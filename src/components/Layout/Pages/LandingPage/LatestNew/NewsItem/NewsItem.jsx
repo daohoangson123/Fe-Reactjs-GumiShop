@@ -2,9 +2,13 @@ import './NewsItem.css';
 //
 import { Link } from 'react-router-dom';
 
-const NewsItem = ({ id, url, date, title, content }) => {
+const NewsItem = ({ id, url, date, title, content, index }) => {
     return (
-        <div className='NewsItem'>
+        <div
+            className='NewsItem'
+            style={{
+                animationDelay: `${index * 0.2}s`,
+            }}>
             <img
                 src={null}
                 alt=''
@@ -15,8 +19,7 @@ const NewsItem = ({ id, url, date, title, content }) => {
             <p className='News_Content'>{content}</p>
             <Link
                 to={`/news/${id}`}
-                className='News_Btn'
-            >
+                className='News_Btn'>
                 Latest Product's News
             </Link>
         </div>

@@ -36,32 +36,6 @@ const LandingPage = () => {
         return () => observer.disconnect();
     }, []);
 
-    useEffect(() => {
-        function load(sect) {
-            sect.classList.add('animated-section-in');
-        }
-
-        const animateSect = document.querySelectorAll('section');
-
-        let observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (
-                    entry.isIntersecting &&
-                    !entry.target.className.includes('HeroBanner')
-                ) {
-                    load(entry.target);
-                }
-                return;
-            });
-        });
-
-        animateSect.forEach((sect) => {
-            observer.observe(sect);
-        });
-
-        return () => observer.disconnect();
-    }, []);
-
     return (
         <ErrorBoundary>
             <SliderBanner />

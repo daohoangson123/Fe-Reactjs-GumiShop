@@ -11,8 +11,8 @@ import ProductSkeleton from '../../../UI/Skeleton/ProductSkeleton';
 
 const OurProduct = ({ title }) => {
     const [productApi, setProductApi] = useState([]);
-
     const [load, setLoad] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
 
     const loadmore = () => {
         if (load.length < productApi.length) {
@@ -33,7 +33,35 @@ const OurProduct = ({ title }) => {
 
     useEffect(() => {
         getProducts();
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 5000);
     }, []);
+
+    useEffect(() => {
+        function load(item) {
+            item.classList.add('animated-fade-in');
+        }
+
+        const animated = document.querySelectorAll(
+            '.OurProduct * .ProductItem',
+        );
+
+        let observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    load(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        animated.forEach((item) => {
+            observer.observe(item);
+        });
+
+        return () => observer.disconnect();
+    }, [productApi, load]);
 
     return (
         <section className='OurProduct Container'>
@@ -46,7 +74,11 @@ const OurProduct = ({ title }) => {
                         <div
                             className='ProductItem'
                             key={product._id}
-                        >
+                            style={{
+                                animationDelay: `${
+                                    index < 4 ? index * 0.2 : (index - 4) * 0.2
+                                }s`,
+                            }}>
                             <Product
                                 id={product._id}
                                 url={product.img}
@@ -64,14 +96,16 @@ const OurProduct = ({ title }) => {
                 )}
             </div>
             {load.length !== 0 && (
-                <div
+                <button
                     className='LoadMore'
                     onClick={loadmore}
-                >
-                    {load.length < productApi.length
+                    disabled={isLoading}>
+                    {isLoading
+                        ? 'Loading'
+                        : !isLoading && load.length === 4
                         ? 'VIEW ALL PRODUCTS'
                         : 'VIEW LESS PRODUCTS'}
-                </div>
+                </button>
             )}
         </section>
     );

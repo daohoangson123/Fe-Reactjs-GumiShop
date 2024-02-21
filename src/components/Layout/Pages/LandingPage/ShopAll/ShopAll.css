@@ -2,6 +2,10 @@
     text-align: center;
 }
 
+.ShopAll .ProductItem {
+    opacity: 0;
+}
+
 .LoadMore {
     margin-top: 20px;
 }

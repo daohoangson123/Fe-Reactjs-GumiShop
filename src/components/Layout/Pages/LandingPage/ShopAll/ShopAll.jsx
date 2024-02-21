@@ -28,6 +28,29 @@ const ShopAll = ({ title }) => {
         getProducts();
     }, []);
 
+    useEffect(() => {
+        function load(item) {
+            item.classList.add('animated-fade-in');
+        }
+
+        const animated = document.querySelectorAll('.ShopAll * .ProductItem');
+
+        let observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    load(entry.target);
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        animated.forEach((item) => {
+            observer.observe(item);
+        });
+
+        return () => observer.disconnect();
+    }, [productApi, loadMore]);
+
     return (
         <section className='ShopAll Container'>
             <SectionTitle content={title} />
@@ -47,10 +70,11 @@ const ShopAll = ({ title }) => {
                                 <div
                                     className='ProductItem'
                                     key={product._id}
-                                    // style={{
-                                    //     translate: `0 ${(index + 1) * 20}px`,
-                                    // }}
-                                >
+                                    style={{
+                                        animationDelay: `${
+                                            index < 4 ? index * 0.2 : 0
+                                        }s`,
+                                    }}>
                                     <Product
                                         id={product._id}
                                         url={product.img}

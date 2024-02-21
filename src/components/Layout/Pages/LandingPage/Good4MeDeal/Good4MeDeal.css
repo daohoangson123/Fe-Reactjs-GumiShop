@@ -24,3 +24,7 @@
     color: var(--color-text);
     margin-bottom: 36px;
 }
+
+.Good4MeDeal .ProductItem {
+    opacity: 0;
+}
