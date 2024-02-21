@@ -54,7 +54,6 @@
 }
 
 .Product__Btn {
-    position: relative;
     display: inline-block;
     font-weight: 500;
     background-color: var(--color-primary-rgba);
@@ -64,19 +63,16 @@
     border-bottom-right-radius: 50%;
     border-start-end-radius: 75%;
     border-end-start-radius: 75%;
-    cursor: pointer;
     transition: var(--transition-fast);
+    text-decoration: none;
+    color: var(--color-default);
+    cursor: pointer;
 }
 
 .Product__Btn:hover {
+    color: var(--color-default);
     background-color: var(--color-primary);
     box-shadow: 2px 2px 5px 2px var(--color-text);
-}
-
-.Product__Btn a {
-    text-decoration: none;
-    color: var(--color-default);
-    transition: var(--transition-fast);
 }
 
 @media (width < 768px) {

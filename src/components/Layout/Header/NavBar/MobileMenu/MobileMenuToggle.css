@@ -9,6 +9,7 @@
     cursor: pointer !important;
     border: none;
     border-radius: 2px;
+    transition: var(--transition-fast);
 }
 
 .MobileMenu:hover {
@@ -46,9 +47,11 @@
     display: flex;
     justify-content: flex-end;
     position: absolute;
-    height: 0;
+    height: 100dvh;
     background: var(--color-alt-rgba-3);
     transition: var(--transition-slow);
+    transform: translateX(-100%) skewY(45deg);
+    z-index: -1;
 }
 
 .MobileMenu__Nav {

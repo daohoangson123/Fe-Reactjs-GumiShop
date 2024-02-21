@@ -124,17 +124,16 @@ const SignInForm = () => {
     const signinNotify = () =>
         toast.success(`You have Signed In Successfully`, {
             transition: Zoom,
-            position: 'top-left',
         });
 
     const signinErrorNotify = () =>
         toast.error(`UserName/ Password invalid`, {
-            position: 'top-left',
+            transition: Zoom,
         });
 
     const dataRequired = () =>
         toast.error(`UserName/ Password Required`, {
-            position: 'top-left',
+            transition: Zoom,
         });
 
     const handleSignIn = (event) => {

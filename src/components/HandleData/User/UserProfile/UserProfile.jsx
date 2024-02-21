@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { clearHistory, userSignOut } from '../../../../redux/Actions/Action';
 import { Link } from 'react-router-dom';
 //
-import { toast } from 'react-toastify';
+import { Zoom, toast } from 'react-toastify';
 import {
     myPurchaseHistorySelector,
     userSelector,
@@ -28,7 +28,7 @@ const UserProfile = () => {
 
     const signoutNotify = () =>
         toast.error(`You have been Signed Out`, {
-            position: 'top-left',
+            transition: Zoom,
         });
 
     return (

@@ -6,7 +6,7 @@ import { useEffect, useState } from 'react';
 import { fetchFurnitureApi } from '../../../data/axiosAPI/furnitureData';
 import { fetchHektoApi } from '../../../data/axiosAPI/hektoData';
 import { addToCart } from '../../../redux/Actions/Action';
-import { toast } from 'react-toastify';
+import { Zoom, toast } from 'react-toastify';
 
 const WholesaleProductDetail = () => {
     const shipOpt = [
@@ -30,18 +30,18 @@ const WholesaleProductDetail = () => {
         toast.success(
             `${quantity + ' ' + productDetail.name} added to your Cart`,
             {
-                position: 'bottom-right',
+                transition: Zoom,
             },
         );
 
     const maxedStockNotify = () =>
         toast.error(`This product is out of stock`, {
-            position: 'top-center',
+            transition: Zoom,
         });
 
     const colorPickNotify = () =>
         toast.error(`Please pick color`, {
-            position: 'top-center',
+            transition: Zoom,
         });
 
     function handleAddToCart(product) {

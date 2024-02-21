@@ -1,10 +1,11 @@
 header {
+    position: -webkit-sticky;
     position: sticky;
     top: 0;
     background-color: var(--color-default);
     z-index: 1000;
+    transition: var(--transition-fast);
     animation: header-appear 0.5s ease-in-out both;
-    transition: var(--transiton-fast);
 }
 
 @keyframes header-appear {
@@ -15,9 +16,3 @@ header {
         transform: translateY(0);
     }
 }
-
-/* @media (height < 400px) {
-    header {
-        position: relative;
-    }
-} */

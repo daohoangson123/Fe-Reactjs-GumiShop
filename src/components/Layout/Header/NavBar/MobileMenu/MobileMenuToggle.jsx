@@ -33,7 +33,8 @@ const MobileMenuRouting = ({
             title='Close Menu'
             className='MobileMenu__NavContainer'
             style={{
-                height: menuVisible && '100dvh',
+                transform: menuVisible && 'none',
+                zIndex: menuVisible && 1000,
                 transition: !isMobileView && 'none',
             }}>
             <div className='MobileMenu__Nav'>
@@ -43,6 +44,7 @@ const MobileMenuRouting = ({
                         key={item.name}
                         className='MobileMenu__Item'
                         title={item.name}
+                        tabIndex={!isMobileView || !menuVisible ? -1 : 0}
                         onClick={() => {
                             setMenuOpen(false);
                             clearAllBodyScrollLocks();

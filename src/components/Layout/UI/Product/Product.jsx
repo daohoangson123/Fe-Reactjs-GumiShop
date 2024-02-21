@@ -18,14 +18,11 @@ const Product = (props) => {
 
     const addNotify = () =>
         toast.success(`1 ${props.name} added to your Cart`, {
-            position: 'bottom-right',
             transition: Zoom,
         });
 
     const removeNotify = () =>
-        toast.error(`${props.name} removed from your Cart`, {
-            position: 'bottom-right',
-        });
+        toast.error(`${props.name} removed from your Cart`, {});
 
     function handleAddToCart(product) {
         if (!isAdded) {
@@ -78,11 +75,13 @@ const Product = (props) => {
                     <Link
                         className='ProductLink'
                         title='Go to Product Detail'
-                        to={`/shop/${props.name.split(' ').join('-')}`}>
+                        to={`/shop/${props.name.split(' ').join('-')}`}
+                        tabIndex='-1'>
                         Detail
                     </Link>
                     <button
                         className='AddToCart'
+                        tabIndex='-1'
                         style={{
                             background: isAdded && 'var(--color-primary)',
                         }}

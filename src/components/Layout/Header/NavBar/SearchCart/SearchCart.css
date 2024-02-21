@@ -135,8 +135,9 @@
 }
 
 @media (width <= 1024px) {
-    .NavBar__UserIcon {
+    .SearchCart a:has(.NavBar__UserIcon) {
         display: block;
+        visibility: visible;
     }
 }
 
