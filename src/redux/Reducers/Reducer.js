@@ -4,6 +4,7 @@ const initState = {
     isSignIn: undefined,
     userData: undefined,
     isMenuOpen: false,
+    adminProduct: [],
 };
 
 const rootReducer = (state = initState, action) => {
@@ -118,6 +119,18 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 isMenuOpen: !state.isMenuOpen,
+            };
+        case 'Add_New_Product':
+            return {
+                ...state,
+                adminProduct: [...state.adminProduct, action.payload],
+            };
+        case 'Remove_Product':
+            return {
+                ...state,
+                adminProduct: state.adminProduct.filter(
+                    (item) => item.name !== action.payload.name,
+                ),
             };
         default:
             return state;

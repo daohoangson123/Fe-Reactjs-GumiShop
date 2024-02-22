@@ -27,7 +27,7 @@ const Header = ({ isSignIn }) => {
         mq.addEventListener('change', checkView);
 
         return () => mq.removeEventListener('change', checkView);
-    }, [mq]);
+    });
 
     useEffect(() => {
         let lastScroll = window.screenY || document.documentElement.scrollTop;

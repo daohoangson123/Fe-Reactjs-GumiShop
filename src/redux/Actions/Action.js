@@ -65,3 +65,31 @@ export const toggleMenu = () => {
         type: 'ToggleMenu',
     };
 };
+
+export const addNewProduct = (newProduct) => {
+    return {
+        type: 'Add_New_Product',
+        payload: newProduct,
+    };
+};
+
+export const removeProduct = (currentProduct) => {
+    return {
+        type: 'Remove_Product',
+        payload: currentProduct,
+    };
+};
+
+export const editName = (newName) => {
+    return {
+        type: 'Edit_Name',
+        payload: newName,
+    };
+};
+
+export const editPrice = (newPrice) => {
+    return {
+        type: 'Edit_Price',
+        payload: newPrice,
+    };
+};

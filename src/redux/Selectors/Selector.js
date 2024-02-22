@@ -19,3 +19,7 @@ export const myPurchaseHistorySelector = (state) => {
 export const toggleMenuSelector = (state) => {
     return state.isMenuOpen;
 };
+
+export const adminProductSelector = (state) => {
+    return state.adminProduct;
+};
