@@ -8,10 +8,32 @@ import AdBanner from './components/Layout/UI/AdBanner/AdBanner';
 //
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { signinSelector } from './redux/Selectors/Selector';
+import { fetchUserData } from './data/axiosAPI/userData';
+import { getUserData } from './redux/Actions/Action';
+import { useEffect } from 'react';
 
 function App() {
     const saved = localStorage.getItem('layerClosed');
     const initialValue = JSON.parse(saved);
+    const isSignIn = useSelector(signinSelector);
+    const id = isSignIn && isSignIn.slice(16);
+    const dispatch = useDispatch();
+
+    const saveUserData = async () => {
+        let userDataRes = await fetchUserData(id);
+        if (userDataRes) {
+            return dispatch(getUserData(userDataRes.data));
+        }
+        return;
+    };
+
+    useEffect(() => {
+        if (isSignIn) {
+            saveUserData();
+        }
+    }, [isSignIn]);
 
     return (
         <div className='App'>

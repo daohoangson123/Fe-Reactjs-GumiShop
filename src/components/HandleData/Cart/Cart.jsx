@@ -69,13 +69,10 @@ const Cart = () => {
             setTimeout(
                 () =>
                     dispatch(
-                        submitCart(
-                            myCart,
-                            myCart.map(
-                                (item) =>
-                                    (item.date = purchasedDate.toString()),
-                            ),
-                        ),
+                        submitCart([
+                            { ...userData, date: purchasedDate.toDateString() },
+                            ...myCart,
+                        ]),
                     ),
                 1500,
             );
@@ -99,8 +96,6 @@ const Cart = () => {
                     totalItem={totalItem}
                     totalPrice={totalPrice}
                     saving={saving}
-                    // quantity={quantity}
-                    // setQuantity={setQuantity}
                     handleInc={handleInc}
                     handleDec={handleDec}
                     handleRemove={handleRemove}

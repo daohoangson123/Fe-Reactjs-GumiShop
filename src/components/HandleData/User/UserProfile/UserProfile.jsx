@@ -102,51 +102,6 @@ const UserProfile = () => {
                 </div>
                 {userData?.id === 1 ? (
                     <div className='Admin-Product-Control'>
-                        <div className='ProductsList'>
-                            <span>Products List: </span>
-                            <Table
-                                striped
-                                bordered
-                                hover>
-                                <thead>
-                                    <tr>
-                                        <th>Img</th>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                    </tr>
-                                </thead>
-                                {adminProduct && (
-                                    <tbody>
-                                        {adminProduct.map((item, index) => (
-                                            <tr key={index}>
-                                                <td>
-                                                    <img
-                                                        src={item?.img}
-                                                        alt='productImg'
-                                                        style={{
-                                                            width: '50px',
-                                                            height: '50px',
-                                                            objectFit:
-                                                                'contain',
-                                                        }}
-                                                    />
-                                                    <button
-                                                        onClick={() =>
-                                                            handleRemove({
-                                                                name: item?.name,
-                                                            })
-                                                        }>
-                                                        Delete
-                                                    </button>
-                                                </td>
-                                                <td>{item?.name}</td>
-                                                <td>{item?.price}</td>
-                                            </tr>
-                                        ))}
-                                    </tbody>
-                                )}
-                            </Table>
-                        </div>
                         <div className='ProductsAdding'>
                             <form
                                 className='ProductsAddingForm'
@@ -165,16 +120,40 @@ const UserProfile = () => {
                                             })
                                         }
                                     />
-                                    <label htmlFor='productPrice'>Price:</label>
+                                    <label htmlFor='productPrice'>
+                                        Price(max=300):
+                                    </label>
                                     <input
                                         type='number'
                                         id='productPrice'
-                                        value={productData?.price || ''}
-                                        onChange={(event) =>
-                                            setProductData({
-                                                ...productData,
-                                                price: event.target.value,
-                                            })
+                                        value={productData?.price}
+                                        min={1}
+                                        max={300}
+                                        onWheel={(event) => event.target.blur()}
+                                        onChange={(event) => {
+                                            let price = event.target.value;
+                                            if (price < 300) {
+                                                setProductData({
+                                                    ...productData,
+                                                    price: event.target.value,
+                                                });
+                                            } else {
+                                                setProductData({
+                                                    ...productData,
+                                                    price: 300,
+                                                });
+                                            }
+                                        }}
+                                        onInput={
+                                            (event) =>
+                                                (event.currentTarget.value =
+                                                    event.currentTarget.value
+                                                        .replace(/[^0-9.]/g, '')
+                                                        .replace(
+                                                            /(\..*?)\..*/g,
+                                                            '$1',
+                                                        )
+                                                        .replace(/^0/, '')) //ko cho nhập số 0 đầu
                                         }
                                     />
                                     <label htmlFor='productImg'>Image:</label>
@@ -236,48 +215,101 @@ const UserProfile = () => {
                                 </fieldset>
                             </form>
                         </div>
+                        <div className='ProductsList'>
+                            <span>Products List: </span>
+                            <Table
+                                striped
+                                bordered
+                                hover>
+                                <thead>
+                                    <tr>
+                                        <th>Img</th>
+                                        <th>Name</th>
+                                        <th>Price</th>
+                                    </tr>
+                                </thead>
+                                {adminProduct && (
+                                    <tbody>
+                                        {adminProduct.map((item, index) => (
+                                            <tr key={index}>
+                                                <td>
+                                                    <img
+                                                        src={item?.img}
+                                                        alt='productImg'
+                                                        style={{
+                                                            width: '50px',
+                                                            height: '50px',
+                                                            objectFit:
+                                                                'contain',
+                                                        }}
+                                                    />
+                                                    <button
+                                                        onClick={() =>
+                                                            handleRemove({
+                                                                name: item?.name,
+                                                            })
+                                                        }>
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                                <td>{item?.name}</td>
+                                                <td>{item?.price}</td>
+                                            </tr>
+                                        ))}
+                                    </tbody>
+                                )}
+                            </Table>
+                        </div>
+                        <div className='UserProfile__PurchaseHistory'>
+                            <h2>Purchase History</h2>
+                            <button
+                                type='button'
+                                className='ClearPurchaseHistory__Btn'
+                                onClick={() => dispatch(clearHistory())}>
+                                Clear History
+                            </button>
+                            {purchaseHistory.length > 0 && (
+                                <div className='UserProfile__PurchaseHistory-TableContainer'>
+                                    <Table
+                                        bordered
+                                        hover>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Quantities</th>
+                                                <th>Price</th>
+                                                <th>Date</th>
+                                            </tr>
+                                        </thead>
+                                        {purchaseHistory && (
+                                            <tbody>
+                                                {purchaseHistory.map(
+                                                    (item, index) => (
+                                                        <tr key={index}>
+                                                            <td>
+                                                                {item?.name ||
+                                                                    item.first_name +
+                                                                        item.last_name}
+                                                            </td>
+                                                            <td>
+                                                                {item.amount}
+                                                            </td>
+                                                            <td>
+                                                                {item.price}
+                                                            </td>
+                                                            <td>{item.date}</td>
+                                                        </tr>
+                                                    ),
+                                                )}
+                                            </tbody>
+                                        )}
+                                    </Table>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 ) : (
-                    <div className='UserProfile__PurchaseHistory'>
-                        <h2>My Purchase History</h2>
-                        <button
-                            type='button'
-                            className='ClearPurchaseHistory__Btn'
-                            onClick={() => dispatch(clearHistory())}>
-                            Clear History
-                        </button>
-                        {purchaseHistory.length > 0 && (
-                            <div className='UserProfile__PurchaseHistory-TableContainer'>
-                                <Table
-                                    striped
-                                    bordered
-                                    hover>
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Quantities</th>
-                                            <th>Price</th>
-                                            <th>Date</th>
-                                        </tr>
-                                    </thead>
-                                    {purchaseHistory && (
-                                        <tbody>
-                                            {purchaseHistory.map(
-                                                (item, index) => (
-                                                    <tr key={index}>
-                                                        <td>{item.name}</td>
-                                                        <td>{item.amount}</td>
-                                                        <td>{item.price}</td>
-                                                        <td>{item.date}</td>
-                                                    </tr>
-                                                ),
-                                            )}
-                                        </tbody>
-                                    )}
-                                </Table>
-                            </div>
-                        )}
-                    </div>
+                    'User Data Here'
                 )}
             </ErrorBoundary>
         </div>

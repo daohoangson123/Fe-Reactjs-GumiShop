@@ -2,12 +2,12 @@ import './AdBanner.css';
 //
 import { useEffect, useState } from 'react';
 //
-import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+import { disableBodyScroll, enableBodyScroll } from 'body-scroll-lock';
 //
 import bannerImgSmall from '../../../../assets/img/product3-small.png';
 import bannerImgLarge from '../../../../assets/img/product3.webp';
 
-const AdBanner = ({ adBannerImg }) => {
+const AdBanner = () => {
     const [layerClosed, setLayerClosed] = useState(() => {
         const saved = localStorage.getItem('layerClosed');
         const initialValue = JSON.parse(saved);
@@ -17,6 +17,7 @@ const AdBanner = ({ adBannerImg }) => {
     const [pageLoaded, setPageLoaded] = useState(false);
     useEffect(() => {
         setPageLoaded(true);
+
         const firstLoadLayer = document.getElementById('PageFisrtLoad');
         const closeLayerBtn = document.getElementById('AdBanner__Btn');
 
@@ -29,14 +30,14 @@ const AdBanner = ({ adBannerImg }) => {
         preventScroll();
 
         function removePreventScroll() {
-            clearAllBodyScrollLocks();
+            enableBodyScroll(firstLoadLayer);
         }
 
         function removeFirstLoadLayer() {
             if (firstLoadLayer) {
                 setLayerClosed(true);
-                firstLoadLayer.remove();
                 removePreventScroll();
+                firstLoadLayer.remove();
             }
         }
 
@@ -58,7 +59,7 @@ const AdBanner = ({ adBannerImg }) => {
                     <i className='fa-solid fa-xmark'></i>
                 </button>
                 <img
-                    src={adBannerImg}
+                    src={bannerImgSmall}
                     alt='AD Banner Img'
                     className='AdBanner_Img'
                     srcSet={`${bannerImgSmall} 1200w, ${bannerImgLarge} 1600w`}

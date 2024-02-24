@@ -75,6 +75,7 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
             clearAllBodyScrollLocks();
         }
     };
+
     useEffect(() => {
         toggle();
 
@@ -82,7 +83,6 @@ const MobileMenuToggle = ({ isMobileView, navlinkData }) => {
 
         return () => {
             mq.removeEventListener('change', toggle);
-            clearAllBodyScrollLocks();
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
