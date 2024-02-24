@@ -32,7 +32,7 @@ const OurProduct = ({ title }) => {
     };
 
     useEffect(() => {
-        const sectCheck = document.querySelectorAll('.Good4MeDeal');
+        const sectCheck = document.querySelectorAll('.OurProduct');
 
         let observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
@@ -70,7 +70,7 @@ const OurProduct = ({ title }) => {
 
         let observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                if (entry.isIntersecting) {
                     load(entry.target);
                     observer.unobserve(entry.target);
                 }
@@ -97,7 +97,7 @@ const OurProduct = ({ title }) => {
                             key={product._id}
                             style={{
                                 animationDelay: `${
-                                    index < 4 ? index * 0.2 : (index - 4) * 0.2
+                                    index < 4 ? index * 0.1 : (index - 4) * 0.1
                                 }s`,
                             }}>
                             <Product

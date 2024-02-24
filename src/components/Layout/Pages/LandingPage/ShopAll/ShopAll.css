@@ -12,6 +12,6 @@
 
 @media (width < 430px) {
     .ShopAll .ProductItem {
-        animation-delay: 0.5s !important;
+        animation-delay: 0.3s !important;
     }
 }

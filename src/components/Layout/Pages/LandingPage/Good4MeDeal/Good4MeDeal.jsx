@@ -56,7 +56,7 @@ const Good4MeDeal = ({ tittle, content }) => {
 
         let observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                if (entry.isIntersecting) {
                     load(entry.target);
                     observer.unobserve(entry.target);
                 }
@@ -83,7 +83,7 @@ const Good4MeDeal = ({ tittle, content }) => {
                         <div
                             className='ProductItem'
                             key={product._id}
-                            style={{ animationDelay: `${index * 0.2}s` }}>
+                            style={{ animationDelay: `${index * 0.1}s` }}>
                             <Product
                                 id={product._id}
                                 url={product.img}

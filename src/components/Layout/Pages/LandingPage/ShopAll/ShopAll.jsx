@@ -57,7 +57,7 @@ const ShopAll = ({ title }) => {
 
         let observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
+                if (entry.isIntersecting) {
                     load(entry.target);
                     observer.unobserve(entry.target);
                 }
@@ -92,7 +92,7 @@ const ShopAll = ({ title }) => {
                                     key={product._id}
                                     style={{
                                         animationDelay: `${
-                                            index < 4 ? index * 0.2 : 0
+                                            index < 4 ? index * 0.1 : 0
                                         }s`,
                                     }}>
                                     <Product

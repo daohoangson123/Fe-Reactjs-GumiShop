@@ -31,6 +31,6 @@
 
 @media (width < 430px) {
     .Good4MeDeal .ProductItem {
-        animation-delay: 0.5s !important;
+        animation-delay: 0.3s !important;
     }
 }

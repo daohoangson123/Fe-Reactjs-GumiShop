@@ -42,10 +42,6 @@
     text-decoration: none;
 }
 
-.UserProfile__PurchaseHistory {
-    display: grid;
-}
-
 .ClearPurchaseHistory__Btn {
     width: fit-content;
     padding: 5px;

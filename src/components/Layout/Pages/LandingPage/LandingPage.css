@@ -122,7 +122,7 @@ section .ProductItem {
 } */
 
 .animated-slide-up {
-    animation: slide-up 0.5s ease-in-out both;
+    animation: slide-up 0.3s linear both;
 }
 
 @keyframes slide-up {
@@ -137,7 +137,7 @@ section .ProductItem {
 }
 
 .animated-fade-in {
-    animation: fade-in 0.5s ease-in-out both;
+    animation: fade-in 0.3s linear both;
 }
 
 @keyframes fade-in {

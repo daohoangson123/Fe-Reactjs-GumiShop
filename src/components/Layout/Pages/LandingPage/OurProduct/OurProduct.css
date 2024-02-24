@@ -24,6 +24,6 @@
 
 @media (width < 430px) {
     .OurProduct .ProductItem {
-        animation-delay: 0.5s !important;
+        animation-delay: 0.3s !important;
     }
 }
