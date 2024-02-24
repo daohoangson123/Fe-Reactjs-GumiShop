@@ -11,26 +11,31 @@ const BackTopBtn = () => {
 
     useEffect(() => {
         const scrollTop = () => {
-            if (window.pageYOffset > 400) {
+            if (window.scrollY > 400) {
                 setShowBacktop(true);
-                // hạn chế gọi hàm
                 window.removeEventListener('scroll', scrollTop);
             }
+            return;
         };
-
         window.addEventListener('scroll', scrollTop);
 
         const scrollAlt = () => {
-            if (window.pageYOffset < 400) {
+            if (window.scrollY < 400) {
                 setShowBacktop(false);
-                window.addEventListener('scroll', scrollTop);
-                // hạn chế gọi hàm
                 window.removeEventListener('scroll', scrollAlt);
             }
+            return;
         };
 
-        window.addEventListener('scroll', scrollAlt);
-    });
+        if (showBacktop) {
+            window.addEventListener('scroll', scrollAlt);
+        }
+
+        return () => {
+            window.removeEventListener('scroll', scrollTop);
+            window.removeEventListener('scroll', scrollAlt);
+        };
+    }, [showBacktop]);
 
     return (
         <div

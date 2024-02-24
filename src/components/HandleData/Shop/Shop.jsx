@@ -10,7 +10,6 @@ import { debounce } from 'lodash';
 import Product from '../../Layout/UI/Product/Product';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
 import ErrorBoundary from '../../Support/Error/ErrorBoundary';
-// import { fetchReqresProducts } from '../../../data/axiosAPI/reqresProductData';
 
 const ShopFilter = ({
     productApi,
@@ -45,8 +44,7 @@ const ShopFilter = ({
             className='SearchForm'
             action=''
             autoComplete='off'
-            onSubmit={(event) => event.preventDefault()}
-        >
+            onSubmit={(event) => event.preventDefault()}>
             <fieldset disabled={productApi.length === 0}>
                 <button
                     type='button'
@@ -56,14 +54,12 @@ const ShopFilter = ({
                             ? 'Hide filter options'
                             : 'Show detail filter options'
                     }
-                    onClick={() => setShowFilter(!showFilter)}
-                >
+                    onClick={() => setShowFilter(!showFilter)}>
                     {showFilter ? 'Hide Filter' : 'Show Filter'}
                 </button>
                 <div
                     className='FiltersInputs'
-                    style={{ maxHeight: showFilter && '100px' }}
-                >
+                    style={{ maxHeight: showFilter && '150px' }}>
                     <div>
                         <input
                             className='NameFilterInput'
@@ -78,28 +74,28 @@ const ShopFilter = ({
                             }
                             onChange={debounceChange}
                         />
-                        <input
-                            type='checkbox'
-                            name='onSale'
-                            id='onSale'
-                            title='Show only on-sale Products'
-                            checked={onSale}
-                            onChange={(event) =>
-                                setOnSale(event.target.checked)
-                            }
-                        />
-                        <label
-                            htmlFor='onSale'
-                            title='Show only on-sale Products'
-                        >
-                            SaleOnly
-                        </label>
+                        <div>
+                            <input
+                                type='checkbox'
+                                name='onSale'
+                                id='onSale'
+                                title='Show only on-sale Products'
+                                checked={onSale}
+                                onChange={(event) =>
+                                    setOnSale(event.target.checked)
+                                }
+                            />
+                            <label
+                                htmlFor='onSale'
+                                title='Show only on-sale Products'>
+                                SaleOnly
+                            </label>
+                        </div>
                     </div>
                     <div>
                         <label
                             htmlFor='priceFilter'
-                            title='Find Products by price-ranges'
-                        >
+                            title='Find Products by price-ranges'>
                             Price-range:{' '}
                         </label>
                         <select
@@ -109,15 +105,13 @@ const ShopFilter = ({
                             value={priceFilter}
                             onChange={(event) =>
                                 setPriceFilter(event.target.value)
-                            }
-                        >
+                            }>
                             {priceFilterOpt.map((opt) => (
                                 <option
                                     key={opt.value}
                                     disabled={opt.value === priceFilter}
                                     value={opt.value}
-                                    title={opt.value}
-                                >
+                                    title={opt.value}>
                                     {opt.label}
                                 </option>
                             ))}
@@ -126,8 +120,7 @@ const ShopFilter = ({
                     <div>
                         <label
                             htmlFor='sortFilter'
-                            title='Short Products'
-                        >
+                            title='Short Products'>
                             Sort-by:{' '}
                         </label>
                         <select
@@ -137,15 +130,13 @@ const ShopFilter = ({
                             value={sortFilter}
                             onChange={(event) =>
                                 setSortFilter(event.target.value)
-                            }
-                        >
+                            }>
                             {sortFilterOpt.map((opt) => (
                                 <option
                                     key={opt.value}
                                     disabled={opt.value === sortFilter}
                                     value={opt.value}
-                                    title={opt.value}
-                                >
+                                    title={opt.value}>
                                     {opt.label}
                                 </option>
                             ))}
@@ -172,8 +163,7 @@ const ProductDisplay = ({ filtered }) => {
                     filtered.map((product) => (
                         <div
                             className='ProductItem'
-                            key={product._id || product.id}
-                        >
+                            key={product._id || product.id}>
                             <Product
                                 id={product._id || product.id}
                                 url={product.img || product.color}
@@ -1016,12 +1006,6 @@ const Shop = () => {
         if (result) {
             setProductApi(result);
         }
-
-        // let altResult = await fetchReqresProducts();
-
-        // if (altResult) {
-        //     setProductApi(altResult.data);
-        // }
     };
 
     useEffect(() => {

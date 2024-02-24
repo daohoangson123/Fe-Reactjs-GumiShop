@@ -84,4 +84,8 @@
     .BannerContainer_1 img {
         object-position: 17% center;
     }
+
+    .BannerContainer_2 img {
+        object-fit: cover;
+    }
 }

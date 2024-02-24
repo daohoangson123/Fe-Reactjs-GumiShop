@@ -12,6 +12,7 @@
     line-height: 25px;
     padding: 15px 45px;
     border: 2px solid var(--color-primary);
+    background-color: transparent;
     cursor: pointer;
     transition: var(--transition-fast);
 }
@@ -19,4 +20,10 @@
 .LoadMore:hover {
     color: var(--color-default);
     background-color: var(--color-primary);
+}
+
+@media (width < 430px) {
+    .OurProduct .ProductItem {
+        animation-delay: 0.5s !important;
+    }
 }

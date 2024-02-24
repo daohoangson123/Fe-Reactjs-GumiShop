@@ -9,3 +9,9 @@
 .LoadMore {
     margin-top: 20px;
 }
+
+@media (width < 430px) {
+    .ShopAll .ProductItem {
+        animation-delay: 0.5s !important;
+    }
+}

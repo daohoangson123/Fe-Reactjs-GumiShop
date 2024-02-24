@@ -10,8 +10,6 @@ import WholesaleProduct from '../../UI/WholesaleProduct/WholesaleProduct';
 import ProductSkeleton from '../../UI/Skeleton/ProductSkeleton';
 import WholesaleFilter from './ToggleFilter';
 import SectionTitle from '../../UI/SectionTitle/SectionTitle';
-import { fetchProductApi } from '../../../../data/axiosAPI/productData';
-import mockData from '../../../../data/axiosAPI/mockData';
 import Skeleton from 'react-loading-skeleton';
 //
 
@@ -139,17 +137,12 @@ const Wholesale = () => {
     const getWholesaleApi = async () => {
         let result = await fetchHektoApi();
         let result1 = await fetchFurnitureApi();
-        let altRes = await fetchProductApi();
 
-        if (result || result1) {
+        if (result) {
             setHektoApi(result);
+        }
+        if (result1) {
             setFurApi(result1);
-        } else if (altRes) {
-            setHektoApi(altRes);
-            setFurApi(altRes);
-        } else {
-            setHektoApi(mockData);
-            setFurApi(mockData);
         }
     };
 

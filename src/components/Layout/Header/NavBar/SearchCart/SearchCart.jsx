@@ -19,6 +19,7 @@ const SearchModal = ({
     debounceChange,
     searchValue,
     filtered,
+    productData,
 }) => {
     return (
         <div
@@ -32,8 +33,7 @@ const SearchModal = ({
                           paddingBlock: '10px',
                           opacity: 1,
                       }
-            }
-        >
+            }>
             <form className='NavSearch__Form'>
                 <input
                     type='text'
@@ -45,7 +45,13 @@ const SearchModal = ({
                     onChange={debounceChange}
                 />
             </form>
-            {searchValue && (
+            {!searchValue ? (
+                <div style={{ marginTop: '10px' }}>
+                    Please type in product's name
+                </div>
+            ) : searchValue && productData.length === 0 ? (
+                <div style={{ marginTop: '10px' }}>Loading...</div>
+            ) : (
                 <div style={{ marginTop: '10px' }}>
                     {filtered.length} item
                     {filtered.length > 1 && `s`} found
@@ -55,8 +61,7 @@ const SearchModal = ({
                 className='NavSearch__Result'
                 style={
                     searchValue ? { display: 'grid', maxHeight: '400px' } : null
-                }
-            >
+                }>
                 {filtered
                     .toSorted((a, b) => {
                         const nameA = a.name.toLowerCase();
@@ -72,14 +77,12 @@ const SearchModal = ({
                     .map((product) => (
                         <li
                             key={product._id}
-                            onClick={() => setIsSearching(false)}
-                        >
+                            onClick={() => setIsSearching(false)}>
                             <Link
                                 to={`/shop/${product.name
                                     .split(' ')
                                     .join('-')}`}
-                                title={product.name}
-                            >
+                                title={product.name}>
                                 <img
                                     src={product.img}
                                     alt=''
@@ -130,14 +133,13 @@ const SearchCart = () => {
     };
 
     useEffect(() => {
-        getProducts();
+        searchValue && getProducts();
 
         return () => {
             debounceChange.cancel();
         };
-    }, [debounceChange]);
+    }, [debounceChange, searchValue]);
 
-    //đóng Search Modal khi nhấn ra ngoài
     useEffect(() => {
         const searchIcon = document.getElementById('SearchIcon');
         const searchInput = document.getElementById('searchquery');
@@ -170,7 +172,6 @@ const SearchCart = () => {
                 isSearching
             ) {
                 setIsSearching(false);
-                // hạn chế gọi hàm
                 window.removeEventListener('click', checkSearchDimension);
             }
         };
@@ -187,32 +188,28 @@ const SearchCart = () => {
                     id='SearchIcon'
                     htmlFor='searchquery'
                     title='Search product'
-                    onClick={() => setIsSearching(!isSearching)}
-                >
+                    onClick={() => setIsSearching(!isSearching)}>
                     <i className='fa-solid fa-magnifying-glass Icon'></i>
                 </button>
                 {!isSignIn ? (
                     <NavLink
                         to='/userSignIn'
                         aria-label='User-Page'
-                        title='UserSignIn'
-                    >
+                        title='UserSignIn'>
                         <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
                     </NavLink>
                 ) : (
                     <NavLink
                         to='/userProfile'
                         aria-label='User-Page'
-                        title='User'
-                    >
+                        title='User'>
                         <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
                     </NavLink>
                 )}
                 <NavLink
                     to='/cart'
                     aria-label='Cart-Page'
-                    title='Your Cart'
-                >
+                    title='Your Cart'>
                     <div className='Cart_IconContainer'>
                         <i className='fa-solid fa-bag-shopping Icon'></i>
                         {myCart.length !== 0 && (
@@ -231,6 +228,7 @@ const SearchCart = () => {
                 debounceChange={debounceChange}
                 searchValue={searchValue}
                 filtered={filtered}
+                productData={result}
             />
         </>
     );

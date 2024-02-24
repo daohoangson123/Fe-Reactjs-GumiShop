@@ -17,7 +17,6 @@
     background-color: var(--color-default);
     width: 100%;
     padding: 10px 0 5px;
-    z-index: 50;
     animation: pop-in 1s ease-in-out forwards;
 }
 
@@ -64,7 +63,9 @@
 
 .FiltersInputs * {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
+    justify-content: center;
     align-items: center;
 }
 
@@ -82,8 +83,13 @@
 
 .ToggleFilter__Btn {
     display: none;
-    width: 280px;
+    width: 100px;
+    height: 50px;
     justify-self: center;
+    background-color: var(--color-primary);
+    color: var(--color-default);
+    border: none;
+    border-radius: 10px;
 }
 
 @media (width <= 768px) {

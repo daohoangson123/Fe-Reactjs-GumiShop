@@ -23,7 +23,21 @@ const Good4MeDeal = ({ tittle, content }) => {
     };
 
     useEffect(() => {
-        getProducts();
+        const sectCheck = document.querySelectorAll('.Good4MeDeal');
+        let observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    getProducts();
+                    observer.unobserve(entry.target);
+                }
+            });
+        });
+
+        sectCheck.forEach((item) => {
+            observer.observe(item);
+        });
+
+        return () => observer.disconnect();
     }, []);
 
     useEffect(() => {
@@ -35,14 +49,19 @@ const Good4MeDeal = ({ tittle, content }) => {
             '.Good4MeDeal * .ProductItem',
         );
 
+        let options = {
+            rootMargin: '0px',
+            threshold: 0.5,
+        };
+
         let observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
+                if (entry.isIntersecting && entry.intersectionRatio >= 0.5) {
                     load(entry.target);
                     observer.unobserve(entry.target);
                 }
             });
-        });
+        }, options);
 
         animated.forEach((item) => {
             observer.observe(item);

@@ -1,12 +1,13 @@
 import './AdBanner.css';
 //
-import ad from '../../../../assets/img/product3.webp';
-//
 import { useEffect, useState } from 'react';
 //
 import { disableBodyScroll, clearAllBodyScrollLocks } from 'body-scroll-lock';
+//
+import bannerImgSmall from '../../../../assets/img/product3-small.png';
+import bannerImgLarge from '../../../../assets/img/product3.webp';
 
-const AdBanner = () => {
+const AdBanner = ({ adBannerImg }) => {
     const [layerClosed, setLayerClosed] = useState(() => {
         const saved = localStorage.getItem('layerClosed');
         const initialValue = JSON.parse(saved);
@@ -57,9 +58,10 @@ const AdBanner = () => {
                     <i className='fa-solid fa-xmark'></i>
                 </button>
                 <img
-                    src={ad}
+                    src={adBannerImg}
                     alt='AD Banner Img'
                     className='AdBanner_Img'
+                    srcSet={`${bannerImgSmall} 1200w, ${bannerImgLarge} 1600w`}
                     fetchpriority='high'
                 />
             </div>
