@@ -28,6 +28,7 @@ const MobileMenu = ({ navlinkData }) => {
             clearAllBodyScrollLocks();
         } else {
             setIsMobileView(false);
+            setMenuOpen(false);
         }
     };
 
@@ -49,14 +50,13 @@ const MobileMenu = ({ navlinkData }) => {
                 setMenuOpen={setMenuOpen}
                 openMenu={openMenu}
             />
-            {isMobileView && (
-                <MobileMenuRouting
-                    isMobileView={isMobileView}
-                    menuOpen={menuOpen}
-                    setMenuOpen={setMenuOpen}
-                    navlinkData={navlinkData}
-                />
-            )}
+
+            <MobileMenuRouting
+                isMobileView={isMobileView}
+                menuOpen={menuOpen}
+                setMenuOpen={setMenuOpen}
+                navlinkData={navlinkData}
+            />
         </>
     );
 };
@@ -111,6 +111,8 @@ const MobileMenuRouting = ({
                           zIndex: 1000,
                           backgroundColor: 'var(--color-alt-rgba-5)',
                       }
+                    : !isMobileView
+                    ? { transition: 'none' }
                     : null
             }>
             <div className='MobileMenu__Nav'>
