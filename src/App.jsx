@@ -4,8 +4,6 @@ import Header from './components/Layout/Header/Header';
 import Main from './components/Layout/Main/Main';
 import Footer from './components/Layout/Footer/Footer';
 //
-import AdBanner from './components/Layout/UI/AdBanner/AdBanner';
-//
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //
@@ -17,8 +15,6 @@ import { fetchUserData } from './data/axiosAPI/userData';
 import { useEffect } from 'react';
 
 function App() {
-    const saved = localStorage.getItem('layerClosed');
-    const initialValue = JSON.parse(saved);
     const isSignIn = useSelector(signinSelector);
     const id = isSignIn && isSignIn.slice(16);
     const dispatch = useDispatch();
@@ -40,7 +36,6 @@ function App() {
 
     return (
         <div className='App'>
-            {!initialValue && <AdBanner />}
             <Header isSignIn={isSignIn} />
             <Main />
             <Footer />

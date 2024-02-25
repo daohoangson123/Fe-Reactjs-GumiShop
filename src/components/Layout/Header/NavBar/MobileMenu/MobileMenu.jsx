@@ -11,8 +11,6 @@ import {
 const MobileMenu = ({ navlinkData }) => {
     const [menuOpen, setMenuOpen] = useState(false);
     const [isMobileView, setIsMobileView] = useState(false);
-    const saved = localStorage.getItem('layerClosed');
-    const initialValue = JSON.parse(saved);
 
     const openMenu =
         typeof document !== 'undefined' &&
@@ -22,7 +20,7 @@ const MobileMenu = ({ navlinkData }) => {
 
     // toggle khi matchMedia
     const checkView = () => {
-        if (mq.matches && initialValue) {
+        if (mq.matches) {
             setMenuOpen(false);
             setIsMobileView(true);
             clearAllBodyScrollLocks();
@@ -144,9 +142,11 @@ const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
             id='MobileMenu'
             onClick={() => {
                 setMenuOpen(!menuOpen);
-                !menuOpen
-                    ? disableBodyScroll(openMenu)
-                    : enableBodyScroll(openMenu);
+                if (menuOpen) {
+                    enableBodyScroll(openMenu);
+                } else {
+                    disableBodyScroll(openMenu);
+                }
             }}
             aria-label='MobileMenuToggle'
             style={{
