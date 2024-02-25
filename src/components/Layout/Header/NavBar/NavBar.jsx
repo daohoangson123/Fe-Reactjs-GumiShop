@@ -5,7 +5,7 @@ import { nav_Items } from '../../../../data/nav_Items';
 import Logo from './Logo/Logo';
 import NavRouting from './NavRouting/NavRouting';
 import { Suspense, lazy } from 'react';
-const MobileMenuToggle = lazy(() => import('./MobileMenu/MobileMenuToggle'));
+import MobileMenu from './MobileMenu/MobileMenuToggle';
 const SearchCart = lazy(() => import('./SearchCart/SearchCart'));
 
 const NavBar = ({ isMobileView }) => {
@@ -13,7 +13,7 @@ const NavBar = ({ isMobileView }) => {
         <>
             <nav className='NavBar'>
                 <Suspense fallback={'loading...'}>
-                    <MobileMenuToggle
+                    <MobileMenu
                         isMobileView={isMobileView}
                         navlinkData={nav_Items}
                     />

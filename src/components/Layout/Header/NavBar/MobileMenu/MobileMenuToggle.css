@@ -42,14 +42,12 @@
 }
 
 .MobileMenu__NavContainer {
-    display: none;
     inset: 0;
     display: flex;
     justify-content: flex-end;
     position: absolute;
     height: 100dvh;
-    background: var(--color-alt-rgba-3);
-    transition: var(--transition-slow);
+    transition: var(--transition-slow), background-color 1s ease-in;
     transform: translateX(-100%) skewY(45deg);
     z-index: -1;
 }

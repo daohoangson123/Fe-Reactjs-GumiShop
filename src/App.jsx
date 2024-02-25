@@ -8,10 +8,12 @@ import AdBanner from './components/Layout/UI/AdBanner/AdBanner';
 //
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+//
 import { useDispatch, useSelector } from 'react-redux';
 import { signinSelector } from './redux/Selectors/Selector';
-import { fetchUserData } from './data/axiosAPI/userData';
 import { getUserData } from './redux/Actions/Action';
+import { fetchUserData } from './data/axiosAPI/userData';
+//
 import { useEffect } from 'react';
 
 function App() {
@@ -33,6 +35,7 @@ function App() {
         if (isSignIn) {
             saveUserData();
         }
+        // eslint-disable-next-line
     }, [isSignIn]);
 
     return (
