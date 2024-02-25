@@ -5,7 +5,6 @@ import NavBar from './NavBar/NavBar';
 //
 import { pageAccessedByReload } from '../../../data/isPageReloaded';
 //
-import { useEffect, useState } from 'react';
 
 const Header = ({ isSignIn }) => {
     return (
