@@ -41,7 +41,7 @@ function App() {
     return (
         <div className='App'>
             {!initialValue && <AdBanner />}
-            <Header />
+            <Header isSignIn={isSignIn} />
             <Main />
             <Footer />
             <ToastContainer

@@ -1,4 +1,4 @@
-import './MobileMenuToggle.css';
+import './MobileMenu.css';
 //
 import { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
@@ -8,30 +8,36 @@ import {
     clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
 
-const MobileMenu = ({ isMobileView, navlinkData }) => {
+const MobileMenu = ({ navlinkData }) => {
     const [menuOpen, setMenuOpen] = useState(false);
+    const [isMobileView, setIsMobileView] = useState(false);
+    const saved = localStorage.getItem('layerClosed');
+    const initialValue = JSON.parse(saved);
 
     const openMenu =
         typeof document !== 'undefined' &&
         document.querySelector('#MobileMenu');
 
-    const mq = window.matchMedia('(min-width: 1025px)');
+    const mq = window.matchMedia('(width <= 1024px)');
 
-    // toggle khi matchMedia '(min-width: 1025px)'
-    const toggle = () => {
-        if (mq.matches) {
+    // toggle khi matchMedia
+    const checkView = () => {
+        if (mq.matches && initialValue) {
             setMenuOpen(false);
+            setIsMobileView(true);
             clearAllBodyScrollLocks();
+        } else {
+            setIsMobileView(false);
         }
     };
 
     useEffect(() => {
-        toggle();
+        checkView();
 
-        mq.addEventListener('change', toggle);
+        mq.addEventListener('change', checkView);
 
         return () => {
-            mq.removeEventListener('change', toggle);
+            mq.removeEventListener('change', checkView);
         };
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -103,7 +109,7 @@ const MobileMenuRouting = ({
                     ? {
                           transform: 'none',
                           zIndex: 1000,
-                          backgroundColor: 'var(--color-alt-rgba-3)',
+                          backgroundColor: 'var(--color-alt-rgba-5)',
                       }
                     : null
             }>

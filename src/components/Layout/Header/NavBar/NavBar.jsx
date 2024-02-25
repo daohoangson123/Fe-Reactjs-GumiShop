@@ -4,25 +4,17 @@ import { nav_Items } from '../../../../data/nav_Items';
 //
 import Logo from './Logo/Logo';
 import NavRouting from './NavRouting/NavRouting';
-import { Suspense, lazy } from 'react';
-import MobileMenu from './MobileMenu/MobileMenuToggle';
-const SearchCart = lazy(() => import('./SearchCart/SearchCart'));
+import MobileMenu from './MobileMenu/MobileMenu';
+import SearchCart from './SearchCart/SearchCart';
 
-const NavBar = ({ isMobileView }) => {
+const NavBar = () => {
     return (
-        <>
-            <nav className='NavBar'>
-                <Suspense fallback={'loading...'}>
-                    <MobileMenu
-                        isMobileView={isMobileView}
-                        navlinkData={nav_Items}
-                    />
-                    <Logo />
-                    <NavRouting navlinkData={nav_Items} />
-                    <SearchCart />
-                </Suspense>
-            </nav>
-        </>
+        <nav className='NavBar'>
+            <MobileMenu navlinkData={nav_Items} />
+            <Logo />
+            <NavRouting navlinkData={nav_Items} />
+            <SearchCart />
+        </nav>
     );
 };
 
