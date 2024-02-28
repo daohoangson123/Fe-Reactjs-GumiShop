@@ -16,7 +16,7 @@ const Header = ({ isSignIn }) => {
             const window = e.currentTarget;
             if (y > window.scrollY && y - window.scrollY > 35) {
                 setIsDown(false);
-            } else if (y < window.scrollY && window.scrollY - y > 35) {
+            } else if (y < window.scrollY && window.scrollY - y > 40) {
                 setIsDown(true);
             }
             setY(window.scrollY);
@@ -39,7 +39,8 @@ const Header = ({ isSignIn }) => {
             style={{
                 animation: pageAccessedByReload && 'none',
                 top: isDown ? '-60px' : 0,
-            }}>
+            }}
+        >
             <SignBar isSignIn={isSignIn} />
             <NavBar />
         </header>
