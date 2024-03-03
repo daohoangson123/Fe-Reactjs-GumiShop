@@ -15,7 +15,7 @@
 
 .SearchForm {
     width: 100%;
-    padding: 10px 0 5px;
+    padding: 10px;
     animation: pop-in 1s ease-in-out forwards;
     background-color: var(--color-default);
 }

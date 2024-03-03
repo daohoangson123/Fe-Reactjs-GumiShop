@@ -2,7 +2,7 @@ import './NewsDetail.css';
 //
 import { news_Items } from '../../../../../../data/news';
 //
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 
 const NewsDetail = () => {
