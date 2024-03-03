@@ -155,16 +155,16 @@
     background-color: transparent;
     border-radius: 3px;
     font-size: 20px;
-    color: var(--color-default);
+    color: var(--color-text);
 }
 
-.SignIn__Btn:hover {
+.SignIn__Btn:hover:not(:disabled) {
     background-color: var(--color-primary);
+    color: var(--color-default);
 }
 
 .SignIn__Btn:disabled {
     background-color: transparent;
-    color: var(--color-text);
 }
 
 .SignIn__Btn:disabled:hover {
