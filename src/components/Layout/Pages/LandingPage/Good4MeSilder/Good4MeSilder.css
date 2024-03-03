@@ -1,18 +1,18 @@
-.owl-control .item {
+.Good4MeSilder .owl-control .item {
     width: 318px;
 }
 
-.owl-control .item img {
+.Good4MeSilder .owl-control .item img {
     aspect-ratio: 1;
 }
 
 .Good4MeSilder {
-    text-align: center;
     margin-block: 40px;
+    text-align: center;
 }
 
 @media (width < 1024px) {
-    .owl-control .item {
+    .Good4MeSilder .owl-control .item {
         width: 200px;
     }
 }

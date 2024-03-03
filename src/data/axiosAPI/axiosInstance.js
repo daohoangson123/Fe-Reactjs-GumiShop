@@ -22,7 +22,7 @@ instance.interceptors.response.use(
             errorRes.headers = error.response.headers;
         }
         return errorRes;
-    },
+    }
 );
 
 export default instance;

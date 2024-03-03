@@ -1,17 +1,15 @@
 .Review {
-    position: relative;
+    background-blend-mode: screen;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 60px;
+    position: relative;
     padding: 130px 30px;
-    background-image: url(../../../../../assets/img/Reviewbg.webp),
-        url(../../../../../assets/img/ReviewTop.webp),
-        url(../../../../../assets/img/ReviewBot.webp);
+    background-image: url(../../../../../assets/img/Reviewbg.webp);
     background-repeat: no-repeat;
-    background-blend-mode: screen;
-    background-size: cover, contain, contain;
     background-position: center, top, bottom;
+    background-size: cover, contain, contain;
 }
 .Review__BgTop {
     position: absolute;
@@ -31,8 +29,8 @@
 }
 
 .Review__Slider .owl-theme .owl-nav {
-    position: absolute;
     display: flex;
+    position: absolute;
     bottom: 0;
 }
 
@@ -42,8 +40,8 @@
     align-items: center;
     width: 44px;
     height: 44px;
-    border: 1px solid var(--color-primary);
     transition: var(--transition-fast);
+    border: 1px solid var(--color-primary);
 }
 
 .Review__Slider .owl-theme .owl-nav [class*='owl-']:hover {
@@ -51,25 +49,25 @@
 }
 
 .Review__Slider .owl-theme .owl-nav button span {
+    font-size: 40px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 500;
-    font-size: 40px;
 }
 
 .Review__Slider-Item-Title {
+    margin-bottom: 46px;
     font-size: clamp(16px, 4vw, 20px);
     font-weight: 500;
     line-height: 25px;
     letter-spacing: 4px;
-    margin-bottom: 46px;
 }
 
 .Review__Slider-Item-SubTitle {
     font-size: clamp(24px, 4vw, 30px);
     font-weight: 500;
     line-height: 25px;
-    letter-spacing: 4px;
     color: var(--color-primary);
+    letter-spacing: 4px;
 }
 
 .Review__Slider-Item-Rating {
@@ -80,23 +78,23 @@
     font-size: clamp(18px, 4vw, 26px);
     font-weight: 500;
     line-height: 44px;
-    letter-spacing: 1px;
     color: var(--color-text);
+    letter-spacing: 1px;
 }
 
 .Review__Slider-Item-Name {
+    margin: 23px 0 32px 0;
     font-size: 16px;
     font-weight: 600;
     line-height: 20px;
-    letter-spacing: 1px;
     color: var(--color-primary);
-    margin: 23px 0 32px 0;
+    letter-spacing: 1px;
 }
 
 .Review__Img {
-    width: 400px;
     aspect-ratio: 1;
     object-fit: contain;
+    width: 400px;
 }
 
 @media (width < 768px) {

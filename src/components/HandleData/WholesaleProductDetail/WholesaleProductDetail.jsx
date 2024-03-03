@@ -31,7 +31,7 @@ const WholesaleProductDetail = () => {
             `${quantity + ' ' + productDetail.name} added to your Cart`,
             {
                 transition: Zoom,
-            },
+            }
         );
 
     const maxedStockNotify = () =>
@@ -64,7 +64,7 @@ const WholesaleProductDetail = () => {
         let productRes = [...result, ...result1];
 
         const findProductDetail = productRes.find(
-            (product) => product._id.toString() === id.toString(),
+            (product) => product._id.toString() === id.toString()
         );
         setProductDetail(findProductDetail);
     };
@@ -74,7 +74,7 @@ const WholesaleProductDetail = () => {
         // eslint-disable-next-line
     }, [id]);
     return (
-        <div className='WholesaleProductDetail'>
+        <div className="WholesaleProductDetail">
             <ErrorBoundary>
                 <WholesaleProductDetailLayout
                     productDetail={productDetail}

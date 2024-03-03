@@ -1,8 +1,8 @@
 .NavBar__Logo {
-    position: relative;
-    display: flex;
     justify-self: start;
+    display: flex;
     align-self: center;
+    position: relative;
     font-size: clamp(24px, 4vw, 36px);
     font-weight: 600;
     line-height: 24px;

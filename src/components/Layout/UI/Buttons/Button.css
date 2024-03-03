@@ -9,9 +9,9 @@
     width: 100%;
     height: 100%;
     padding: 5px;
-    text-decoration: none;
-    color: var(--color-alt);
     transition: var(--transition-fast);
+    color: var(--color-alt);
+    text-decoration: none;
 }
 
 .Global__Btn--default a {
@@ -36,9 +36,9 @@
 }
 
 .Global__Btn--oval:hover {
-    border-top-left-radius: 50%;
-    border-bottom-right-radius: 50%;
     border-start-end-radius: 75%;
     border-end-start-radius: 75%;
     box-shadow: 2px 2px 5px 2px var(--color-text);
+    border-top-left-radius: 50%;
+    border-bottom-right-radius: 50%;
 }

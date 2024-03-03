@@ -1,6 +1,6 @@
 .ProductDetail {
-    margin-top: 10px;
     min-height: 500px;
+    margin-top: 10px;
 }
 
 .ProductDetail__Breadcrumbs {
@@ -20,9 +20,9 @@
 .ProductDetail__Img,
 .ProductDetailSkeleton__Img {
     justify-self: center;
+    aspect-ratio: 1;
     align-self: center;
     width: 220px;
-    aspect-ratio: 1;
     border-radius: 20px;
 }
 
@@ -52,8 +52,8 @@
 
 .ProductDetailBox__AddToCart button {
     aspect-ratio: 1;
-    border-radius: 2px;
     transition: var(--transition-fast);
+    border-radius: 2px;
 }
 
 .ProductDetailBox__AddToCart button:hover {
@@ -69,24 +69,24 @@
 }
 
 .ProductDetailBox__AddToCart button:first-child::after {
-    position: absolute;
+    aspect-ratio: 1;
+    rotate: -45deg;
     content: '-10';
+    position: absolute;
     top: 2px;
     left: 1px;
     width: 100%;
-    aspect-ratio: 1;
-    rotate: -45deg;
     font-size: 14px;
 }
 
 .ProductDetailBox__AddToCart button:nth-child(5)::after {
-    position: absolute;
+    aspect-ratio: 1;
+    rotate: -45deg;
     content: '+10';
+    position: absolute;
     top: 2px;
     left: 1px;
     width: 100%;
-    aspect-ratio: 1;
-    rotate: -45deg;
     font-size: 14px;
 }
 
@@ -95,10 +95,10 @@
 }
 
 .Quantity_Input {
-    text-align: center;
-    color: var(--color-alt);
-    background-color: var(--color-default);
     width: 50px;
+    background-color: var(--color-default);
+    color: var(--color-alt);
+    text-align: center;
 }
 
 .Quantity_Input::-webkit-outer-spin-button,
@@ -123,8 +123,8 @@
 
     .ProductDetail__Img,
     .grid-container {
-        grid-column: 1;
         grid-row: 1 / 6;
+        grid-column: 1;
     }
 
     .ProductDetailSkeleton__Img {

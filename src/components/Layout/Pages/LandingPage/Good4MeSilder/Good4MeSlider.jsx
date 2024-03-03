@@ -10,10 +10,10 @@ import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
 
 const Good4MeSilder = ({ title }) => {
     return (
-        <section className='Good4MeSilder'>
+        <section className="Good4MeSilder">
             <SectionTitle content={title} />
             <OwlCarousel
-                className='owl-theme owl-control'
+                className="owl-theme owl-control"
                 autoWidth={true}
                 dots={false}
                 margin={20}
@@ -25,14 +25,8 @@ const Good4MeSilder = ({ title }) => {
                 loop
             >
                 {bottom_Slider.map((img) => (
-                    <div
-                        className='item'
-                        key={img.id}
-                    >
-                        <img
-                            src={img.url}
-                            alt=''
-                        />
+                    <div className="item" key={img.id}>
+                        <img src={img.url} alt="" />
                     </div>
                 ))}
             </OwlCarousel>

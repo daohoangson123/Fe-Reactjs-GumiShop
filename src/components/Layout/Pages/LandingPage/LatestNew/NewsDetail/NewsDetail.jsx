@@ -19,24 +19,20 @@ const NewsDetail = () => {
     }, [id]);
 
     return (
-        <section className='NewDetail container'>
+        <section className="NewDetail container">
             {newsdetail.map((news) => (
-                <div
-                    className='NewDetail__Item'
-                    key={news.id}>
-                    <div className='NewDetail__Item-Date'>{news.date}</div>
-                    <img
-                        src={news.url}
-                        alt='newsImg'
-                    />
-                    <div className='NewDetail__Item-Title'>{news.title}</div>
-                    <div className='NewDetail__Item-Content'>
+                <div className="NewDetail__Item" key={news.id}>
+                    <div className="NewDetail__Item-Date">{news.date}</div>
+                    <img src={news.url} alt="newsImg" />
+                    <div className="NewDetail__Item-Title">{news.title}</div>
+                    <div className="NewDetail__Item-Content">
                         {news.content}
                     </div>
                     <button
-                        className='NewDetail__Item-Btn'
-                        type='button'
-                        onClick={handleClick}>
+                        className="NewDetail__Item-Btn"
+                        type="button"
+                        onClick={handleClick}
+                    >
                         Go Back
                     </button>
                 </div>

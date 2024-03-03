@@ -1,7 +1,7 @@
 .SectionTitle {
+    margin-bottom: 30px;
     font-size: 36px;
     font-weight: 500;
     line-height: 32px;
     color: var(--color-alt);
-    margin-bottom: 30px;
 }

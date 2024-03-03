@@ -5,10 +5,10 @@ import Accordion from 'react-bootstrap/Accordion';
 
 const FaqPage = () => {
     return (
-        <div className='FaqPage Container'>
-            <div className='FaqPage__Title'>FAQ</div>
-            <div className='FaqPage__Content'>
-                <Accordion defaultActiveKey='0'>
+        <div className="FaqPage Container">
+            <div className="FaqPage__Title">FAQ</div>
+            <div className="FaqPage__Content">
+                <Accordion defaultActiveKey="0">
                     {faqList.map((faq, index) => (
                         <div key={faq.title}>
                             <Accordion.Item eventKey={`${index}`}>

@@ -46,7 +46,7 @@ const Good4MeDeal = ({ tittle, content }) => {
         }
 
         const animated = document.querySelectorAll(
-            '.Good4MeDeal * .ProductItem',
+            '.Good4MeDeal * .ProductItem'
         );
 
         let options = {
@@ -71,19 +71,20 @@ const Good4MeDeal = ({ tittle, content }) => {
     }, [productApi]);
 
     return (
-        <section className='Good4MeDeal Container'>
+        <section className="Good4MeDeal Container">
             <SectionTitle content={tittle} />
             <hr />
             <p>{content}</p>
-            <div className='ProductContainer'>
+            <div className="ProductContainer">
                 {productApi.length === 0 ? (
                     <ProductSkeleton />
                 ) : (
                     productApi.map((product, index) => (
                         <div
-                            className='ProductItem'
+                            className="ProductItem"
                             key={product._id}
-                            style={{ animationDelay: `${index * 0.1}s` }}>
+                            style={{ animationDelay: `${index * 0.1}s` }}
+                        >
                             <Product
                                 id={product._id}
                                 url={product.img}

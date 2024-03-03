@@ -13,61 +13,61 @@ function ProductSkeleton({
 }) {
     return (
         <>
-            <div className='ProductSkeleton'>
+            <div className="ProductSkeleton">
                 <Skeleton
-                    className='ProductSkeleton__Img'
+                    className="ProductSkeleton__Img"
                     width={imgWidth}
                     height={imgHeight}
                     borderRadius={boderRadius}
                     circle={circle}
                 />
                 <Skeleton
-                    className='ProductSkeleton__Content'
+                    className="ProductSkeleton__Content"
                     width={contentWidth}
                     height={contentHeight}
                     count={count || 3}
                 />
             </div>
-            <div className='ProductSkeleton'>
+            <div className="ProductSkeleton">
                 <Skeleton
-                    className='ProductSkeleton__Img'
+                    className="ProductSkeleton__Img"
                     width={imgWidth}
                     height={imgHeight}
                     borderRadius={boderRadius}
                     circle={circle}
                 />
                 <Skeleton
-                    className='ProductSkeleton__Content'
+                    className="ProductSkeleton__Content"
                     width={contentWidth}
                     height={contentHeight}
                     count={count || 3}
                 />
             </div>
-            <div className='ProductSkeleton'>
+            <div className="ProductSkeleton">
                 <Skeleton
-                    className='ProductSkeleton__Img'
+                    className="ProductSkeleton__Img"
                     width={imgWidth}
                     height={imgHeight}
                     borderRadius={boderRadius}
                     circle={circle}
                 />
                 <Skeleton
-                    className='ProductSkeleton__Content'
+                    className="ProductSkeleton__Content"
                     width={contentWidth}
                     height={contentHeight}
                     count={count || 3}
                 />
             </div>
-            <div className='ProductSkeleton'>
+            <div className="ProductSkeleton">
                 <Skeleton
-                    className='ProductSkeleton__Img'
+                    className="ProductSkeleton__Img"
                     width={imgWidth}
                     height={imgHeight}
                     borderRadius={boderRadius}
                     circle={circle}
                 />
                 <Skeleton
-                    className='ProductSkeleton__Content'
+                    className="ProductSkeleton__Content"
                     width={contentWidth}
                     height={contentHeight}
                     count={count || 3}

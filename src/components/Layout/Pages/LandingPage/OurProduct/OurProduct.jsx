@@ -60,7 +60,7 @@ const OurProduct = ({ title }) => {
         }
 
         const animated = document.querySelectorAll(
-            '.OurProduct * .ProductItem',
+            '.OurProduct * .ProductItem'
         );
 
         let options = {
@@ -85,21 +85,22 @@ const OurProduct = ({ title }) => {
     }, [productApi, load]);
 
     return (
-        <section className='OurProduct Container'>
+        <section className="OurProduct Container">
             <SectionTitle content={title} />
-            <div className='ProductContainer'>
+            <div className="ProductContainer">
                 {load.length === 0 ? (
                     <ProductSkeleton />
                 ) : (
                     load.map((product, index) => (
                         <div
-                            className='ProductItem'
+                            className="ProductItem"
                             key={product._id}
                             style={{
                                 animationDelay: `${
                                     index < 4 ? index * 0.1 : (index - 4) * 0.1
                                 }s`,
-                            }}>
+                            }}
+                        >
                             <Product
                                 id={product._id}
                                 url={product.img}
@@ -118,14 +119,15 @@ const OurProduct = ({ title }) => {
             </div>
             {load.length !== 0 && (
                 <button
-                    className='LoadMore'
+                    className="LoadMore"
                     onClick={loadmore}
-                    disabled={isLoading}>
+                    disabled={isLoading}
+                >
                     {isLoading
                         ? 'Loading'
                         : !isLoading && load.length === 4
-                        ? 'VIEW ALL PRODUCTS'
-                        : 'VIEW LESS PRODUCTS'}
+                          ? 'VIEW ALL PRODUCTS'
+                          : 'VIEW LESS PRODUCTS'}
                 </button>
             )}
         </section>

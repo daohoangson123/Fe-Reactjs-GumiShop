@@ -21,7 +21,7 @@ const Header = ({ isSignIn }) => {
             }
             setY(window.scrollY);
         },
-        [y],
+        [y]
     );
 
     useEffect(() => {

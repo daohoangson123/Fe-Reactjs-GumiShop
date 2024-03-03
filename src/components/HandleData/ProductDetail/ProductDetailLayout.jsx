@@ -20,46 +20,43 @@ const ProductDetailLayout = ({
             } added to your Cart`,
             {
                 position: 'bottom-right',
-            },
+            }
         );
 
     return (
-        <div className='ProductDetailLayout'>
+        <div className="ProductDetailLayout">
             {productDetail.length === 0 ? (
                 <>
                     <div style={{ paddingLeft: '30px' }}>
-                        <Skeleton className='ProductDetail__Breadcrumbs' />
+                        <Skeleton className="ProductDetail__Breadcrumbs" />
                     </div>
-                    <div className='Container'>
-                        <div className='ProductDetailLayout__Box ProductDetailLayoutSkeleton__Box Container'>
+                    <div className="Container">
+                        <div className="ProductDetailLayout__Box ProductDetailLayoutSkeleton__Box Container">
                             <Skeleton
-                                containerClassName='grid-container'
-                                className='ProductDetailSkeleton__Img'
+                                containerClassName="grid-container"
+                                className="ProductDetailSkeleton__Img"
                             />
-                            <Skeleton
-                                width={280}
-                                count={6}
-                            />
+                            <Skeleton width={280} count={6} />
                         </div>
                     </div>
                 </>
             ) : (
                 <>
                     <Breadcrumbs />
-                    <div className='ProductDetailLayout__Box Container'>
+                    <div className="ProductDetailLayout__Box Container">
                         <img
                             src={productDetail.img}
-                            alt='productImg'
-                            className='ProductDetail__Img'
+                            alt="productImg"
+                            className="ProductDetail__Img"
                         />
-                        <div className='ProductDetailBox__Name'>
+                        <div className="ProductDetailBox__Name">
                             {productDetail.name}
                         </div>
-                        <div className='ProductDetailBox__Rating'>
+                        <div className="ProductDetailBox__Rating">
                             Rating: 4/5
                         </div>
-                        <div className='ProductDetailBox__Stock'>In Stock</div>
-                        <div className='ProductDetailBox__Price'>
+                        <div className="ProductDetailBox__Stock">In Stock</div>
+                        <div className="ProductDetailBox__Price">
                             <span>
                                 Current Price: {productDetail.price} NZD
                             </span>
@@ -70,38 +67,40 @@ const ProductDetailLayout = ({
                                 </span>
                             )}
                         </div>
-                        <form className='ProductDetailBox__AddToCart'>
+                        <form className="ProductDetailBox__AddToCart">
                             <button
-                                className='Quantity_Btn'
-                                type='button'
+                                className="Quantity_Btn"
+                                type="button"
                                 onClick={() => {
                                     quantity > 10
                                         ? setQuantity((pre) => pre - 10)
                                         : setQuantity(1);
-                                }}></button>
+                                }}
+                            ></button>
                             <button
-                                className='Quantity_Btn'
-                                type='button'
+                                className="Quantity_Btn"
+                                type="button"
                                 onClick={() => {
                                     if (quantity > 1 && !isNaN(quantity)) {
                                         setQuantity((pre) => pre - 1);
                                     } else setQuantity(1);
-                                }}>
+                                }}
+                            >
                                 -
                             </button>
                             <input
-                                className='Quantity_Input'
-                                type='number'
-                                name='quantity'
-                                id='quantity'
+                                className="Quantity_Input"
+                                type="number"
+                                name="quantity"
+                                id="quantity"
                                 min={1}
                                 max={1000}
                                 value={quantity}
-                                autoComplete='off'
+                                autoComplete="off"
                                 onWheel={(event) => event.target.blur()}
                                 onChange={(event) => {
                                     let newAmount = Math.round(
-                                        event.target.value,
+                                        event.target.value
                                     );
                                     if (newAmount < 1) {
                                         newAmount = 1;
@@ -109,12 +108,12 @@ const ProductDetailLayout = ({
                                         newAmount = 1000;
                                     } else if (!isNaN(newAmount)) {
                                         newAmount = Math.round(
-                                            event.target.value,
+                                            event.target.value
                                         );
                                     } else {
                                         newAmount = quantity;
                                         window.alert(
-                                            'Hey you, you breaking the input!',
+                                            'Hey you, you breaking the input!'
                                         );
                                     }
                                     setQuantity(newAmount);
@@ -128,28 +127,30 @@ const ProductDetailLayout = ({
                                 // }
                             />
                             <button
-                                className='Quantity_Btn'
-                                type='button'
+                                className="Quantity_Btn"
+                                type="button"
                                 onClick={() => {
                                     if (quantity < 1000 && !isNaN(quantity)) {
                                         setQuantity((pre) => pre + 1);
                                     } else setQuantity(1);
-                                }}>
+                                }}
+                            >
                                 +
                             </button>
                             <button
-                                className='Quantity_Btn'
-                                type='button'
+                                className="Quantity_Btn"
+                                type="button"
                                 onClick={() => {
                                     if (quantity < 991) {
                                         setQuantity((pre) => pre + 10);
                                     } else {
                                         setQuantity(1000);
                                     }
-                                }}></button>
+                                }}
+                            ></button>
                             <button
-                                className='AddToCart_Btn'
-                                type='button'
+                                className="AddToCart_Btn"
+                                type="button"
                                 onClick={() => {
                                     handleAddToCart({
                                         id: productDetail._id,
@@ -160,7 +161,8 @@ const ProductDetailLayout = ({
                                         amount: isNaN(quantity) ? 1 : quantity,
                                     });
                                     addNotify();
-                                }}>
+                                }}
+                            >
                                 Add
                             </button>
                         </form>

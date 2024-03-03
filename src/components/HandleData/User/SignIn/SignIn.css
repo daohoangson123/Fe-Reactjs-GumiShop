@@ -1,18 +1,18 @@
 .SignIn {
     display: flex;
-    justify-content: center;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
 .User_List {
-    display: grid;
     place-items: center;
+    aspect-ratio: 1;
+    display: grid;
     width: clamp(280px, 80vw, 400px);
+    transition: var(--transition-fast);
     border: 1px solid var(--color-alt);
     border-bottom-right-radius: 50px;
-    aspect-ratio: 1;
-    transition: var(--transition-fast);
 }
 
 .User_List:hover {
@@ -25,11 +25,11 @@
 }
 
 .SignIn__Form {
-    border: 1px solid var(--color-alt);
     width: clamp(280px, 80vw, 400px);
     padding: 20px;
-    border-top-left-radius: 50px;
     transition: var(--transition-fast);
+    border: 1px solid var(--color-alt);
+    border-top-left-radius: 50px;
 }
 
 .SignIn__Form:hover,
@@ -38,11 +38,11 @@
 }
 
 .SignIn__Form-Title {
-    text-align: center;
+    min-height: 60px;
     font-size: 24px;
     font-weight: 600;
-    min-height: 60px;
     color: var(--color-primary);
+    text-align: center;
 }
 
 .SignIn__Form-Fieldset {
@@ -53,8 +53,8 @@
 .SignIn__Form-InputContainer {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
     align-items: center;
+    gap: 10px;
 }
 
 .SignIn__Form-InputContainer label {
@@ -66,24 +66,24 @@
 }
 
 .SignIn__Form-InputContainer div {
-    position: relative;
     display: flex;
-    width: min(100%, 273px);
     flex-grow: 1;
+    position: relative;
+    width: min(100%, 273px);
 }
 
 .SignIn__Form-InputContainer input {
+    flex-grow: 1;
+    width: min(100%, 273px);
+    height: 40px;
+    padding: 0 5px;
     transition: var(--transition-fast);
     background: transparent;
     border: none;
     border-bottom: 1px solid var(--color-primary);
     border-radius: 2px;
-    padding: 0 5px;
-    width: min(100%, 273px);
-    height: 40px;
-    flex-grow: 1;
-    font: small-caption;
     font-size: 16px;
+    font: small-caption;
 }
 
 .SignIn__Form-InputContainer input:hover {
@@ -107,8 +107,8 @@
 }
 
 .SignIn__Form-InputContainer .showpassicon::before {
-    display: grid;
     place-items: center;
+    display: grid;
     width: 20px;
 }
 
@@ -133,15 +133,15 @@
 
 .SignIn__Form-Link {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     gap: 10px;
-    flex-wrap: wrap;
 }
 
 .SignIn__Form-Link a {
+    transition: var(--transition-fast);
     color: var(--color-text);
     text-decoration: none;
-    transition: var(--transition-fast);
 }
 
 .SignIn__Form-Link a:hover {
@@ -150,13 +150,12 @@
 
 .SignIn__Btn {
     width: 100%;
-    background-color: transparent;
     padding: 5px;
+    transition: var(--transition-fast);
+    background-color: transparent;
     border-radius: 3px;
     font-size: 20px;
-    transition: var(--transition-fast);
     color: var(--color-default);
-    background-color: var(--color-primary-rgba);
 }
 
 .SignIn__Btn:hover {
@@ -164,8 +163,8 @@
 }
 
 .SignIn__Btn:disabled {
-    color: var(--color-text);
     background-color: transparent;
+    color: var(--color-text);
 }
 
 .SignIn__Btn:disabled:hover {
@@ -191,19 +190,19 @@
 .SignIn__Form-OtherSignIn {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
     justify-content: space-evenly;
+    gap: 20px;
 }
 
 .SignIn__Form-OtherSignIn div {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--color-icon);
     flex-grow: 1;
     padding: 5px;
-    border-radius: 2px;
     transition: var(--transition-fast);
+    border: 1px solid var(--color-icon);
+    border-radius: 2px;
 }
 
 .SignIn__Form-OtherSignIn div:hover {
@@ -212,14 +211,18 @@
 }
 
 .SignIn__Form-OtherSignIn img {
-    width: 40px;
     aspect-ratio: 1;
+    width: 40px;
     margin-right: 10px;
 }
 
 .User_List .page-item.disabled .page-link {
     background-color: #0d6efd;
     color: #ffffff;
+}
+
+.User_List ol li {
+    font-size: clamp(12px, 4vw, 16px);
 }
 
 @media (width < 860px) {

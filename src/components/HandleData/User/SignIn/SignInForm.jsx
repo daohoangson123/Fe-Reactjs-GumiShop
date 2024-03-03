@@ -42,13 +42,14 @@ const SignInInput = ({
                             paddingInline: isFocus && '5px',
                             zIndex: isFocus ? 0 : -1,
                             transition: 'all ease-in-out 0.2s',
-                        }}>
+                        }}
+                    >
                         username
                     </span>
                     <input
-                        type='text'
-                        id='signInUserName'
-                        className='signInUserName'
+                        type="text"
+                        id="signInUserName"
+                        className="signInUserName"
                         required
                         onChange={(event) => setUsername(event.target.value)}
                         onBlur={() => {
@@ -78,15 +79,16 @@ const SignInInput = ({
                             paddingInline: isFocus && '5px',
                             zIndex: isFocus ? 0 : -1,
                             transition: 'all ease-in-out 0.2s',
-                        }}>
+                        }}
+                    >
                         password
                     </span>
                     <input
                         type={!showPass ? 'password' : 'text'}
-                        id='signInPassWord'
-                        className='signInPassWord'
+                        id="signInPassWord"
+                        className="signInPassWord"
                         required
-                        autoComplete='on'
+                        autoComplete="on"
                         onChange={(event) => setPassword(event.target.value)}
                         onBlur={() => {
                             if (password === '') {
@@ -102,7 +104,8 @@ const SignInInput = ({
                         className={`fa-regular ${
                             !showPass ? 'fa-eye-slash' : 'fa-eye'
                         } showpassicon`}
-                        onClick={() => setShowPass(!showPass)}></i>
+                        onClick={() => setShowPass(!showPass)}
+                    ></i>
                 </div>
             )}
         </>
@@ -169,95 +172,96 @@ const SignInForm = () => {
 
     return (
         <form
-            action=''
+            action=""
             // autoComplete='off'
-            className='SignIn__Form'
-            onSubmit={handleSignIn}>
-            <div className='SignIn__Form-Title'>
+            className="SignIn__Form"
+            onSubmit={handleSignIn}
+        >
+            <div className="SignIn__Form-Title">
                 Sign In
                 <div
                     style={{
                         fontSize: '16px',
                         fontWeight: 400,
                         color: 'red',
-                    }}>
+                    }}
+                >
                     {isError && 'Username/ Password is invalid'}
                 </div>
             </div>
-            <fieldset className='SignIn__Form-Fieldset'>
-                <div className='SignIn__Form-InputContainer'>
-                    <label htmlFor='signInUserName'>
-                        <i className='fa-solid fa-user'></i>
+            <fieldset className="SignIn__Form-Fieldset">
+                <div className="SignIn__Form-InputContainer">
+                    <label htmlFor="signInUserName">
+                        <i className="fa-solid fa-user"></i>
                     </label>
                     <SignInInput
-                        inputName='signInUserName'
+                        inputName="signInUserName"
                         setIsError={setIsError}
                         username={username}
                         setUsername={setUsername}
                     />
                 </div>
-                <div className='SignIn__Form-InputContainer'>
-                    <label htmlFor='signInPassWord'>
-                        <i className='fa-solid fa-key'></i>
+                <div className="SignIn__Form-InputContainer">
+                    <label htmlFor="signInPassWord">
+                        <i className="fa-solid fa-key"></i>
                     </label>
                     <SignInInput
-                        inputName='signInPassWord'
+                        inputName="signInPassWord"
                         setIsError={setIsError}
                         password={password}
                         setPassword={setPassword}
                     />
                 </div>
-                <div className='SignIn__Form-Remember'>
-                    <label htmlFor='rememberUser'>Remember me</label>
+                <div className="SignIn__Form-Remember">
+                    <label htmlFor="rememberUser">Remember me</label>
                     <input
-                        type='checkbox'
-                        name='rememberUser'
-                        id='rememberUser'
+                        type="checkbox"
+                        name="rememberUser"
+                        id="rememberUser"
                     />
                 </div>
                 <button
-                    type='submit'
+                    type="submit"
                     disabled={(!username || !password || isLoading) && true}
-                    className='SignIn__Btn'>
+                    className="SignIn__Btn"
+                >
                     {isLoading ? (
                         <>
-                            <i className='fa-solid fa-spinner fa-spin-pulse'></i>
+                            <i className="fa-solid fa-spinner fa-spin-pulse"></i>
                             <span> Logging in</span>
                         </>
                     ) : (
                         'Sign In'
                     )}
                 </button>
-                <div className='SignIn__Form-Link'>
-                    <NavLink to='/passwordRetrieve'>
+                <div className="SignIn__Form-Link">
+                    <NavLink to="/passwordRetrieve">
                         Forgot your password?
                     </NavLink>
-                    <NavLink
-                        to='/userSignUp'
-                        className='toSignUp'>
+                    <NavLink to="/userSignUp" className="toSignUp">
                         Create new account
                     </NavLink>
                 </div>
-                <div className='SignIn__Form-Other'>
-                    <div className='SignIn__Form-OtherDecor'>
+                <div className="SignIn__Form-Other">
+                    <div className="SignIn__Form-OtherDecor">
                         <div></div>
                         <span>OR</span>
                         <div></div>
                     </div>
-                    <div className='SignIn__Form-OtherSignIn'>
+                    <div className="SignIn__Form-OtherSignIn">
                         <div>
                             <img
                                 src={google}
-                                alt='google'
-                                className='GoogleIcon'
+                                alt="google"
+                                className="GoogleIcon"
                             />
                             Google
                         </div>
                         <div>
                             <img
                                 src={facebook}
-                                alt='google'
-                                className='FacebookIcon'
+                                alt="google"
+                                className="FacebookIcon"
                             />
                             Facebook
                         </div>

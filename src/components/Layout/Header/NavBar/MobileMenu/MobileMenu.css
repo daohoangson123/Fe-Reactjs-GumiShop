@@ -5,11 +5,11 @@
     width: 40px;
     height: 40px;
     padding: 5px;
+    transition: var(--transition-fast);
     background: none;
     cursor: pointer !important;
     border: none;
     border-radius: 2px;
-    transition: var(--transition-fast);
 }
 
 .MobileMenu:hover {
@@ -46,22 +46,22 @@
     display: flex;
     justify-content: flex-end;
     position: absolute;
-    height: 100dvh;
-    transition: var(--transition-slow), background-color 1s ease-in;
-    transform: translateX(-100%) skewY(45deg);
     z-index: -1;
+    transform: translateX(-100%) skewY(45deg);
+    height: 100dvh;
+    transition: var(--transition-fast);
 }
 
 .MobileMenu__Nav {
     scrollbar-gutter: stable both-edges;
     display: grid;
     grid-template-rows: repeat(auto-fit, 44px);
+    z-index: 1000;
     overflow: auto;
     width: clamp(240px, 50vw, 50%);
     max-height: 100%;
     background-color: var(--color-default);
     text-align: center;
-    z-index: 1000;
 }
 
 .MobileMenu__Nav a {

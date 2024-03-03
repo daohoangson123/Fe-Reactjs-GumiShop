@@ -5,13 +5,13 @@ section .ProductItem {
 }
 
 .Good4MeDeal .ProductItem {
-    animation: fade-in both;
     animation-range: 100px 250px !important;
+    animation: fade-in both;
 }
 
 .Good4MeDeal .Good4MeDealBot_Item {
-    animation: fade-in both;
     animation-timeline: view() !important;
+    animation: fade-in both;
 }
 
 .Good4MeDeal .Good4MeDealBot_Item:first-child {
@@ -50,8 +50,8 @@ section .ProductItem {
 }
 
 .LatestNew .NewsItem {
-    animation: fade-in both;
     animation-timeline: view() !important;
+    animation: fade-in both;
 }
 
 .LatestNew .NewsItem:first-child {
@@ -62,16 +62,16 @@ section .ProductItem {
 }
 .LatestNew .NewsItem:last-child {
     animation-range: entry 80px !important;
-} */
-
+}
 /* @keyframes fade-in {
-    from {
-        opacity: 0;
+}
+from {
         scale: 0;
+        opacity: 0;
     }
-    to {
-        opacity: 1;
+to {
         scale: 1;
+        opacity: 1;
     }
 }
 
@@ -80,9 +80,9 @@ section .ProductItem {
         opacity: 1;
         scale: 1;
     }
-    to {
-        opacity: 0;
+to {
         scale: 0;
+        opacity: 0;
     }
 }
 
@@ -92,10 +92,10 @@ section .ProductItem {
         scale: 0;
         translate: -100% 0;
     }
-    to {
-        opacity: 1;
+to {
         scale: 1;
         translate: 0 0;
+        opacity: 1;
     }
 }
 
@@ -104,9 +104,9 @@ section .ProductItem {
         opacity: 0;
         translate: 0 -50px;
     }
-    to {
-        opacity: 1;
+to {
         translate: 0 0;
+        opacity: 1;
     }
 }
 
@@ -115,9 +115,9 @@ section .ProductItem {
         opacity: 0;
         translate: 0 100px;
     }
-    to {
-        opacity: 1;
+to {
         translate: 0 0;
+        opacity: 1;
     }
 } */
 
@@ -131,8 +131,8 @@ section .ProductItem {
         translate: 0 100px;
     }
     to {
-        opacity: 1;
         translate: 0 0;
+        opacity: 1;
     }
 }
 
@@ -146,7 +146,7 @@ section .ProductItem {
         scale: 0;
     }
     to {
-        opacity: 1;
         scale: 1;
+        opacity: 1;
     }
 }

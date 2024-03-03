@@ -7,12 +7,11 @@
 }
 
 .ToggleFilter {
+    width: fit-content;
+    margin-bottom: 20px;
+    padding: 5px;
     background-color: transparent;
     border-radius: 5px;
-    width: fit-content;
-    padding: 5px;
-    margin-bottom: 20px;
-    width: 100px;
 }
 
 .Wholesale__Product-Container {
@@ -44,24 +43,24 @@
 }
 
 .Wholesale__NoItem {
-    width: 298px;
     aspect-ratio: 1;
+    width: 298px;
 }
 
 .Wholesale__Filter {
+    margin-inline: auto;
     display: grid;
     justify-content: center;
-    text-align: center;
-    margin-inline: auto;
     margin-bottom: 20px;
     border: 1px solid var(--color-primary);
+    text-align: center;
 }
 
 .Wholesale__Filter-Container {
-    transition: max-height 0.3s ease-in-out;
     scrollbar-gutter: stable;
-    padding: 0 10px;
     overflow-y: hidden;
+    padding: 0 10px;
+    transition: max-height 0.3s ease-in-out;
 }
 
 .Wholesale__Filter-Container::-webkit-scrollbar {
@@ -81,9 +80,9 @@
         max-height: 220px;
     }
     100% {
+        opacity: 1;
         overflow-y: scroll;
         max-height: 220px;
-        opacity: 1;
     }
 }
 
@@ -97,8 +96,8 @@
         max-height: 0;
     }
     100% {
-        max-height: 0;
         opacity: 0;
+        max-height: 0;
     }
 }
 
@@ -108,8 +107,8 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 20px;
-    padding: 0;
     margin: 10px 0;
+    padding: 0;
 }
 
 .Wholesale__CategoryFilter__List span,
@@ -125,13 +124,13 @@
 
 .Wholesale__CategoryFilter__List button,
 .Wholesale__BrandFilter__List button {
-    background-color: transparent;
-    border: none;
-    border-radius: 5px;
-    transition: var(--transition-fast);
     min-width: 40px;
     min-height: 40px;
     padding: 5px;
+    transition: var(--transition-fast);
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
 }
 
 .Wholesale__CategoryFilter__List button:hover,

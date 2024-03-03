@@ -7,29 +7,29 @@ import control3 from '../../../../../assets/img/control3.webp';
 
 const Control = ({ title, content, btn }) => {
     return (
-        <section className='Control Container'>
-            <div className='Control__Content'>
-                <div className='Cotrol__Content-Title'>{title}</div>
-                <p className='Cotrol__Content-Text'>{content}</p>
-                <button className='Cotrol__Content-Btn'>{btn}</button>
+        <section className="Control Container">
+            <div className="Control__Content">
+                <div className="Cotrol__Content-Title">{title}</div>
+                <p className="Cotrol__Content-Text">{content}</p>
+                <button className="Cotrol__Content-Btn">{btn}</button>
             </div>
-            <div className='Control__Img'>
+            <div className="Control__Img">
                 <img
-                    className='Control__Img-1'
+                    className="Control__Img-1"
                     src={null}
-                    alt=''
+                    alt=""
                     lazysrc={control1}
                 />
                 <img
-                    className='Control__Img-2'
+                    className="Control__Img-2"
                     src={null}
-                    alt=''
+                    alt=""
                     lazysrc={control2}
                 />
                 <img
-                    className='Control__Img-3'
+                    className="Control__Img-3"
                     src={null}
-                    alt=''
+                    alt=""
                     lazysrc={control3}
                 />
             </div>

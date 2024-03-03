@@ -28,24 +28,21 @@ const Good4MeDealBot = () => {
     }, []);
 
     return (
-        <div className='Good4MeDealBot'>
+        <div className="Good4MeDealBot">
             {g4mBot_items.map((item, index) => (
                 <div
-                    className='Good4MeDealBot_Item'
+                    className="Good4MeDealBot_Item"
                     key={item.title}
-                    style={{ animationDelay: `${index * 0.2}s` }}>
-                    <div className='Img_Container'>
-                        <span className='Good4MeDealBot_Item-Circle'></span>
-                        <img
-                            src={null}
-                            alt=''
-                            lazysrc={item.url}
-                        />
+                    style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                    <div className="Img_Container">
+                        <span className="Good4MeDealBot_Item-Circle"></span>
+                        <img src={null} alt="" lazysrc={item.url} />
                     </div>
-                    <div className='Good4MeDealBot_Item-Title'>
+                    <div className="Good4MeDealBot_Item-Title">
                         {item.title}
                     </div>
-                    <p className='Good4MeDealBot_Item-Content'>
+                    <p className="Good4MeDealBot_Item-Content">
                         {item.content}
                     </p>
                 </div>

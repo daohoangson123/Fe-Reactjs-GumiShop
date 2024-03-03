@@ -5,8 +5,7 @@
 }
 
 .owl-item.active .ProductBanner__Title {
-    -webkit-animation: tilt-in-fwd-tr 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-        both;
+    -webkit-animation: tilt-in-fwd-tr 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: tilt-in-fwd-tr 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation-delay: 0.5s;
 }
@@ -19,8 +18,7 @@
 }
 
 .owl-item.active .ProductBanner__Name {
-    -webkit-animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-        both;
+    -webkit-animation: slide-in-right 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: slide-in-right 01s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation-delay: 0.75s;
 }
@@ -32,55 +30,53 @@
 }
 
 .owl-item.active .ProductBanner__Des {
-    -webkit-animation: slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-        both;
+    -webkit-animation: slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: slide-in-bottom 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation-delay: 1s;
 }
 
 .ProductBanner__Des {
+    margin-bottom: 30px;
     font-size: 16px;
     font-weight: 400;
     line-height: 29px;
-    margin-bottom: 30px;
     color: var(--color-text);
 }
 
 .owl-item.active .Product__Btn {
-    -webkit-animation: slide-in-fwd-br 1s cubic-bezier(0.25, 0.46, 0.45, 0.94)
-        both;
+    -webkit-animation: slide-in-fwd-br 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     animation: slide-in-fwd-br 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
     animation-delay: 1.25s;
 }
 
 .Product__Btn {
+    border-start-end-radius: 75%;
+    border-end-start-radius: 75%;
     display: inline-block;
-    font-weight: 500;
-    background-color: var(--color-primary-rgba);
     padding: 13px 25px;
+    transition: var(--transition-fast);
+    background-color: var(--color-primary-rgba);
+    cursor: pointer;
     border: none;
     border-top-left-radius: 50%;
     border-bottom-right-radius: 50%;
-    border-start-end-radius: 75%;
-    border-end-start-radius: 75%;
-    transition: var(--transition-fast);
-    text-decoration: none;
+    font-weight: 500;
     color: var(--color-default);
-    cursor: pointer;
+    text-decoration: none;
 }
 
 .Product__Btn:hover {
-    color: var(--color-default);
-    background-color: var(--color-primary);
     box-shadow: 2px 2px 5px 2px var(--color-text);
+    background-color: var(--color-primary);
+    color: var(--color-default);
 }
 
 @media (width < 768px) {
     .Product__Banner {
-        min-height: 300px;
-        border-radius: 10%;
         -webkit-backdrop-filter: blur(50px);
         backdrop-filter: blur(50px);
+        min-height: 300px;
+        border-radius: 10%;
     }
 
     .Product__Banner:hover {
@@ -93,8 +89,8 @@
 
     .ProductBanner__Name,
     .ProductBanner__Des {
-        color: var(--color-default);
         line-height: 30px;
+        color: var(--color-default);
     }
 }
 
@@ -107,17 +103,14 @@
  */
 @-webkit-keyframes tilt-in-fwd-tr {
     0% {
-        -webkit-transform: rotateY(20deg) rotateX(35deg) translate(30px, -30px)
-            skew(-35deg, 10deg);
-        transform: rotateY(20deg) rotateX(35deg) translate(30px, -30px)
-            skew(-35deg, 10deg);
+        -webkit-transform: rotateY(20deg) rotateX(35deg) translate(30px, -30px);
         opacity: 0;
+        transform: rotateY(20deg) rotateX(35deg) translate(30px, -30px);
     }
     100% {
-        -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0)
-            skew(0deg, 0deg);
-        transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+        -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0);
         opacity: 1;
+        transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
     }
 }
 @keyframes tilt-in-fwd-tr {
@@ -129,10 +122,9 @@
         opacity: 0;
     }
     100% {
-        -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0)
-            skew(0deg, 0deg);
-        transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
+        -webkit-transform: rotateY(0) rotateX(0deg) translate(0, 0);
         opacity: 1;
+        transform: rotateY(0) rotateX(0deg) translate(0, 0) skew(0deg, 0deg);
     }
 }
 
@@ -144,13 +136,13 @@
 @-webkit-keyframes slide-in-right {
     0% {
         -webkit-transform: translateX(100px);
-        transform: translateX(100px);
         opacity: 0;
+        transform: translateX(100px);
     }
     100% {
         -webkit-transform: translateX(0);
-        transform: translateX(0);
         opacity: 1;
+        transform: translateX(0);
     }
 }
 @keyframes slide-in-right {
@@ -161,8 +153,8 @@
     }
     100% {
         -webkit-transform: translateX(0);
-        transform: translateX(0);
         opacity: 1;
+        transform: translateX(0);
     }
 }
 
@@ -174,13 +166,13 @@
 @-webkit-keyframes slide-in-bottom {
     0% {
         -webkit-transform: translateY(50px);
-        transform: translateY(50px);
         opacity: 0;
+        transform: translateY(50px);
     }
     100% {
         -webkit-transform: translateY(0);
-        transform: translateY(0);
         opacity: 1;
+        transform: translateY(0);
     }
 }
 @keyframes slide-in-bottom {
@@ -191,8 +183,8 @@
     }
     100% {
         -webkit-transform: translateY(0);
-        transform: translateY(0);
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
@@ -204,13 +196,13 @@
 @-webkit-keyframes slide-in-fwd-br {
     0% {
         -webkit-transform: translateZ(-40px) translateY(80px) translateX(50px);
-        transform: translateZ(-40px) translateY(80px) translateX(50px);
         opacity: 0;
+        transform: translateZ(-40px) translateY(80px) translateX(50px);
     }
     100% {
         -webkit-transform: translateZ(0) translateY(0) translateX(0);
-        transform: translateZ(0) translateY(0) translateX(0);
         opacity: 1;
+        transform: translateZ(0) translateY(0) translateX(0);
     }
 }
 @keyframes slide-in-fwd-br {
@@ -221,8 +213,8 @@
     }
     100% {
         -webkit-transform: translateZ(0) translateY(0) translateX(0);
-        transform: translateZ(0) translateY(0) translateX(0);
         opacity: 1;
+        transform: translateZ(0) translateY(0) translateX(0);
     }
 }
 
@@ -234,13 +226,13 @@
 @-webkit-keyframes scale-in-center {
     0% {
         -webkit-transform: scale(0.5);
-        transform: scale(0.5);
         opacity: 0;
+        transform: scale(0.5);
     }
     100% {
         -webkit-transform: scale(1);
-        transform: scale(1);
         opacity: 1;
+        transform: scale(1);
     }
 }
 @keyframes scale-in-center {
@@ -251,7 +243,7 @@
     }
     100% {
         -webkit-transform: scale(1);
-        transform: scale(1);
         opacity: 1;
+        transform: scale(1);
     }
 }

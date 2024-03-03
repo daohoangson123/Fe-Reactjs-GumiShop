@@ -5,10 +5,10 @@ import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 
 const Logo = () => {
     return (
-        <h1 className='NavBar__Logo'>
+        <h1 className="NavBar__Logo">
             <NavLink
-                to='/'
-                title='Gumi HomePage'
+                to="/"
+                title="Gumi HomePage"
                 onClick={() => {
                     clearAllBodyScrollLocks();
                 }}

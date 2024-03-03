@@ -40,22 +40,23 @@ const SignBar = () => {
     };
 
     return (
-        <div className='SignBar'>
-            <div className='SignBar__Text'>{text}</div>
-            <div className='SignBar__SignRegis '>
-                <div className='SignBar__SignRegis-Link'>
+        <div className="SignBar">
+            <div className="SignBar__Text">{text}</div>
+            <div className="SignBar__SignRegis ">
+                <div className="SignBar__SignRegis-Link">
                     {!isSignIn ? (
                         <NavLink
-                            to='/userSignIn'
-                            title='Sign In'
+                            to="/userSignIn"
+                            title="Sign In"
                             className={({ isActive }) =>
                                 isActive ? 'active' : 'inactive'
-                            }>
+                            }
+                        >
                             Sign In
                         </NavLink>
                     ) : (
                         <NavLink
-                            to='/userProfile'
+                            to="/userProfile"
                             title={
                                 userData
                                     ? userData.first_name + userData.last_name
@@ -63,51 +64,48 @@ const SignBar = () => {
                             }
                             className={({ isActive }) =>
                                 isActive ? 'active' : 'inactive'
-                            }>
+                            }
+                        >
                             <img
-                                className='UserImg'
+                                className="UserImg"
                                 src={userData ? userData.avatar : userLogo}
-                                alt='userImg'
+                                alt="userImg"
                             />
                         </NavLink>
                     )}
                     /
                     <NavLink
-                        to='/userSignUp'
-                        title='Sign Up'
+                        to="/userSignUp"
+                        title="Sign Up"
                         className={({ isActive }) =>
                             isActive ? 'active' : 'inactive'
-                        }>
+                        }
+                    >
                         Register
                     </NavLink>
                 </div>
-                <div
-                    className='SignBar__Languages'
-                    title='Change Language'>
-                    <label
-                        htmlFor='lang'
-                        className='LangLabel '>
-                        <img
-                            src={flag}
-                            alt='flag'
-                        />
+                <div className="SignBar__Languages" title="Change Language">
+                    <label htmlFor="lang" className="LangLabel ">
+                        <img src={flag} alt="flag" />
                     </label>
                     <select
-                        className='LangSelect '
-                        name='lang'
-                        id='lang'
-                        title='Click to select Language'
-                        onChange={handelChange}>
+                        className="LangSelect "
+                        name="lang"
+                        id="lang"
+                        title="Click to select Language"
+                        onChange={handelChange}
+                    >
                         {langs.map((item) => (
                             <option
-                                className='LangOption '
+                                className="LangOption "
                                 key={item.name}
                                 title={
                                     item.name === 'USA'
                                         ? 'American English'
                                         : 'Vietnamese'
                                 }
-                                value={item.name}>
+                                value={item.name}
+                            >
                                 {item.name}
                             </option>
                         ))}

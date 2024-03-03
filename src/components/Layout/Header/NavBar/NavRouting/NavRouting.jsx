@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 const NavRouting = ({ navlinkData }) => {
     return (
-        <div className='NavBar__List'>
+        <div className="NavBar__List">
             {navlinkData.map((item) => (
                 <NavLink
                     to={item.path}

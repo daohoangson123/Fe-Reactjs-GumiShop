@@ -1,12 +1,12 @@
 .PageFisrtLoad {
-    position: fixed;
     inset: 0;
-    display: grid;
     place-items: center;
-    height: 100vh;
+    display: grid;
     gap: 30px;
-    background-color: var(--color-alt-rgba-5);
+    position: fixed;
     z-index: 9999;
+    height: 100vh;
+    background-color: var(--color-alt-rgba-5);
 }
 
 .AdBanner-Container {
@@ -14,8 +14,8 @@
 }
 
 .AdBanner_Img {
-    width: clamp(280px, 50vw, 400px);
     aspect-ratio: 1;
+    width: clamp(280px, 50vw, 400px);
     transition: var(--transition-fast);
 }
 
@@ -25,12 +25,12 @@
     right: 10px;
     width: 30px;
     height: 30px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.2);
-    border: none;
     transition: var(--transition-fast);
     animation: btnIn 1s ease-in-out both;
     animation-delay: 1s;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
 }
 
 @keyframes btnIn {

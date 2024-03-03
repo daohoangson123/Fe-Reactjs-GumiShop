@@ -27,13 +27,9 @@ const StockistPage = () => {
     }, []);
 
     return (
-        <div className='StockistPage Container'>
+        <div className="StockistPage Container">
             {tableRowData.length !== 0 ? (
-                <Table
-                    striped
-                    bordered
-                    hover
-                >
+                <Table striped bordered hover>
                     <thead>
                         <tr>
                             {tableHeadData
@@ -41,7 +37,7 @@ const StockistPage = () => {
                                     (theaddata) =>
                                         theaddata !== '_id' &&
                                         theaddata !== 'discouter' &&
-                                        theaddata !== 'img',
+                                        theaddata !== 'img'
                                 )
                                 .map((theaddata) => (
                                     <th key={theaddata}>
@@ -62,7 +58,7 @@ const StockistPage = () => {
                     </tbody>
                 </Table>
             ) : (
-                <Skeleton className='Table-Skeleton' />
+                <Skeleton className="Table-Skeleton" />
             )}
         </div>
     );

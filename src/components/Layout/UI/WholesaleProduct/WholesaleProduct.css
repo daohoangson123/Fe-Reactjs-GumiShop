@@ -23,16 +23,16 @@
 }
 
 .WholesaleProduct__ImgContainer {
-    display: block;
-    width: 200px;
     aspect-ratio: 1;
+    display: block;
     overflow: hidden;
+    width: 200px;
 }
 
 .WholesaleProduct__Img {
-    width: 100%;
     aspect-ratio: 1;
     object-fit: contain;
+    width: 100%;
     transition: var(--transition-fast);
     animation: productIn 0.3s ease-in-out forwards;
 }
@@ -47,9 +47,9 @@
 }
 
 .WholesaleProduct__Name {
-    display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
+    display: -webkit-box;
     overflow: hidden;
 }
 
@@ -58,13 +58,13 @@
 }
 
 .WholesaleProduct__Price {
-    color: var(--color-primary);
     font-size: 20px;
+    color: var(--color-primary);
 }
 
 .WholesaleProduct__Discount {
-    color: var(--color-icon);
-    font-size: 14px;
-    text-decoration: line-through;
     margin-right: 10px;
+    font-size: 14px;
+    color: var(--color-icon);
+    text-decoration: line-through;
 }

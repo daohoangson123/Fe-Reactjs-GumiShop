@@ -21,9 +21,10 @@ const UserList = () => {
                         setLoadingUserList(false);
                     }, 500);
                     setActive(number);
-                }}>
+                }}
+            >
                 {number}
-            </Pagination.Item>,
+            </Pagination.Item>
         );
     }
 
@@ -38,7 +39,7 @@ const UserList = () => {
         // eslint-disable-next-line
     }, [active]);
     return (
-        <div className='User_List'>
+        <div className="User_List">
             USER LIST DEMO
             <ol>
                 {userList && !loadingUserList ? (
@@ -48,10 +49,7 @@ const UserList = () => {
                         </li>
                     ))
                 ) : (
-                    <Skeleton
-                        width={200}
-                        count={6}
-                    />
+                    <Skeleton width={200} count={6} />
                 )}
             </ol>
             <Pagination>{items}</Pagination>

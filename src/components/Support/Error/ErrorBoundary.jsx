@@ -27,13 +27,13 @@ class ErrorBoundary extends React.Component {
         if (this.state.errorInfo) {
             // Error path
             return (
-                <div className='ErrorBoundary Container'>
+                <div className="ErrorBoundary Container">
                     <h2>
                         Something went wrong !?! Please try to reload this page
                         or contact us for support.
                     </h2>
                     <button
-                        type='button'
+                        type="button"
                         onClick={() => window.location.reload()}
                     >
                         Reload Page

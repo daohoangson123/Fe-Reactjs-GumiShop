@@ -100,8 +100,8 @@ const MobileMenuRouting = ({
     return (
         <div
             ref={menuRef}
-            title='Close Menu'
-            className='MobileMenu__NavContainer'
+            title="Close Menu"
+            className="MobileMenu__NavContainer"
             style={
                 menuOpen
                     ? {
@@ -110,21 +110,23 @@ const MobileMenuRouting = ({
                           backgroundColor: 'var(--color-alt-rgba-5)',
                       }
                     : !isMobileView
-                    ? { transition: 'none' }
-                    : null
-            }>
-            <div className='MobileMenu__Nav'>
+                      ? { transition: 'none' }
+                      : null
+            }
+        >
+            <div className="MobileMenu__Nav">
                 {navlinkData.map((item) => (
                     <NavLink
                         to={item.path}
                         key={item.name}
-                        className='MobileMenu__Item'
+                        className="MobileMenu__Item"
                         title={item.name}
                         tabIndex={!isMobileView || !menuOpen ? -1 : 0}
                         onClick={() => {
                             setMenuOpen(false);
                             clearAllBodyScrollLocks();
-                        }}>
+                        }}
+                    >
                         {item.name}
                     </NavLink>
                 ))}
@@ -137,9 +139,9 @@ const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
     return (
         <button
             title={menuOpen ? 'Close Menu' : 'Open Menu'}
-            type='button'
-            className='MobileMenu'
-            id='MobileMenu'
+            type="button"
+            className="MobileMenu"
+            id="MobileMenu"
             onClick={() => {
                 setMenuOpen(!menuOpen);
                 if (menuOpen) {
@@ -148,12 +150,13 @@ const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
                     disableBodyScroll(openMenu);
                 }
             }}
-            aria-label='MobileMenuToggle'
+            aria-label="MobileMenuToggle"
             style={{
                 backgroundColor: menuOpen && 'rgba(0, 0, 0, 0.3)',
-            }}>
+            }}
+        >
             <div
-                className='MenuIcon1 MenuIcon '
+                className="MenuIcon1 MenuIcon "
                 style={
                     menuOpen
                         ? {
@@ -162,14 +165,16 @@ const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
                                   'rotate(45deg) translateX(1px) translateY(-5px)',
                           }
                         : null
-                }></div>
+                }
+            ></div>
             <div
-                className='MenuIcon2 MenuIcon'
+                className="MenuIcon2 MenuIcon"
                 style={{
                     display: menuOpen && 'none',
-                }}></div>
+                }}
+            ></div>
             <div
-                className='MenuIcon3 MenuIcon '
+                className="MenuIcon3 MenuIcon "
                 style={
                     menuOpen
                         ? {
@@ -179,7 +184,8 @@ const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
                                   'rotate(-45deg) translateX(1px) translateY(5px)',
                           }
                         : null
-                }></div>
+                }
+            ></div>
         </button>
     );
 };

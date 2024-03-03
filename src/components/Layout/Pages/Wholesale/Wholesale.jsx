@@ -52,19 +52,19 @@ const WholesaleLayout = ({ title, productApi }) => {
         const categoryOnly = productApi.filter(
             (product) =>
                 product.categories &&
-                product.categories.toString().toLowerCase() === curCategory,
+                product.categories.toString().toLowerCase() === curCategory
         );
         const brandOnly = productApi.filter(
             (product) =>
                 product.brand &&
-                product.brand.toString().toLowerCase() === curBrand,
+                product.brand.toString().toLowerCase() === curBrand
         );
         const mutipleFilter = productApi.filter(
             (product) =>
                 product.categories &&
                 product.categories.toString().toLowerCase() === curCategory &&
                 product.brand &&
-                product.brand.toString().toLowerCase() === curBrand,
+                product.brand.toString().toLowerCase() === curBrand
         );
         if (curCategory !== 'All' && curBrand === 'All') {
             return categoryOnly;
@@ -81,7 +81,7 @@ const WholesaleLayout = ({ title, productApi }) => {
     const filtered = getFilterItems(productApi, curCategory, curBrand);
 
     return (
-        <div className='WholesaleLayout'>
+        <div className="WholesaleLayout">
             {productApi.length > 0 ? (
                 <>
                     <SectionTitle content={title} />
@@ -98,13 +98,10 @@ const WholesaleLayout = ({ title, productApi }) => {
                 </>
             ) : (
                 <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                    <Skeleton
-                        width={200}
-                        height={50}
-                    />
+                    <Skeleton width={200} height={50} />
                 </div>
             )}
-            <div className='Wholesale__Product-Container'>
+            <div className="Wholesale__Product-Container">
                 {filtered.length === 0 &&
                 curBrand === 'All' &&
                 curCategory === 'All' ? (
@@ -115,15 +112,12 @@ const WholesaleLayout = ({ title, productApi }) => {
                 ) : filtered.length === 0 ? (
                     <img
                         src={noItem}
-                        alt='noProduct'
-                        className='Wholesale__NoItem'
+                        alt="noProduct"
+                        className="Wholesale__NoItem"
                     />
                 ) : (
                     filtered.map((item) => (
-                        <WholesaleProduct
-                            key={item._id}
-                            props={item}
-                        />
+                        <WholesaleProduct key={item._id} props={item} />
                     ))
                 )}
             </div>
@@ -151,16 +145,10 @@ const Wholesale = () => {
     }, []);
 
     return (
-        <div className='Wholesale Container'>
-            <WholesaleLayout
-                title={'Hekto'}
-                productApi={hektoApi}
-            />
+        <div className="Wholesale Container">
+            <WholesaleLayout title={'Hekto'} productApi={hektoApi} />
             <br />
-            <WholesaleLayout
-                title={'Furniture'}
-                productApi={furApi}
-            />
+            <WholesaleLayout title={'Furniture'} productApi={furApi} />
         </div>
     );
 };

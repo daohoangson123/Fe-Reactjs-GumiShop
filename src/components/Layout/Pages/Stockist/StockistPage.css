@@ -18,15 +18,15 @@
 
 @media (width < 425px) {
     .StockistPage {
-        width: clamp(280px, 100%, 1920px);
-        overflow-y: hidden;
         overflow-x: auto;
+        overflow-y: hidden;
+        width: clamp(280px, 100%, 1920px);
     }
 
     .table {
         width: max-content;
-        margin-bottom: 0;
         max-width: none;
+        margin-bottom: 0;
     }
 
     .StockistPage-webkit-scrollbar {

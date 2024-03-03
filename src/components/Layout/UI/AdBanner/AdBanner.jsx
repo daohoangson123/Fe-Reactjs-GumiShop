@@ -48,22 +48,21 @@ const AdBanner = () => {
     }, [layerClosed, pageLoaded]);
 
     return (
-        <div
-            id='PageFisrtLoad'
-            className='PageFisrtLoad'>
-            <div className='AdBanner-Container'>
+        <div id="PageFisrtLoad" className="PageFisrtLoad">
+            <div className="AdBanner-Container">
                 <button
-                    type='button'
-                    id='AdBanner__Btn'
-                    className='AdBanner__Btn'>
-                    <i className='fa-solid fa-xmark'></i>
+                    type="button"
+                    id="AdBanner__Btn"
+                    className="AdBanner__Btn"
+                >
+                    <i className="fa-solid fa-xmark"></i>
                 </button>
                 <img
                     src={bannerImgSmall}
-                    alt='AD Banner Img'
-                    className='AdBanner_Img'
+                    alt="AD Banner Img"
+                    className="AdBanner_Img"
                     srcSet={`${bannerImgSmall} 1200w, ${bannerImgLarge} 1600w`}
-                    fetchpriority='high'
+                    fetchpriority="high"
                 />
             </div>
         </div>

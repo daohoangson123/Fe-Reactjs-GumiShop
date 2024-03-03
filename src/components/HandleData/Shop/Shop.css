@@ -1,7 +1,7 @@
 .Shop {
     position: relative;
-    text-align: center;
     padding-top: 0;
+    text-align: center;
 }
 
 .ProductAvailableCount {
@@ -9,15 +9,15 @@
 }
 
 .NoItemImg {
-    width: 300px;
     aspect-ratio: 1;
+    width: 300px;
 }
 
 .SearchForm {
-    background-color: var(--color-default);
     width: 100%;
     padding: 10px 0 5px;
     animation: pop-in 1s ease-in-out forwards;
+    background-color: var(--color-default);
 }
 
 @keyframes pop-in {
@@ -40,13 +40,13 @@
 }
 
 .NameFilterInput {
+    outline: none;
     width: 280px;
     height: 30px;
     padding: 5px;
+    transition: var(--transition-fast);
     border: 1px solid var(--color-text);
     border-radius: 2px;
-    outline: none;
-    transition: var(--transition-fast);
 }
 
 .NameFilterInput:focus {
@@ -64,16 +64,16 @@
 .FiltersInputs * {
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
     justify-content: center;
     align-items: center;
+    gap: 10px;
 }
 
 .FiltersInputs label,
 .FiltersInputs input,
 .FiltersInputs select {
-    text-align: center;
     cursor: pointer;
+    text-align: center;
 }
 
 .FiltersInputs option:disabled {
@@ -82,14 +82,14 @@
 }
 
 .ToggleFilter__Btn {
+    justify-self: center;
     display: none;
     width: 100px;
     height: 50px;
-    justify-self: center;
     background-color: var(--color-primary);
-    color: var(--color-default);
     border: none;
     border-radius: 10px;
+    color: var(--color-default);
 }
 
 @media (width <= 768px) {
@@ -106,8 +106,8 @@
     }
 
     .FiltersInputs {
-        max-height: 0;
         overflow: hidden;
+        max-height: 0;
     }
 
     .ToggleFilter__Btn {

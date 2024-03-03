@@ -19,22 +19,20 @@ const CartForm = ({
     purchasing,
 }) => {
     return (
-        <form
-            className='Cart-Item_Form Container'
-            onSubmit={handleSubmit}>
+        <form className="Cart-Item_Form Container" onSubmit={handleSubmit}>
             {totalItem > 0 && totalItem ? (
                 <>
-                    <div className='Cart-Item-List Cart-Item-List-Header'>
-                        <div className='Cart-Item'>
-                            <div className='fakeimg'></div>
-                            <div className='Cart-Item_Name'>Name</div>
-                            <div className='Cart-Item_Price'>Price</div>
-                            <div className='Cart-Item_Quantity'>Quantity</div>
-                            <div className='Cart-Item_Cost'>Cost</div>
+                    <div className="Cart-Item-List Cart-Item-List-Header">
+                        <div className="Cart-Item">
+                            <div className="fakeimg"></div>
+                            <div className="Cart-Item_Name">Name</div>
+                            <div className="Cart-Item_Price">Price</div>
+                            <div className="Cart-Item_Quantity">Quantity</div>
+                            <div className="Cart-Item_Cost">Cost</div>
                         </div>
                     </div>
-                    <div className='Cart__Layout'>
-                        <div className='Cart-Item-List'>
+                    <div className="Cart__Layout">
+                        <div className="Cart-Item-List">
                             {myCart.map((item, index) => {
                                 const cost = item.amount * item.price;
                                 const removeNotify = () =>
@@ -43,12 +41,10 @@ const CartForm = ({
                                         {
                                             transition: Slide,
                                             position: 'bottom-center',
-                                        },
+                                        }
                                     );
                                 return (
-                                    <div
-                                        className='Cart-Item'
-                                        key={item.id}>
+                                    <div className="Cart-Item" key={item.id}>
                                         <Link
                                             to={
                                                 item.color
@@ -56,44 +52,46 @@ const CartForm = ({
                                                     : `/shop/${item.name
                                                           .split(' ')
                                                           .join('-')}`
-                                            }>
+                                            }
+                                        >
                                             <img
                                                 src={item.img}
                                                 alt={item.name}
                                             />
                                         </Link>
-                                        <div className='Cart-Item_Name'>
+                                        <div className="Cart-Item_Name">
                                             {item.name}
                                         </div>
-                                        <div className='Cart-Item_Price'>
+                                        <div className="Cart-Item_Price">
                                             <span>Price: </span> ${item.price}
                                         </div>
-                                        <div className='Cart-Item_Quantity'>
+                                        <div className="Cart-Item_Quantity">
                                             {/* <label htmlFor={`quantity${index}`}>
                                                 <i className='fa-solid fa-cubes-stacked'></i>
                                             </label> */}
                                             <button
-                                                type='button'
+                                                type="button"
                                                 onClick={() => {
                                                     if (item.amount > 1) {
                                                         handleDec(item);
                                                     } else {
                                                         window.alert(
-                                                            '1 is minimun',
+                                                            '1 is minimun'
                                                         );
                                                     }
-                                                }}>
+                                                }}
+                                            >
                                                 -
                                             </button>
                                             <input
-                                                type='number'
+                                                type="number"
                                                 name={`quantity${index}`}
                                                 id={`quantity${index}`}
                                                 value={item.amount}
                                                 min={1}
                                                 max={1000}
                                                 disabled
-                                                autoComplete='off'
+                                                autoComplete="off"
                                                 // onWheel={(event) =>
                                                 //     event.target.blur()
                                                 // }
@@ -121,7 +119,7 @@ const CartForm = ({
                                                 // }
                                             />
                                             <button
-                                                type='button'
+                                                type="button"
                                                 onClick={() => {
                                                     if (
                                                         item.stock &&
@@ -132,57 +130,61 @@ const CartForm = ({
                                                         handleInc(item);
                                                     } else {
                                                         window.alert(
-                                                            `${item.stock} is max`,
+                                                            `${item.stock} is max`
                                                         );
                                                     }
-                                                }}>
+                                                }}
+                                            >
                                                 +
                                             </button>
                                         </div>
-                                        <div className='Cart-Item_Cost'>
+                                        <div className="Cart-Item_Cost">
                                             <span>Cost: </span> ${cost}
                                         </div>
                                         <button
-                                            className='Remove_Item'
-                                            type='button'
+                                            className="Remove_Item"
+                                            type="button"
                                             onClick={() => {
                                                 handleRemove({
                                                     id: item.id,
                                                 });
                                                 removeNotify();
-                                            }}>
-                                            <i className='fa-solid fa-trash-can'></i>
+                                            }}
+                                        >
+                                            <i className="fa-solid fa-trash-can"></i>
                                         </button>
                                     </div>
                                 );
                             })}
                         </div>
-                        <div className='Purchase-Check'>
+                        <div className="Purchase-Check">
                             <div style={{ fontWeight: 600, fontSize: '24px' }}>
                                 Check-Out
                             </div>
                             <div>
                                 Total: {totalItem} Item{totalItem > 1 && 's'}
                             </div>
-                            <div className='Total-Price'>
+                            <div className="Total-Price">
                                 <div>Total Cost: {totalPrice}</div>
                                 <div>Saving: {saving}</div>
                             </div>
                             <button
-                                className='Buy_Btn'
+                                className="Buy_Btn"
                                 disabled={purchasing}
-                                type='submit'
-                                onSubmit={handleSubmit}>
+                                type="submit"
+                                onSubmit={handleSubmit}
+                            >
                                 {!isSignIn ? (
                                     <Link
-                                        to='/userSignIn'
-                                        title='Please SignIn'>
+                                        to="/userSignIn"
+                                        title="Please SignIn"
+                                    >
                                         Sign In
                                     </Link>
                                 ) : (
-                                    <div title='Purchase'>
+                                    <div title="Purchase">
                                         {purchasing ? (
-                                            <i className='fa-solid fa-spinner fa-spin'></i>
+                                            <i className="fa-solid fa-spinner fa-spin"></i>
                                         ) : (
                                             'Purchase'
                                         )}
@@ -195,7 +197,8 @@ const CartForm = ({
                                     fontSize: '14px',
                                     color: 'red',
                                     marginTop: '10px',
-                                }}>
+                                }}
+                            >
                                 {!isSignIn && (
                                     <span>
                                         Your are not Sign In yet!
@@ -208,17 +211,13 @@ const CartForm = ({
                     </div>
                 </>
             ) : (
-                <div className='EmptyCart'>
-                    <div className='ToShopLink'>
-                        <Link
-                            to='/shop'
-                            title='Shopping Now'>
+                <div className="EmptyCart">
+                    <div className="ToShopLink">
+                        <Link to="/shop" title="Shopping Now">
                             Shopping Now
                         </Link>
                     </div>
-                    <img
-                        src={emptyCart}
-                        alt='EmptyCart'></img>
+                    <img src={emptyCart} alt="EmptyCart"></img>
                 </div>
             )}
         </form>

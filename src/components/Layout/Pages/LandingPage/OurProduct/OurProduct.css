@@ -8,18 +8,18 @@
 
 .LoadMore {
     display: inline-block;
-    font-weight: 500;
-    line-height: 25px;
     padding: 15px 45px;
-    border: 2px solid var(--color-primary);
+    transition: var(--transition-fast);
     background-color: transparent;
     cursor: pointer;
-    transition: var(--transition-fast);
+    border: 2px solid var(--color-primary);
+    font-weight: 500;
+    line-height: 25px;
 }
 
 .LoadMore:hover {
-    color: var(--color-default);
     background-color: var(--color-primary);
+    color: var(--color-default);
 }
 
 @media (width < 430px) {

@@ -3,13 +3,13 @@
 }
 
 .Control {
-    background-image: url(../../../../../assets/img/controlbg.webp);
     display: grid;
-    grid-template-columns: repeat(auto-fit, clamp(280px, 40vw, 400px));
-    gap: 20px;
     justify-content: center;
     align-items: center;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, clamp(280px, 40vw, 400px));
     padding: 120px 60px;
+    background-image: url(../../../../../assets/img/controlbg.webp);
 }
 
 .Control__Content {
@@ -24,32 +24,32 @@
 }
 
 .Cotrol__Content-Text {
+    margin: 17px 0 34px 0;
     font-size: 16px;
     font-weight: 500;
     line-height: 25px;
     color: var(--color-text);
-    margin: 17px 0 34px 0;
 }
 
 .Cotrol__Content-Btn {
+    padding: 18px 45px 13px 45px;
+    transition: var(--transition-fast);
+    background-color: transparent;
+    cursor: pointer;
+    border: 2px solid var(--color-primary);
     font-weight: 500;
     line-height: 25px;
-    padding: 18px 45px 13px 45px;
-    background-color: transparent;
-    border: 2px solid var(--color-primary);
-    transition: var(--transition-fast);
-    cursor: pointer;
 }
 
 .Cotrol__Content-Btn:hover {
-    color: var(--color-default);
     background-color: var(--color-primary);
+    color: var(--color-default);
 }
 
 .Control__Img {
     display: grid;
-    gap: 20px;
     justify-content: center;
+    gap: 20px;
 }
 
 .Control__Img * {
@@ -77,8 +77,8 @@
     }
 
     .Control__Img {
-        grid-template-columns: repeat(2, var(--img-width));
         grid-template-rows: repeat(2, calc(var(--img-width) / 4 * 3));
+        grid-template-columns: repeat(2, var(--img-width));
     }
 
     .Control__Img-3 {

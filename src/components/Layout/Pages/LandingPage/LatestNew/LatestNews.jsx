@@ -31,9 +31,9 @@ const LatestNew = ({ title }) => {
     }, []);
 
     return (
-        <section className='LatestNew Container'>
+        <section className="LatestNew Container">
             <SectionTitle content={title} />
-            <div className='LatestNew_Container'>
+            <div className="LatestNew_Container">
                 {news_Items.map((item, index) => (
                     <NewsItem
                         key={item.id}

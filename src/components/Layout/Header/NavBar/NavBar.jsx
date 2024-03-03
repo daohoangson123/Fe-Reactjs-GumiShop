@@ -9,7 +9,7 @@ import SearchCart from './SearchCart/SearchCart';
 
 const NavBar = () => {
     return (
-        <nav className='NavBar'>
+        <nav className="NavBar">
             <MobileMenu navlinkData={nav_Items} />
             <Logo />
             <NavRouting navlinkData={nav_Items} />

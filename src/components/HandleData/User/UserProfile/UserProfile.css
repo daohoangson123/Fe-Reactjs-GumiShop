@@ -5,16 +5,16 @@
 
 .UserProfile__UserData {
     display: grid;
-    grid-template-columns: 128px max-content;
     gap: 10px;
+    grid-template-columns: 128px max-content;
     min-height: 170px;
 }
 
 .UserProfile__UserData img {
-    min-width: 128px;
-    width: 128px;
     aspect-ratio: 1;
     object-fit: cover;
+    width: 128px;
+    min-width: 128px;
     border-radius: 50%;
 }
 
@@ -24,8 +24,8 @@
 
 .SignOut__Btn {
     justify-self: center;
-    border: none;
     transition: var(--transition-fast);
+    border: none;
 }
 
 .SignOut__Btn:hover {
@@ -49,28 +49,28 @@
 
 .Admin-Product-Control {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
 }
 
 .ProductsAddingForm fieldset {
     display: grid;
     gap: 10px;
-    border: 1px solid var(--color-primary-rgba);
     padding: 20px;
+    border: 1px solid var(--color-primary-rgba);
 }
 
 @media (max-width: 424px) {
     .UserProfile__PurchaseHistory-TableContainer {
-        width: clamp(280px, 100%, 1920px);
-        overflow-y: hidden;
         overflow-x: auto;
+        overflow-y: hidden;
+        width: clamp(280px, 100%, 1920px);
     }
 
     .table {
         width: max-content;
-        margin-bottom: 0;
         max-width: none;
+        margin-bottom: 0;
     }
 
     .UserProfile__PurchaseHistory-TableContainer-webkit-scrollbar {

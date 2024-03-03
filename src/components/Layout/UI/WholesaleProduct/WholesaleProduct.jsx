@@ -33,27 +33,25 @@ const WholesaleProduct = ({ props }) => {
     // }, []);
 
     return (
-        <div
-            className='WholesaleProduct'
-            title={`Product: ${props.name}`}>
+        <div className="WholesaleProduct" title={`Product: ${props.name}`}>
             <Link to={`/wholesale/${props._id}`}>
-                <div className='WholesaleProduct__ImgContainer'>
+                <div className="WholesaleProduct__ImgContainer">
                     <img
-                        className='WholesaleProduct__Img'
+                        className="WholesaleProduct__Img"
                         src={isImgError ? brokenImg : props.img}
                         alt={props.name}
                         // lazysrc={isImgError ? brokenImg : props.img}
                         onError={() => setIsImgError(true)}
                     />
                 </div>
-                <div className='WholesaleProduct__Content'>
-                    <div className='WholesaleProduct__Name'>{props.name}</div>
-                    <div className='WholesaleProduct__Price'>
+                <div className="WholesaleProduct__Content">
+                    <div className="WholesaleProduct__Name">{props.name}</div>
+                    <div className="WholesaleProduct__Price">
                         $ {props.price}
                     </div>
                     {props.discouter && props.discouter !== 0 ? (
                         <div>
-                            <span className='WholesaleProduct__Discount'>
+                            <span className="WholesaleProduct__Discount">
                                 $ {orgPrice}
                             </span>
                             <span>-{salePercent.toFixed()}%</span>

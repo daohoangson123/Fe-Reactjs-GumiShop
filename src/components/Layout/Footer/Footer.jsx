@@ -6,7 +6,7 @@ import FooterBot from './FooterBot/FooterBot';
 const Footer = () => {
     return (
         <footer>
-            <div className='Footer__Container'>
+            <div className="Footer__Container">
                 <FooterTop />
                 <hr />
                 <FooterBot />

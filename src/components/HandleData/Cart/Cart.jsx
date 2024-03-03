@@ -50,7 +50,7 @@ const Cart = () => {
         myCart &&
         myCart.reduce(
             (sum, item) => +(sum + item.discount * item.amount).toFixed(2),
-            0,
+            0
         );
 
     const handleInc = (product) => {
@@ -72,13 +72,13 @@ const Cart = () => {
                         submitCart([
                             { ...userData, date: purchasedDate.toDateString() },
                             ...myCart,
-                        ]),
+                        ])
                     ),
-                1500,
+                1500
             );
             setTimeout(
                 () => putPurchasedHistory(userData.id, userData, myCart),
-                1500,
+                1500
             );
         }
     }
@@ -88,7 +88,7 @@ const Cart = () => {
     }
 
     return (
-        <div className='CartPage'>
+        <div className="CartPage">
             <ErrorBoundary>
                 <CartLayout
                     myCart={myCart}

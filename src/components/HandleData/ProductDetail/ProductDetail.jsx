@@ -26,7 +26,7 @@ const ProductDetail = () => {
 
         const findProductDetail = result.find(
             (product) =>
-                product.name.split(' ').join('-') === id.split(' ').join('-'),
+                product.name.split(' ').join('-') === id.split(' ').join('-')
         );
         setProductDetail(findProductDetail);
     };
@@ -38,7 +38,7 @@ const ProductDetail = () => {
     }, [id]);
 
     return (
-        <div className='ProductDetail'>
+        <div className="ProductDetail">
             <ErrorBoundary>
                 <ProductDetailLayout
                     productDetail={productDetail}

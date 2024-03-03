@@ -13,16 +13,17 @@ const WholesaleFilter = ({
     const [showFilter, setShowFilter] = useState(true);
 
     return (
-        <div className='WholesaleFilter'>
+        <div className="WholesaleFilter">
             <button
-                className='ToggleFilter'
-                type='button'
-                onClick={() => setShowFilter(!showFilter)}>
+                className="ToggleFilter"
+                type="button"
+                onClick={() => setShowFilter(!showFilter)}
+            >
                 {showFilter ? 'Hide filter' : 'Show filter'}
             </button>
-            <form className='Wholesale__Filter'>
+            <form className="Wholesale__Filter">
                 <div
-                    className='Wholesale__Filter-Container'
+                    className="Wholesale__Filter-Container"
                     style={
                         !showFilter
                             ? {
@@ -31,13 +32,14 @@ const WholesaleFilter = ({
                             : {
                                   animation: 'showFilter 0.3s linear forwards',
                               }
-                    }>
+                    }
+                >
                     {categoriesList.length > 0 && (
-                        <ul className='Wholesale__CategoryFilter__List'>
+                        <ul className="Wholesale__CategoryFilter__List">
                             <h4>Categories:</h4>
                             <li onClick={() => setCurCategory('All')}>
                                 <button
-                                    type='button'
+                                    type="button"
                                     disabled={productApi.length === 0}
                                     style={
                                         curCategory === 'All'
@@ -47,16 +49,18 @@ const WholesaleFilter = ({
                                                   color: 'var(--color-default)',
                                               }
                                             : null
-                                    }>
+                                    }
+                                >
                                     All
                                 </button>
                             </li>
                             {categoriesList.map((category) => (
                                 <li
                                     key={category}
-                                    onClick={() => setCurCategory(category)}>
+                                    onClick={() => setCurCategory(category)}
+                                >
                                     <button
-                                        type='button'
+                                        type="button"
                                         disabled={productApi.length === 0}
                                         style={
                                             curCategory === category
@@ -66,7 +70,8 @@ const WholesaleFilter = ({
                                                       color: 'var(--color-default)',
                                                   }
                                                 : null
-                                        }>
+                                        }
+                                    >
                                         {category.charAt(0).toUpperCase() +
                                             category.slice(1)}
                                     </button>
@@ -75,11 +80,11 @@ const WholesaleFilter = ({
                         </ul>
                     )}
                     {brandsList.length > 0 && (
-                        <ul className='Wholesale__BrandFilter__List'>
+                        <ul className="Wholesale__BrandFilter__List">
                             <h4>Brands:</h4>
                             <li onClick={() => setCurBrand('All')}>
                                 <button
-                                    type='button'
+                                    type="button"
                                     disabled={productApi.length === 0}
                                     style={
                                         curBrand === 'All'
@@ -89,16 +94,18 @@ const WholesaleFilter = ({
                                                   color: 'var(--color-default)',
                                               }
                                             : null
-                                    }>
+                                    }
+                                >
                                     All
                                 </button>
                             </li>
                             {brandsList.map((brand) => (
                                 <li
                                     key={brand}
-                                    onClick={() => setCurBrand(brand)}>
+                                    onClick={() => setCurBrand(brand)}
+                                >
                                     <button
-                                        type='button'
+                                        type="button"
                                         disabled={productApi.length === 0}
                                         style={
                                             curBrand === brand
@@ -108,7 +115,8 @@ const WholesaleFilter = ({
                                                       color: 'var(--color-default)',
                                                   }
                                                 : null
-                                        }>
+                                        }
+                                    >
                                         {brand.charAt(0).toUpperCase() +
                                             brand.slice(1)}
                                     </button>

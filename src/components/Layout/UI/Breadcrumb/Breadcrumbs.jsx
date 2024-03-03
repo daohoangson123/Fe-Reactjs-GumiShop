@@ -14,30 +14,21 @@ export default function Breadcrumbs() {
         .map((crumb) => {
             currentLink = currentLink + `/${crumb}`;
             return (
-                <li
-                    key={crumb}
-                    className='CrumbItem'
-                >
+                <li key={crumb} className="CrumbItem">
                     <Link to={currentLink}>
                         {crumb.replace(/-/g, ' ')}
-                        <img
-                            src={foward_arrow}
-                            alt='>'
-                        />
+                        <img src={foward_arrow} alt=">" />
                     </Link>
                 </li>
             );
         });
     return (
-        <ol className='Breadcrumbs'>
+        <ol className="Breadcrumbs">
             {location.pathname !== '/' && (
-                <li className='CrumbItem'>
-                    <Link to='/'>
+                <li className="CrumbItem">
+                    <Link to="/">
                         Home
-                        <img
-                            src={foward_arrow}
-                            alt='>'
-                        />
+                        <img src={foward_arrow} alt=">" />
                     </Link>
                 </li>
             )}

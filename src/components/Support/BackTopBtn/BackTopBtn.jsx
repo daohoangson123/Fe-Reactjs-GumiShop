@@ -40,8 +40,9 @@ const BackTopBtn = () => {
     return (
         <div
             className={showBacktop ? 'BackTopBtn-actived' : 'BackTopBtn'}
-            onClick={scrollToTop}>
-            <i className='fa-sharp fa-regular fa-circle-up'></i>
+            onClick={scrollToTop}
+        >
+            <i className="fa-sharp fa-regular fa-circle-up"></i>
         </div>
     );
 };

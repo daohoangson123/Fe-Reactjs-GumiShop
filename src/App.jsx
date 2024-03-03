@@ -35,14 +35,11 @@ function App() {
     }, [isSignIn]);
 
     return (
-        <div className='App'>
+        <div className="App">
             <Header isSignIn={isSignIn} />
             <Main />
             <Footer />
-            <ToastContainer
-                autoClose={1500}
-                limit={2}
-            />
+            <ToastContainer autoClose={1500} limit={2} />
         </div>
     );
 }

@@ -20,14 +20,15 @@ const SliderBanner = () => {
     const [isBannerLoaded, setIsBannerLoaded] = useState(false);
 
     return (
-        <section className='HeroBanner'>
+        <section className="HeroBanner">
             <div
                 style={{
                     opacity: isBannerLoaded ? 1 : 0,
                     transition: '0.3s linear',
-                }}>
+                }}
+            >
                 <OwlCarousel
-                    className='owl-theme'
+                    className="owl-theme"
                     // mouseDrag={false}
                     // pullDrag={false}
                     // touchDrag={false}
@@ -39,62 +40,62 @@ const SliderBanner = () => {
                     items={1}
                     nav={false}
                     dots
-                    loop>
-                    <div className='SliderContainer'>
+                    loop
+                >
+                    <div className="SliderContainer">
                         <div
-                            className='BannerContainer BannerContainer_1'
-                            title='Slider is stopping'>
+                            className="BannerContainer BannerContainer_1"
+                            title="Slider is stopping"
+                        >
                             <img
                                 src={banner1_1920}
                                 alt={banner_1.name}
                                 srcSet={`${banner1_425} 425w, ${banner1_1024} 1024w, ${banner1_1920} 1920w`}
-                                fetchpriority='high'
+                                fetchpriority="high"
                                 onLoad={() => setIsBannerLoaded(true)}
                             />
-                            <div className='SliderBanner_1'>
+                            <div className="SliderBanner_1">
                                 <SliderItem
                                     title={banner_1.title}
                                     name={banner_1.name}
                                     descript={banner_1.des}
-                                    btn='SHOP NOW'
+                                    btn="SHOP NOW"
                                 />
                             </div>
                         </div>
                     </div>
-                    <div className='SliderContainer'>
+                    <div className="SliderContainer">
                         <div
-                            className='BannerContainer BannerContainer_2'
-                            title='Slider is stopping'>
-                            <img
-                                src={banner_2bg}
-                                alt=''
-                                fetchpriority='low'
-                            />
-                            <div className='SliderBanner_2'>
+                            className="BannerContainer BannerContainer_2"
+                            title="Slider is stopping"
+                        >
+                            <img src={banner_2bg} alt="" fetchpriority="low" />
+                            <div className="SliderBanner_2">
                                 <SliderItem
                                     title={banner_2.title}
                                     name={banner_2.name}
                                     descript={banner_2.des}
-                                    btn='SHOP NOW'
+                                    btn="SHOP NOW"
                                 />
                             </div>
                         </div>
                     </div>
-                    <div className='SliderContainer'>
+                    <div className="SliderContainer">
                         <div
-                            className='BannerContainer BannerContainer_3'
-                            title='Slider is stopping'>
+                            className="BannerContainer BannerContainer_3"
+                            title="Slider is stopping"
+                        >
                             <img
                                 src={banner3}
                                 alt={banner_1.name}
-                                fetchpriority='low'
+                                fetchpriority="low"
                             />
-                            <div className='SliderBanner_3'>
+                            <div className="SliderBanner_3">
                                 <SliderItem
                                     title={banner_1.title}
                                     name={banner_1.name}
                                     descript={banner_1.des}
-                                    btn='SHOP NOW'
+                                    btn="SHOP NOW"
                                 />
                             </div>
                         </div>

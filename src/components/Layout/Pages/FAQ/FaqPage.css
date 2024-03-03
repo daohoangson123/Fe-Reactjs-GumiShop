@@ -1,9 +1,9 @@
 .FaqPage__Title {
-    background-color: var(--color-primary);
-    color: var(--color-default);
-    font-size: clamp(24px, 10vw, 50px);
-    text-align: center;
     margin-bottom: 50px;
+    background-color: var(--color-primary);
+    font-size: clamp(24px, 10vw, 50px);
+    color: var(--color-default);
+    text-align: center;
 }
 
 .FaqPage__Content .accordion-button {
@@ -16,8 +16,8 @@
 }
 
 .FaqPage__Content .accordion-button:not(.collapsed) {
-    color: var(--color-default);
     background-color: var(--color-primary);
+    color: var(--color-default);
 }
 
 .FaqPage__Content .accordion-body {

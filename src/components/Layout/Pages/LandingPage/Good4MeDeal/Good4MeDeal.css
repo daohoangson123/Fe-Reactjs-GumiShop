@@ -9,20 +9,20 @@
 }
 
 .Good4MeDeal hr {
+    opacity: 1;
     width: 127px;
     height: 4px;
     margin: 25px auto;
     background-color: var(--color-primary);
     border-width: 0;
-    opacity: 1;
 }
 
 .Good4MeDeal > p {
+    margin-bottom: 36px;
     font-size: 18px;
     font-weight: 500;
     line-height: 24px;
     color: var(--color-text);
-    margin-bottom: 36px;
 }
 
 .Good4MeDeal .ProductItem {

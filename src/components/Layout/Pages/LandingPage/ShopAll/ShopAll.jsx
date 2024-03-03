@@ -72,29 +72,30 @@ const ShopAll = ({ title }) => {
     }, [productApi, loadMore]);
 
     return (
-        <section className='ShopAll Container'>
+        <section className="ShopAll Container">
             <SectionTitle content={title} />
             {productLength === 0 ? (
-                <div className='ProductContainer'>
+                <div className="ProductContainer">
                     <ProductSkeleton />
                 </div>
             ) : (
                 <>
-                    <div className='ProductContainer'>
+                    <div className="ProductContainer">
                         {productApi
                             .toSpliced(
                                 productLength / 2 + loadMore,
-                                productLength,
+                                productLength
                             )
                             .map((product, index) => (
                                 <div
-                                    className='ProductItem'
+                                    className="ProductItem"
                                     key={product._id}
                                     style={{
                                         animationDelay: `${
                                             index < 4 ? index * 0.1 : 0
                                         }s`,
-                                    }}>
+                                    }}
+                                >
                                     <Product
                                         id={product._id}
                                         url={product.img}
@@ -111,14 +112,15 @@ const ShopAll = ({ title }) => {
                             ))}
                     </div>
                     <div
-                        className='LoadMore'
+                        className="LoadMore"
                         onClick={() => {
                             if (loadMore < productLength / 2) {
                                 setLoadMore((pre) => pre + 1);
                             } else {
                                 setLoadMore(0);
                             }
-                        }}>
+                        }}
+                    >
                         {loadMore < productLength / 2
                             ? 'SHOW MORE'
                             : 'SHOW LESS'}

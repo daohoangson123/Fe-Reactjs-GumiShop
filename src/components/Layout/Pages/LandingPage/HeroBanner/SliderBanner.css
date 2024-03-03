@@ -1,8 +1,8 @@
 .BannerContainer {
-    position: relative;
+    place-items: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    place-items: center;
+    position: relative;
     width: 100%;
     height: 600px;
 }

@@ -23,7 +23,7 @@ const SearchModal = ({
 }) => {
     return (
         <div
-            className='NavSearch'
+            className="NavSearch"
             style={
                 !isSearching
                     ? { maxHeight: 0, overflow: 'hidden', opacity: 0 }
@@ -33,15 +33,16 @@ const SearchModal = ({
                           paddingBlock: '10px',
                           opacity: 1,
                       }
-            }>
-            <form className='NavSearch__Form'>
+            }
+        >
+            <form className="NavSearch__Form">
                 <input
-                    type='text'
-                    name='searchquery'
-                    id='searchquery'
+                    type="text"
+                    name="searchquery"
+                    id="searchquery"
                     placeholder="Search by Product's name"
                     required
-                    autoComplete='off'
+                    autoComplete="off"
                     onChange={debounceChange}
                 />
             </form>
@@ -58,12 +59,13 @@ const SearchModal = ({
                 </div>
             )}
             <ul
-                className='NavSearch__Result'
+                className="NavSearch__Result"
                 style={
                     searchValue ? { display: 'grid', maxHeight: '400px' } : null
-                }>
+                }
+            >
                 {filtered
-                    .toSorted((a, b) => {
+                    .sort((a, b) => {
                         const nameA = a.name.toLowerCase();
                         const nameB = b.name.toLowerCase();
                         if (nameA < nameB) {
@@ -77,16 +79,15 @@ const SearchModal = ({
                     .map((product) => (
                         <li
                             key={product._id}
-                            onClick={() => setIsSearching(false)}>
+                            onClick={() => setIsSearching(false)}
+                        >
                             <Link
                                 to={`/shop/${product.name
                                     .split(' ')
                                     .join('-')}`}
-                                title={product.name}>
-                                <img
-                                    src={product.img}
-                                    alt=''
-                                />
+                                title={product.name}
+                            >
+                                <img src={product.img} alt="" />
                                 {product.name}
                             </Link>
                         </li>
@@ -181,40 +182,40 @@ const SearchCart = () => {
 
     return (
         <>
-            <div className='SearchCart'>
+            <div className="SearchCart">
                 <button
-                    type='button'
-                    aria-label='SearchProduct'
-                    id='SearchIcon'
-                    htmlFor='searchquery'
-                    title='Search product'
-                    onClick={() => setIsSearching(!isSearching)}>
-                    <i className='fa-solid fa-magnifying-glass Icon'></i>
+                    type="button"
+                    aria-label="SearchProduct"
+                    id="SearchIcon"
+                    htmlFor="searchquery"
+                    title="Search product"
+                    onClick={() => setIsSearching(!isSearching)}
+                >
+                    <i className="fa-solid fa-magnifying-glass Icon"></i>
                 </button>
                 {!isSignIn ? (
                     <NavLink
-                        to='/userSignIn'
-                        aria-label='User-Page'
-                        title='UserSignIn'>
-                        <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
+                        to="/userSignIn"
+                        aria-label="User-Page"
+                        title="UserSignIn"
+                    >
+                        <i className="fa-regular fa-user Icon NavBar__UserIcon"></i>
                     </NavLink>
                 ) : (
                     <NavLink
-                        to='/userProfile'
-                        aria-label='User-Page'
-                        title='User'>
-                        <i className='fa-regular fa-user Icon NavBar__UserIcon'></i>
+                        to="/userProfile"
+                        aria-label="User-Page"
+                        title="User"
+                    >
+                        <i className="fa-regular fa-user Icon NavBar__UserIcon"></i>
                     </NavLink>
                 )}
-                <NavLink
-                    to='/cart'
-                    aria-label='Cart-Page'
-                    title='Your Cart'>
-                    <div className='Cart_IconContainer'>
-                        <i className='fa-solid fa-bag-shopping Icon'></i>
+                <NavLink to="/cart" aria-label="Cart-Page" title="Your Cart">
+                    <div className="Cart_IconContainer">
+                        <i className="fa-solid fa-bag-shopping Icon"></i>
                         {myCart.length !== 0 && (
-                            <div className='Cart_Notify'>
-                                <div className='Cart_Notify-Number'>
+                            <div className="Cart_Notify">
+                                <div className="Cart_Notify-Number">
                                     {myCart.length}
                                 </div>
                             </div>

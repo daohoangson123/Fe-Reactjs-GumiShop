@@ -1,13 +1,13 @@
 .SignUp {
-    display: grid;
     place-items: center;
+    display: grid;
     min-height: 300px;
 }
 
 .SignUp img {
+    transform-origin: top center;
     width: clamp(280px, 50vw, 1200px);
     animation: sling 1.5s ease-in-out infinite alternate;
-    transform-origin: top center;
 }
 
 @keyframes sling {

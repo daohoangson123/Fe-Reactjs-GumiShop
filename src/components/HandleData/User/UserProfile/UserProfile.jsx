@@ -61,16 +61,12 @@ const UserProfile = () => {
     };
 
     return (
-        <div className='UserProfile Container'>
+        <div className="UserProfile Container">
             <ErrorBoundary>
-                <div className='UserProfile__UserData'>
+                <div className="UserProfile__UserData">
                     {!userData ? (
                         <>
-                            <Skeleton
-                                width={128}
-                                height={128}
-                                circle
-                            />
+                            <Skeleton width={128} height={128} circle />
                             <div>
                                 <Skeleton width={120} />
                                 <Skeleton width={80} />
@@ -94,24 +90,26 @@ const UserProfile = () => {
                             </div>
                             <button
                                 onClick={handleSignOut}
-                                className='SignOut__Btn'>
-                                <Link to='/userSignIn'>Sign Out</Link>
+                                className="SignOut__Btn"
+                            >
+                                <Link to="/userSignIn">Sign Out</Link>
                             </button>
                         </>
                     )}
                 </div>
                 {userData?.id === 1 ? (
-                    <div className='Admin-Product-Control'>
-                        <div className='ProductsAdding'>
+                    <div className="Admin-Product-Control">
+                        <div className="ProductsAdding">
                             <form
-                                className='ProductsAddingForm'
-                                onSubmit={handleSubmit}>
+                                className="ProductsAddingForm"
+                                onSubmit={handleSubmit}
+                            >
                                 <fieldset>
                                     <legend>New Product</legend>
-                                    <label htmlFor='productName'>Name:</label>
+                                    <label htmlFor="productName">Name:</label>
                                     <input
-                                        type='text'
-                                        id='productName'
+                                        type="text"
+                                        id="productName"
                                         value={productData?.name || ''}
                                         onChange={(event) =>
                                             setProductData({
@@ -120,12 +118,12 @@ const UserProfile = () => {
                                             })
                                         }
                                     />
-                                    <label htmlFor='productPrice'>
+                                    <label htmlFor="productPrice">
                                         Price(max=300):
                                     </label>
                                     <input
-                                        type='number'
-                                        id='productPrice'
+                                        type="number"
+                                        id="productPrice"
                                         value={productData?.price}
                                         min={1}
                                         max={300}
@@ -151,30 +149,30 @@ const UserProfile = () => {
                                                         .replace(/[^0-9.]/g, '')
                                                         .replace(
                                                             /(\..*?)\..*/g,
-                                                            '$1',
+                                                            '$1'
                                                         )
                                                         .replace(/^0/, '')) //ko cho nhập số 0 đầu
                                         }
                                     />
-                                    <label htmlFor='productImg'>Image:</label>
+                                    <label htmlFor="productImg">Image:</label>
                                     <input
-                                        type='file'
-                                        id='productImg'
+                                        type="file"
+                                        id="productImg"
                                         ref={inputFile}
                                         onChange={(event) => {
                                             setProductData({
                                                 ...productData,
                                                 img: URL.createObjectURL(
-                                                    event.target.files[0],
+                                                    event.target.files[0]
                                                 ),
                                             });
                                         }}
                                     />
                                     OR
-                                    <label htmlFor='imgUrl'>URL:</label>
+                                    <label htmlFor="imgUrl">URL:</label>
                                     <input
-                                        type='url'
-                                        id='imgUrl'
+                                        type="url"
+                                        id="imgUrl"
                                         value={productData?.imgUrl || ''}
                                         onChange={(event) =>
                                             setProductData({
@@ -200,7 +198,7 @@ const UserProfile = () => {
                                         'Image preview'
                                     )}
                                     <button
-                                        type='submit'
+                                        type="submit"
                                         onClick={() =>
                                             handleAdd({
                                                 name: productData?.name,
@@ -209,18 +207,16 @@ const UserProfile = () => {
                                                     productData?.img ||
                                                     productData?.imgUrl,
                                             })
-                                        }>
+                                        }
+                                    >
                                         Add
                                     </button>
                                 </fieldset>
                             </form>
                         </div>
-                        <div className='ProductsList'>
+                        <div className="ProductsList">
                             <span>Products List: </span>
-                            <Table
-                                striped
-                                bordered
-                                hover>
+                            <Table striped bordered hover>
                                 <thead>
                                     <tr>
                                         <th>Img</th>
@@ -235,7 +231,7 @@ const UserProfile = () => {
                                                 <td>
                                                     <img
                                                         src={item?.img}
-                                                        alt='productImg'
+                                                        alt="productImg"
                                                         style={{
                                                             width: '50px',
                                                             height: '50px',
@@ -248,7 +244,8 @@ const UserProfile = () => {
                                                             handleRemove({
                                                                 name: item?.name,
                                                             })
-                                                        }>
+                                                        }
+                                                    >
                                                         Delete
                                                     </button>
                                                 </td>
@@ -260,19 +257,18 @@ const UserProfile = () => {
                                 )}
                             </Table>
                         </div>
-                        <div className='UserProfile__PurchaseHistory'>
+                        <div className="UserProfile__PurchaseHistory">
                             <h2>Purchase History</h2>
                             <button
-                                type='button'
-                                className='ClearPurchaseHistory__Btn'
-                                onClick={() => dispatch(clearHistory())}>
+                                type="button"
+                                className="ClearPurchaseHistory__Btn"
+                                onClick={() => dispatch(clearHistory())}
+                            >
                                 Clear History
                             </button>
                             {purchaseHistory.length > 0 && (
-                                <div className='UserProfile__PurchaseHistory-TableContainer'>
-                                    <Table
-                                        bordered
-                                        hover>
+                                <div className="UserProfile__PurchaseHistory-TableContainer">
+                                    <Table bordered hover>
                                         <thead>
                                             <tr>
                                                 <th>Name</th>
@@ -299,7 +295,7 @@ const UserProfile = () => {
                                                             </td>
                                                             <td>{item.date}</td>
                                                         </tr>
-                                                    ),
+                                                    )
                                                 )}
                                             </tbody>
                                         )}

@@ -85,7 +85,7 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 myCart: state.myCart.filter(
-                    (item) => item.id !== action.payload.id,
+                    (item) => item.id !== action.payload.id
                 ),
             };
         case 'Submit_Cart':
@@ -129,7 +129,7 @@ const rootReducer = (state = initState, action) => {
             return {
                 ...state,
                 adminProduct: state.adminProduct.filter(
-                    (item) => item.name !== action.payload.name,
+                    (item) => item.name !== action.payload.name
                 ),
             };
         default:

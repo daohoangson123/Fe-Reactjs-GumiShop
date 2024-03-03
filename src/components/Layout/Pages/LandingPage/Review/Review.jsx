@@ -10,10 +10,10 @@ import { reviewData } from '../../../../../data/review';
 
 const Review = () => {
     return (
-        <section className='Review Container'>
-            <div className='Review__Slider'>
+        <section className="Review Container">
+            <div className="Review__Slider">
                 <OwlCarousel
-                    className='owl-theme'
+                    className="owl-theme"
                     items={1}
                     nav={true}
                     dots={false}
@@ -21,20 +21,17 @@ const Review = () => {
                     responsiveRefreshRate={0}
                 >
                     {reviewData.map((review) => (
-                        <div
-                            className='Review__Slider-Item'
-                            key={review.name}
-                        >
-                            <div className='Review__Slider-Item-Title'>
+                        <div className="Review__Slider-Item" key={review.name}>
+                            <div className="Review__Slider-Item-Title">
                                 REAL REVIEWS
                             </div>
-                            <div className='Review__Slider-Item-SubTitle'>
+                            <div className="Review__Slider-Item-SubTitle">
                                 REAL RESULTS
                             </div>
-                            <div className='Review__Slider-Item-Rating'>
+                            <div className="Review__Slider-Item-Rating">
                                 {review.rating.map((star, index) => (
                                     <i
-                                        className='fa-solid fa-star'
+                                        className="fa-solid fa-star"
                                         key={index}
                                         style={{
                                             display: 'inline-block',
@@ -48,10 +45,10 @@ const Review = () => {
                                     ></i>
                                 ))}
                             </div>
-                            <p className='Review__Slider-Item-Review'>
+                            <p className="Review__Slider-Item-Review">
                                 {review.review}
                             </p>
-                            <div className='Review__Slider-Item-Name'>
+                            <div className="Review__Slider-Item-Name">
                                 {review.name}
                             </div>
                         </div>
@@ -59,9 +56,9 @@ const Review = () => {
                 </OwlCarousel>
             </div>
             <img
-                className='Review__Img'
+                className="Review__Img"
                 src={null}
-                alt=''
+                alt=""
                 lazysrc={review_img}
             />
         </section>

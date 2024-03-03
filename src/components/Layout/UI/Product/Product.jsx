@@ -60,28 +60,27 @@ const Product = (props) => {
     // }, []);
 
     return (
-        <div className='Product'>
-            <div className='Product__Img-Container'>
+        <div className="Product">
+            <div className="Product__Img-Container">
                 <img
                     src={props.url}
                     alt={props.name}
-                    loading='lazy'
+                    loading="lazy"
                     // lazysrc={props.url}
                     // style={{ backgroundColor: props.url }}
                 />
-                <div
-                    className='AddToCart_Bg'
-                    style={{ top: isAdded && 0 }}>
+                <div className="AddToCart_Bg" style={{ top: isAdded && 0 }}>
                     <Link
-                        className='ProductLink'
-                        title='Go to Product Detail'
+                        className="ProductLink"
+                        title="Go to Product Detail"
                         to={`/shop/${props.name.split(' ').join('-')}`}
-                        tabIndex='-1'>
+                        tabIndex="-1"
+                    >
                         Detail
                     </Link>
                     <button
-                        className='AddToCart'
-                        tabIndex='-1'
+                        className="AddToCart"
+                        tabIndex="-1"
                         style={{
                             background: isAdded && 'var(--color-primary)',
                         }}
@@ -106,26 +105,23 @@ const Product = (props) => {
                                 });
                                 setIsAdded(false);
                             }
-                        }}>
+                        }}
+                    >
                         {!isAdded ? 'Add' : 'Remove'}
                     </button>
                 </div>
                 {props.sale ? (
-                    <div
-                        className='Product__Sale'
-                        title='Product On Sale'>
+                    <div className="Product__Sale" title="Product On Sale">
                         ON SALE
                     </div>
                 ) : null}
             </div>
-            <div
-                className='Product__Name'
-                style={props.style}>
+            <div className="Product__Name" style={props.style}>
                 {props.name}
             </div>
-            <div className='Product__Prices'>
-                <span className='SalePrices'>${props.saleprices} NZD</span>
-                <span className='Prices'>
+            <div className="Product__Prices">
+                <span className="SalePrices">${props.saleprices} NZD</span>
+                <span className="Prices">
                     {props.prices !== 0 ? (
                         <span style={{ textDecoration: 'line-through' }}>
                             {props.prices} NZD

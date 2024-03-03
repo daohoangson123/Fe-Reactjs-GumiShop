@@ -1,7 +1,7 @@
 .NewDetail__Item {
+    place-items: center;
     display: grid;
     gap: 20px;
-    place-items: center;
 }
 
 .NewDetail__Item img {
@@ -13,16 +13,16 @@
 }
 
 .NewDetail__Item-Title {
-    font-weight: 600;
     font-size: 20px;
+    font-weight: 600;
 }
 
 .NewDetail__Item-Btn {
-    font-size: 16px;
-    font-weight: 500;
     width: 70px;
     height: 40px;
     background-color: var(--color-primary);
-    color: var(--color-default);
     cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-default);
 }
