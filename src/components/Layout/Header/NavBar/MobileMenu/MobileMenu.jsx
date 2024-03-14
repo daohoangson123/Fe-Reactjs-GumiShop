@@ -1,6 +1,6 @@
 import './MobileMenu.css';
 //
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import {
     disableBodyScroll,
@@ -54,6 +54,7 @@ const MobileMenu = ({ navlinkData }) => {
                 menuOpen={menuOpen}
                 setMenuOpen={setMenuOpen}
                 navlinkData={navlinkData}
+                openMenu={openMenu}
             />
         </>
     );
@@ -64,42 +65,43 @@ const MobileMenuRouting = ({
     menuOpen,
     setMenuOpen,
     navlinkData,
+    openMenu,
 }) => {
-    const menuRef = useRef();
+    // const menuRef = useRef();
+    //run on mousedown so user just click but not release imediately it cause the link wont be press
+    // useEffect(() => {
+    //     const toggleBodyLock = (event) => {
+    //         if (menuRef.current.contains(event.target)) {
+    //             clearAllBodyScrollLocks();
+    //             setMenuOpen(false);
+    //         }
+    //     };
+
+    //     menuRef.current.addEventListener('mousedown', toggleBodyLock);
+    // });
 
     useEffect(() => {
-        const toggleBodyLock = (event) => {
-            if (menuRef.current.contains(event.target)) {
-                clearAllBodyScrollLocks();
+        const mobileMenu = document.getElementById('MobileMenu');
+        const checkMenuDimension = (event) => {
+            const mbDimensons = mobileMenu.getBoundingClientRect();
+            if (
+                (event.clientX < mbDimensons.left ||
+                    event.clientX > mbDimensons.right ||
+                    event.clientY < mbDimensons.top ||
+                    event.clientY > mbDimensons.bottom) &&
+                menuOpen
+            ) {
                 setMenuOpen(false);
+                enableBodyScroll(openMenu);
+                window.removeEventListener('click', checkMenuDimension);
             }
         };
-
-        menuRef.current.addEventListener('mousedown', toggleBodyLock);
+        window.addEventListener('click', checkMenuDimension);
     });
-
-    // useEffect(() => {
-    // const mobileMenu = document.getElementById('MobileMenu');
-    // const checkMenuDimension = (event) => {
-    //     const mbDimensons = mobileMenu.getBoundingClientRect();
-    //     if (
-    //         (event.clientX < mbDimensons.left ||
-    //             event.clientX > mbDimensons.right ||
-    //             event.clientY < mbDimensons.top ||
-    //             event.clientY > mbDimensons.bottom) &&
-    //         menuOpen
-    //     ) {
-    //         setMenuOpen(false);
-    //         enableBodyScroll(openMenu);
-    //         window.removeEventListener('click', checkMenuDimension);
-    //     }
-    // };
-    // window.addEventListener('click', checkMenuDimension);
-    // });
 
     return (
         <div
-            ref={menuRef}
+            // ref={menuRef}
             title="Close Menu"
             className="MobileMenu__NavContainer"
             style={
