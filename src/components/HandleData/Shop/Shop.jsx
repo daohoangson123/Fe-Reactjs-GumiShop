@@ -10,17 +10,19 @@ import { debounce } from 'lodash';
 import Product from '../../Layout/UI/Product/Product';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
 import ErrorBoundary from '../../Support/Error/ErrorBoundary';
+import { useSearchParams } from 'react-router-dom';
 
 const ShopFilter = ({
     productApi,
     debounceChange,
     filtered,
-    onSale,
-    setOnSale,
-    sortFilter,
-    setSortFilter,
-    priceFilter,
-    setPriceFilter,
+    handleSaleCheck,
+    handlePriceChange,
+    handleSortChange,
+    q,
+    saleChecked,
+    price,
+    sort,
 }) => {
     const sortFilterOpt = [
         { label: 'Default', value: 'Default' },
@@ -69,6 +71,7 @@ const ShopFilter = ({
                             type="text"
                             name="searchkw"
                             id="searchkw"
+                            defaultValue={q}
                             title={`Enter some product's character Ex: vitamin, detox etc`}
                             placeholder={
                                 productApi.length !== 0
@@ -83,10 +86,10 @@ const ShopFilter = ({
                                 name="onSale"
                                 id="onSale"
                                 title="Show only on-sale Products"
-                                checked={onSale}
-                                onChange={(event) =>
-                                    setOnSale(event.target.checked)
-                                }
+                                checked={saleChecked}
+                                onChange={(event) => {
+                                    handleSaleCheck(event);
+                                }}
                             />
                             <label
                                 htmlFor="onSale"
@@ -107,15 +110,12 @@ const ShopFilter = ({
                             id="priceFilter"
                             className="priceFilter"
                             title="Find Products by price-ranges"
-                            value={priceFilter}
-                            onChange={(event) =>
-                                setPriceFilter(event.target.value)
-                            }
+                            value={price}
+                            onChange={(event) => handlePriceChange(event)}
                         >
                             {priceFilterOpt.map((opt) => (
                                 <option
                                     key={opt.value}
-                                    disabled={opt.value === priceFilter}
                                     value={opt.value}
                                     title={opt.value}
                                 >
@@ -125,22 +125,19 @@ const ShopFilter = ({
                         </select>
                     </div>
                     <div>
-                        <label htmlFor="sortFilter" title="Short Products">
+                        <label htmlFor="sortFilter" title="Sort Products">
                             Sort-by:{' '}
                         </label>
                         <select
                             id="sortFilter"
                             className="sortFilter"
-                            title="Short Products"
-                            value={sortFilter}
-                            onChange={(event) =>
-                                setSortFilter(event.target.value)
-                            }
+                            title="Sort Products"
+                            value={sort}
+                            onChange={(event) => handleSortChange(event)}
                         >
                             {sortFilterOpt.map((opt) => (
                                 <option
                                     key={opt.value}
-                                    disabled={opt.value === sortFilter}
                                     value={opt.value}
                                     title={opt.value}
                                 >
@@ -152,7 +149,7 @@ const ShopFilter = ({
                 </div>
             </fieldset>
             <div className="ProductAvailableCount">
-                {filtered.length > 0
+                {filtered?.length > 0
                     ? `${filtered.length} product${
                           filtered.length > 1 && 's'
                       } available.`
@@ -183,7 +180,7 @@ const ProductDisplay = ({ filtered }) => {
                         </div>
                     ))}
             </div>
-            {filtered.length === 0 && (
+            {filtered?.length === 0 && (
                 <img className="NoItemImg" src={noitem} alt="NoItemFound" />
             )}
         </>
@@ -191,18 +188,56 @@ const ProductDisplay = ({ filtered }) => {
 };
 
 const Shop = () => {
+    const [searchParams, setSearchParams] = useSearchParams({
+        q: '',
+        saleChecked: false,
+        price: 'Default',
+        sort: 'Default',
+    });
+    const q = searchParams.get('q');
+    const saleChecked = searchParams.get('saleChecked') === 'true';
+    const price = searchParams.get('price');
+    const sort = searchParams.get('sort');
     const [productApi, setProductApi] = useState([]);
-    const [searchValue, setSearchValue] = useState('');
-    const [onSale, setOnSale] = useState(false);
-    const [sortFilter, setSortFilter] = useState('Default');
-    const [priceFilter, setPriceFilter] = useState('Default');
+    const [searchValue, setSearchValue] = useState(q);
+    const [onSale, setOnSale] = useState(saleChecked);
+    const [priceFilter, setPriceFilter] = useState(price);
+    const [sortFilter, setSortFilter] = useState(sort);
     const result = [...productApi];
 
-    const handleChange = (event) => {
+    const handleNameChange = (event) => {
         setSearchValue(event.target.value);
+        setSearchParams((pre) => {
+            pre.set('q', event.target.value);
+            return pre;
+        });
     };
 
-    const debounceChange = useMemo(() => debounce(handleChange, 500), []);
+    const handleSaleCheck = (event) => {
+        setOnSale(event.target.checked);
+        setSearchParams((pre) => {
+            pre.set('saleChecked', event.target.checked);
+            return pre;
+        });
+    };
+
+    const handlePriceChange = (event) => {
+        setPriceFilter(event.target.value);
+        setSearchParams((pre) => {
+            pre.set('price', event.target.value);
+            return pre;
+        });
+    };
+
+    const handleSortChange = (event) => {
+        setSortFilter(event.target.value);
+        setSearchParams((pre) => {
+            pre.set('sort', event.target.value);
+            return pre;
+        });
+    };
+
+    const debounceChange = useMemo(() => debounce(handleNameChange, 500), []);
 
     const getFilterItems = (
         searchValue,
@@ -997,10 +1032,13 @@ const Shop = () => {
     };
 
     useEffect(() => {
+        document.title = 'Gumi Shopify - Shop';
+
         getProducts();
 
         return () => {
             debounceChange.cancel();
+            document.title = 'Gumi Shopify';
         };
     }, [debounceChange]);
 
@@ -1011,12 +1049,13 @@ const Shop = () => {
                     productApi={productApi}
                     debounceChange={debounceChange}
                     filtered={filtered}
-                    onSale={onSale}
-                    setOnSale={setOnSale}
-                    sortFilter={sortFilter}
-                    setSortFilter={setSortFilter}
-                    priceFilter={priceFilter}
-                    setPriceFilter={setPriceFilter}
+                    handleSaleCheck={handleSaleCheck}
+                    handlePriceChange={handlePriceChange}
+                    handleSortChange={handleSortChange}
+                    q={q}
+                    saleChecked={saleChecked}
+                    price={price}
+                    sort={sort}
                 />
                 <div className="Container">
                     {productApi.length > 0 ? (

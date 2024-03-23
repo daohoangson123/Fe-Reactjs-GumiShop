@@ -32,9 +32,11 @@ const ProductDetail = () => {
     };
 
     useEffect(() => {
+        document.title = id;
         setProductDetail([]);
         setTimeout(() => getProducts(), 500);
         // eslint-disable-next-line
+        return () => (document.title = 'Gumi Shopify');
     }, [id]);
 
     return (

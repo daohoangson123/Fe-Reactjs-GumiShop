@@ -70,7 +70,6 @@
 }
 
 .FiltersInputs label,
-.FiltersInputs input,
 .FiltersInputs select {
     cursor: pointer;
     text-align: center;

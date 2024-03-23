@@ -15,6 +15,8 @@ import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
 
 const LandingPage = () => {
     useEffect(() => {
+        document.title = 'Gumi Shopify - Home';
+
         function load(img) {
             const url = img.getAttribute('lazysrc');
             img.setAttribute('src', url);
@@ -33,7 +35,10 @@ const LandingPage = () => {
             observer.observe(img);
         });
 
-        return () => observer.disconnect();
+        return () => {
+            observer.disconnect();
+            document.title = 'Gumi Shopify';
+        };
     }, []);
 
     return (
