@@ -1040,7 +1040,7 @@ const Shop = () => {
             debounceChange.cancel();
             document.title = 'Gumi Shopify';
         };
-    }, [debounceChange]);
+    }, [debounceChange, saleChecked]);
 
     return (
         <div className="Shop">
