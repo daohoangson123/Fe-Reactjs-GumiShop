@@ -43,8 +43,6 @@
 
 .MobileMenu__NavContainer {
     inset: 0;
-    display: flex;
-    justify-content: flex-end;
     position: absolute;
     z-index: -1;
     transform: translateX(-100%) skewY(45deg);
@@ -52,7 +50,17 @@
     transition: var(--transition-slow);
 }
 
+.BlurBg {
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(5px);
+}
+
 .MobileMenu__Nav {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
     scrollbar-gutter: stable both-edges;
     display: grid;
     grid-template-rows: repeat(auto-fit, 44px);
@@ -62,6 +70,7 @@
     max-height: 100%;
     background-color: var(--color-default);
     text-align: center;
+    border: 1px solid var(--color-primary);
 }
 
 .MobileMenu__Nav a {

@@ -101,21 +101,21 @@ const MobileMenuRouting = ({
 
     return (
         <div
-            // ref={menuRef}
-            title="Close Menu"
             className="MobileMenu__NavContainer"
+            title="Close Menu"
             style={
                 menuOpen
                     ? {
                           transform: 'none',
                           zIndex: 1000,
-                          backgroundColor: 'var(--color-alt-rgba-5)',
+                          //   backgroundColor: 'var(--color-alt-rgba-5)',
                       }
                     : !isMobileView
                       ? { transition: 'none' }
                       : null
             }
         >
+            <div className="BlurBg"></div>
             <div className="MobileMenu__Nav">
                 {navlinkData.map((item) => (
                     <NavLink
@@ -155,6 +155,7 @@ const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
             aria-label="MobileMenuToggle"
             style={{
                 backgroundColor: menuOpen && 'rgba(0, 0, 0, 0.3)',
+                zIndex: menuOpen && 9999,
             }}
         >
             <div

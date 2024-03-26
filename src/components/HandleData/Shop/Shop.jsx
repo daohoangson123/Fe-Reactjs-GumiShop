@@ -207,34 +207,46 @@ const Shop = () => {
 
     const handleNameChange = (event) => {
         setSearchValue(event.target.value);
-        setSearchParams((pre) => {
-            pre.set('q', event.target.value);
-            return pre;
-        });
+        setSearchParams(
+            (pre) => {
+                pre.set('q', event.target.value);
+                return pre;
+            },
+            { replace: true }
+        );
     };
 
     const handleSaleCheck = (event) => {
         setOnSale(event.target.checked);
-        setSearchParams((pre) => {
-            pre.set('saleChecked', event.target.checked);
-            return pre;
-        });
+        setSearchParams(
+            (pre) => {
+                pre.set('saleChecked', event.target.checked);
+                return pre;
+            },
+            { replace: true }
+        );
     };
 
     const handlePriceChange = (event) => {
         setPriceFilter(event.target.value);
-        setSearchParams((pre) => {
-            pre.set('price', event.target.value);
-            return pre;
-        });
+        setSearchParams(
+            (pre) => {
+                pre.set('price', event.target.value);
+                return pre;
+            },
+            { replace: true }
+        );
     };
 
     const handleSortChange = (event) => {
         setSortFilter(event.target.value);
-        setSearchParams((pre) => {
-            pre.set('sort', event.target.value);
-            return pre;
-        });
+        setSearchParams(
+            (pre) => {
+                pre.set('sort', event.target.value);
+                return pre;
+            },
+            { replace: true }
+        );
     };
 
     const debounceChange = useMemo(() => debounce(handleNameChange, 500), []);
