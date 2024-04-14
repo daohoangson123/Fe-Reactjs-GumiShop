@@ -12,31 +12,15 @@ import LatestNews from './LatestNew/LatestNews';
 import Good4MeSlider from './Good4MeSilder/Good4MeSlider';
 //
 import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
+import lazyImgCall from '../../../../data/lazyImg';
 
 const LandingPage = () => {
     useEffect(() => {
         document.title = 'Gumi Shopify - Home';
 
-        function load(img) {
-            const url = img.getAttribute('lazysrc');
-            img.setAttribute('src', url);
-        }
-
-        const lazyImgs = document.querySelectorAll('[lazysrc]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    load(entry.target);
-                }
-            });
-        });
-
-        lazyImgs.forEach((img) => {
-            observer.observe(img);
-        });
+        lazyImgCall();
 
         return () => {
-            observer.disconnect();
             document.title = 'Gumi Shopify';
         };
     }, []);

@@ -15,6 +15,7 @@
     font-weight: 600;
     line-height: 42px;
     color: var(--color-primary);
+    opacity: 0;
 }
 
 .owl-item.active .ProductBanner__Name {
@@ -27,6 +28,7 @@
     font-size: clamp(28px, 3vw, 56px);
     font-weight: 600;
     line-height: 72px;
+    opacity: 0;
 }
 
 .owl-item.active .ProductBanner__Des {
@@ -41,6 +43,7 @@
     font-weight: 400;
     line-height: 29px;
     color: var(--color-text);
+    opacity: 0;
 }
 
 .owl-item.active .Product__Btn {
@@ -63,6 +66,7 @@
     font-weight: 500;
     color: var(--color-default);
     text-decoration: none;
+    opacity: 0;
 }
 
 .Product__Btn:hover {
