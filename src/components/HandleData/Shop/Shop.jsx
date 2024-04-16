@@ -4,18 +4,18 @@ import noitem from '../../../assets/img/noitem.webp';
 //
 import { fetchProductApi } from '../../../data/axiosAPI/productData';
 //
-import { useEffect, useMemo, useState } from 'react';
-import { debounce } from 'lodash';
+import { useEffect, useState } from 'react';
 //
 import Product from '../../Layout/UI/Product/Product';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
 import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 import { useSearchParams } from 'react-router-dom';
+import Loading from '../../Layout/UI/Loading/Loading';
 
 const ShopFilter = ({
     productApi,
-    debounceChange,
     filtered,
+    handleNameChange,
     handleSaleCheck,
     handlePriceChange,
     handleSortChange,
@@ -48,113 +48,129 @@ const ShopFilter = ({
             autoComplete="off"
             onSubmit={(event) => event.preventDefault()}
         >
-            <fieldset disabled={productApi.length === 0}>
-                <button
-                    type="button"
-                    className="ToggleFilter__Btn"
-                    title={
-                        showFilter
-                            ? 'Hide filter options'
-                            : 'Show detail filter options'
-                    }
-                    onClick={() => setShowFilter(!showFilter)}
-                >
-                    {showFilter ? 'Hide Filter' : 'Show Filter'}
-                </button>
-                <div
-                    className="FiltersInputs"
-                    style={{ maxHeight: showFilter && '150px' }}
-                >
-                    <div>
-                        <input
-                            className="NameFilterInput"
-                            type="text"
-                            name="searchkw"
-                            id="searchkw"
-                            defaultValue={q}
-                            title={`Enter some product's character Ex: vitamin, detox etc`}
-                            placeholder={
-                                productApi.length !== 0
-                                    ? `Enter some product's character`
-                                    : 'Please wait a sec...'
+            {productApi.length === 0 ? (
+                <Loading />
+            ) : (
+                <>
+                    <fieldset disabled={productApi.length === 0}>
+                        <button
+                            type="button"
+                            className="ToggleFilter__Btn"
+                            title={
+                                showFilter
+                                    ? 'Hide filter options'
+                                    : 'Show detail filter options'
                             }
-                            onChange={debounceChange}
-                        />
-                        <div>
-                            <input
-                                type="checkbox"
-                                name="onSale"
-                                id="onSale"
-                                title="Show only on-sale Products"
-                                checked={saleChecked}
-                                onChange={(event) => {
-                                    handleSaleCheck(event);
-                                }}
-                            />
-                            <label
-                                htmlFor="onSale"
-                                title="Show only on-sale Products"
-                            >
-                                SaleOnly
-                            </label>
+                            onClick={() => setShowFilter(!showFilter)}
+                        >
+                            {showFilter ? 'Hide Filter' : 'Show Filter'}
+                        </button>
+                        <div
+                            className="FiltersInputs"
+                            style={{ maxHeight: showFilter && '150px' }}
+                        >
+                            <div>
+                                <input
+                                    className="NameFilterInput"
+                                    type="text"
+                                    name="searchkw"
+                                    id="searchkw"
+                                    defaultValue={q}
+                                    value={q}
+                                    title={`Enter some product's character Ex: vitamin, detox etc`}
+                                    placeholder={
+                                        productApi.length !== 0
+                                            ? `Enter some product's character`
+                                            : 'Please wait a sec...'
+                                    }
+                                    onChange={(event) =>
+                                        handleNameChange(event)
+                                    }
+                                />
+                                <div>
+                                    <input
+                                        type="checkbox"
+                                        name="onSale"
+                                        id="onSale"
+                                        title="Show only on-sale Products"
+                                        checked={saleChecked}
+                                        onChange={(event) => {
+                                            handleSaleCheck(event);
+                                        }}
+                                    />
+                                    <label
+                                        htmlFor="onSale"
+                                        title="Show only on-sale Products"
+                                    >
+                                        SaleOnly
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="priceFilter"
+                                    title="Find Products by price-ranges"
+                                >
+                                    Price-range:{' '}
+                                </label>
+                                <select
+                                    id="priceFilter"
+                                    className="priceFilter"
+                                    title="Find Products by price-ranges"
+                                    value={price}
+                                    onChange={(event) =>
+                                        handlePriceChange(event)
+                                    }
+                                >
+                                    {priceFilterOpt.map((opt) => (
+                                        <option
+                                            key={opt.value}
+                                            value={opt.value}
+                                            title={opt.value}
+                                        >
+                                            {opt.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <div>
+                                <label
+                                    htmlFor="sortFilter"
+                                    title="Sort Products"
+                                >
+                                    Sort-by:{' '}
+                                </label>
+                                <select
+                                    id="sortFilter"
+                                    className="sortFilter"
+                                    title="Sort Products"
+                                    value={sort}
+                                    onChange={(event) =>
+                                        handleSortChange(event)
+                                    }
+                                >
+                                    {sortFilterOpt.map((opt) => (
+                                        <option
+                                            key={opt.value}
+                                            value={opt.value}
+                                            title={opt.value}
+                                        >
+                                            {opt.label}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
+                    </fieldset>
+                    <div className="ProductAvailableCount">
+                        {filtered?.length > 0
+                            ? `${filtered.length} product${
+                                  filtered.length > 1 && 's'
+                              } available.`
+                            : 'Please try other products'}
                     </div>
-                    <div>
-                        <label
-                            htmlFor="priceFilter"
-                            title="Find Products by price-ranges"
-                        >
-                            Price-range:{' '}
-                        </label>
-                        <select
-                            id="priceFilter"
-                            className="priceFilter"
-                            title="Find Products by price-ranges"
-                            value={price}
-                            onChange={(event) => handlePriceChange(event)}
-                        >
-                            {priceFilterOpt.map((opt) => (
-                                <option
-                                    key={opt.value}
-                                    value={opt.value}
-                                    title={opt.value}
-                                >
-                                    {opt.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                    <div>
-                        <label htmlFor="sortFilter" title="Sort Products">
-                            Sort-by:{' '}
-                        </label>
-                        <select
-                            id="sortFilter"
-                            className="sortFilter"
-                            title="Sort Products"
-                            value={sort}
-                            onChange={(event) => handleSortChange(event)}
-                        >
-                            {sortFilterOpt.map((opt) => (
-                                <option
-                                    key={opt.value}
-                                    value={opt.value}
-                                    title={opt.value}
-                                >
-                                    {opt.label}
-                                </option>
-                            ))}
-                        </select>
-                    </div>
-                </div>
-            </fieldset>
-            <div className="ProductAvailableCount">
-                {filtered?.length > 0
-                    ? `${filtered.length} product${
-                          filtered.length > 1 && 's'
-                      } available.`
-                    : 'Please try other products'}
-            </div>
+                </>
+            )}
         </form>
     );
 };
@@ -189,12 +205,12 @@ const ProductDisplay = ({ filtered }) => {
 
 const Shop = () => {
     const [searchParams, setSearchParams] = useSearchParams({
-        q: '',
+        search: '',
         saleChecked: false,
         price: 'Default',
         sort: 'Default',
     });
-    const q = searchParams.get('q');
+    const q = searchParams.get('search');
     const saleChecked = searchParams.get('saleChecked') === 'true';
     const price = searchParams.get('price');
     const sort = searchParams.get('sort');
@@ -209,7 +225,7 @@ const Shop = () => {
         setSearchValue(event.target.value);
         setSearchParams(
             (pre) => {
-                pre.set('q', event.target.value);
+                pre.set('search', event.target.value);
                 return pre;
             },
             { replace: true }
@@ -248,8 +264,6 @@ const Shop = () => {
             { replace: true }
         );
     };
-
-    const debounceChange = useMemo(() => debounce(handleNameChange, 500), []);
 
     const getFilterItems = (
         searchValue,
@@ -1049,18 +1063,17 @@ const Shop = () => {
         getProducts();
 
         return () => {
-            debounceChange.cancel();
             document.title = 'Gumi Shopify';
         };
-    }, [debounceChange, saleChecked]);
+    }, []);
 
     return (
         <div className="Shop">
             <ErrorBoundary>
                 <ShopFilter
                     productApi={productApi}
-                    debounceChange={debounceChange}
                     filtered={filtered}
+                    handleNameChange={handleNameChange}
                     handleSaleCheck={handleSaleCheck}
                     handlePriceChange={handlePriceChange}
                     handleSortChange={handleSortChange}
