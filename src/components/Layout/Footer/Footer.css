@@ -1,10 +1,10 @@
 footer {
     background-blend-mode: screen;
-    position: relative;
     margin-top: 30px;
-    background-image: url(../../../assets/img/Footer.webp);
+    background-image: url(../../../assets/img/FooterTop.webp),
+        url(../../../assets/img/Footer.webp);
     background-repeat: no-repeat;
-    background-size: cover, contain;
+    background-size: contain, cover;
 }
 
 footer hr {

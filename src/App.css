@@ -24,6 +24,8 @@
     margin: 0;
     padding: 0;
     text-decoration: none;
+    font-family: var(--font-default);
+    -webkit-font-smoothing: antialiased !important;
 }
 
 html {
@@ -40,7 +42,7 @@ html::-webkit-scrollbar-thumb {
 }
 
 body {
-    font-family: var(--font-default);
+    overflow-x: hidden;
 }
 
 main {
@@ -69,6 +71,7 @@ li {
     grid-template-columns: repeat(auto-fit, 180px);
     justify-content: center;
     gap: 30px;
+    min-height: 300px;
 }
 
 .Container {

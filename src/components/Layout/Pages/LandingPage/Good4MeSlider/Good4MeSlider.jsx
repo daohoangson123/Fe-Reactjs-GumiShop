@@ -2,7 +2,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 //
-import './Good4MeSilder.css';
+import './Good4MeSlider.css';
 //
 import { bottom_Slider } from '../../../../../data/bottomSlider';
 //

@@ -33,10 +33,10 @@ const SliderBanner = () => {
                     // pullDrag={false}
                     // touchDrag={false}
                     responsiveRefreshRate={0}
-                    // autoplay
+                    autoplay
                     autoplayHoverPause
-                    autoplaySpeed={2000}
-                    autoplayTimeout={10000}
+                    autoplaySpeed={3000}
+                    autoplayTimeout={5000}
                     items={1}
                     nav={false}
                     dots

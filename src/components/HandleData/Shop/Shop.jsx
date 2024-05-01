@@ -178,7 +178,10 @@ const ShopFilter = ({
 const ProductDisplay = ({ filtered }) => {
     return (
         <>
-            <div className="ProductContainer ShopProductContainer">
+            <div
+                className="ProductContainer ShopProductContainer"
+                style={{ display: filtered?.length === 0 && 'block' }}
+            >
                 {filtered &&
                     filtered.map((product) => (
                         <div
@@ -195,10 +198,10 @@ const ProductDisplay = ({ filtered }) => {
                             />
                         </div>
                     ))}
+                {filtered?.length === 0 && (
+                    <img className="NoItemImg" src={noitem} alt="NoItemFound" />
+                )}
             </div>
-            {filtered?.length === 0 && (
-                <img className="NoItemImg" src={noitem} alt="NoItemFound" />
-            )}
         </>
     );
 };

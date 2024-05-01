@@ -27,6 +27,7 @@ const MobileMenu = ({ navlinkData }) => {
         } else {
             setIsMobileView(false);
             setMenuOpen(false);
+            clearAllBodyScrollLocks();
         }
     };
 

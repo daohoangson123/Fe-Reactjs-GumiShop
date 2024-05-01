@@ -9,7 +9,7 @@ import OurProduct from './OurProduct/OurProduct';
 import Review from './Review/Review';
 import ShopAll from './ShopAll/ShopAll';
 import LatestNews from './LatestNew/LatestNews';
-import Good4MeSlider from './Good4MeSilder/Good4MeSlider';
+import Good4MeSlider from './Good4MeSlider/Good4MeSlider';
 //
 import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
 import lazyImgCall from '../../../../data/lazyImg';
