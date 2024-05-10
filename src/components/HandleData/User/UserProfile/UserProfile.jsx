@@ -146,11 +146,16 @@ const UserProfile = () => {
                                             (event) =>
                                                 (event.currentTarget.value =
                                                     event.currentTarget.value
-                                                        .replace(/[^0-9.]/g, '')
+                                                        .replace(
+                                                            /[^0-9\\.]+/g,
+                                                            ''
+                                                        )
                                                         .replace(
                                                             /(\..*?)\..*/g,
                                                             '$1'
                                                         )
+                                                        .replace('.', '')
+                                                        .replace(',', '')
                                                         .replace(/^0/, '')) //ko cho nhập số 0 đầu
                                         }
                                     />
