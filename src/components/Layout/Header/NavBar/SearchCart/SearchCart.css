@@ -39,7 +39,7 @@
     grid-column: 1 / 4;
     overflow: auto;
     transition: var(--transition-fast);
-    background-color: var(--color-alt-rgba-1);
+    background-color: var(--color-primary-rgba-3);
 }
 
 .NavSearch::-webkit-scrollbar {

@@ -34,11 +34,35 @@ const Header = ({ isSignIn }) => {
         };
     }, [handleNavigation]);
 
+    const [isMobileView, setIsMobileView] = useState(false);
+
+    const mq = window.matchMedia('(width <= 1024px)');
+
+    // toggle khi matchMedia
+    const checkView = () => {
+        if (mq.matches) {
+            setIsMobileView(true);
+        } else {
+            setIsMobileView(false);
+        }
+    };
+
+    useEffect(() => {
+        checkView();
+
+        mq.addEventListener('change', checkView);
+
+        return () => {
+            mq.removeEventListener('change', checkView);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
         <header
             style={{
                 animation: pageAccessedByReload && 'none',
-                top: isDown ? '-60px' : 0,
+                top: isDown && !isMobileView ? '-60px' : 0,
             }}
         >
             <SignBar isSignIn={isSignIn} />
