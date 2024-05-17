@@ -107,16 +107,16 @@ const MobileMenuRouting = ({
             style={
                 menuOpen
                     ? {
-                          transform: 'none',
+                          transform: 'scale(1)',
                           zIndex: 1000,
-                          //   backgroundColor: 'var(--color-alt-rgba-5)',
+                          opacity: 1,
+                          backdropFilter: 'blur(10px)',
                       }
                     : !isMobileView
                       ? { transition: 'none' }
                       : null
             }
         >
-            <div className="BlurBg"></div>
             <div className="MobileMenu__Nav">
                 {navlinkData.map((item) => (
                     <NavLink
