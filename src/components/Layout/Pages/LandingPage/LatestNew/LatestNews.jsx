@@ -5,29 +5,16 @@ import { news_Items } from '../../../../../data/news';
 import NewsItem from './NewsItem/NewsItem';
 import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
 import { useEffect } from 'react';
+import animationCheck from '../../../../../data/animationCheck';
 
 const LatestNew = ({ title }) => {
     useEffect(() => {
-        function load(item) {
-            item.classList.add('animated-slide-up');
-        }
-
-        const animated = document.querySelectorAll('.LatestNew * .NewsItem');
-
-        let observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    load(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        });
-
-        animated.forEach((item) => {
-            observer.observe(item);
-        });
-
-        return () => observer.disconnect();
+        animationCheck(
+            '.LatestNew * .NewsItem',
+            'animated-slide-up',
+            '0px',
+            0.5
+        );
     }, []);
 
     return (

@@ -9,6 +9,7 @@ import Good4MeDealBot from './GoodDealBot/Good4MeDealBot';
 //
 import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
 import ProductSkeleton from '../../../UI/Skeleton/ProductSkeleton';
+import animationCheck from '../../../../../data/animationCheck';
 
 const Good4MeDeal = ({ tittle, content }) => {
     const [productApi, setProductApi] = useState([]);
@@ -17,7 +18,6 @@ const Good4MeDeal = ({ tittle, content }) => {
         let result = await fetchProductApi();
 
         if (result) {
-            setProductApi(result);
             setProductApi(result.slice(0, Math.ceil(result.length / 2)));
         }
     };
@@ -41,33 +41,12 @@ const Good4MeDeal = ({ tittle, content }) => {
     }, []);
 
     useEffect(() => {
-        function load(item) {
-            item.classList.add('animated-slide-up');
-        }
-
-        const animated = document.querySelectorAll(
-            '.Good4MeDeal * .ProductItem'
+        animationCheck(
+            '.Good4MeDeal * .ProductItem',
+            'animated-slide-up',
+            '0px',
+            0.6
         );
-
-        let options = {
-            rootMargin: '0px',
-            threshold: 0.5,
-        };
-
-        let observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    load(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, options);
-
-        animated.forEach((item) => {
-            observer.observe(item);
-        });
-
-        return () => observer.disconnect();
     }, [productApi]);
 
     return (

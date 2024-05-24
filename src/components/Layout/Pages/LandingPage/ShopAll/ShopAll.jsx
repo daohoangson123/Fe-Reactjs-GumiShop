@@ -7,6 +7,7 @@ import { fetchProductApi } from '../../../../../data/axiosAPI/productData';
 import Product from '../../../UI/Product/Product';
 import SectionTitle from '../../../UI/SectionTitle/SectionTitle';
 import ProductSkeleton from '../../../UI/Skeleton/ProductSkeleton';
+import animationCheck from '../../../../../data/animationCheck';
 //
 
 const ShopAll = ({ title }) => {
@@ -44,31 +45,12 @@ const ShopAll = ({ title }) => {
     }, []);
 
     useEffect(() => {
-        function load(item) {
-            item.classList.add('animated-fade-in');
-        }
-
-        const animated = document.querySelectorAll('.ShopAll * .ProductItem');
-
-        let options = {
-            rootMargin: '0px',
-            threshold: 0.5,
-        };
-
-        let observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    load(entry.target);
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, options);
-
-        animated.forEach((item) => {
-            observer.observe(item);
-        });
-
-        return () => observer.disconnect();
+        animationCheck(
+            '.ShopAll * .ProductItem',
+            'animated-fade-in',
+            '0px',
+            0.6
+        );
     }, [productApi, loadMore]);
 
     return (

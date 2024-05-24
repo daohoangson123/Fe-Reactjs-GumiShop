@@ -1,5 +1,6 @@
 .NewsItem {
     width: clamp(280px, 50vw, 400px);
+    opacity: 0;
 }
 
 .NewsItem img {

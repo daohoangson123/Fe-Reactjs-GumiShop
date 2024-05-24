@@ -8,6 +8,13 @@
 .Good4MeDealBot_Item {
     width: 280px;
     transition: var(--transition-slow);
+    opacity: 0;
+}
+
+.Good4MeDealBot_Item:hover .Good4MeDealBot_Item-Circle {
+    transform: scale(2);
+    right: 8px;
+    bottom: 5px;
 }
 
 .Img_Container {
@@ -30,6 +37,7 @@
     height: 45px;
     background-color: var(--color-primary);
     border-radius: 100%;
+    transition: var(--transition-slow);
 }
 
 .Good4MeDealBot_Item-Title {
