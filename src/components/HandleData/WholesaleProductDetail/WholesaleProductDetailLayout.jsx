@@ -181,7 +181,7 @@ const WholesaleProductDetailLayout = ({
                                                 } else {
                                                     newAmount = quantity;
                                                     window.alert(
-                                                        'Hey you, you breaking the input!'
+                                                        'Hey you, you are breaking the input!'
                                                     );
                                                 }
                                                 setQuantity(newAmount);

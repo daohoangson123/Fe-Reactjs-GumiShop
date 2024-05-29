@@ -94,6 +94,11 @@
 
 .Product-Container__Info-AddToCart-Form button {
     border: none;
+    outline: 1px solid var(--color-primary);
+}
+
+.Product-Container__Info-AddToCart-Form button:focus {
+    background-color: var(--color-primary);
 }
 
 .Product-Container__Info-AddToCart-Form .Decre,
@@ -108,7 +113,8 @@
 }
 
 .Product-Container__Info-AddToCart-Form input {
-    outline: none;
+    border: none;
+    outline: 1px solid var(--color-primary);
     width: 29px;
     height: 29px;
     text-align: center;

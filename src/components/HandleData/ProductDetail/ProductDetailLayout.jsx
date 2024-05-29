@@ -22,7 +22,9 @@ const ProductDetailLayout = ({
                 position: 'bottom-right',
             }
         );
-
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    };
     return (
         <div className="ProductDetailLayout">
             {productDetail.length === 0 ? (
@@ -67,7 +69,10 @@ const ProductDetailLayout = ({
                                 </span>
                             )}
                         </div>
-                        <form className="ProductDetailBox__AddToCart">
+                        <form
+                            className="ProductDetailBox__AddToCart"
+                            onSubmit={(event) => handleSubmit(event)}
+                        >
                             <button
                                 className="Quantity_Btn"
                                 type="button"
@@ -113,18 +118,18 @@ const ProductDetailLayout = ({
                                     } else {
                                         newAmount = quantity;
                                         window.alert(
-                                            'Hey you, you breaking the input!'
+                                            'Hey you, you are breaking the input!'
                                         );
                                     }
                                     setQuantity(newAmount);
                                 }}
-                                // onInput={(event) =>
-                                //     (event.currentTarget.value =
-                                //         event.currentTarget.value
-                                //             .replace(/[^0-9.]/g, '')
-                                //             .replace(/(\..*?)\..*/g, '$1')
-                                //             .replace(/^0[^.]/, '0'))
-                                // }
+                                onInput={(event) =>
+                                    (event.currentTarget.value =
+                                        event.currentTarget.value.replace(
+                                            /[^0-9]/g,
+                                            ''
+                                        ))
+                                }
                             />
                             <button
                                 className="Quantity_Btn"
@@ -132,7 +137,9 @@ const ProductDetailLayout = ({
                                 onClick={() => {
                                     if (quantity < 1000 && !isNaN(quantity)) {
                                         setQuantity((pre) => pre + 1);
-                                    } else setQuantity(1);
+                                    } else {
+                                        setQuantity(1000);
+                                    }
                                 }}
                             >
                                 +
@@ -141,7 +148,7 @@ const ProductDetailLayout = ({
                                 className="Quantity_Btn"
                                 type="button"
                                 onClick={() => {
-                                    if (quantity < 991) {
+                                    if (quantity < 991 && !isNaN(quantity)) {
                                         setQuantity((pre) => pre + 10);
                                     } else {
                                         setQuantity(1000);
