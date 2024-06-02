@@ -92,3 +92,15 @@ li {
         padding: 60px;
     }
 }
+
+@media (width < 850px) {
+    .ProductItem:last-child {
+        animation-delay: 0s !important;
+    }
+}
+
+@media (width < 640px) {
+    .ProductItem {
+        animation-delay: 0s !important;
+    }
+}

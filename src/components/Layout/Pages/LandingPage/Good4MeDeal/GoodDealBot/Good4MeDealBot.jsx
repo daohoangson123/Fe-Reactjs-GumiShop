@@ -15,7 +15,7 @@ const Good4MeDealBot = () => {
                 <div
                     className="Good4MeDealBot_Item"
                     key={item.title}
-                    style={{ animationDelay: `${index * 0.2}s` }}
+                    style={{ animationDelay: `${index * 0.1}s` }}
                 >
                     <div className="Img_Container">
                         <span className="Good4MeDealBot_Item-Circle"></span>

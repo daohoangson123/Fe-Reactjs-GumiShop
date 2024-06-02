@@ -55,6 +55,18 @@
 @media (width < 1024px) {
     .Good4MeDealBot {
         flex-wrap: wrap;
-        gap: 100px;
+        gap: 50px;
+    }
+}
+
+@media (width < 980px) {
+    .Good4MeDealBot_Item:last-child {
+        animation-delay: 0s !important;
+    }
+}
+
+@media (width < 650px) {
+    .Good4MeDealBot_Item {
+        animation-delay: 0s !important;
     }
 }
