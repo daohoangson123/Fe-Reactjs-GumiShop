@@ -14,6 +14,7 @@ const ProductDetail = () => {
     const { id } = useParams();
     const [productDetail, setProductDetail] = useState([]);
     const [quantity, setQuantity] = useState(1);
+    const [isAdding, setIsAdding] = useState(false);
 
     const dispatch = useDispatch();
 
@@ -47,6 +48,8 @@ const ProductDetail = () => {
                     quantity={quantity}
                     setQuantity={setQuantity}
                     handleAddToCart={handleAddToCart}
+                    isAdding={isAdding}
+                    setIsAdding={setIsAdding}
                 />
             </ErrorBoundary>
         </div>

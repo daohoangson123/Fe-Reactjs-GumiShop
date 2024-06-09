@@ -4,60 +4,29 @@ import './Product.css';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 //
-import { useDispatch } from 'react-redux';
-import { addToCart } from '../../../../redux/Actions/Action';
-import { removeInCart } from '../../../../redux/Actions/Action';
-//
-import { Zoom, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 
 const Product = (props) => {
-    const dispatch = useDispatch();
+    useEffect(() => {
+        function load(img) {
+            const url = img.getAttribute('lazysrc');
+            img.setAttribute('src', url);
+        }
 
-    const [isAdded, setIsAdded] = useState(false);
-
-    const addNotify = () =>
-        toast.success(`1 ${props.name} added to your Cart`, {
-            transition: Zoom,
+        const lazyImgs = document.querySelectorAll('[lazysrc]');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    load(entry.target);
+                }
+            });
         });
 
-    const removeNotify = () =>
-        toast.error(`${props.name} removed from your Cart`, {});
+        lazyImgs.forEach((img) => {
+            observer.observe(img);
+        });
 
-    function handleAddToCart(product) {
-        if (!isAdded) {
-            dispatch(addToCart(product));
-            setIsAdded(true);
-        }
-        addNotify();
-    }
-
-    function handleRemove(product) {
-        dispatch(removeInCart(product));
-        removeNotify();
-    }
-
-    // useEffect(() => {
-    //     function load(img) {
-    //         const url = img.getAttribute('lazysrc');
-    //         img.setAttribute('src', url);
-    //     }
-
-    //     const lazyImgs = document.querySelectorAll('[lazysrc]');
-    //     const observer = new IntersectionObserver((entries) => {
-    //         entries.forEach((entry) => {
-    //             if (entry.isIntersecting) {
-    //                 load(entry.target);
-    //             }
-    //         });
-    //     });
-
-    //     lazyImgs.forEach((img) => {
-    //         observer.observe(img);
-    //     });
-
-    //     return () => observer.disconnect();
-    // }, []);
+        return () => observer.disconnect();
+    }, []);
 
     return (
         <div className="Product">
@@ -69,7 +38,7 @@ const Product = (props) => {
                     // lazysrc={props.url}
                     // style={{ backgroundColor: props.url }}
                 />
-                <div className="AddToCart_Bg" style={{ top: isAdded && 0 }}>
+                <div className="ProductLink_Bg">
                     <Link
                         className="ProductLink"
                         title="Go to Product Detail"
@@ -78,37 +47,6 @@ const Product = (props) => {
                     >
                         Detail
                     </Link>
-                    <button
-                        className="AddToCart"
-                        tabIndex="-1"
-                        style={{
-                            background: isAdded && 'var(--color-primary)',
-                        }}
-                        title={
-                            isAdded
-                                ? 'Remove Product from Cart'
-                                : 'Add Product to Cart'
-                        }
-                        onClick={() => {
-                            if (!isAdded) {
-                                handleAddToCart({
-                                    id: props.id,
-                                    img: props.url,
-                                    name: props.name,
-                                    price: props.saleprices,
-                                    discount: props.prices,
-                                    amount: 1,
-                                });
-                            } else {
-                                handleRemove({
-                                    id: props.id,
-                                });
-                                setIsAdded(false);
-                            }
-                        }}
-                    >
-                        {!isAdded ? 'Add' : 'Remove'}
-                    </button>
                 </div>
                 {props.sale ? (
                     <div className="Product__Sale" title="Product On Sale">

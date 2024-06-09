@@ -10,6 +10,8 @@ const ProductDetailLayout = ({
     quantity,
     setQuantity,
     handleAddToCart,
+    isAdding,
+    setIsAdding,
 }) => {
     const addNotify = () =>
         toast.success(
@@ -24,6 +26,9 @@ const ProductDetailLayout = ({
         );
     const handleSubmit = (event) => {
         event.preventDefault();
+        addNotify();
+        setIsAdding(true);
+        setTimeout(() => setIsAdding(false), 2000);
     };
     return (
         <div className="ProductDetailLayout">
@@ -157,7 +162,8 @@ const ProductDetailLayout = ({
                             ></button>
                             <button
                                 className="AddToCart_Btn"
-                                type="button"
+                                type="submit"
+                                disabled={isAdding}
                                 onClick={() => {
                                     handleAddToCart({
                                         id: productDetail._id,
@@ -167,10 +173,9 @@ const ProductDetailLayout = ({
                                         discount: productDetail.discouter,
                                         amount: isNaN(quantity) ? 1 : quantity,
                                     });
-                                    addNotify();
                                 }}
                             >
-                                Add
+                                {isAdding ? 'Adding' : 'Add'}
                             </button>
                         </form>
                     </div>

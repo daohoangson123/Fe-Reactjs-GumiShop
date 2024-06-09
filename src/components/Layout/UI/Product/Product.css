@@ -3,7 +3,7 @@
     transition: var(--transition-fast);
 }
 
-.Product:hover .AddToCart_Bg {
+.Product:hover .ProductLink_Bg {
     top: 0;
 }
 
@@ -19,7 +19,7 @@
     width: 100%;
 }
 
-.AddToCart_Bg {
+.ProductLink_Bg {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -28,15 +28,14 @@
     top: 100%;
     width: 100%;
     height: 100%;
-    transition: top 0.3s ease-in-out;
+    transition: var(--transition-slow);
     background-color: rgba(0, 0, 0, 0.3);
 }
 
-.ProductLink,
-.AddToCart {
+.ProductLink {
     width: 70px;
-    height: 50px;
-    transition: var(--transition-fast);
+    height: 70px;
+    transition: var(--transition-slow);
     border: none;
     font-size: 18px;
     font-weight: 700;
@@ -47,8 +46,6 @@
     place-items: center;
     display: grid;
     background-color: var(--color-default);
-    border-top-left-radius: 100%;
-    border-bottom-left-radius: 100%;
 }
 
 .ProductLink {
@@ -56,19 +53,10 @@
     text-decoration: none;
 }
 
-.AddToCart {
-    background-color: var(--color-primary);
-    border-top-right-radius: 100%;
-    border-bottom-right-radius: 100%;
-}
-
-.AddToCart:hover {
-    text-decoration: underline;
-}
-
 .ProductLink:hover {
     color: var(--color-primary);
     text-decoration: underline;
+    border-radius: 100%;
 }
 
 .Product__Sale {

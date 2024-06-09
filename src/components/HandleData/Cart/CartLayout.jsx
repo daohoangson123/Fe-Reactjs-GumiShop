@@ -24,8 +24,7 @@ const CartForm = ({
                 <>
                     <div className="Cart-Item-List Cart-Item-List-Header">
                         <div className="Cart-Item">
-                            <div className="fakeimg"></div>
-                            <div className="Cart-Item_Name">Name</div>
+                            <div className="Cart-Item_Name">Product</div>
                             <div className="Cart-Item_Price">Price</div>
                             <div className="Cart-Item_Quantity">Quantity</div>
                             <div className="Cart-Item_Cost">Cost</div>
@@ -53,15 +52,17 @@ const CartForm = ({
                                                           .split(' ')
                                                           .join('-')}`
                                             }
+                                            className="Cart-Item-Link"
                                         >
+                                            <div className="Cart-Item_Name">
+                                                {item.name}
+                                            </div>
                                             <img
+                                                className="Cart-Item-Img"
                                                 src={item.img}
                                                 alt={item.name}
                                             />
                                         </Link>
-                                        <div className="Cart-Item_Name">
-                                            {item.name}
-                                        </div>
                                         <div className="Cart-Item_Price">
                                             <span>Price: </span> ${item.price}
                                         </div>

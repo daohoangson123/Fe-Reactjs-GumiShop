@@ -75,7 +75,7 @@ const ShopFilter = ({
                                     type="text"
                                     name="searchkw"
                                     id="searchkw"
-                                    defaultValue={q}
+                                    // defaultValue={q}
                                     value={q}
                                     title={`Enter some product's character Ex: vitamin, detox etc`}
                                     placeholder={
@@ -178,10 +178,7 @@ const ShopFilter = ({
 const ProductDisplay = ({ filtered }) => {
     return (
         <>
-            <div
-                className="ProductContainer ShopProductContainer"
-                style={{ display: filtered?.length === 0 && 'block' }}
-            >
+            <div className="ProductContainer ShopProductContainer">
                 {filtered &&
                     filtered.map((product) => (
                         <div

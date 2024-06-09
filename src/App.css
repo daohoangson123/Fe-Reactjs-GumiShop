@@ -83,16 +83,6 @@ li {
     top: 70px !important;
 }
 
-@media (width >= 1024px) {
-    .ProductContainer {
-        grid-template-columns: repeat(4, 200px);
-    }
-
-    .Container {
-        padding: 60px;
-    }
-}
-
 @media (width < 850px) {
     .ProductItem:last-child {
         animation-delay: 0s !important;
