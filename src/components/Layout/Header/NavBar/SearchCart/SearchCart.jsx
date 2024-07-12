@@ -46,18 +46,19 @@ const SearchModal = ({
                     onChange={debounceChange}
                 />
             </form>
-            {!searchValue ? (
-                <div style={{ marginTop: '10px' }}>
-                    Please type in product's name
-                </div>
-            ) : searchValue && productData.length === 0 ? (
-                <div style={{ marginTop: '10px' }}>Loading...</div>
-            ) : (
-                <div style={{ marginTop: '10px' }}>
-                    {filtered.length} item
-                    {filtered.length > 1 && `s`} found
-                </div>
-            )}
+            <div className="NavSearch__Form--Text">
+                {!searchValue ? (
+                    `Please type in product's name`
+                ) : searchValue && productData.length === 0 ? (
+                    `Loading...`
+                ) : (
+                    <>
+                        {filtered.length} item
+                        {filtered.length > 1 && `s`} found
+                    </>
+                )}
+            </div>
+
             <ul
                 className="NavSearch__Result"
                 style={

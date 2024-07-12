@@ -29,23 +29,15 @@ const SliderBanner = () => {
             >
                 <OwlCarousel
                     className="owl-theme"
-                    // mouseDrag={false}
-                    // pullDrag={false}
-                    // touchDrag={false}
                     responsiveRefreshRate={0}
-                    autoplay
-                    autoplayHoverPause
-                    autoplaySpeed={3000}
-                    autoplayTimeout={5000}
                     items={1}
-                    nav={false}
                     dots
                     loop
                 >
                     <div className="SliderContainer">
                         <div
                             className="BannerContainer BannerContainer_1"
-                            title="Slider is stopping"
+                            title="Drag or swip to see other banner"
                         >
                             <img
                                 src={banner1_1920}
@@ -67,7 +59,7 @@ const SliderBanner = () => {
                     <div className="SliderContainer">
                         <div
                             className="BannerContainer BannerContainer_2"
-                            title="Slider is stopping"
+                            title="Drag or swip to see other banner"
                         >
                             <img src={banner_2bg} alt="" fetchpriority="low" />
                             <div className="SliderBanner_2">
@@ -83,7 +75,7 @@ const SliderBanner = () => {
                     <div className="SliderContainer">
                         <div
                             className="BannerContainer BannerContainer_3"
-                            title="Slider is stopping"
+                            title="Drag or swip to see other banner"
                         >
                             <img
                                 src={banner3}

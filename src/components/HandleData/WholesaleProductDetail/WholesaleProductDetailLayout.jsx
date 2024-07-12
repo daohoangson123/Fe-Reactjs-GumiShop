@@ -216,6 +216,26 @@ const WholesaleProductDetailLayout = ({
                                         <button
                                             className="Wholesale-BuyNow"
                                             type="button"
+                                            onClick={() => {
+                                                (function () {
+                                                    let data = prompt(
+                                                        'Please fill in your infomations to process',
+                                                        'Address...'
+                                                    );
+                                                    if (
+                                                        data === null ||
+                                                        data === ''
+                                                    ) {
+                                                        window.alert(
+                                                            'Hey fill out your info!'
+                                                        );
+                                                    } else {
+                                                        window.alert(
+                                                            'Just kidding! Too lazy to completed this feature :))'
+                                                        );
+                                                    }
+                                                })();
+                                            }}
                                         >
                                             Buy Now
                                         </button>

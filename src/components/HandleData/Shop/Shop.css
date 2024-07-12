@@ -13,6 +13,16 @@
     width: 300px;
 }
 
+.ToggleFilter__Btn {
+    justify-self: center;
+    display: none;
+    width: 100px;
+    height: 40px;
+    border: none;
+    border-radius: 50px;
+    color: var(--color-default);
+}
+
 .SearchForm {
     width: 100%;
     padding: 10px;
@@ -25,20 +35,6 @@
     justify-content: center;
     align-items: baseline;
     gap: 10px;
-}
-
-.NameFilterInput {
-    outline: none;
-    width: 280px;
-    height: 30px;
-    padding: 5px;
-    transition: var(--transition-fast);
-    border: 1px solid var(--color-text);
-    border-radius: 2px;
-}
-
-.NameFilterInput:focus {
-    border: 1px solid var(--color-primary);
 }
 
 .FiltersInputs {
@@ -55,6 +51,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    transition: var(--transition-fast);
 }
 
 .FiltersInputs label,
@@ -63,20 +60,28 @@
     text-align: center;
 }
 
+.FiltersInputs label:hover {
+    color: var(--color-primary);
+}
+
 .FiltersInputs option:disabled {
     background-color: var(--color-icon);
     color: var(--color-default);
 }
 
-.ToggleFilter__Btn {
-    justify-self: center;
-    display: none;
-    width: 100px;
-    height: 50px;
-    background-color: var(--color-primary);
-    border: none;
-    border-radius: 10px;
-    color: var(--color-default);
+.NameFilterInput {
+    outline: none;
+    width: 280px;
+    margin-top: 3px;
+    padding: 7px;
+    transition: var(--transition-fast);
+    border: 1px solid var(--color-primary);
+    border-radius: 50px;
+}
+
+.NameFilterInput:focus-visible {
+    outline: none;
+    box-shadow: 0 0 2px 2px var(--color-primary-rgba);
 }
 
 @media (width <= 768px) {

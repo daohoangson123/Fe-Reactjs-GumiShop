@@ -56,6 +56,11 @@ const ShopFilter = ({
                         <button
                             type="button"
                             className="ToggleFilter__Btn"
+                            style={{
+                                background: showFilter
+                                    ? 'var(--color-primary-rgba)'
+                                    : 'var(--color-primary)',
+                            }}
                             title={
                                 showFilter
                                     ? 'Hide filter options'
@@ -69,42 +74,38 @@ const ShopFilter = ({
                             className="FiltersInputs"
                             style={{ maxHeight: showFilter && '150px' }}
                         >
-                            <div>
+                            <input
+                                className="NameFilterInput"
+                                type="text"
+                                name="searchkw"
+                                id="searchkw"
+                                // defaultValue={q}
+                                value={q}
+                                title={`Enter some product's character Ex: vitamin, detox etc`}
+                                placeholder={
+                                    productApi.length !== 0
+                                        ? `Enter some product's character`
+                                        : 'Please wait a sec...'
+                                }
+                                onChange={(event) => handleNameChange(event)}
+                            />
+                            <div className="SaleCheckBox">
                                 <input
-                                    className="NameFilterInput"
-                                    type="text"
-                                    name="searchkw"
-                                    id="searchkw"
-                                    // defaultValue={q}
-                                    value={q}
-                                    title={`Enter some product's character Ex: vitamin, detox etc`}
-                                    placeholder={
-                                        productApi.length !== 0
-                                            ? `Enter some product's character`
-                                            : 'Please wait a sec...'
-                                    }
-                                    onChange={(event) =>
-                                        handleNameChange(event)
-                                    }
+                                    type="checkbox"
+                                    name="onSale"
+                                    id="onSale"
+                                    title="Show only on-sale Products"
+                                    checked={saleChecked}
+                                    onChange={(event) => {
+                                        handleSaleCheck(event);
+                                    }}
                                 />
-                                <div>
-                                    <input
-                                        type="checkbox"
-                                        name="onSale"
-                                        id="onSale"
-                                        title="Show only on-sale Products"
-                                        checked={saleChecked}
-                                        onChange={(event) => {
-                                            handleSaleCheck(event);
-                                        }}
-                                    />
-                                    <label
-                                        htmlFor="onSale"
-                                        title="Show only on-sale Products"
-                                    >
-                                        SaleOnly
-                                    </label>
-                                </div>
+                                <label
+                                    htmlFor="onSale"
+                                    title="Show only on-sale Products"
+                                >
+                                    SaleOnly
+                                </label>
                             </div>
                             <div>
                                 <label
@@ -124,6 +125,7 @@ const ShopFilter = ({
                                 >
                                     {priceFilterOpt.map((opt) => (
                                         <option
+                                            disabled={price === opt.label}
                                             key={opt.value}
                                             value={opt.value}
                                             title={opt.value}
@@ -151,6 +153,7 @@ const ShopFilter = ({
                                 >
                                     {sortFilterOpt.map((opt) => (
                                         <option
+                                            disabled={sort === opt.label}
                                             key={opt.value}
                                             value={opt.value}
                                             title={opt.value}
@@ -164,10 +167,8 @@ const ShopFilter = ({
                     </fieldset>
                     <div className="ProductAvailableCount">
                         {filtered?.length > 0
-                            ? `${filtered.length} product${
-                                  filtered.length > 1 && 's'
-                              } available.`
-                            : 'Please try other products'}
+                            ? `${filtered.length} product${filtered.length > 1 ? 's' : ''} available.`
+                            : 'Please try other products!'}
                     </div>
                 </>
             )}
