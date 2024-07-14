@@ -22,11 +22,11 @@ const FooterBot = () => {
                     ))
                 ) : (
                     <>
-                        <Skeleton width={30} height={30} />
-                        <Skeleton width={30} height={30} />
-                        <Skeleton width={30} height={30} />
-                        <Skeleton width={30} height={30} />
-                        <Skeleton width={30} height={30} />
+                        <Skeleton width={20} height={20} />
+                        <Skeleton width={20} height={20} />
+                        <Skeleton width={20} height={20} />
+                        <Skeleton width={20} height={20} />
+                        <Skeleton width={20} height={20} />
                     </>
                 )}
             </div>

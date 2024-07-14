@@ -16,16 +16,13 @@
 }
 
 .FooterIcons a:hover {
-    transform: translateY(-3px);
-}
-
-.SocialIcons a {
-    width: 20px;
+    rotate: 20deg;
 }
 
 .SocialIcons img {
-    aspect-ratio: 1;
-    width: 15px;
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
 }
 
 .CopyRight {
@@ -40,7 +37,6 @@
 }
 
 .PaymentIcons img {
-    aspect-ratio: 4 / 3;
     width: 30px;
 }
 
