@@ -6,6 +6,7 @@
 .NewsItem img {
     width: 100%;
     min-height: 200px;
+    object-fit: cover;
 }
 .News_Date {
     font-size: 12px;

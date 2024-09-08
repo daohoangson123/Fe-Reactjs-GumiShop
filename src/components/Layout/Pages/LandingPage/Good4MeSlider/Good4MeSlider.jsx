@@ -16,9 +16,9 @@ const Good4MeSilder = ({ title }) => {
                 className="owl-theme owl-control"
                 autoWidth={true}
                 dots={false}
-                margin={20}
-                items={8}
+                items={6}
                 autoplay
+                margin={30}
                 autoplayHoverPause
                 autoplaySpeed={3000}
                 autoplayTimeout={4000}

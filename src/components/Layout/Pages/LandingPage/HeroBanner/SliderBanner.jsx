@@ -42,7 +42,7 @@ const SliderBanner = () => {
                             <img
                                 src={banner1_1920}
                                 alt={banner_1.name}
-                                srcSet={`${banner1_425} 425w, ${banner1_1024} 1024w, ${banner1_1920} 1920w`}
+                                srcSet={`${banner1_425} 1024w, ${banner1_1024} 1920w, ${banner1_1920} 2560w`}
                                 fetchpriority="high"
                                 onLoad={() => setIsBannerLoaded(true)}
                             />
@@ -54,6 +54,7 @@ const SliderBanner = () => {
                                     btn="SHOP NOW"
                                 />
                             </div>
+                            <div className="BannerContainer_1-BG"></div>
                         </div>
                     </div>
                     <div className="SliderContainer">
@@ -70,6 +71,7 @@ const SliderBanner = () => {
                                     btn="SHOP NOW"
                                 />
                             </div>
+                            <div className="BannerContainer_2-BG"></div>
                         </div>
                     </div>
                     <div className="SliderContainer">

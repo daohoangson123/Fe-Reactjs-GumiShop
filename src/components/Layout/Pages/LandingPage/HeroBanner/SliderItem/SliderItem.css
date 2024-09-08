@@ -2,7 +2,7 @@
     width: clamp(300px, 40vw, 500px);
     min-height: 300px;
     padding: 10px;
-    transition: var(--transition-fast);
+    /* transition: var(--transition-fast); */
 }
 
 .owl-item.active .ProductBanner__Title {
@@ -74,29 +74,30 @@
 }
 
 .Product__Btn:hover {
-    background-position: -100%;
+    background-position: -50%;
     color: var(--color-default);
 }
 
 @media (width < 768px) {
-    .Product__Banner {
-        background-color: rgba(0, 0, 0, 0.3);
-    }
-
-    .Product__Banner:hover {
-        background-color: rgba(0, 0, 0, 0.7);
+    .owl-item.active .Product__Banner {
         border-radius: 10%;
+        animation: blur-in 1s linear both;
+        animation-delay: 2s;
     }
 
-    .ProductBanner__Title {
-        text-shadow: 1px 1px 2px var(--color-default);
+    @keyframes blur-in {
+        from {
+            backdrop-filter: blur(0px);
+        }
+        to {
+            backdrop-filter: blur(10px);
+        }
     }
 
     .ProductBanner__Name,
     .ProductBanner__Des {
         line-height: 30px;
         color: var(--color-default);
-        text-shadow: 1px 1px 2px var(--color-primary);
     }
 }
 

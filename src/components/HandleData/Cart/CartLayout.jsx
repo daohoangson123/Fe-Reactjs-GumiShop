@@ -67,9 +67,6 @@ const CartForm = ({
                                             <span>Price: </span> ${item.price}
                                         </div>
                                         <div className="Cart-Item_Quantity">
-                                            {/* <label htmlFor={`quantity${index}`}>
-                                                <i className='fa-solid fa-cubes-stacked'></i>
-                                            </label> */}
                                             <button
                                                 type="button"
                                                 onClick={() => {
@@ -77,7 +74,7 @@ const CartForm = ({
                                                         handleDec(item);
                                                     } else {
                                                         window.alert(
-                                                            '1 is minimun'
+                                                            '1 is minimum'
                                                         );
                                                     }
                                                 }}
@@ -131,7 +128,7 @@ const CartForm = ({
                                                         handleInc(item);
                                                     } else {
                                                         window.alert(
-                                                            `${item.stock} is max`
+                                                            `${item.stock} is maximum`
                                                         );
                                                     }
                                                 }}

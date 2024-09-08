@@ -1,9 +1,19 @@
+:root {
+    --imgWidthL: 318px;
+    --imgWidthS: 200px;
+}
+
+.Good4MeSilder .owl-carousel .owl-stage-outer {
+    padding-left: calc(var(--imgWidthL) / 2 + 15px);
+}
+
 .Good4MeSilder .owl-control .item {
-    width: 318px;
+    width: var(--imgWidthL);
 }
 
 .Good4MeSilder .owl-control .item img {
     aspect-ratio: 1;
+    object-fit: cover;
 }
 
 .Good4MeSilder {
@@ -12,7 +22,11 @@
 }
 
 @media (width < 1024px) {
+    .Good4MeSilder .owl-carousel .owl-stage-outer {
+        padding-left: 30px;
+    }
+
     .Good4MeSilder .owl-control .item {
-        width: 200px;
+        width: var(--imgWidthS);
     }
 }
