@@ -86,13 +86,13 @@
     font: small-caption;
 }
 
-.SignIn__Form-InputContainer input:hover {
+.SignIn__Form-InputContainer input:invalid {
     outline: 1px solid var(--color-primary);
     border: none;
 }
 
-.SignIn__Form-InputContainer input:focus {
-    outline: 1px solid var(--color-primary);
+.SignIn__Form-InputContainer input:valid {
+    outline: 1px solid lightgreen;
     border: none;
 }
 
@@ -152,18 +152,18 @@
     width: 100%;
     padding: 5px;
     transition: var(--transition-fast);
-    background-color: transparent;
     border-radius: 3px;
     font-size: 20px;
-    color: var(--color-text);
+    color: var(--color-default);
+    background-color: var(--color-primary-rgba);
 }
 
 .SignIn__Btn:hover:not(:disabled) {
     background-color: var(--color-primary);
-    color: var(--color-default);
 }
 
 .SignIn__Btn:disabled {
+    color: var(--color-text);
     background-color: transparent;
 }
 
