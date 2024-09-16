@@ -63,8 +63,12 @@
 }
 
 .Cart-Item-Link {
-    gap: 10px;
     justify-self: start;
+    color: var(--color-text);
+}
+
+.Cart-Item-Link:hover {
+    color: var(--color-primary);
 }
 
 .Cart-Item-Img {

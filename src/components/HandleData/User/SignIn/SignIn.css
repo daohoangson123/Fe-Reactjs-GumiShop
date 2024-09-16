@@ -152,7 +152,8 @@
     width: 100%;
     padding: 5px;
     transition: var(--transition-fast);
-    border-radius: 3px;
+    border-radius: 10px;
+    border: none;
     font-size: 20px;
     color: var(--color-default);
     background-color: var(--color-primary-rgba);
@@ -163,8 +164,8 @@
 }
 
 .SignIn__Btn:disabled {
-    color: var(--color-text);
-    background-color: transparent;
+    color: var(--color-default);
+    background-color: var(--color-icon);
 }
 
 .SignIn__Btn:disabled:hover {
@@ -216,9 +217,17 @@
     margin-right: 10px;
 }
 
+.User_List .page-item:not(.disable) .page-link {
+    color: var(--color-primary);
+}
+
+.User_List .page-item:not(.disable) .page-link:hover {
+    border: 1px solid var(--color-primary);
+}
+
 .User_List .page-item.disabled .page-link {
-    background-color: #0d6efd;
-    color: #ffffff;
+    background-color: var(--color-primary);
+    color: var(--color-default);
 }
 
 .User_List ol li {
