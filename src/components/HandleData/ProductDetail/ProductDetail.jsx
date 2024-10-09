@@ -36,8 +36,8 @@ const ProductDetail = () => {
         document.title = id;
         setProductDetail([]);
         setTimeout(() => getProducts(), 500);
-        // eslint-disable-next-line
         return () => (document.title = 'Gumi Shopify');
+        // eslint-disable-next-line
     }, [id]);
 
     return (

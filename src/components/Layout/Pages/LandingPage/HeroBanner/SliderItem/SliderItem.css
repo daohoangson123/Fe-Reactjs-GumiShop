@@ -2,7 +2,6 @@
     width: clamp(300px, 40vw, 500px);
     min-height: 300px;
     padding: 10px;
-    /* transition: var(--transition-fast); */
 }
 
 .owl-item.active .ProductBanner__Title {
@@ -80,7 +79,6 @@
 
 @media (width < 768px) {
     .owl-item.active .Product__Banner {
-        border-radius: 10%;
         animation: blur-in 1s linear both;
         animation-delay: 2s;
     }
@@ -90,14 +88,13 @@
             backdrop-filter: blur(0px);
         }
         to {
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
         }
     }
 
     .ProductBanner__Name,
     .ProductBanner__Des {
         line-height: 30px;
-        color: var(--color-default);
     }
 }
 

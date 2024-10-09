@@ -45,6 +45,10 @@
     text-align: center;
 }
 
+.ErrorMessage {
+    margin-bottom: 20px;
+}
+
 .SignIn__Form-Fieldset {
     display: grid;
     gap: 20px;

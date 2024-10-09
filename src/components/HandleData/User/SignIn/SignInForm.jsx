@@ -186,7 +186,13 @@ const SignInForm = () => {
                         color: 'red',
                     }}
                 >
-                    {isError && 'Username/ Password is invalid'}
+                    {isError ? (
+                        <p className="ErrorMessage">
+                            Username/ Password is invalid
+                        </p>
+                    ) : (
+                        <p>Please fillout username and password</p>
+                    )}
                 </div>
             </div>
             <fieldset className="SignIn__Form-Fieldset">
@@ -203,7 +209,7 @@ const SignInForm = () => {
                 </div>
                 <div className="SignIn__Form-InputContainer">
                     <label htmlFor="signInPassWord">
-                        <i className="fa-solid fa-key"></i>
+                        <i className="fa-key fa-solid"></i>
                     </label>
                     <SignInInput
                         inputName="signInPassWord"
@@ -227,7 +233,7 @@ const SignInForm = () => {
                 >
                     {isLoading ? (
                         <>
-                            <i className="fa-solid fa-spinner fa-spin-pulse"></i>
+                            <i className="fa-solid fa-spin-pulse fa-spinner"></i>
                             <span> Logging in</span>
                         </>
                     ) : (

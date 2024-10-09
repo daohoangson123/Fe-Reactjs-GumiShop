@@ -2,6 +2,14 @@
     --bannerHeight: 550px;
 }
 
+.HeroBanner .owl-theme .owl-dots .owl-dot.active span {
+    background: var(--color-primary);
+}
+
+.HeroBanner .owl-theme .owl-dots .owl-dot:hover span {
+    background: var(--color-primary-rgba);
+}
+
 .BannerContainer {
     place-items: center;
     display: grid;
@@ -68,7 +76,7 @@
 
 .BannerContainer_3 img {
     object-position: center;
-    object-fit: cover;
+    object-fit: contain;
     grid-area: 1 / 1 / 1 / 3;
 }
 
@@ -95,12 +103,13 @@
     }
 
     .BannerContainer_1 img {
-        object-position: 15% center;
+        object-position: 10% center;
         grid-area: 1 / 1 / 1/2;
     }
 
     .BannerContainer_2 img {
         grid-area: 1 / 1;
+        object-position: center;
     }
 
     .SliderBanner_1 {
@@ -114,6 +123,6 @@
 
 @media (width < 425px) {
     .BannerContainer_1 img {
-        object-position: 17% cover;
+        object-position: 20%;
     }
 }
