@@ -46,14 +46,29 @@
     color: var(--color-default);
 }
 
-.Control__Img {
+.Control__Img-Container {
     display: grid;
     justify-content: center;
     gap: 20px;
 }
 
-.Control__Img * {
+.Control__Img-Container .Control__Img-Item {
     object-fit: cover;
+    transition: var(--transition-fast);
+    animation: fade-in 2s ease-in-out;
+}
+
+.Control__Img-Container .Control__Img-Item:hover {
+    scale: 1.1;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .Control__Img-1,
@@ -76,7 +91,7 @@
         grid-template-columns: 1fr;
     }
 
-    .Control__Img {
+    .Control__Img-Container {
         grid-template-rows: repeat(2, calc(var(--img-width) / 4 * 3));
         grid-template-columns: repeat(2, var(--img-width));
     }

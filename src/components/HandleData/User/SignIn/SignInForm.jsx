@@ -186,12 +186,10 @@ const SignInForm = () => {
                         color: 'red',
                     }}
                 >
-                    {isError ? (
+                    {isError && (
                         <p className="ErrorMessage">
                             Username/ Password is invalid
                         </p>
-                    ) : (
-                        <p>Please fillout username and password</p>
                     )}
                 </div>
             </div>
@@ -234,7 +232,6 @@ const SignInForm = () => {
                     {isLoading ? (
                         <>
                             <i className="fa-solid fa-spin-pulse fa-spinner"></i>
-                            <span> Logging in</span>
                         </>
                     ) : (
                         'Sign In'

@@ -13,11 +13,11 @@ const Good4MeSilder = ({ title }) => {
         <section className="Good4MeSilder">
             <SectionTitle content={title} />
             <OwlCarousel
-                className="owl-theme owl-control"
+                className="owl-control owl-theme"
                 autoWidth={true}
                 dots={false}
-                items={6}
-                autoplay
+                items={5}
+                // autoplay
                 margin={30}
                 autoplayHoverPause
                 autoplaySpeed={3000}

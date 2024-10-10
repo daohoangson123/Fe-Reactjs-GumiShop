@@ -4,7 +4,7 @@
 }
 
 .Good4MeSilder .owl-carousel .owl-stage-outer {
-    padding-left: calc(var(--imgWidthL) / 2 + 15px);
+    padding-left: 51%;
 }
 
 .Good4MeSilder .owl-control .item {
