@@ -92,14 +92,14 @@
     letter-spacing: 1px;
 }
 
-.Review__Img {
+.Review .Review__Img {
     aspect-ratio: 1;
     object-fit: contain;
     width: 400px;
-    animation: fade-in 2s ease-in-out;
+    animation: img-fade-in 2s ease-in-out;
 }
 
-@keyframes fade-in {
+@keyframes img-fade-in {
     from {
         opacity: 0;
     }

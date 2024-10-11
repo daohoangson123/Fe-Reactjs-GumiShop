@@ -52,17 +52,17 @@
     gap: 20px;
 }
 
-.Control__Img-Container .Control__Img-Item {
+.Control .Control__Img-Container .Control__Img-Item {
     object-fit: cover;
     transition: var(--transition-fast);
-    animation: fade-in 2s ease-in-out;
+    animation: control-fade-in 2s ease-in-out;
 }
 
 .Control__Img-Container .Control__Img-Item:hover {
     scale: 1.1;
 }
 
-@keyframes fade-in {
+@keyframes control-fade-in {
     from {
         opacity: 0;
     }
