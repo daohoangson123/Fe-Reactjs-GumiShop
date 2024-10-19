@@ -14,9 +14,9 @@ const Header = ({ isSignIn }) => {
     const handleNavigation = useCallback(
         (e) => {
             const window = e.currentTarget;
-            if (y > window.scrollY && y - window.scrollY > 35) {
+            if (y > window.scrollY) {
                 setIsDown(false);
-            } else if (y < window.scrollY && window.scrollY - y > 40) {
+            } else if (y < window.scrollY) {
                 setIsDown(true);
             }
             setY(window.scrollY);

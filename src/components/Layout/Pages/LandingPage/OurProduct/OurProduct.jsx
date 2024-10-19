@@ -58,7 +58,7 @@ const OurProduct = ({ title }) => {
     useEffect(() => {
         animationCheck(
             '.OurProduct * .ProductItem',
-            'animated-fade-in',
+            'animated-zoom-in',
             '0px',
             0.6
         );

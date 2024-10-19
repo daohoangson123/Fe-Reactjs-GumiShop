@@ -17,12 +17,12 @@
     width: clamp(280px, 80vw, 400px);
     transition: var(--transition-fast);
     border: 1px solid var(--color-alt);
-    border-bottom-right-radius: 50px;
+    border-bottom-right-radius: 20px;
     background: rgba(255, 255, 255, 0.8);
 }
 
 .User_List:hover {
-    background: rgba(255, 255, 255, 1);
+    background: var(--color-default);
     box-shadow: 5px 5px 10px 5px var(--color-primary-rgba);
 }
 
@@ -36,13 +36,14 @@
     padding: 20px;
     transition: var(--transition-fast);
     border: 1px solid var(--color-alt);
-    border-top-left-radius: 50px;
+    border-top-left-radius: 20px;
+    background: var(--color-default);
     background: rgba(255, 255, 255, 0.8);
 }
 
 .SignIn__Form:hover,
 .SignIn__Form:has(input:focus) {
-    background: rgba(255, 255, 255, 1);
+    background: var(--color-default);
     box-shadow: -5px -5px 10px 5px var(--color-primary-rgba);
 }
 
@@ -68,6 +69,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
+    backdrop-filter: opacity;
 }
 
 .SignIn__Form-InputContainer label {
@@ -249,7 +251,7 @@
 
 @media (width < 860px) {
     .SignIn__Form {
-        border-top-right-radius: 50px;
+        border-top-right-radius: 20px;
     }
 
     .SignIn__Form:hover,
@@ -258,7 +260,7 @@
     }
 
     .User_List {
-        border-bottom-left-radius: 50px;
+        border-bottom-left-radius: 20px;
     }
 
     .User_List:hover {

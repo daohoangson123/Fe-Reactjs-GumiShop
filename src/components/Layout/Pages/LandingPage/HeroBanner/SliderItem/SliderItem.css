@@ -1,6 +1,5 @@
 .Product__Banner {
     width: clamp(300px, 40vw, 500px);
-    min-height: 300px;
     padding: 10px;
 }
 
@@ -80,7 +79,7 @@
 @media (width < 768px) {
     .owl-item.active .Product__Banner {
         animation: blur-in 1s linear both;
-        animation-delay: 2s;
+        animation-delay: 1.5s;
     }
 
     @keyframes blur-in {

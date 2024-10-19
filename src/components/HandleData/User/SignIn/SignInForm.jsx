@@ -27,7 +27,7 @@ const SignInInput = ({
         <>
             {' '}
             {inputName === 'signInUserName' ? (
-                <div>
+                <div style={{ backdropFilter: 'opacity(0)' }}>
                     <span
                         style={{
                             position: 'absolute',
@@ -37,11 +37,11 @@ const SignInInput = ({
                             fontSize: isFocus ? '14px' : '16px',
                             color: isFocus
                                 ? 'var(--color-primary)'
-                                : 'var(--color-icon)',
-                            background: 'white',
+                                : 'var(--color-text)',
+                            background: isFocus ? 'white' : 'none',
                             paddingInline: isFocus && '5px',
                             zIndex: isFocus ? 0 : -1,
-                            transition: 'all ease-in-out 0.2s',
+                            transition: 'var(--transition-fast)',
                         }}
                     >
                         username
@@ -64,7 +64,7 @@ const SignInInput = ({
                     />
                 </div>
             ) : (
-                <div>
+                <div style={{ backdropFilter: 'opacity(0)' }}>
                     <span
                         style={{
                             position: 'absolute',
@@ -74,11 +74,11 @@ const SignInInput = ({
                             fontSize: isFocus ? '14px' : '16px',
                             color: isFocus
                                 ? 'var(--color-primary)'
-                                : 'var(--color-icon)',
-                            background: 'white',
+                                : 'var(--color-text)',
+                            background: isFocus ? 'white' : 'none',
                             paddingInline: isFocus && '5px',
                             zIndex: isFocus ? 0 : -1,
-                            transition: 'all ease-in-out 0.2s',
+                            transition: 'var(--transition-fast)',
                         }}
                     >
                         password

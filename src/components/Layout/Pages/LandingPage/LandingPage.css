@@ -136,7 +136,23 @@ to {
     }
 }
 
+.animated-zoom-in {
+    animation: zoom-in 0.3s linear both;
+}
+
+@keyframes zoom-in {
+    from {
+        opacity: 0;
+        scale: 0;
+    }
+    to {
+        opacity: 1;
+        scale: 1;
+    }
+}
+
 .animated-fade-in {
+    transform-origin: center;
     animation: fade-in 0.3s linear both;
 }
 

@@ -107,10 +107,10 @@ const MobileMenuRouting = ({
             style={
                 menuOpen
                     ? {
-                          transform: 'scale(1)',
                           zIndex: 1000,
                           opacity: 1,
                           backdropFilter: 'blur(10px)',
+                          left: 0,
                       }
                     : !isMobileView
                       ? { transition: 'none' }

@@ -25,14 +25,11 @@
 }
 
 .Review__Slider .owl-theme {
-    width: 600px;
-    height: 500px;
+    width: clamp(280px, 50vw, 500px);
 }
 
 .Review__Slider .owl-theme .owl-nav {
     display: flex;
-    position: absolute;
-    bottom: 0;
 }
 
 .Review__Slider .owl-theme .owl-nav button {
@@ -95,7 +92,7 @@
 .Review .Review__Img {
     aspect-ratio: 1;
     object-fit: contain;
-    width: 400px;
+    width: clamp(280px, 50vw, 400px);
     animation: img-fade-in 2s ease-in-out;
 }
 
@@ -109,17 +106,9 @@
 }
 
 @media (width < 768px) {
-    .Review__Slider .owl-theme {
-        width: max(280px, 80vw);
-        height: fit-content;
-    }
-
     .Review__Slider .owl-theme .owl-nav {
+        position: absolute;
+        bottom: 0;
         right: 0;
-    }
-
-    .Review__Slider-Item,
-    .Review__Img {
-        width: max(280px, 70vw);
     }
 }

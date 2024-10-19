@@ -31,22 +31,17 @@ const Product = (props) => {
     return (
         <div className="Product">
             <div className="Product__Img-Container">
-                <img
-                    src={props.url}
-                    alt={props.name}
-                    loading="lazy"
-                    // lazysrc={props.url}
-                    // style={{ backgroundColor: props.url }}
-                />
+                <img src={props.url} alt={props.name} loading="lazy" />
                 <div className="ProductLink_Bg">
                     <Link
-                        className="ProductLink"
                         title="Go to Product Detail"
                         to={`/shop/${props.name.split(' ').join('-')}`}
                         tabIndex="-1"
                     >
-                        Detail
+                        <i class="fa-solid fa-circle-info"></i>
                     </Link>
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <i class="fa-solid fa-heart"></i>
                 </div>
                 {props.sale ? (
                     <div className="Product__Sale" title="Product On Sale">
