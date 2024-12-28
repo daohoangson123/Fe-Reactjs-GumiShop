@@ -44,12 +44,10 @@ const UserList = () => {
             <ol>
                 {userList && !loadingUserList ? (
                     userList.map((user) => (
-                        <li key={user.id}>
-                            {user.id}. {user.email}
-                        </li>
+                        <li key={user.id}>{`${user.id}: ${user.email}`}</li>
                     ))
                 ) : (
-                    <Skeleton width={200} count={6} />
+                    <Skeleton width={160} count={6} />
                 )}
             </ol>
             <Pagination>{items}</Pagination>

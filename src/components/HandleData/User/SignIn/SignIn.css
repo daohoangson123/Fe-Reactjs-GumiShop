@@ -13,6 +13,7 @@
 .User_List {
     display: grid;
     place-items: center;
+    gap: 10px;
     width: clamp(280px, 80vw, 400px);
     transition: var(--transition-fast);
     padding: 10px;
@@ -28,6 +29,7 @@
 
 .User_List ol {
     display: grid;
+    min-height: 174px;
 }
 
 .SignIn__Form {

@@ -56,22 +56,23 @@
 
 .MenuIcon3--Actived {
     transform: rotate(-45deg) translateX(1px) translateY(5px);
+    width: 30px;
 }
 
 .MobileMenu__NavContainer {
     display: grid;
     position: absolute;
     inset: 0;
-    left: -100%;
+    transform: translateX(-100%);
     z-index: -1;
     width: 100%;
     height: 100lvh;
+    transition: var(--transition-slow);
 }
 
 .MobileMenu__NavContainer--Opened {
-    transition: var(--transition-fast);
     backdrop-filter: blur(10px);
-    left: 0;
+    transform: translateX(0%);
     z-index: 1000;
 }
 
