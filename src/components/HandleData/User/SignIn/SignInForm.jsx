@@ -33,7 +33,7 @@ const SignInInput = ({
                             position: 'absolute',
                             transform: isFocus
                                 ? 'translate3d(15px, -12px, -10px)'
-                                : 'translate3d(5px, 7px, 0',
+                                : 'translate3d(5px, 8px, 0',
                             fontSize: isFocus ? '14px' : '16px',
                             color: isFocus
                                 ? 'var(--color-primary)'
@@ -70,7 +70,7 @@ const SignInInput = ({
                             position: 'absolute',
                             transform: isFocus
                                 ? 'translate3d(15px, -12px, -10px)'
-                                : 'translate3d(5px, 7px, 0',
+                                : 'translate3d(5px, 8px, 0',
                             fontSize: isFocus ? '14px' : '16px',
                             color: isFocus
                                 ? 'var(--color-primary)'

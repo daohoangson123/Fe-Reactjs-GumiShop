@@ -1,6 +1,7 @@
 .Product {
     min-height: 300px;
     transition: var(--transition-fast);
+    text-align: center;
 }
 
 .Product:hover .ProductLink_Bg {

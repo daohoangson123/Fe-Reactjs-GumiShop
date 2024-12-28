@@ -8,7 +8,6 @@ import { useEffect, useState } from 'react';
 //
 import Product from '../../Layout/UI/Product/Product';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
-import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 import { useSearchParams } from 'react-router-dom';
 import Loading from '../../Layout/UI/Loading/Loading';
 
@@ -1070,29 +1069,27 @@ const Shop = () => {
 
     return (
         <div className="Shop">
-            <ErrorBoundary>
-                <ShopFilter
-                    productApi={productApi}
-                    filtered={filtered}
-                    handleNameChange={handleNameChange}
-                    handleSaleCheck={handleSaleCheck}
-                    handlePriceChange={handlePriceChange}
-                    handleSortChange={handleSortChange}
-                    q={q}
-                    saleChecked={saleChecked}
-                    price={price}
-                    sort={sort}
-                />
-                <div className="Container">
-                    {productApi.length > 0 ? (
-                        <ProductDisplay filtered={filtered} />
-                    ) : (
-                        <div className="ProductContainer ShopProductContainer">
-                            <ProductSkeleton />
-                        </div>
-                    )}
-                </div>
-            </ErrorBoundary>
+            <ShopFilter
+                productApi={productApi}
+                filtered={filtered}
+                handleNameChange={handleNameChange}
+                handleSaleCheck={handleSaleCheck}
+                handlePriceChange={handlePriceChange}
+                handleSortChange={handleSortChange}
+                q={q}
+                saleChecked={saleChecked}
+                price={price}
+                sort={sort}
+            />
+            <div className="Container">
+                {productApi.length > 0 ? (
+                    <ProductDisplay filtered={filtered} />
+                ) : (
+                    <div className="ProductContainer ShopProductContainer">
+                        <ProductSkeleton />
+                    </div>
+                )}
+            </div>
         </div>
     );
 };

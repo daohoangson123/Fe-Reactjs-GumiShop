@@ -14,7 +14,7 @@ const MobileMenu = ({ navlinkData }) => {
 
     const openMenu =
         typeof document !== 'undefined' &&
-        document.querySelector('#MobileMenu');
+        document.getElementById('MobileMenu__Btn');
 
     const mq = window.matchMedia('(width <= 1024px)');
 
@@ -68,21 +68,8 @@ const MobileMenuRouting = ({
     navlinkData,
     openMenu,
 }) => {
-    // const menuRef = useRef();
-    //run on mousedown so user just click but not release imediately it cause the link wont be press
-    // useEffect(() => {
-    //     const toggleBodyLock = (event) => {
-    //         if (menuRef.current.contains(event.target)) {
-    //             clearAllBodyScrollLocks();
-    //             setMenuOpen(false);
-    //         }
-    //     };
-
-    //     menuRef.current.addEventListener('mousedown', toggleBodyLock);
-    // });
-
     useEffect(() => {
-        const mobileMenu = document.getElementById('MobileMenu');
+        const mobileMenu = document.getElementById('MobileMenu__Btn');
         const checkMenuDimension = (event) => {
             const mbDimensons = mobileMenu.getBoundingClientRect();
             if (
@@ -102,20 +89,8 @@ const MobileMenuRouting = ({
 
     return (
         <div
-            className="MobileMenu__NavContainer"
+            className={`MobileMenu__NavContainer ${menuOpen ? 'MobileMenu__NavContainer--Opened' : 'MobileMenu__NavContainer--Closed'}`}
             title="Close Menu"
-            style={
-                menuOpen
-                    ? {
-                          zIndex: 1000,
-                          opacity: 1,
-                          backdropFilter: 'blur(10px)',
-                          left: 0,
-                      }
-                    : !isMobileView
-                      ? { transition: 'none' }
-                      : null
-            }
         >
             <div className="MobileMenu__Nav">
                 {navlinkData.map((item) => (
@@ -143,8 +118,8 @@ const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
         <button
             title={menuOpen ? 'Close Menu' : 'Open Menu'}
             type="button"
-            className="MobileMenu"
-            id="MobileMenu"
+            className={`MobileMenu__Btn ${menuOpen && 'MobileMenu__Btn--Actived'}`}
+            id="MobileMenu__Btn"
             onClick={() => {
                 setMenuOpen(!menuOpen);
                 if (menuOpen) {
@@ -154,41 +129,15 @@ const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
                 }
             }}
             aria-label="MobileMenuToggle"
-            style={{
-                backgroundColor: menuOpen && 'rgba(0, 0, 0, 0.3)',
-                zIndex: menuOpen && 9999,
-            }}
         >
             <div
-                className="MenuIcon1 MenuIcon "
-                style={
-                    menuOpen
-                        ? {
-                              backgroundColor: 'var(--color-default)',
-                              transform:
-                                  'rotate(45deg) translateX(1px) translateY(-5px)',
-                          }
-                        : null
-                }
+                className={`MenuIcon1 MenuIcon ${menuOpen ? 'MenuIcon1--Actived' : 'MenuIcon1--NotActived'}`}
             ></div>
             <div
-                className="MenuIcon2 MenuIcon"
-                style={{
-                    display: menuOpen && 'none',
-                }}
+                className={`MenuIcon2 MenuIcon ${menuOpen ? 'MenuIcon2--Actived' : 'MenuIcon2--NotActived'}`}
             ></div>
             <div
-                className="MenuIcon3 MenuIcon "
-                style={
-                    menuOpen
-                        ? {
-                              backgroundColor: 'var(--color-default)',
-                              width: '30px',
-                              transform:
-                                  'rotate(-45deg) translateX(1px) translateY(5px)',
-                          }
-                        : null
-                }
+                className={`MenuIcon3 MenuIcon ${menuOpen ? 'MenuIcon3--Actived' : 'MenuIcon3--NotActived'}`}
             ></div>
         </button>
     );

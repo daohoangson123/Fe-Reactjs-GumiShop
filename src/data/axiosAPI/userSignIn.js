@@ -7,4 +7,11 @@ const loginRequest = (username, password) => {
     });
 };
 
+// const userLogin = (email, password) => {
+//     return axiosInstance.post('http://localhost:4000/auth/login', {
+//         email,
+//         password,
+//     });
+// };
+
 export { loginRequest };

@@ -1,7 +1,6 @@
 import './Product.css';
 //
-// eslint-disable-next-line
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 //
 
@@ -38,10 +37,10 @@ const Product = (props) => {
                         to={`/shop/${props.name.split(' ').join('-')}`}
                         tabIndex="-1"
                     >
-                        <i class="fa-solid fa-circle-info"></i>
+                        <i className="fa-solid fa-circle-info"></i>
                     </Link>
-                    <i class="fa-solid fa-cart-shopping"></i>
-                    <i class="fa-solid fa-heart"></i>
+                    <i className="fa-solid fa-cart-shopping"></i>
+                    <i className="fa-solid fa-heart"></i>
                 </div>
                 {props.sale ? (
                     <div className="Product__Sale" title="Product On Sale">

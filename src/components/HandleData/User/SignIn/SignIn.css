@@ -11,11 +11,11 @@
 }
 
 .User_List {
-    place-items: center;
-    aspect-ratio: 1;
     display: grid;
+    place-items: center;
     width: clamp(280px, 80vw, 400px);
     transition: var(--transition-fast);
+    padding: 10px;
     border: 1px solid var(--color-alt);
     border-bottom-right-radius: 20px;
     background: rgba(255, 255, 255, 0.8);
@@ -26,9 +26,8 @@
     box-shadow: 5px 5px 10px 5px var(--color-primary-rgba);
 }
 
-.User_List ol,
-.User_List ol li {
-    padding: 0;
+.User_List ol {
+    display: grid;
 }
 
 .SignIn__Form {
@@ -113,7 +112,7 @@
 
 .SignIn__Form-InputContainer .showpassicon {
     position: absolute;
-    top: 10px;
+    top: 12px;
     right: 6px;
 }
 
@@ -246,7 +245,7 @@
 }
 
 .User_List ol li {
-    font-size: clamp(12px, 4vw, 16px);
+    font-size: clamp(12px, 2vw, 16px);
 }
 
 @media (width < 860px) {

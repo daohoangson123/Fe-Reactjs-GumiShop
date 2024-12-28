@@ -1,4 +1,4 @@
-.MobileMenu {
+.MobileMenu__Btn {
     place-items: center;
     display: none;
     z-index: 100;
@@ -12,15 +12,20 @@
     border-radius: 2px;
 }
 
-.MobileMenu:hover {
-    background-color: rgba(0, 0, 0, 0.3);
+.MobileMenu__Btn--Actived {
+    background-color: var(--color-alt-rgba-3);
+    z-index: 9999;
 }
 
-.MobileMenu:hover .MenuIcon {
+.MobileMenu__Btn:hover {
+    background-color: var(--color-alt-rgba-3);
+}
+
+.MobileMenu__Btn:hover .MenuIcon {
     background-color: var(--color-default);
 }
 
-.MobileMenu:hover .MenuIcon3 {
+.MobileMenu__Btn:hover .MenuIcon3 {
     width: 30px;
 }
 
@@ -41,6 +46,18 @@
     width: 20px;
 }
 
+.MenuIcon1--Actived {
+    transform: rotate(45deg) translateX(1px) translateY(-5px);
+}
+
+.MenuIcon2--Actived {
+    display: none;
+}
+
+.MenuIcon3--Actived {
+    transform: rotate(-45deg) translateX(1px) translateY(5px);
+}
+
 .MobileMenu__NavContainer {
     display: grid;
     position: absolute;
@@ -49,8 +66,13 @@
     z-index: -1;
     width: 100%;
     height: 100lvh;
-    opacity: 0;
-    transition: var(--transition-slow);
+}
+
+.MobileMenu__NavContainer--Opened {
+    transition: var(--transition-fast);
+    backdrop-filter: blur(10px);
+    left: 0;
+    z-index: 1000;
 }
 
 .MobileMenu__Nav {
@@ -153,7 +175,7 @@
 }
 
 @media (width <= 1024px) {
-    .MobileMenu {
+    .MobileMenu__Btn {
         display: grid;
     }
 }
