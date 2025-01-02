@@ -10,6 +10,9 @@ const SignIn = () => {
         <div className="SignIn Container">
             <ErrorBoundary>
                 <SignInForm />
+            </ErrorBoundary>
+
+            <ErrorBoundary>
                 <UserList />
             </ErrorBoundary>
         </div>

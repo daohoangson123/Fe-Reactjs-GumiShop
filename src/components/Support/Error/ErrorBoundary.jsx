@@ -1,7 +1,5 @@
 import React from 'react';
 //
-import { pageAccessedByReload } from '../../../data/isPageReloaded';
-//
 import './ErrorBoundary.css';
 
 class ErrorBoundary extends React.Component {
@@ -15,12 +13,6 @@ class ErrorBoundary extends React.Component {
             error: error,
             errorInfo: errorInfo,
         });
-    }
-
-    componentDidUpdate() {
-        if (pageAccessedByReload) {
-            window.scrollTo(0, 0);
-        }
     }
 
     render() {

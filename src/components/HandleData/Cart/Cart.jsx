@@ -14,8 +14,6 @@ import {
     submitCart,
 } from '../../../redux/Actions/Action';
 //
-// import { useState } from 'react';
-//
 import CartLayout from './CartLayout';
 //
 import ErrorBoundary from '../../Support/Error/ErrorBoundary';
@@ -30,8 +28,6 @@ const Cart = () => {
     const isSignIn = useSelector(signinSelector);
     const userData = useSelector(userSelector);
     const [purchasing, setPurchasing] = useState(false);
-    // eslint-disable-next-line
-    // const [quantity, setQuantity] = useState(1);
 
     const purchasedDate = new Date();
 

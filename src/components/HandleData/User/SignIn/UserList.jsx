@@ -43,9 +43,7 @@ const UserList = () => {
             USER LIST DEMO
             <ol>
                 {userList && !loadingUserList ? (
-                    userList.map((user) => (
-                        <li key={user.id}>{`${user.id}: ${user.email}`}</li>
-                    ))
+                    userList.map((user) => <li key={user.id}>{user.email}</li>)
                 ) : (
                     <Skeleton width={160} count={6} />
                 )}

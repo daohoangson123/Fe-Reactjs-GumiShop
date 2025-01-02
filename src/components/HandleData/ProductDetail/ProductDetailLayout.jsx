@@ -31,26 +31,24 @@ const ProductDetailLayout = ({
         setTimeout(() => setIsAdding(false), 2000);
     };
     return (
-        <div className="ProductDetailLayout">
+        <div className="ProductDetailLayout Container">
             {productDetail.length === 0 ? (
                 <>
-                    <div style={{ paddingLeft: '30px' }}>
+                    <div>
                         <Skeleton className="ProductDetail__Breadcrumbs" />
                     </div>
-                    <div className="Container">
-                        <div className="ProductDetailLayout__Box ProductDetailLayoutSkeleton__Box Container">
-                            <Skeleton
-                                containerClassName="grid-container"
-                                className="ProductDetailSkeleton__Img"
-                            />
-                            <Skeleton width={280} count={6} />
-                        </div>
+                    <div className="ProductDetailLayout__Box ProductDetailLayoutSkeleton__Box">
+                        <Skeleton
+                            containerClassName="grid-container"
+                            className="ProductDetailSkeleton__Img"
+                        />
+                        <Skeleton width={280} count={6} />
                     </div>
                 </>
             ) : (
                 <>
                     <Breadcrumbs />
-                    <div className="ProductDetailLayout__Box Container">
+                    <div className="ProductDetailLayout__Box">
                         <img
                             src={productDetail.img}
                             alt="productImg"

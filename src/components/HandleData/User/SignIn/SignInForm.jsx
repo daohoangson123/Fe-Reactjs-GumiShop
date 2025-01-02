@@ -148,13 +148,13 @@ const SignInForm = () => {
 
     const postLoginRequest = async () => {
         let signinRequest = await loginRequest(username, password);
+
         if (signinRequest.token) {
             signinNotify();
             return dispatch(userSignIn(signinRequest.token));
-        }
-        if (
-            signinRequest.data.error &&
-            signinRequest.data.error === 'user not found'
+        } else if (
+            signinRequest.error &&
+            signinRequest.error === 'user not found'
         ) {
             signinErrorNotify();
             setIsLoading(false);
