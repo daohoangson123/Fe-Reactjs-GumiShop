@@ -71,7 +71,8 @@
 }
 
 .MobileMenu__NavContainer--Opened {
-    backdrop-filter: blur(10px);
+    /* backdrop-filter: blur(10px); */
+    background-color: var(--color-alt-rgba-3);
     transform: translateX(0%);
     z-index: 1000;
 }
