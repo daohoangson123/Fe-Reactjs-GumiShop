@@ -31,16 +31,18 @@ const SignInInput = ({
                     <span
                         style={{
                             position: 'absolute',
-                            transform: isFocus
-                                ? 'translate3d(15px, -12px, -10px)'
-                                : 'translate3d(5px, 8px, 0',
-                            fontSize: isFocus ? '14px' : '16px',
-                            color: isFocus
-                                ? 'var(--color-primary)'
-                                : 'var(--color-text)',
-                            background: isFocus ? 'white' : 'none',
-                            paddingInline: isFocus && '5px',
-                            zIndex: isFocus ? 0 : -1,
+                            transform:
+                                isFocus || username
+                                    ? 'translate3d(15px, -12px, -10px)'
+                                    : 'translate3d(5px, 8px, 0',
+                            fontSize: isFocus || username ? '14px' : '16px',
+                            color:
+                                isFocus || username
+                                    ? 'var(--color-primary)'
+                                    : 'var(--color-text)',
+                            background: isFocus || username ? 'white' : 'none',
+                            paddingInline: isFocus || username ? '5px' : 'none',
+                            zIndex: isFocus || username ? 0 : -1,
                             transition: 'var(--transition-fast)',
                         }}
                     >
@@ -68,16 +70,18 @@ const SignInInput = ({
                     <span
                         style={{
                             position: 'absolute',
-                            transform: isFocus
-                                ? 'translate3d(15px, -12px, -10px)'
-                                : 'translate3d(5px, 8px, 0',
-                            fontSize: isFocus ? '14px' : '16px',
-                            color: isFocus
-                                ? 'var(--color-primary)'
-                                : 'var(--color-text)',
-                            background: isFocus ? 'white' : 'none',
-                            paddingInline: isFocus && '5px',
-                            zIndex: isFocus ? 0 : -1,
+                            transform:
+                                isFocus || password
+                                    ? 'translate3d(15px, -12px, -10px)'
+                                    : 'translate3d(5px, 8px, 0',
+                            fontSize: isFocus || password ? '14px' : '16px',
+                            color:
+                                isFocus || password
+                                    ? 'var(--color-primary)'
+                                    : 'var(--color-text)',
+                            background: isFocus || password ? 'white' : 'none',
+                            paddingInline: isFocus || password ? '5px' : 'none',
+                            zIndex: isFocus || password ? 0 : -1,
                             transition: 'var(--transition-fast)',
                         }}
                     >

@@ -13,6 +13,8 @@ import { getUserData } from './redux/Actions/Action';
 import { fetchUserData } from './data/axiosAPI/userData';
 //
 import { useEffect } from 'react';
+//
+import lazyImgCall from './data/lazyImg';
 
 function App() {
     const isSignIn = useSelector(signinSelector);
@@ -28,9 +30,14 @@ function App() {
     };
 
     useEffect(() => {
+        lazyImgCall();
+    }, []);
+
+    useEffect(() => {
         if (isSignIn) {
             saveUserData();
         }
+
         // eslint-disable-next-line
     }, [isSignIn]);
 

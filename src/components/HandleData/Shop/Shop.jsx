@@ -67,7 +67,7 @@ const ShopFilter = ({
                             }
                             onClick={() => setShowFilter(!showFilter)}
                         >
-                            {showFilter ? 'Hide Filter' : 'Show Filter'}
+                            {showFilter ? 'Hide Filter' : 'Filter'}
                         </button>
                         <div
                             className="FiltersInputs"

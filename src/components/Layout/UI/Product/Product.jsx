@@ -1,36 +1,27 @@
+import { useEffect, useState } from 'react';
 import './Product.css';
 //
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import lazyImgCall from '../../../../data/lazyImg';
 //
 
 const Product = (props) => {
+    const [isImgLoaded, setIsImgLoaded] = useState();
     useEffect(() => {
-        function load(img) {
-            const url = img.getAttribute('lazysrc');
-            img.setAttribute('src', url);
-        }
-
-        const lazyImgs = document.querySelectorAll('[lazysrc]');
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    load(entry.target);
-                }
-            });
-        });
-
-        lazyImgs.forEach((img) => {
-            observer.observe(img);
-        });
-
-        return () => observer.disconnect();
+        lazyImgCall();
     }, []);
-
     return (
         <div className="Product">
-            <div className="Product__Img-Container">
-                <img src={props.url} alt={props.name} loading="lazy" />
+            <div
+                className="Product__Img-Container"
+                style={{ visibility: isImgLoaded ? 'visible' : 'hidden' }}
+            >
+                <img
+                    src={''}
+                    alt={isImgLoaded && props.name}
+                    lazysrc={props.url}
+                    onLoad={() => setIsImgLoaded(true)}
+                />
                 <div className="ProductLink_Bg">
                     <Link
                         title="Go to Product Detail"
@@ -42,7 +33,7 @@ const Product = (props) => {
                     <i className="fa-solid fa-cart-shopping"></i>
                     <i className="fa-solid fa-heart"></i>
                 </div>
-                {props.sale ? (
+                {props.sale && isImgLoaded ? (
                     <div className="Product__Sale" title="Product On Sale">
                         ON SALE
                     </div>

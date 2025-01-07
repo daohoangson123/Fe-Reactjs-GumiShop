@@ -14,6 +14,8 @@
     display: grid;
     position: relative;
     overflow: hidden;
+    min-width: 180px;
+    aspect-ratio: 1;
 }
 
 .ProductItem img {

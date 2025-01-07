@@ -17,7 +17,7 @@ const FooterBot = () => {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={icon.url} alt="link" />
+                            <img src={''} alt="link" lazysrc={icon.url} />
                         </a>
                     ))
                 ) : (
@@ -37,7 +37,7 @@ const FooterBot = () => {
                 {payment_Icons ? (
                     payment_Icons.map((icon) => (
                         <Link to={icon.path} key={icon.url}>
-                            <img src={icon.url} alt="link" />
+                            <img src={''} alt="link" lazysrc={icon.url} />
                         </Link>
                     ))
                 ) : (

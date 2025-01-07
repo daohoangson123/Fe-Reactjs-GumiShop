@@ -2,14 +2,14 @@
     justify-self: end;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 7px;
     position: relative;
 }
 
 .SearchCart button,
 .SearchCart a {
-    width: 20px;
-    height: 20px;
+    display: grid;
+    place-items: center;
 }
 
 .SearchCart button {
@@ -20,7 +20,7 @@
 .Icon {
     transition: var(--transition-fast);
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
     color: var(--color-text);
 }
 
@@ -125,10 +125,10 @@
     place-items: center;
     display: grid;
     position: absolute;
-    top: -7px;
-    right: -11px;
-    width: 18px;
-    height: 18px;
+    top: -1px;
+    right: -4px;
+    width: 15px;
+    height: 15px;
     transition: var(--transition-fast);
     background-color: var(--color-primary);
     border-radius: 100%;
@@ -136,7 +136,7 @@
 }
 
 .Cart_Notify-Number {
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 600;
 }
 

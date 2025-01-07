@@ -12,13 +12,10 @@ import LatestNews from './LatestNew/LatestNews';
 import Good4MeSlider from './Good4MeSlider/Good4MeSlider';
 //
 import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
-import lazyImgCall from '../../../../data/lazyImg';
 
 const LandingPage = () => {
     useEffect(() => {
         document.title = 'Gumi Shopify - Home';
-
-        lazyImgCall();
 
         return () => {
             document.title = 'Gumi Shopify';

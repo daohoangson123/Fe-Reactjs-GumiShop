@@ -17,7 +17,6 @@ const Good4MeSilder = ({ title }) => {
                 autoWidth={true}
                 dots={false}
                 items={5}
-                // autoplay
                 margin={30}
                 autoplayHoverPause
                 autoplaySpeed={3000}
@@ -26,7 +25,7 @@ const Good4MeSilder = ({ title }) => {
             >
                 {bottom_Slider.map((img) => (
                     <div className="item" key={img.id}>
-                        <img src={img.url} alt="" />
+                        <img src={''} alt="" lazysrc={img.url} />
                     </div>
                 ))}
             </OwlCarousel>

@@ -1,4 +1,9 @@
 const lazyImgCall = () => {
+    let options = {
+        rootMargin: '-50px',
+        threshold: 0,
+    };
+
     function load(img) {
         const url = img.getAttribute('lazysrc');
         img.setAttribute('src', url);
@@ -11,7 +16,7 @@ const lazyImgCall = () => {
                 load(entry.target);
             }
         });
-    });
+    }, options);
 
     lazyImgs.forEach((img) => {
         observer.observe(img);

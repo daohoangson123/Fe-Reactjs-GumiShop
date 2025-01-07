@@ -15,8 +15,10 @@
 .ToggleFilter__Btn {
     justify-self: end;
     display: none;
-    width: 90px;
+    width: fit-content;
     height: 30px;
+    margin-right: 5px;
+    padding: 5px;
     border: none;
     border-radius: 10px;
     color: var(--color-default);
@@ -24,7 +26,6 @@
 
 .SearchForm {
     width: 100%;
-    padding: 5px;
     background-color: var(--color-default);
     z-index: 11;
 }
@@ -90,7 +91,7 @@
 
     .SearchForm {
         position: fixed;
-        bottom: 0;
+        top: 50px;
     }
 
     .SearchForm fieldset {

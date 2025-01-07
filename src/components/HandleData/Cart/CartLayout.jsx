@@ -10,7 +10,6 @@ const CartForm = ({
     totalItem,
     totalPrice,
     saving,
-    // setQuantity,
     handleInc,
     handleDec,
     handleRemove,
@@ -19,7 +18,7 @@ const CartForm = ({
     purchasing,
 }) => {
     return (
-        <form className="Cart-Item_Form Container" onSubmit={handleSubmit}>
+        <form className="Cart-Item_Form" onSubmit={handleSubmit}>
             {totalItem > 0 && totalItem ? (
                 <>
                     <div className="Cart-Item-List Cart-Item-List-Header">
@@ -53,15 +52,11 @@ const CartForm = ({
                                                           .join('-')}`
                                             }
                                             className="Cart-Item-Link"
+                                            title="Go to detail"
                                         >
                                             <div className="Cart-Item_Name">
                                                 {item.name}
                                             </div>
-                                            <img
-                                                className="Cart-Item-Img"
-                                                src={item.img}
-                                                alt={item.name}
-                                            />
                                         </Link>
                                         <div className="Cart-Item_Price">
                                             <span>Price: </span> ${item.price}
@@ -69,6 +64,7 @@ const CartForm = ({
                                         <div className="Cart-Item_Quantity">
                                             <button
                                                 type="button"
+                                                title="Decrease"
                                                 onClick={() => {
                                                     if (item.amount > 1) {
                                                         handleDec(item);
@@ -83,6 +79,7 @@ const CartForm = ({
                                             </button>
                                             <input
                                                 type="number"
+                                                title="Current quantity"
                                                 name={`quantity${index}`}
                                                 id={`quantity${index}`}
                                                 value={item.amount}
@@ -90,34 +87,10 @@ const CartForm = ({
                                                 max={1000}
                                                 disabled
                                                 autoComplete="off"
-                                                // onWheel={(event) =>
-                                                //     event.target.blur()
-                                                // }
-                                                // onChange={(event) => {
-                                                // if (
-                                                //     newAmount < 1 ||
-                                                //     newAmount > 1000
-                                                // ) {
-                                                //     return newAmount;
-                                                // }
-                                                // if (!isNaN(newAmount)) {
-                                                //     item.amount = newAmount;
-                                                // }
-                                                // setQuantity(event.target.value);
-                                                // }}
-                                                // onInput={(event) =>
-                                                //     (event.currentTarget.value =
-                                                //         event.currentTarget.value
-                                                //             .replace(/[^0-9.]/g, '')
-                                                //             .replace(
-                                                //                 /(\..*?)\..*/g,
-                                                //                 '$1',
-                                                //             )
-                                                //             .replace(/^0[^.]/, '0'))
-                                                // }
                                             />
                                             <button
                                                 type="button"
+                                                title="Increase"
                                                 onClick={() => {
                                                     if (
                                                         item.stock &&
@@ -142,6 +115,7 @@ const CartForm = ({
                                         <button
                                             className="Remove_Item"
                                             type="button"
+                                            title="Remove item"
                                             onClick={() => {
                                                 handleRemove({
                                                     id: item.id,
@@ -156,10 +130,16 @@ const CartForm = ({
                             })}
                         </div>
                         <div className="Purchase-Check">
-                            <div style={{ fontWeight: 600, fontSize: '24px' }}>
+                            <div
+                                style={{
+                                    fontWeight: 600,
+                                    fontSize: '24px',
+                                    textAlign: 'center',
+                                }}
+                            >
                                 Check-Out
                             </div>
-                            <div>
+                            <div className="Total-Item">
                                 Total: {totalItem} Item{totalItem > 1 && 's'}
                             </div>
                             <div className="Total-Price">
