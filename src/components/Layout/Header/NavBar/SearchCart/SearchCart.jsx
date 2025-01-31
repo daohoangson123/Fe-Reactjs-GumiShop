@@ -26,7 +26,7 @@ const SearchModal = ({
         <div
             className="NavSearch"
             style={
-                isSearching && filtered.length > 0
+                isSearching
                     ? {
                           height: 'calc(100lvh - 74px)',
                           marginTop: '10px',

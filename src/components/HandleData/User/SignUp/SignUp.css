@@ -5,16 +5,5 @@
 }
 
 .SignUp img {
-    transform-origin: top center;
-    width: clamp(280px, 50vw, 1200px);
-    animation: sling 1.5s ease-in-out infinite alternate;
-}
-
-@keyframes sling {
-    from {
-        transform: rotateZ(5deg);
-    }
-    to {
-        transform: rotateZ(-5deg);
-    }
+    width: clamp(280px, 30vw, 400px);
 }
