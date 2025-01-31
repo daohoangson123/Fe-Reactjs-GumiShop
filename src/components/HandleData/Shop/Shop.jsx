@@ -1,6 +1,6 @@
 import './Shop.css';
 //
-import noitem from '../../../assets/img/noitem.webp';
+import noitem from '../../../assets/img/noitem.jpg';
 //
 import { fetchProductApi } from '../../../data/axiosAPI/productData';
 //
@@ -52,33 +52,15 @@ const ShopFilter = ({
             ) : (
                 <>
                     <fieldset disabled={productApi.length === 0}>
-                        <button
-                            type="button"
-                            className="ToggleFilter__Btn"
-                            style={{
-                                background: showFilter
-                                    ? 'var(--color-primary-rgba)'
-                                    : 'var(--color-primary)',
-                            }}
-                            title={
-                                showFilter
-                                    ? 'Hide filter options'
-                                    : 'Show detail filter options'
-                            }
-                            onClick={() => setShowFilter(!showFilter)}
-                        >
-                            {showFilter ? 'Hide Filter' : 'Filter'}
-                        </button>
                         <div
                             className="FiltersInputs"
-                            style={{ maxHeight: showFilter && '150px' }}
+                            style={{ maxHeight: showFilter && '160px' }}
                         >
                             <input
                                 className="NameFilterInput"
                                 type="text"
                                 name="searchkw"
                                 id="searchkw"
-                                // defaultValue={q}
                                 value={q}
                                 title={`Enter some product's character Ex: vitamin, detox etc`}
                                 placeholder={
@@ -163,6 +145,23 @@ const ShopFilter = ({
                                 </select>
                             </div>
                         </div>
+                        <button
+                            type="button"
+                            className="ToggleFilter__Btn"
+                            style={{
+                                background: showFilter
+                                    ? 'var(--color-primary-rgba)'
+                                    : 'var(--color-primary)',
+                            }}
+                            title={
+                                showFilter
+                                    ? 'Hide filter options'
+                                    : 'Show detail filter options'
+                            }
+                            onClick={() => setShowFilter(!showFilter)}
+                        >
+                            {showFilter ? 'Hide Filter' : 'Filter'}
+                        </button>
                     </fieldset>
                     <div className="ProductAvailableCount">
                         {filtered?.length > 0
@@ -195,6 +194,8 @@ const ProductDisplay = ({ filtered }) => {
                             />
                         </div>
                     ))}
+            </div>
+            <div>
                 {filtered?.length === 0 && (
                     <img className="NoItemImg" src={noitem} alt="NoItemFound" />
                 )}
@@ -1082,7 +1083,7 @@ const Shop = () => {
                 sort={sort}
             />
             <div className="Container">
-                {productApi.length > 0 ? (
+                {productApi.length !== 0 ? (
                     <ProductDisplay filtered={filtered} />
                 ) : (
                     <div className="ProductContainer ShopProductContainer">

@@ -1,9 +1,8 @@
 import './Breadcrumbs.css';
 //
-import foward_arrow from '../../../../assets/icon/foward-arrow.png';
-//
 import { useLocation } from 'react-router';
 import { Link } from 'react-router-dom';
+import ArrowRight from '../SVG/Shapes/ArrowRight';
 
 export default function Breadcrumbs() {
     const location = useLocation();
@@ -17,7 +16,7 @@ export default function Breadcrumbs() {
                 <li key={crumb} className="CrumbItem">
                     <Link to={currentLink}>
                         {crumb.replace(/-/g, ' ')}
-                        <img src={foward_arrow} alt=">" />
+                        <ArrowRight />
                     </Link>
                 </li>
             );
@@ -28,7 +27,7 @@ export default function Breadcrumbs() {
                 <li className="CrumbItem">
                     <Link to="/">
                         Home
-                        <img src={foward_arrow} alt=">" />
+                        <ArrowRight />
                     </Link>
                 </li>
             )}

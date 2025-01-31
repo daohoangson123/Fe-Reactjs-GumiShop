@@ -17,9 +17,11 @@ const Good4MeDealBot = () => {
                     key={item.title}
                     style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                    <div className="Img_Container">
+                    <div className="Good4MeDealBot_ItemContainer">
                         <span className="Good4MeDealBot_Item-Circle"></span>
-                        <img src={null} alt="" lazysrc={item.url} />
+                        <div className="Good4MeDealBot_Item-SVG">
+                            {item.SVG}
+                        </div>
                     </div>
                     <div className="Good4MeDealBot_Item-Title">
                         {item.title}

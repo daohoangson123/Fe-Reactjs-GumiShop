@@ -49,14 +49,15 @@ const MobileMenu = ({ navlinkData }) => {
                 setMenuOpen={setMenuOpen}
                 openMenu={openMenu}
             />
-
-            <MobileMenuRouting
-                isMobileView={isMobileView}
-                menuOpen={menuOpen}
-                setMenuOpen={setMenuOpen}
-                navlinkData={navlinkData}
-                openMenu={openMenu}
-            />
+            {menuOpen && (
+                <MobileMenuRouting
+                    isMobileView={isMobileView}
+                    menuOpen={menuOpen}
+                    setMenuOpen={setMenuOpen}
+                    navlinkData={navlinkData}
+                    openMenu={openMenu}
+                />
+            )}
         </>
     );
 };
@@ -91,7 +92,6 @@ const MobileMenuRouting = ({
         <div
             className={`MobileMenu__NavContainer ${menuOpen ? 'MobileMenu__NavContainer--Opened' : 'MobileMenu__NavContainer--Closed'}`}
             title="Close Menu"
-            style={{ transition: !isMobileView && 'none' }}
         >
             <div className="MobileMenu__Nav">
                 {navlinkData.map((item) => (

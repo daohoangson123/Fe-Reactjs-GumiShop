@@ -15,6 +15,8 @@
     --color-alt-rgba-5: rgba(0, 0, 0, 0.5);
     --color-text: #454545;
     --color-icon: #9d9d9d;
+    --border-s: 5px;
+    --border-round: 100%;
     --font-default: 'Jost', sans-serif;
     --transition-fast: all 0.2s ease-in-out;
     --transition-slow: all 0.5s ease-in-out;
@@ -24,7 +26,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    text-decoration: none;
     font-family: var(--font-default);
     -webkit-font-smoothing: antialiased !important;
 }
@@ -69,20 +70,35 @@ li {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+}
+
+p {
+    margin-bottom: 0;
+}
+
 .ProductContainer {
     display: grid;
     grid-template-columns: repeat(auto-fit, 180px);
     justify-content: center;
     gap: 30px;
-    min-height: 300px;
 }
 
 .Container {
-    padding: 30px 10px;
+    padding-block: 15px;
+    padding-inline: clamp(20px, 6.5vw, 120px);
 }
 
 .Toastify__toast-container--top-center {
     top: 70px !important;
+}
+
+@media (width <= 1024px) {
+    .ProductContainer {
+        grid-template-columns: repeat(auto-fit, 120px);
+        justify-content: space-evenly;
+    }
 }
 
 @media (width < 850px) {

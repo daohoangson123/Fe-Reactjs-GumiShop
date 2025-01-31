@@ -11,7 +11,7 @@
     margin-bottom: 20px;
     padding: 5px;
     background-color: transparent;
-    border-radius: 5px;
+    border-radius: var(--border-s);
 }
 
 .Wholesale__Product-Container {
@@ -130,7 +130,7 @@
     transition: var(--transition-fast);
     background-color: transparent;
     border: none;
-    border-radius: 5px;
+    border-radius: var(--border-s);
 }
 
 .Wholesale__CategoryFilter__List button:hover,

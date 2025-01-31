@@ -28,7 +28,7 @@ const ProductDetailLayout = ({
         event.preventDefault();
         addNotify();
         setIsAdding(true);
-        setTimeout(() => setIsAdding(false), 2000);
+        setTimeout(() => setIsAdding(false), 3000);
     };
     return (
         <div className="ProductDetailLayout Container">

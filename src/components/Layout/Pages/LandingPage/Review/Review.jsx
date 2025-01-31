@@ -4,7 +4,7 @@ import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 //
-import review_img from '../../../../../assets/img/review.webp';
+import review_img from '../../../../../assets/img/review.jpg';
 //
 import { reviewData } from '../../../../../data/review';
 

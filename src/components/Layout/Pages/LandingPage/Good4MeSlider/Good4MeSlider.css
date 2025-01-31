@@ -9,6 +9,7 @@
 
 .Good4MeSilder .owl-control .item {
     width: var(--imgWidthL);
+    aspect-ratio: 1;
 }
 
 .Good4MeSilder .owl-control .item img {

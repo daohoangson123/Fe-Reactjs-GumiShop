@@ -1,9 +1,9 @@
-import good4me from '../assets/img/good4me.webp';
-import good4me1 from '../assets/img/good4me1.png';
-import good4me2 from '../assets/img/good4me2.webp';
-import good4me3 from '../assets/img/good4me3.png';
-import good4me4 from '../assets/img/good4me4.png';
-import good4me5 from '../assets/img/good4me5.png';
+import good4me from '../assets/img/good4me.jpg';
+import good4me1 from '../assets/img/good4me1.jpg';
+import good4me2 from '../assets/img/good4me2.jpg';
+import good4me3 from '../assets/img/good4me3.jpg';
+import good4me4 from '../assets/img/good4me4.jpg';
+import good4me5 from '../assets/img/good4me5.webp';
 
 export const bottom_Slider = [
     {

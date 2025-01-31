@@ -9,42 +9,28 @@
 
 .NoItemImg {
     aspect-ratio: 1;
-    width: 200px;
+    width: 220px;
+    min-height: 250px;
+    object-fit: contain;
 }
 
 .ToggleFilter__Btn {
-    justify-self: end;
     display: none;
     width: fit-content;
-    height: 30px;
-    margin-right: 5px;
+    justify-self: end;
     padding: 5px;
-    border: none;
-    border-radius: 10px;
+    border-radius: var(--border-s);
     color: var(--color-default);
 }
 
 .SearchForm {
     width: 100%;
-    background-color: var(--color-default);
-    z-index: 11;
-}
-
-.SearchForm fieldset {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: baseline;
-}
-
-.FiltersInputs {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
+    padding: 5px 10px;
     transition: var(--transition-fast);
 }
 
+.SearchForm fieldset,
+.FiltersInputs,
 .FiltersInputs * {
     display: flex;
     flex-wrap: wrap;
@@ -72,11 +58,10 @@
 .NameFilterInput {
     outline: none;
     width: 280px;
-    margin-top: 5px;
     padding: 5px;
     transition: var(--transition-fast);
     border: 1px solid var(--color-primary);
-    border-radius: 10px;
+    border-radius: var(--border-s);
 }
 
 .NameFilterInput:focus-visible {
@@ -84,18 +69,20 @@
     box-shadow: 0 0 2px 2px var(--color-primary-rgba);
 }
 
+@media (width <= 1024px) {
+    .NoItemImg {
+        min-height: 220px;
+    }
+}
+
 @media (width <= 768px) {
     .ProductAvailableCount {
         display: none;
     }
 
-    .SearchForm {
-        position: fixed;
-        top: 50px;
-    }
-
     .SearchForm fieldset {
         display: grid;
+        gap: 5px;
     }
 
     .FiltersInputs {

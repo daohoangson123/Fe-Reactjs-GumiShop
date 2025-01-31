@@ -1,8 +1,8 @@
 footer {
     background-blend-mode: screen;
     margin-top: 30px;
-    background-image: url(../../../assets/img/FooterTop.webp),
-        url(../../../assets/img/Footer.webp);
+    background-image: url(../../../assets/img/FooterTop.jpg),
+        url(../../../assets/img/Footer.jpg);
     background-repeat: no-repeat;
     background-size: contain, cover;
 }

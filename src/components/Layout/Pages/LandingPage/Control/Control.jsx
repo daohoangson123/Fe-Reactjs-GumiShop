@@ -1,8 +1,8 @@
 import './Control.css';
 //
-import control1 from '../../../../../assets/img/control1.webp';
-import control2 from '../../../../../assets/img/control2.webp';
-import control3 from '../../../../../assets/img/control3.webp';
+import control1 from '../../../../../assets/img/control1.jpg';
+import control2 from '../../../../../assets/img/control2.jpg';
+import control3 from '../../../../../assets/img/control3.jpg';
 //
 
 const Control = ({ title, content, btn }) => {

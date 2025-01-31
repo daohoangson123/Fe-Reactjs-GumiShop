@@ -10,6 +10,10 @@
 
 @media (width < 1024px) {
     .ProductSkeleton__Img {
-        width: 180px;
+        width: 120px;
+    }
+
+    .ProductSkeleton__Content {
+        width: 100px;
     }
 }

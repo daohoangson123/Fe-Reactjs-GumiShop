@@ -11,7 +11,6 @@
     padding: 5px;
     transition: var(--transition-fast);
     color: var(--color-alt);
-    text-decoration: none;
 }
 
 .Global__Btn--default a {

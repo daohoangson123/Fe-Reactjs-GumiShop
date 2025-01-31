@@ -3,9 +3,7 @@ import './App.css';
 import Header from './components/Layout/Header/Header';
 import Main from './components/Layout/Main/Main';
 import Footer from './components/Layout/Footer/Footer';
-//
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 //
 import { useDispatch, useSelector } from 'react-redux';
 import { signinSelector } from './redux/Selectors/Selector';
@@ -14,7 +12,8 @@ import { fetchUserData } from './data/axiosAPI/userData';
 //
 import { useEffect } from 'react';
 //
-import lazyImgCall from './data/lazyImg';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
     const isSignIn = useSelector(signinSelector);
@@ -30,10 +29,6 @@ function App() {
     };
 
     useEffect(() => {
-        lazyImgCall();
-    }, []);
-
-    useEffect(() => {
         if (isSignIn) {
             saveUserData();
         }
@@ -43,10 +38,10 @@ function App() {
 
     return (
         <div className="App">
-            <Header isSignIn={isSignIn} />
+            <Header />
             <Main />
             <Footer />
-            <ToastContainer autoClose={1500} limit={2} />
+            <ToastContainer autoClose={1500} />
         </div>
     );
 }

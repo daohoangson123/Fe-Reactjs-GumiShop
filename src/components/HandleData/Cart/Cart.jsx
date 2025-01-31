@@ -1,5 +1,3 @@
-import emptyCart from '../../../assets/img/emptycart.png';
-//
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -96,7 +94,6 @@ const Cart = () => {
                     handleDec={handleDec}
                     handleRemove={handleRemove}
                     handleSubmit={handleSubmit}
-                    emptyCart={emptyCart}
                     purchasing={purchasing}
                 />
             </ErrorBoundary>

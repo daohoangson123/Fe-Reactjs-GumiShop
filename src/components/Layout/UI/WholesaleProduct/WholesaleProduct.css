@@ -6,12 +6,10 @@
 
 .WholesaleProduct a {
     color: var(--color-alt);
-    text-decoration: none;
 }
 
 .WholesaleProduct a:visited {
     color: var(--color-alt);
-    text-decoration: none;
 }
 
 .WholesaleProduct:hover {

@@ -5,14 +5,4 @@ header {
     background-color: var(--color-default);
     z-index: 1000;
     transition: var(--transition-fast);
-    animation: header-appear 0.5s ease-in-out both;
-}
-
-@keyframes header-appear {
-    0% {
-        transform: translateY(-100%);
-    }
-    100% {
-        transform: translateY(0);
-    }
 }

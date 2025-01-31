@@ -3,42 +3,16 @@ import './Header.css';
 import SignBar from './SignBar/SignBar';
 import NavBar from './NavBar/NavBar';
 //
-import { pageAccessedByReload } from '../../../data/isPageReloaded';
-//
 import { useState, useCallback, useEffect } from 'react';
 
-const Header = ({ isSignIn }) => {
+const Header = () => {
     const [y, setY] = useState(window.scrollY);
     const [isDown, setIsDown] = useState();
-
-    const handleNavigation = useCallback(
-        (e) => {
-            const window = e.currentTarget;
-            if (y > window.scrollY) {
-                setIsDown(false);
-            } else if (y < window.scrollY) {
-                setIsDown(true);
-            }
-            setY(window.scrollY);
-        },
-        [y]
-    );
-
-    useEffect(() => {
-        setY(window.scrollY);
-
-        window.addEventListener('scroll', handleNavigation);
-
-        return () => {
-            window.removeEventListener('scroll', handleNavigation);
-        };
-    }, [handleNavigation]);
-
     const [isMobileView, setIsMobileView] = useState(false);
 
     const mq = window.matchMedia('(width <= 1024px)');
 
-    // toggle khi matchMedia
+    // toggle matchMedia
     const checkView = () => {
         if (mq.matches) {
             setIsMobileView(true);
@@ -58,15 +32,40 @@ const Header = ({ isSignIn }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
+    const handleNavigation = useCallback(
+        (e) => {
+            const window = e.currentTarget;
+            if (y > window.scrollY && !isMobileView) {
+                setIsDown(false);
+            } else if (y < window.scrollY && !isMobileView) {
+                setIsDown(true);
+            }
+            if (!isMobileView) {
+                setY(window.scrollY);
+            }
+        },
+        [y, isMobileView]
+    );
+
+    useEffect(() => {
+        setY(window.scrollY);
+
+        window.addEventListener('scroll', handleNavigation);
+
+        return () => {
+            window.removeEventListener('scroll', handleNavigation);
+        };
+    }, [handleNavigation]);
+
     return (
         <header
             style={{
-                animation: pageAccessedByReload && 'none',
-                top: isDown && !isMobileView ? '-60px' : 0,
+                top: isDown && !isMobileView ? '-55px' : 0,
+                transition: !isMobileView && isDown && 'none',
             }}
         >
-            <SignBar isSignIn={isSignIn} />
-            <NavBar />
+            <SignBar isDown={isDown} />
+            <NavBar isDown={isDown} />
         </header>
     );
 };

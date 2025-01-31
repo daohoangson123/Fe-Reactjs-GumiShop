@@ -1,7 +1,7 @@
 .NavBar__List {
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    justify-content: space-between;
+    gap: min(1vw, 30px);
     font-size: 18px;
     font-family: var(--font-default);
     font-weight: 500;

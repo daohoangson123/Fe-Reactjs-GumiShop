@@ -1,5 +1,5 @@
 import './SignUp.css';
-import underContruction from '../../../../assets/img/uc.png';
+import underContruction from '../../../../assets/img/underconstruction.jpg';
 
 const SignUp = () => {
     return (

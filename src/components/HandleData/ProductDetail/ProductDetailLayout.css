@@ -23,7 +23,7 @@
     aspect-ratio: 1;
     align-self: center;
     width: 220px;
-    border-radius: 20px;
+    border-radius: var(--border-s);
 }
 
 .ProductDetailBox__Name {
@@ -31,16 +31,8 @@
     font-weight: 600;
 }
 
-.ProductDetailBox__Rating {
-    text-decoration: underline;
-}
-
 .ProductDetailBox__Price span:first-child {
     color: var(--color-primary);
-}
-
-.ProductDetailBox__Price span:last-child {
-    text-decoration: underline;
 }
 
 .ProductDetailBox__AddToCart {
@@ -54,7 +46,7 @@
 .ProductDetailBox__AddToCart button {
     aspect-ratio: 1;
     transition: var(--transition-fast);
-    border-radius: 2px;
+    border-radius: var(--border-s);
 }
 
 .ProductDetailBox__AddToCart button:hover {

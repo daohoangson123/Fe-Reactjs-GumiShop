@@ -1,18 +1,18 @@
 import './SignBar.css';
 //
-import usa from '../../../../assets/img/usa.png';
-import vnm from '../../../../assets/img/vnm.png';
-import userLogo from '../../../../assets/icon/userLogo.png';
+import userIcon from '../../../../assets/icon/userLogo.webp';
 //
-import { useState } from 'react';
+import { memo, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import {
     signinSelector,
     userSelector,
 } from '../../../../redux/Selectors/Selector';
+import USAFlag from '../../UI/SVG/Flags/USA';
+import VNMFlag from '../../UI/SVG/Flags/VNM';
 
-const SignBar = () => {
+const SignBar = memo(function SignBar({ isDown }) {
     const isSignIn = useSelector(signinSelector);
     const userData = useSelector(userSelector);
     const text =
@@ -21,58 +21,42 @@ const SignBar = () => {
     const langs = [
         {
             name: 'USA',
-            flag: usa,
+            flag: <USAFlag />,
         },
         {
             name: 'VNM',
-            flag: vnm,
+            flag: <VNMFlag />,
         },
     ];
 
-    const [flag, setFlag] = useState(usa);
-
-    const handelChange = (event) => {
-        if (event.target.value === 'VNM') {
-            setFlag(vnm);
-        } else {
-            setFlag(usa);
-        }
-    };
+    const [flag, setFlag] = useState('USA');
 
     return (
-        <div className="SignBar">
+        <div className="SignBar Container">
             <div className="SignBar__Text">{text}</div>
             <div className="SignBar__SignRegis ">
                 <div className="SignBar__SignRegis-Link">
-                    {!isSignIn ? (
-                        <NavLink
-                            to="/userSignIn"
-                            title="Sign In"
-                            className={({ isActive }) =>
-                                isActive ? 'active' : 'inactive'
-                            }
-                        >
-                            Sign In
-                        </NavLink>
-                    ) : (
-                        <NavLink
-                            to="/userProfile"
-                            title={
-                                userData
-                                    ? userData.first_name + userData.last_name
-                                    : 'Sign In'
-                            }
-                            className={({ isActive }) =>
-                                isActive ? 'active' : 'inactive'
-                            }
-                        >
+                    <NavLink
+                        to={isSignIn ? '/user-profile' : '/user-signIn'}
+                        title={
+                            isSignIn && userData
+                                ? userData.first_name + userData.last_name
+                                : 'Sign In'
+                        }
+                        className={({ isActive }) =>
+                            isActive ? 'active' : 'inactive'
+                        }
+                    >
+                        {isSignIn ? (
                             <img
                                 className="UserImg"
-                                src={userData ? userData.avatar : userLogo}
+                                src={userData ? userData.avatar : userIcon}
                                 alt="userImg"
                             />
-                        </NavLink>
-                    )}
+                        ) : (
+                            'Sign In'
+                        )}
+                    </NavLink>
                     /
                     <NavLink
                         to="/userSignUp"
@@ -86,14 +70,18 @@ const SignBar = () => {
                 </div>
                 <div className="SignBar__Languages" title="Change Language">
                     <label htmlFor="lang" className="LangLabel ">
-                        <img src={flag} alt="flag" />
+                        {langs
+                            .filter((item) => item.name === flag)
+                            .map((item) => (
+                                <div key={item.name}>{item.flag}</div>
+                            ))}
                     </label>
                     <select
                         className="LangSelect "
                         name="lang"
                         id="lang"
                         title="Click to select Language"
-                        onChange={handelChange}
+                        onChange={(event) => setFlag(event.target.value)}
                     >
                         {langs.map((item) => (
                             <option
@@ -114,6 +102,6 @@ const SignBar = () => {
             </div>
         </div>
     );
-};
+});
 
 export default SignBar;

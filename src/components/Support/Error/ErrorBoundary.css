@@ -12,7 +12,7 @@
 .ErrorBoundary button {
     padding: 5px;
     transition: var(--transition-fast);
-    border-radius: 5px;
+    border-radius: var(--border-s);
     font-weight: 700;
 }
 

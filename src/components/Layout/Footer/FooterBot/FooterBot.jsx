@@ -4,8 +4,13 @@ import { social_Icons, payment_Icons } from '../../../../data/footer_Icons';
 //
 import { Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
+import { useEffect } from 'react';
+import lazyImgCall from '../../../../data/lazyImg';
 
 const FooterBot = () => {
+    useEffect(() => {
+        lazyImgCall();
+    }, []);
     return (
         <div className="FooterBot">
             <div className="SocialIcons FooterIcons">
@@ -13,11 +18,11 @@ const FooterBot = () => {
                     social_Icons.map((icon) => (
                         <a
                             href={icon.path}
-                            key={icon.url}
+                            key={icon.id}
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img src={''} alt="link" lazysrc={icon.url} />
+                            {icon.SVG}
                         </a>
                     ))
                 ) : (

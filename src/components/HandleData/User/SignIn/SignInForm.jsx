@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 //
-import google from '../../../../assets/icon/GoogleLogo.png';
-import facebook from '../../../../assets/icon/FacebookLogo.png';
+import google from '../../../../assets/icon/GoogleLogo.webp';
+import facebook from '../../../../assets/icon/FacebookLogo.webp';
 //
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -169,7 +169,7 @@ const SignInForm = () => {
 
     useEffect(() => {
         if (isSignIn) {
-            navigate('/userProfile');
+            navigate('/user-profile');
         }
         // eslint-disable-next-line
     }, [isSignIn]);
@@ -182,7 +182,7 @@ const SignInForm = () => {
             onSubmit={handleSignIn}
         >
             <div className="SignIn__Form-Title">
-                Sign In
+                <span>Sign In</span>
                 <div
                     style={{
                         fontSize: '16px',

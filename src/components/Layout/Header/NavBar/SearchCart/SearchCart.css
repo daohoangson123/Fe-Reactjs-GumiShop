@@ -1,8 +1,8 @@
 .SearchCart {
     justify-self: end;
     display: flex;
-    align-items: center;
-    gap: 7px;
+    place-items: center;
+    gap: 5px;
     position: relative;
 }
 
@@ -17,29 +17,31 @@
     border: none;
 }
 
-.Icon {
-    transition: var(--transition-fast);
-    cursor: pointer;
-    font-size: 16px;
-    color: var(--color-text);
-}
-
-.Icon:hover {
-    color: var(--color-primary);
-}
-
-.SearchCart a:has(.NavBar__UserIcon) {
+.SearchCart a:has(.UserIcon) {
     display: none;
     visibility: hidden;
 }
 
+.SearchCart svg,
+.SearchCart path {
+    transition: var(--transition-fast);
+}
+
+.SearchCart svg:hover path,
+.SearchCart a:is(.active) svg path {
+    fill: var(--color-primary);
+}
+
 .NavSearch {
-    place-items: center;
     display: grid;
-    grid-column: 1 / 4;
+    grid-template-rows: 70px auto;
+    position: absolute;
+    inset: 0;
+    top: 149px;
+    height: 0;
+    background-color: var(--color-primary);
     overflow: auto;
     transition: var(--transition-fast);
-    background-color: var(--color-primary-rgba-3);
 }
 
 .NavSearch::-webkit-scrollbar {
@@ -47,22 +49,17 @@
 }
 
 .NavSearch::-webkit-scrollbar-thumb {
-    background-color: var(--color-primary);
-}
-
-.NavSearch div {
-    text-align: center;
+    background-color: var(--color-default);
 }
 
 .NavSearch__Form {
-    position: sticky;
-    top: 0;
+    justify-self: center;
+    text-align: center;
     transition: var(--transition-fast);
 }
 
 .NavSearch__Form--Text {
-    margin-top: 10px;
-    color: var(--color-text);
+    color: var(--color-default);
 }
 
 .NavSearch__Form input {
@@ -71,7 +68,7 @@
     padding: 10px;
     transition: var(--transition-fast);
     border: none;
-    border-radius: 50px;
+    border-radius: var(--border-s);
 }
 
 .NavSearch__Form input:focus-visible {
@@ -80,11 +77,11 @@
 }
 
 .NavSearch__Result {
-    grid-template-columns: 1fr 1fr 1fr;
-    width: 100%;
-    margin-bottom: 0;
-    padding: 0;
-    transition: var(--transition-fast);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    height: fit-content;
+    overflow: auto;
 }
 
 .NavSearch__Result li {
@@ -105,16 +102,15 @@
     width: 100%;
     padding: 5px;
     transition: var(--transition-fast);
-    color: var(--color-text);
-    text-decoration: none;
+    color: var(--color-default);
 }
 
 .NavSearch__Result li:hover {
-    background-color: var(--color-primary);
+    background-color: var(--color-default);
 }
 
 .NavSearch__Result li:hover a {
-    color: var(--color-default);
+    color: var(--color-text);
 }
 
 .Cart_IconContainer {
@@ -131,7 +127,7 @@
     height: 15px;
     transition: var(--transition-fast);
     background-color: var(--color-primary);
-    border-radius: 100%;
+    border-radius: var(--border-round);
     color: var(--color-default);
 }
 
@@ -141,31 +137,17 @@
 }
 
 @media (width <= 1024px) {
-    .SearchCart a:has(.NavBar__UserIcon) {
+    .SearchCart a:has(.UserIcon) {
         display: block;
         visibility: visible;
     }
-}
 
-@media (width <= 768px) {
-    .Icon {
-        font-size: 16px;
-    }
-
-    .NavSearch__Result {
-        grid-template-columns: 1fr 1fr;
+    .NavSearch {
+        top: 64px;
     }
 }
 
 @media (height < 600px) {
-    .NavSearch__Result {
-        max-height: 150px !important;
-    }
-
-    .NavSearch__Result li img {
-        display: none;
-    }
-
     .NavSearch__Result li a {
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 1;

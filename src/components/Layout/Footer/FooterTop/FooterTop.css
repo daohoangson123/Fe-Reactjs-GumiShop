@@ -15,7 +15,8 @@
 }
 
 .FooterTop_Item1-Logo {
-    display: block;
+    display: flex;
+    justify-self: center;
 }
 
 .FooterTop_Item1-content {

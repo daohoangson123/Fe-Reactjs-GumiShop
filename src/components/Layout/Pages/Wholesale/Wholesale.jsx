@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 //
 import { fetchHektoApi } from '../../../../data/axiosAPI/hektoData';
 import { fetchFurnitureApi } from '../../../../data/axiosAPI/furnitureData';
-import noItem from '../../../../assets/img/noitem.webp';
+import noItem from '../../../../assets/img/noitem.jpg';
 //
 import WholesaleProduct from '../../UI/WholesaleProduct/WholesaleProduct';
 import ProductSkeleton from '../../UI/Skeleton/ProductSkeleton';
@@ -106,7 +106,6 @@ const WholesaleLayout = ({ title, productApi }) => {
                 curBrand === 'All' &&
                 curCategory === 'All' ? (
                     <>
-                        <ProductSkeleton imgWidth={200} />
                         <ProductSkeleton imgWidth={200} />
                     </>
                 ) : filtered.length === 0 ? (

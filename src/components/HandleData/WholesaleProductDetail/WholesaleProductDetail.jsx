@@ -10,8 +10,8 @@ import { Zoom, toast } from 'react-toastify';
 
 const WholesaleProductDetail = () => {
     const shipOpt = [
-        { label: 'ABC', value: 'ABC' },
-        { label: 'XYZ', value: 'XYZ' },
+        { label: 'USA', value: 'USA' },
+        { label: 'VNM', value: 'VNM' },
     ];
 
     const { id } = useParams();
@@ -21,6 +21,7 @@ const WholesaleProductDetail = () => {
     const [curColor, setCurColor] = useState(undefined);
     const [isColorPick, setIsColorPick] = useState(false);
     const [shipOption, setShipOption] = useState(shipOpt[0].label);
+
     const orgPrice =
         productDetail && productDetail.price + productDetail.discouter;
     const salePercent =

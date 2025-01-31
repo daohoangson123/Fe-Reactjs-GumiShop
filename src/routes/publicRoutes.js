@@ -59,9 +59,9 @@ const PublicRoutes = () => {
                 <Route path="/stockist" element={<StockistPage />} />
                 <Route path="/wholesale" element={<Wholesale />} />
                 <Route path="/contact" element={<ContactPage />} />
-                <Route path="/userSignIn" element={<SignIn />} />
+                <Route path="/user-signin" element={<SignIn />} />
                 <Route
-                    path="/userProfile"
+                    path="/user-profile"
                     element={
                         <PrivateRoutes>
                             <UserProfile />

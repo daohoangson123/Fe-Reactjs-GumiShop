@@ -5,7 +5,6 @@
     gap: 10px;
     color: var(--color-default);
     background-color: var(--color-primary);
-    padding: 15px 120px;
 }
 
 .SignBar__Text {
@@ -40,7 +39,6 @@
 
 .SignBar__SignRegis-Link .inactive {
     color: var(--color-default);
-    text-decoration: none;
 }
 
 .SignBar__SignRegis-Link a:visited {
@@ -50,7 +48,7 @@
 .UserImg {
     width: 23px;
     aspect-ratio: 1;
-    border-radius: 100%;
+    border-radius: var(--border-round);
 }
 
 .SignBar__Languages {

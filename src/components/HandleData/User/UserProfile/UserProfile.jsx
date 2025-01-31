@@ -17,10 +17,10 @@ import {
     myPurchaseHistorySelector,
     userSelector,
 } from '../../../../redux/Selectors/Selector';
-import Skeleton from 'react-loading-skeleton';
 import { logoutRequest } from '../../../../data/axiosAPI/userSignout';
 import ErrorBoundary from '../../../Support/Error/ErrorBoundary';
 import { useRef, useState } from 'react';
+import Loading from '../../../Layout/UI/Loading/Loading';
 
 const UserProfile = () => {
     const dispatch = useDispatch();
@@ -28,6 +28,7 @@ const UserProfile = () => {
     const adminProduct = useSelector(adminProductSelector);
     const userData = useSelector(userSelector);
     const [productData, setProductData] = useState();
+    const [isImgLoaded, setIsImgLoaded] = useState();
     const inputFile = useRef(null);
 
     const handleSignOut = () => {
@@ -64,38 +65,28 @@ const UserProfile = () => {
         <div className="UserProfile Container">
             <ErrorBoundary>
                 <div className="UserProfile__UserData">
-                    {!userData ? (
-                        <>
-                            <Skeleton width={128} height={128} circle />
+                    <div className="UserProfile__UserImgContainer">
+                        {!isImgLoaded && (
                             <div>
-                                <Skeleton width={120} />
-                                <Skeleton width={80} />
+                                <Loading />
                             </div>
-                            <div style={{ justifySelf: 'center' }}>
-                                <Skeleton width={70} />
-                            </div>
-                        </>
-                    ) : (
-                        <>
-                            <img
-                                src={userData?.avatar}
-                                alt={userData?.first_name}
-                            />
-                            <div>
-                                User: {userData?.first_name}{' '}
-                                {userData?.last_name}
-                                <br />
-                                Id: {userData?.id} -{' '}
-                                {userData?.id === 1 ? 'Admin' : 'Customer'}
-                            </div>
-                            <button
-                                onClick={handleSignOut}
-                                className="SignOut__Btn"
-                            >
-                                <Link to="/userSignIn">Sign Out</Link>
-                            </button>
-                        </>
-                    )}
+                        )}
+                        <img
+                            src={userData?.avatar}
+                            alt={userData?.first_name}
+                            fetchpriority="high"
+                            onLoad={() => setIsImgLoaded(true)}
+                        />
+                    </div>
+                    <div>
+                        User: {userData?.first_name} {userData?.last_name}
+                        <br />
+                        Id: {userData?.id} -{' '}
+                        {userData?.id === 1 ? 'Admin' : 'Customer'}
+                    </div>
+                    <button onClick={handleSignOut} className="SignOut__Btn">
+                        <Link to="/user-signin">Sign Out</Link>
+                    </button>
                 </div>
                 {userData?.id === 1 ? (
                     <div className="Admin-Product-Control">

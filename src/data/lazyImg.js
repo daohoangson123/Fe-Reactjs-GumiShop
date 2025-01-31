@@ -1,6 +1,6 @@
 const lazyImgCall = () => {
     let options = {
-        rootMargin: '-50px',
+        rootMargin: '-30px',
         threshold: 0,
     };
 

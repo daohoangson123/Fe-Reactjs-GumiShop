@@ -2,7 +2,7 @@ import Skeleton from 'react-loading-skeleton';
 //
 import './ProductSkeleton.css';
 
-function ProductSkeleton({
+const ProductSkeleton = ({
     imgWidth,
     imgHeight,
     contentWidth,
@@ -10,7 +10,7 @@ function ProductSkeleton({
     count,
     boderRadius,
     circle,
-}) {
+}) => {
     return (
         <>
             <div className="ProductSkeleton">
@@ -75,6 +75,6 @@ function ProductSkeleton({
             </div>
         </>
     );
-}
+};
 
 export default ProductSkeleton;

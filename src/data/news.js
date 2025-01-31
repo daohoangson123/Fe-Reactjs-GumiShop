@@ -1,6 +1,6 @@
-import new1 from '../assets/img/news1.webp';
-import new2 from '../assets/img/news2.webp';
-import new3 from '../assets/img/news3.webp';
+import new1 from '../assets/img/news1.jpg';
+import new2 from '../assets/img/news2.jpg';
+import new3 from '../assets/img/news3.jpg';
 
 export const news_Items = [
     {

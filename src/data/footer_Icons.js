@@ -1,11 +1,12 @@
-import fb from '../assets/icon/fb.png';
-import ig from '../assets/icon/ig.png';
-import tw from '../assets/icon/tw.png';
-import pi from '../assets/icon/pi.png';
-import yt from '../assets/icon/yt.png';
+import FacebookIcon from '../components/Layout/UI/SVG/Icons/FacebookIcon';
+import IngstaIcon from '../components/Layout/UI/SVG//Icons/IngstaIcon';
+import PinterestIcon from '../components/Layout/UI/SVG//Icons/PinterestIcon';
+import TwitterIcon from '../components/Layout/UI/SVG//Icons/TwitterIcon';
+import YoutubeIcon from '../components/Layout/UI/SVG//Icons/YoutubeIcon';
+//
 import amex from '../assets/icon/amex.png';
 import apay from '../assets/icon/apay.png';
-import gpay from '../assets/icon/ggpay.jpg';
+import gpay from '../assets/icon/ggpay.png';
 import mc from '../assets/icon/mc.png';
 import pp from '../assets/icon/pp.png';
 import spay from '../assets/icon/shoppay.png';
@@ -13,24 +14,29 @@ import visa from '../assets/icon/visa.png';
 
 export const social_Icons = [
     {
-        url: fb,
+        id: 'fb',
         path: 'https://www.facebook.com/',
+        SVG: <FacebookIcon />,
     },
     {
-        url: ig,
+        id: 'ig',
         path: 'https://www.instagram.com/',
+        SVG: <IngstaIcon />,
     },
     {
-        url: tw,
+        id: 'tw',
         path: 'https://twitter.com/',
+        SVG: <TwitterIcon />,
     },
     {
-        url: pi,
+        id: 'pi',
         path: 'https://www.pinterest.com/',
+        SVG: <PinterestIcon />,
     },
     {
-        url: yt,
+        id: 'yt',
         path: 'https://www.youtube.com/',
+        SVG: <YoutubeIcon />,
     },
 ];
 

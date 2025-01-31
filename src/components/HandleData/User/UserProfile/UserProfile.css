@@ -10,12 +10,20 @@
     min-height: 170px;
 }
 
-.UserProfile__UserData img {
+.UserProfile__UserImgContainer {
+    display: grid;
+}
+
+.UserProfile__UserImgContainer div {
+    grid-area: 1 / 2 / 1 / 2;
+}
+
+.UserProfile__UserImgContainer img {
+    grid-area: 1 / 2 / 1 / 2;
     aspect-ratio: 1;
-    object-fit: cover;
     width: 128px;
     min-width: 128px;
-    border-radius: 50%;
+    border-radius: var(--border-round);
 }
 
 .UserProfile__UserData div {
@@ -39,7 +47,6 @@
 .SignOut__Btn a {
     padding: 5px;
     color: var(--color-alt);
-    text-decoration: none;
 }
 
 .ClearPurchaseHistory__Btn {
@@ -58,6 +65,10 @@
     gap: 10px;
     padding: 20px;
     border: 1px solid var(--color-primary-rgba);
+}
+
+.ProductsAddingForm input {
+    width: 100%;
 }
 
 @media (max-width: 424px) {
