@@ -197,7 +197,12 @@ const ProductDisplay = ({ filtered }) => {
             </div>
             <div>
                 {filtered?.length === 0 && (
-                    <img className="NoItemImg" src={noitem} alt="NoItemFound" />
+                    <img
+                        className="NoItemImg"
+                        src={noitem}
+                        alt="NoItemFound"
+                        loading="lazy"
+                    />
                 )}
             </div>
         </>

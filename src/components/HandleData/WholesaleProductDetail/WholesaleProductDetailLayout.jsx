@@ -39,6 +39,7 @@ const WholesaleProductDetailLayout = ({
                             <img
                                 src={productDetail.img}
                                 alt={productDetail.name}
+                                loading="lazy"
                             />
                             <div className="Product-Container__Img-Carousel">
                                 Preview img Carousel

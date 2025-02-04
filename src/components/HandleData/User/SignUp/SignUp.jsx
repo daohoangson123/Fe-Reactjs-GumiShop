@@ -5,7 +5,11 @@ const SignUp = () => {
     return (
         <div className="SignUp">
             <form action="" className="SignUp__Form"></form>
-            <img src={underContruction} alt="Page Under Contruction" />
+            <img
+                src={underContruction}
+                alt="Page Under Contruction"
+                loading="lazy"
+            />
         </div>
     );
 };

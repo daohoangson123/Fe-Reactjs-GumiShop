@@ -110,9 +110,10 @@ const WholesaleLayout = ({ title, productApi }) => {
                     </>
                 ) : filtered.length === 0 ? (
                     <img
+                        className="Wholesale__NoItem"
                         src={noItem}
                         alt="noProduct"
-                        className="Wholesale__NoItem"
+                        loading="lazy"
                     />
                 ) : (
                     filtered.map((item) => (

@@ -83,7 +83,11 @@ const SearchModal = ({
                                     .join('-')}`}
                                 title={product.name}
                             >
-                                <img src={product.img} alt="" />
+                                <img
+                                    src={product.img}
+                                    alt={product.name}
+                                    loading="lazy"
+                                />
                                 {product.name}
                             </Link>
                         </li>

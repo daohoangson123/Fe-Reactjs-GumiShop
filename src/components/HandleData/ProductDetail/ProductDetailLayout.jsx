@@ -53,6 +53,7 @@ const ProductDetailLayout = ({
                             src={productDetail.img}
                             alt="productImg"
                             className="ProductDetail__Img"
+                            loading="lazy"
                         />
                         <div className="ProductDetailBox__Name">
                             {productDetail.name}

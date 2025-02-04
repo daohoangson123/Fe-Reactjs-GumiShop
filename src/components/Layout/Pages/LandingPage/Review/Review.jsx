@@ -57,9 +57,9 @@ const Review = () => {
             </div>
             <img
                 className="Review__Img"
-                src={null}
+                src={review_img}
                 alt=""
-                lazysrc={review_img}
+                loading="lazy"
             />
         </section>
     );

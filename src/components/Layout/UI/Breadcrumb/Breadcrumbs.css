@@ -15,11 +15,6 @@
     color: var(--color-alt);
 }
 
-.CrumbItem img {
-    width: 8px;
-    height: 14px;
-}
-
 .CrumbItem:last-child a {
     cursor: default;
     color: var(--color-text);

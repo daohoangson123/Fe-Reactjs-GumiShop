@@ -16,21 +16,21 @@ const Control = ({ title, content, btn }) => {
             <div className="Control__Img-Container">
                 <img
                     className="Control__Img-1 Control__Img-Item"
-                    src={null}
-                    alt=""
-                    lazysrc={control1}
+                    src={control1}
+                    alt="controlImg1"
+                    loading="lazy"
                 />
                 <img
                     className="Control__Img-2 Control__Img-Item"
-                    src={null}
-                    alt=""
-                    lazysrc={control2}
+                    src={control2}
+                    alt="controlImg2"
+                    loading="lazy"
                 />
                 <img
                     className="Control__Img-3 Control__Img-Item"
-                    src={null}
-                    alt=""
-                    lazysrc={control3}
+                    src={control3}
+                    alt="controlImg3"
+                    loading="lazy"
                 />
             </div>
         </section>

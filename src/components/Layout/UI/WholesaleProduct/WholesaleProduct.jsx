@@ -3,18 +3,12 @@ import './WholesaleProduct.css';
 import brokenImg from '../../../../assets/img/brokenImg.png';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import lazyImgCall from '../../../../data/lazyImg';
 
 const WholesaleProduct = ({ props }) => {
     const [isImgLoaded, setIsImgLoaded] = useState();
     const [isImgError, setIsImgError] = useState(false);
     const orgPrice = props.price + props.discouter;
     const salePercent = 100 - (props.price / orgPrice) * 100;
-
-    useEffect(() => {
-        lazyImgCall();
-    }, []);
 
     return (
         <div className="WholesaleProduct" title={`Product: ${props.name}`}>
@@ -25,9 +19,9 @@ const WholesaleProduct = ({ props }) => {
                 >
                     <img
                         className="WholesaleProduct__Img"
-                        src={isImgError && brokenImg}
+                        src={isImgError ? brokenImg : props.img}
                         alt={props.name}
-                        lazysrc={isImgError ? brokenImg : props.img}
+                        loading="lazy"
                         onLoad={() => setIsImgLoaded(true)}
                         onError={() => setIsImgError(true)}
                     />

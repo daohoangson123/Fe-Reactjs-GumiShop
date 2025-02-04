@@ -52,6 +52,7 @@ const SignBar = memo(function SignBar({ isDown }) {
                                 className="UserImg"
                                 src={userData ? userData.avatar : userIcon}
                                 alt="userImg"
+                                loading="lazy"
                             />
                         ) : (
                             'Sign In'

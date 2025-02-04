@@ -219,7 +219,7 @@ const CartForm = ({
                             Shopping Now
                         </Link>
                     </div>
-                    <img src={emptyCart} alt="EmptyCart"></img>
+                    <img src={emptyCart} alt="EmptyCart" loading="lazy" />
                 </div>
             )}
         </form>

@@ -15,15 +15,11 @@ import banner1_bg from '../../../../../assets/img/HeroBannerBot.png';
 import banner2_bg from '../../../../../assets/img/HeroBannerBot1.png';
 //
 import SliderItem from './SliderItem/SliderItem';
-import { useEffect, useState } from 'react';
-import lazyImgCall from '../../../../../data/lazyImg';
+import { useState } from 'react';
 import Loading from '../../../UI/Loading/Loading';
 //
 
 const SliderBanner = () => {
-    useEffect(() => {
-        lazyImgCall();
-    }, []);
     return (
         <section className="HeroBanner">
             <OwlCarousel
@@ -82,8 +78,6 @@ const HeroSlider1 = () => {
 };
 
 const HeroSlider2 = () => {
-    const [isImgLoaded, setIsImgLoaded] = useState();
-
     return (
         <div className="SliderContainer">
             <div
@@ -91,19 +85,12 @@ const HeroSlider2 = () => {
                 title="Drag or swip to see other banner"
             >
                 <img
-                    src={''}
-                    alt=""
-                    lazysrc={banner2}
+                    src={banner2}
+                    alt={banner_data[1].name}
+                    loading="lazy"
                     fetchpriority="low"
                     className="BannerContainer_MainImg BannerContainer_MainImg_2"
-                    style={{ visibility: isImgLoaded ? 'visible' : 'hidden' }}
-                    onLoad={() => setIsImgLoaded(true)}
                 />
-                {!isImgLoaded && (
-                    <div className="BannerImgLoader2">
-                        <Loading />
-                    </div>
-                )}
                 <div className="SliderBanner_2">
                     <SliderItem
                         title={banner_data[1].title}
@@ -113,9 +100,9 @@ const HeroSlider2 = () => {
                     />
                 </div>
                 <img
-                    src={''}
+                    src={banner2_bg}
                     alt=""
-                    lazysrc={banner2_bg}
+                    loading="lazy"
                     className="BannerContainer_SubImg"
                 />
             </div>
@@ -124,7 +111,6 @@ const HeroSlider2 = () => {
 };
 
 const HeroSlider3 = () => {
-    const [isImgLoaded, setIsImgLoaded] = useState();
     return (
         <div className="SliderContainer">
             <div
@@ -132,19 +118,12 @@ const HeroSlider3 = () => {
                 title="Drag or swip to see other banner"
             >
                 <img
-                    src={''}
+                    src={banner3}
                     alt={banner_data[2].name}
-                    lazysrc={banner3}
+                    loading="lazy"
                     fetchpriority="low"
                     className="BannerContainer_MainImg BannerContainer_MainImg_3"
-                    style={{ visibility: isImgLoaded ? 'visible' : 'hidden' }}
-                    onLoad={() => setIsImgLoaded(true)}
                 />
-                {!isImgLoaded && (
-                    <div className="BannerImgLoader1">
-                        <Loading />
-                    </div>
-                )}
                 <div className="SliderBanner_3">
                     <SliderItem
                         title={banner_data[1].title}

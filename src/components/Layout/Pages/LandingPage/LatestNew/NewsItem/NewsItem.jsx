@@ -10,7 +10,7 @@ const NewsItem = ({ id, url, date, title, content, index }) => {
                 animationDelay: `${index * 0.2}s`,
             }}
         >
-            <img src={null} alt="" lazysrc={url} />
+            <img src={url} alt="" loading="lazy" />
             <div className="News_Date">{date}</div>
             <div className="News_Title">{title}</div>
             <p className="News_Content">{content}</p>

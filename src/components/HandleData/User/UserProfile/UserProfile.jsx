@@ -75,6 +75,7 @@ const UserProfile = () => {
                             src={userData?.avatar}
                             alt={userData?.first_name}
                             fetchpriority="high"
+                            loading="lazy"
                             onLoad={() => setIsImgLoaded(true)}
                         />
                     </div>
@@ -184,6 +185,7 @@ const UserProfile = () => {
                                                 productData?.imgUrl
                                             }
                                             alt={productData?.name}
+                                            loading="lazy"
                                             style={{
                                                 width: '50px',
                                                 height: '50px',
@@ -228,6 +230,7 @@ const UserProfile = () => {
                                                     <img
                                                         src={item?.img}
                                                         alt="productImg"
+                                                        loading="lazy"
                                                         style={{
                                                             width: '50px',
                                                             height: '50px',

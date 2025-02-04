@@ -11,7 +11,7 @@ function PageLoading() {
                     viewBox="0 0 36 36"
                     aria-hidden="true"
                     role="img"
-                    class="iconify iconify--twemoji"
+                    className="iconify iconify--twemoji"
                     preserveAspectRatio="xMidYMid meet"
                 >
                     <path
@@ -30,7 +30,7 @@ function PageLoading() {
                     viewBox="0 0 36 36"
                     aria-hidden="true"
                     role="img"
-                    class="iconify iconify--twemoji"
+                    className="iconify iconify--twemoji"
                     preserveAspectRatio="xMidYMid meet"
                 >
                     <path
@@ -49,7 +49,7 @@ function PageLoading() {
                     viewBox="0 0 36 36"
                     aria-hidden="true"
                     role="img"
-                    class="iconify iconify--twemoji"
+                    className="iconify iconify--twemoji"
                     preserveAspectRatio="xMidYMid meet"
                 >
                     <path
@@ -68,7 +68,7 @@ function PageLoading() {
                     viewBox="0 0 36 36"
                     aria-hidden="true"
                     role="img"
-                    class="iconify iconify--twemoji"
+                    className="iconify iconify--twemoji"
                     preserveAspectRatio="xMidYMid meet"
                 >
                     <path

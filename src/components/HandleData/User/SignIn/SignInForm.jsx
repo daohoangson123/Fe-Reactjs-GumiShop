@@ -261,6 +261,7 @@ const SignInForm = () => {
                                 src={google}
                                 alt="google"
                                 className="GoogleIcon"
+                                loading="lazy"
                             />
                             Google
                         </div>
@@ -269,6 +270,7 @@ const SignInForm = () => {
                                 src={facebook}
                                 alt="google"
                                 className="FacebookIcon"
+                                loading="lazy"
                             />
                             Facebook
                         </div>

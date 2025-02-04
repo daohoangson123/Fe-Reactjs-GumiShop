@@ -25,7 +25,7 @@ const Good4MeSilder = ({ title }) => {
             >
                 {bottom_Slider.map((img) => (
                     <div className="item" key={img.id}>
-                        <img src={img.url} alt={img.url} />
+                        <img src={img.url} alt={img.url} loading="lazy" />
                     </div>
                 ))}
             </OwlCarousel>
