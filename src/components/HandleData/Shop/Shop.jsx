@@ -4,12 +4,13 @@ import noitem from '../../../assets/img/noitem.jpg';
 //
 import { fetchProductApi } from '../../../data/axiosAPI/productData';
 //
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 //
 import Product from '../../Layout/UI/Product/Product';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import Loading from '../../Layout/UI/Loading/Loading';
+import { debounce } from 'lodash';
 
 const ShopFilter = ({
     productApi,
@@ -17,13 +18,13 @@ const ShopFilter = ({
     handleNameChange,
     handleSaleCheck,
     handlePriceChange,
-    handleSortChange,
-    q,
+    handleOrderChange,
+    searchquery,
     saleChecked,
     price,
-    sort,
+    order,
 }) => {
-    const sortFilterOpt = [
+    const orderFilterOpt = [
         { label: 'Default', value: 'Default' },
         { label: 'PriceUp', value: 'PriceUp' },
         { label: 'PriceDown', value: 'PriceDown' },
@@ -61,14 +62,10 @@ const ShopFilter = ({
                                 type="text"
                                 name="searchkw"
                                 id="searchkw"
-                                value={q}
                                 title={`Enter some product's character Ex: vitamin, detox etc`}
-                                placeholder={
-                                    productApi.length !== 0
-                                        ? `Enter some product's character`
-                                        : 'Please wait a sec...'
-                                }
-                                onChange={(event) => handleNameChange(event)}
+                                placeholder="Search"
+                                onChange={handleNameChange}
+                                value={searchquery}
                             />
                             <div className="SaleCheckBox">
                                 <input
@@ -76,7 +73,7 @@ const ShopFilter = ({
                                     name="onSale"
                                     id="onSale"
                                     title="Show only on-sale Products"
-                                    checked={saleChecked}
+                                    checked={saleChecked || false}
                                     onChange={(event) => {
                                         handleSaleCheck(event);
                                     }}
@@ -99,7 +96,7 @@ const ShopFilter = ({
                                     id="priceFilter"
                                     className="priceFilter"
                                     title="Find Products by price-ranges"
-                                    value={price}
+                                    value={price || 'Default'}
                                     onChange={(event) =>
                                         handlePriceChange(event)
                                     }
@@ -118,23 +115,23 @@ const ShopFilter = ({
                             </div>
                             <div>
                                 <label
-                                    htmlFor="sortFilter"
-                                    title="Sort Products"
+                                    htmlFor="orderFilter"
+                                    title="Order Products"
                                 >
-                                    Sort-by:{' '}
+                                    Order-by:{' '}
                                 </label>
                                 <select
-                                    id="sortFilter"
-                                    className="sortFilter"
-                                    title="Sort Products"
-                                    value={sort}
+                                    id="orderFilter"
+                                    className="orderFilter"
+                                    title="Order Products"
+                                    value={order || 'Default'}
                                     onChange={(event) =>
-                                        handleSortChange(event)
+                                        handleOrderChange(event)
                                     }
                                 >
-                                    {sortFilterOpt.map((opt) => (
+                                    {orderFilterOpt.map((opt) => (
                                         <option
-                                            disabled={sort === opt.label}
+                                            disabled={order === opt.label}
                                             key={opt.value}
                                             value={opt.value}
                                             title={opt.value}
@@ -211,75 +208,32 @@ const ProductDisplay = ({ filtered }) => {
 
 const Shop = () => {
     const [searchParams, setSearchParams] = useSearchParams({
-        search: '',
+        searchquery: '',
         saleChecked: false,
         price: 'Default',
-        sort: 'Default',
+        order: 'Default',
     });
-    const q = searchParams.get('search');
+    const searchquery = searchParams.get('searchquery');
     const saleChecked = searchParams.get('saleChecked') === 'true';
     const price = searchParams.get('price');
-    const sort = searchParams.get('sort');
+    const order = searchParams.get('order');
     const [productApi, setProductApi] = useState([]);
-    const [searchValue, setSearchValue] = useState(q);
+    const [searchValue, setSearchValue] = useState(searchquery);
     const [onSale, setOnSale] = useState(saleChecked);
     const [priceFilter, setPriceFilter] = useState(price);
-    const [sortFilter, setSortFilter] = useState(sort);
+    const [orderFilter, setOrderFilter] = useState(order);
     const result = [...productApi];
-
-    const handleNameChange = (event) => {
-        setSearchValue(event.target.value);
-        setSearchParams(
-            (pre) => {
-                pre.set('search', event.target.value);
-                return pre;
-            },
-            { replace: true }
-        );
-    };
-
-    const handleSaleCheck = (event) => {
-        setOnSale(event.target.checked);
-        setSearchParams(
-            (pre) => {
-                pre.set('saleChecked', event.target.checked);
-                return pre;
-            },
-            { replace: true }
-        );
-    };
-
-    const handlePriceChange = (event) => {
-        setPriceFilter(event.target.value);
-        setSearchParams(
-            (pre) => {
-                pre.set('price', event.target.value);
-                return pre;
-            },
-            { replace: true }
-        );
-    };
-
-    const handleSortChange = (event) => {
-        setSortFilter(event.target.value);
-        setSearchParams(
-            (pre) => {
-                pre.set('sort', event.target.value);
-                return pre;
-            },
-            { replace: true }
-        );
-    };
+    const location = useLocation();
 
     const getFilterItems = (
         searchValue,
         result,
         onSale,
-        sortFilter,
+        orderFilter,
         priceFilter
     ) => {
         const searchByName = result.filter((product) => {
-            const query = searchValue.replace(/\s+/g, '').toLowerCase();
+            const query = searchValue?.replace(/\s+/g, '').toLowerCase();
             const productName = product.name.replace(/\s+/g, '').toLowerCase();
             return productName.includes(query);
         });
@@ -288,7 +242,7 @@ const Shop = () => {
             (product) => product.sale === true
         );
         //default
-        if (sortFilter === 'Default' && priceFilter === 'Default') {
+        if (orderFilter === 'Default' && priceFilter === 'Default') {
             //nameOnly
             if (searchValue && !onSale) {
                 return searchByName;
@@ -302,20 +256,20 @@ const Shop = () => {
             //default
             return result;
         }
-        //sortFilter
-        if (sortFilter !== 'Default' && priceFilter === 'Default') {
-            switch (sortFilter !== 'Default') {
+        //orderFilter
+        if (orderFilter !== 'Default' && priceFilter === 'Default') {
+            switch (orderFilter !== 'Default') {
                 case !searchValue && onSale:
                     switch (true) {
-                        case sortFilter === 'PriceUp':
+                        case orderFilter === 'PriceUp':
                             return saleOnly.toSorted(
                                 (a, b) => a.price - b.price
                             );
-                        case sortFilter === 'PriceDown':
+                        case orderFilter === 'PriceDown':
                             return saleOnly.toSorted(
                                 (a, b) => b.price - a.price
                             );
-                        case sortFilter === 'NameUp':
+                        case orderFilter === 'NameUp':
                             return saleOnly.toSorted((a, b) => {
                                 const nameA = a.name.toLowerCase();
                                 const nameB = b.name.toLowerCase();
@@ -327,7 +281,7 @@ const Shop = () => {
                                 }
                                 return 0;
                             });
-                        case sortFilter === 'NameDown':
+                        case orderFilter === 'NameDown':
                             return saleOnly.toSorted((a, b) => {
                                 const nameA = a.name.toLowerCase();
                                 const nameB = b.name.toLowerCase();
@@ -344,15 +298,15 @@ const Shop = () => {
                     }
                 case searchValue && !onSale:
                     switch (true) {
-                        case sortFilter === 'PriceUp':
+                        case orderFilter === 'PriceUp':
                             return searchByName.toSorted(
                                 (a, b) => a.price - b.price
                             );
-                        case sortFilter === 'PriceDown':
+                        case orderFilter === 'PriceDown':
                             return searchByName.toSorted(
                                 (a, b) => b.price - a.price
                             );
-                        case sortFilter === 'NameUp':
+                        case orderFilter === 'NameUp':
                             return searchByName.toSorted((a, b) => {
                                 const nameA = a.name.toLowerCase();
                                 const nameB = b.name.toLowerCase();
@@ -364,7 +318,7 @@ const Shop = () => {
                                 }
                                 return 0;
                             });
-                        case sortFilter === 'NameDown':
+                        case orderFilter === 'NameDown':
                             return searchByName.toSorted((a, b) => {
                                 const nameA = a.name.toLowerCase();
                                 const nameB = b.name.toLowerCase();
@@ -381,15 +335,15 @@ const Shop = () => {
                     }
                 case searchValue && onSale:
                     switch (true) {
-                        case sortFilter === 'PriceUp':
+                        case orderFilter === 'PriceUp':
                             return searchByNameSale.toSorted(
                                 (a, b) => a.price - b.price
                             );
-                        case sortFilter === 'PriceDown':
+                        case orderFilter === 'PriceDown':
                             return searchByNameSale.toSorted(
                                 (a, b) => b.price - a.price
                             );
-                        case sortFilter === 'NameUp':
+                        case orderFilter === 'NameUp':
                             return searchByNameSale.toSorted((a, b) => {
                                 const nameA = a.name.toLowerCase();
                                 const nameB = b.name.toLowerCase();
@@ -401,7 +355,7 @@ const Shop = () => {
                                 }
                                 return 0;
                             });
-                        case sortFilter === 'NameDown':
+                        case orderFilter === 'NameDown':
                             return searchByNameSale.toSorted((a, b) => {
                                 const nameA = a.name.toLowerCase();
                                 const nameB = b.name.toLowerCase();
@@ -418,11 +372,11 @@ const Shop = () => {
                     }
                 default:
                     switch (true) {
-                        case sortFilter === 'PriceUp':
+                        case orderFilter === 'PriceUp':
                             return result.toSorted((a, b) => a.price - b.price);
-                        case sortFilter === 'PriceDown':
+                        case orderFilter === 'PriceDown':
                             return result.toSorted((a, b) => b.price - a.price);
-                        case sortFilter === 'NameUp':
+                        case orderFilter === 'NameUp':
                             return result.toSorted((a, b) => {
                                 const nameA = a.name.toLowerCase();
                                 const nameB = b.name.toLowerCase();
@@ -434,7 +388,7 @@ const Shop = () => {
                                 }
                                 return 0;
                             });
-                        case sortFilter === 'NameDown':
+                        case orderFilter === 'NameDown':
                             return result.toSorted((a, b) => {
                                 const nameA = a.name.toLowerCase();
                                 const nameB = b.name.toLowerCase();
@@ -452,7 +406,7 @@ const Shop = () => {
             }
         }
         //priceFilter
-        if (sortFilter === 'Default' && priceFilter !== 'Default') {
+        if (orderFilter === 'Default' && priceFilter !== 'Default') {
             //priceFilterOnly
             if (!searchValue && !onSale) {
                 if (priceFilter === '< $100') {
@@ -514,11 +468,11 @@ const Shop = () => {
                 }
             }
         }
-        //sort&price
-        if (sortFilter !== 'Default' && priceFilter !== 'Default') {
+        //order&price
+        if (orderFilter !== 'Default' && priceFilter !== 'Default') {
             //
             if (!searchValue && !onSale) {
-                if (sortFilter === 'PriceUp') {
+                if (orderFilter === 'PriceUp') {
                     if (priceFilter === '< $100') {
                         return result
                             .filter((product) => product.price < 100)
@@ -535,7 +489,7 @@ const Shop = () => {
                             .filter((product) => product.price > 200)
                             .toSorted((a, b) => a.price - b.price);
                     }
-                } else if (sortFilter === 'PriceDown') {
+                } else if (orderFilter === 'PriceDown') {
                     if (priceFilter === '< $100') {
                         return result
                             .filter((product) => product.price < 100)
@@ -552,7 +506,7 @@ const Shop = () => {
                             .filter((product) => product.price > 200)
                             .toSorted((a, b) => b.price - a.price);
                     }
-                } else if (sortFilter === 'NameUp') {
+                } else if (orderFilter === 'NameUp') {
                     if (priceFilter === '< $100') {
                         return result
                             .filter((product) => product.price < 100)
@@ -599,7 +553,7 @@ const Shop = () => {
                                 return 0;
                             });
                     }
-                } else if (sortFilter === 'NameDown') {
+                } else if (orderFilter === 'NameDown') {
                     if (priceFilter === '< $100') {
                         return result
                             .filter((product) => product.price < 100)
@@ -650,7 +604,7 @@ const Shop = () => {
             }
             //
             if (searchValue && !onSale) {
-                if (sortFilter === 'PriceUp') {
+                if (orderFilter === 'PriceUp') {
                     if (priceFilter === '< $100') {
                         return searchByName
                             .filter((product) => product.price < 100)
@@ -667,7 +621,7 @@ const Shop = () => {
                             .filter((product) => product.price > 200)
                             .toSorted((a, b) => a.price - b.price);
                     }
-                } else if (sortFilter === 'PriceDown') {
+                } else if (orderFilter === 'PriceDown') {
                     if (priceFilter === '< $100') {
                         return searchByName
                             .filter((product) => product.price < 100)
@@ -682,9 +636,9 @@ const Shop = () => {
                     } else if (priceFilter === '> $200') {
                         return searchByName
                             .filter((product) => product.price > 200)
-                            .toSorted((a, b) => b.price - a.price);
+                            .toOrdered((a, b) => b.price - a.price);
                     }
-                } else if (sortFilter === 'NameUp') {
+                } else if (orderFilter === 'NameUp') {
                     if (priceFilter === '< $100') {
                         return searchByName
                             .filter((product) => product.price < 100)
@@ -731,7 +685,7 @@ const Shop = () => {
                                 return 0;
                             });
                     }
-                } else if (sortFilter === 'NameDown') {
+                } else if (orderFilter === 'NameDown') {
                     if (priceFilter === '< $100') {
                         return searchByName
                             .filter((product) => product.price < 100)
@@ -782,7 +736,7 @@ const Shop = () => {
             }
             //
             if (!searchValue && onSale) {
-                if (sortFilter === 'PriceUp') {
+                if (orderFilter === 'PriceUp') {
                     if (priceFilter === '< $100') {
                         return saleOnly
                             .filter((product) => product.price < 100)
@@ -799,7 +753,7 @@ const Shop = () => {
                             .filter((product) => product.price > 200)
                             .toSorted((a, b) => a.price - b.price);
                     }
-                } else if (sortFilter === 'PriceDown') {
+                } else if (orderFilter === 'PriceDown') {
                     if (priceFilter === '< $100') {
                         return saleOnly
                             .filter((product) => product.price < 100)
@@ -816,7 +770,7 @@ const Shop = () => {
                             .filter((product) => product.price > 200)
                             .toSorted((a, b) => b.price - a.price);
                     }
-                } else if (sortFilter === 'NameUp') {
+                } else if (orderFilter === 'NameUp') {
                     if (priceFilter === '< $100') {
                         return saleOnly
                             .filter((product) => product.price < 100)
@@ -863,7 +817,7 @@ const Shop = () => {
                                 return 0;
                             });
                     }
-                } else if (sortFilter === 'NameDown') {
+                } else if (orderFilter === 'NameDown') {
                     if (priceFilter === '< $100') {
                         return saleOnly
                             .filter((product) => product.price < 100)
@@ -914,7 +868,7 @@ const Shop = () => {
             }
             //
             if (searchValue && onSale) {
-                if (sortFilter === 'PriceUp') {
+                if (orderFilter === 'PriceUp') {
                     if (priceFilter === '< $100') {
                         return searchByNameSale
                             .filter((product) => product.price < 100)
@@ -931,7 +885,7 @@ const Shop = () => {
                             .filter((product) => product.price > 200)
                             .toSorted((a, b) => a.price - b.price);
                     }
-                } else if (sortFilter === 'PriceDown') {
+                } else if (orderFilter === 'PriceDown') {
                     if (priceFilter === '< $100') {
                         return searchByNameSale
                             .filter((product) => product.price < 100)
@@ -948,7 +902,7 @@ const Shop = () => {
                             .filter((product) => product.price > 200)
                             .toSorted((a, b) => b.price - a.price);
                     }
-                } else if (sortFilter === 'NameUp') {
+                } else if (orderFilter === 'NameUp') {
                     if (priceFilter === '< $100') {
                         return searchByNameSale
                             .filter((product) => product.price < 100)
@@ -995,7 +949,7 @@ const Shop = () => {
                                 return 0;
                             });
                     }
-                } else if (sortFilter === 'NameDown') {
+                } else if (orderFilter === 'NameDown') {
                     if (priceFilter === '< $100') {
                         return searchByNameSale
                             .filter((product) => product.price < 100)
@@ -1051,7 +1005,7 @@ const Shop = () => {
         searchValue,
         result,
         onSale,
-        sortFilter,
+        orderFilter,
         priceFilter
     );
 
@@ -1063,15 +1017,55 @@ const Shop = () => {
         }
     };
 
+    const handleNameChange = useCallback(
+        (event) => {
+            setSearchValue(event.target.value);
+            setSearchParams((pre) => {
+                pre.set('searchquery', event.target.value);
+                return pre;
+            });
+        },
+        [setSearchParams, setSearchValue]
+    );
+
+    const debounceChange = useMemo(
+        () => debounce(handleNameChange, 500),
+        [handleNameChange]
+    );
+
+    const handleSaleCheck = (event) => {
+        setOnSale(event.target.checked);
+        setSearchParams((pre) => {
+            pre.set('saleChecked', event.target.checked);
+            return pre;
+        });
+    };
+
+    const handlePriceChange = (event) => {
+        setPriceFilter(event.target.value);
+        setSearchParams((pre) => {
+            pre.set('price', event.target.value);
+            return pre;
+        });
+    };
+
+    const handleOrderChange = (event) => {
+        setOrderFilter(event.target.value);
+        setSearchParams((pre) => {
+            pre.set('order', event.target.value);
+            return pre;
+        });
+    };
+
     useEffect(() => {
         document.title = 'Gumi Shopify - Shop';
-
         getProducts();
 
         return () => {
             document.title = 'Gumi Shopify';
+            debounceChange.cancel();
         };
-    }, []);
+    }, [location.search, debounceChange]);
 
     return (
         <div className="Shop">
@@ -1081,11 +1075,11 @@ const Shop = () => {
                 handleNameChange={handleNameChange}
                 handleSaleCheck={handleSaleCheck}
                 handlePriceChange={handlePriceChange}
-                handleSortChange={handleSortChange}
-                q={q}
+                handleOrderChange={handleOrderChange}
+                searchquery={searchValue}
                 saleChecked={saleChecked}
                 price={price}
-                sort={sort}
+                order={order}
             />
             <div className="Container">
                 {productApi.length !== 0 ? (

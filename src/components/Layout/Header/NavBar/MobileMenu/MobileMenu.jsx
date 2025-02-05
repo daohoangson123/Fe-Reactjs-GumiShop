@@ -89,10 +89,7 @@ const MobileMenuRouting = ({
     });
 
     return (
-        <div
-            className={`MobileMenu__NavContainer ${menuOpen ? 'MobileMenu__NavContainer--Opened' : 'MobileMenu__NavContainer--Closed'}`}
-            title="Close Menu"
-        >
+        <div className="MobileMenu__NavContainer" title="Close Menu">
             <div className="MobileMenu__Nav">
                 {navlinkData.map((item) => (
                     <NavLink

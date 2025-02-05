@@ -16,7 +16,7 @@ import CartLayout from './CartLayout';
 //
 import ErrorBoundary from '../../Support/Error/ErrorBoundary';
 //
-import { Zoom, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { putPurchasedHistory } from '../../../data/axiosAPI/purchaseHistory';
 
@@ -31,7 +31,7 @@ const Cart = () => {
 
     const purchasedNotify = () =>
         toast.success(`Your purchase was successful`, {
-            transition: Zoom,
+            position: 'bottom-right',
         });
 
     const totalItem = myCart.length;

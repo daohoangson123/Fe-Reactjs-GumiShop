@@ -34,7 +34,7 @@
 
 .NavSearch {
     display: grid;
-    grid-template-rows: 70px auto;
+    grid-template-rows: 80px auto;
     position: absolute;
     inset: 0;
     top: 149px;
@@ -42,6 +42,8 @@
     background-color: var(--color-primary);
     overflow: auto;
     transition: var(--transition-fast);
+    padding: 0 20px;
+    scrollbar-gutter: stable both-edges;
 }
 
 .NavSearch::-webkit-scrollbar {
@@ -55,7 +57,7 @@
 .NavSearch__Form {
     justify-self: center;
     text-align: center;
-    transition: var(--transition-fast);
+    padding: 10px 0;
 }
 
 .NavSearch__Form--Text {
@@ -143,7 +145,7 @@
     }
 
     .NavSearch {
-        top: 64px;
+        top: 74px;
     }
 }
 

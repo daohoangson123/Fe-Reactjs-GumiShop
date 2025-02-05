@@ -1,8 +1,7 @@
 import './SearchCart.css';
 //
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { debounce } from 'lodash';
 //
 import { fetchProductApi } from '../../../../../data/axiosAPI/productData';
 //
@@ -17,26 +16,30 @@ import Loading from '../../../UI/Loading/Loading';
 const SearchModal = ({
     isSearching,
     setIsSearching,
-    debounceChange,
+    handleChange,
     searchValue,
     filtered,
     productData,
 }) => {
+    const handleSearchSubmit = (event) => {
+        event.preventDefault();
+    };
     return (
         <div
             className="NavSearch"
             style={
-                isSearching
+                isSearching && filtered.length > 0
                     ? {
                           height: 'calc(100lvh - 74px)',
-                          marginTop: '10px',
-                          paddingBlock: '10px',
-                          opacity: 1,
                       }
-                    : null
+                    : isSearching && filtered.length === 0
+                      ? {
+                            height: '80px',
+                        }
+                      : null
             }
         >
-            <form className="NavSearch__Form">
+            <form className="NavSearch__Form" onSubmit={handleSearchSubmit}>
                 <input
                     type="text"
                     name="searchquery"
@@ -44,7 +47,7 @@ const SearchModal = ({
                     placeholder="Search by Product's name"
                     required
                     autoComplete="off"
-                    onChange={debounceChange}
+                    onChange={handleChange}
                 />
                 <div className="NavSearch__Form--Text">
                     {!searchValue ? (
@@ -106,19 +109,16 @@ const SearchCart = () => {
     const result = [...productApi];
 
     const handleChange = (event) => {
-        setSearchValue(event.target.value);
+        setSearchValue(event.target.value.replace(/\s+/g, '').toLowerCase());
     };
 
-    const debounceChange = useMemo(() => debounce(handleChange, 500), []);
-
     const getFilterItems = (searchValue, result) => {
-        const query = searchValue.replace(/\s+/g, '').toLowerCase();
-        if (!query) {
+        if (!searchValue) {
             return [];
         }
         return result.filter((product) => {
             const productName = product.name.replace(/\s+/g, '').toLowerCase();
-            const productList = productName.includes(query);
+            const productList = productName.includes(searchValue);
             return productList;
         });
     };
@@ -135,11 +135,7 @@ const SearchCart = () => {
 
     useEffect(() => {
         searchValue && getProducts();
-
-        return () => {
-            debounceChange.cancel();
-        };
-    }, [debounceChange, searchValue]);
+    }, [searchValue]);
 
     useEffect(() => {
         const searchIcon = document.getElementById('SearchIcon');
@@ -263,7 +259,7 @@ const SearchCart = () => {
             <SearchModal
                 isSearching={isSearching}
                 setIsSearching={setIsSearching}
-                debounceChange={debounceChange}
+                handleChange={handleChange}
                 searchValue={searchValue}
                 filtered={filtered}
                 productData={result}

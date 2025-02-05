@@ -6,7 +6,7 @@ import Loading from '../../Layout/UI/Loading/Loading';
 //
 import { Link } from 'react-router-dom';
 //
-import { Slide, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const CartForm = ({
     myCart,
@@ -40,8 +40,7 @@ const CartForm = ({
                                     toast.error(
                                         `${item.name} removed from your Cart`,
                                         {
-                                            transition: Slide,
-                                            position: 'bottom-center',
+                                            position: 'bottom-right',
                                         }
                                     );
                                 return (

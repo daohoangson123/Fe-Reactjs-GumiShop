@@ -97,18 +97,5 @@ p {
 @media (width <= 1024px) {
     .ProductContainer {
         grid-template-columns: repeat(auto-fit, 120px);
-        justify-content: space-evenly;
-    }
-}
-
-@media (width < 850px) {
-    .ProductItem:last-child {
-        animation-delay: 0s !important;
-    }
-}
-
-@media (width < 640px) {
-    .ProductItem {
-        animation-delay: 0s !important;
     }
 }
