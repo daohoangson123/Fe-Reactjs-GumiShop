@@ -15,7 +15,7 @@ import { debounce } from 'lodash';
 const ShopFilter = ({
     productApi,
     filtered,
-    handleNameChange,
+    debounceChange,
     handleSaleCheck,
     handlePriceChange,
     handleOrderChange,
@@ -64,8 +64,7 @@ const ShopFilter = ({
                                 id="searchkw"
                                 title={`Enter some product's character Ex: vitamin, detox etc`}
                                 placeholder="Search"
-                                onChange={handleNameChange}
-                                value={searchquery}
+                                onChange={debounceChange}
                             />
                             <div className="SaleCheckBox">
                                 <input
@@ -1072,7 +1071,7 @@ const Shop = () => {
             <ShopFilter
                 productApi={productApi}
                 filtered={filtered}
-                handleNameChange={handleNameChange}
+                debounceChange={debounceChange}
                 handleSaleCheck={handleSaleCheck}
                 handlePriceChange={handlePriceChange}
                 handleOrderChange={handleOrderChange}
