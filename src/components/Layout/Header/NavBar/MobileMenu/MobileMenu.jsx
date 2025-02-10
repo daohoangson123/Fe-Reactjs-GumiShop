@@ -8,57 +8,33 @@ import {
     clearAllBodyScrollLocks,
 } from 'body-scroll-lock';
 
-const MobileMenu = ({ navlinkData }) => {
-    const [menuOpen, setMenuOpen] = useState(false);
-    const [isMobileView, setIsMobileView] = useState(false);
-
-    const openMenu =
-        typeof document !== 'undefined' &&
-        document.getElementById('MobileMenu__Btn');
-
-    const mq = window.matchMedia('(width <= 1024px)');
-
-    // toggle khi matchMedia
-    const checkView = () => {
-        if (mq.matches) {
-            setMenuOpen(false);
-            setIsMobileView(true);
-            clearAllBodyScrollLocks();
-        } else {
-            setIsMobileView(false);
-            setMenuOpen(false);
-            clearAllBodyScrollLocks();
-        }
-    };
-
-    useEffect(() => {
-        checkView();
-
-        mq.addEventListener('change', checkView);
-
-        return () => {
-            mq.removeEventListener('change', checkView);
-        };
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
-
+const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
     return (
-        <>
-            <MobileMenuToggle
-                menuOpen={menuOpen}
-                setMenuOpen={setMenuOpen}
-                openMenu={openMenu}
-            />
-            {menuOpen && (
-                <MobileMenuRouting
-                    isMobileView={isMobileView}
-                    menuOpen={menuOpen}
-                    setMenuOpen={setMenuOpen}
-                    navlinkData={navlinkData}
-                    openMenu={openMenu}
-                />
-            )}
-        </>
+        <button
+            title={menuOpen ? 'Close Menu' : 'Open Menu'}
+            type="button"
+            className={`MobileMenu__Btn ${menuOpen && 'MobileMenu__Btn--Actived'}`}
+            id="MobileMenu__Btn"
+            onClick={() => {
+                setMenuOpen(!menuOpen);
+                if (menuOpen) {
+                    enableBodyScroll(openMenu);
+                } else {
+                    disableBodyScroll(openMenu);
+                }
+            }}
+            aria-label="MobileMenuToggle"
+        >
+            <div
+                className={`MenuIcon1 MenuIcon ${menuOpen ? 'MenuIcon1--Actived' : 'MenuIcon1--NotActived'}`}
+            ></div>
+            <div
+                className={`MenuIcon2 MenuIcon ${menuOpen ? 'MenuIcon2--Actived' : 'MenuIcon2--NotActived'}`}
+            ></div>
+            <div
+                className={`MenuIcon3 MenuIcon ${menuOpen ? 'MenuIcon3--Actived' : 'MenuIcon3--NotActived'}`}
+            ></div>
+        </button>
     );
 };
 
@@ -111,33 +87,56 @@ const MobileMenuRouting = ({
     );
 };
 
-const MobileMenuToggle = ({ menuOpen, setMenuOpen, openMenu }) => {
+const MobileMenu = ({ navlinkData }) => {
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [isMobileView, setIsMobileView] = useState(false);
+
+    const openMenu =
+        typeof document !== 'undefined' &&
+        document.getElementById('MobileMenu__Btn');
+
+    const mq = window.matchMedia('(width <= 1024px)');
+
+    const checkView = () => {
+        if (mq.matches) {
+            setMenuOpen(false);
+            setIsMobileView(true);
+            clearAllBodyScrollLocks();
+        } else {
+            setIsMobileView(false);
+            setMenuOpen(false);
+            clearAllBodyScrollLocks();
+        }
+    };
+
+    useEffect(() => {
+        checkView();
+
+        mq.addEventListener('change', checkView);
+
+        return () => {
+            mq.removeEventListener('change', checkView);
+        };
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
     return (
-        <button
-            title={menuOpen ? 'Close Menu' : 'Open Menu'}
-            type="button"
-            className={`MobileMenu__Btn ${menuOpen && 'MobileMenu__Btn--Actived'}`}
-            id="MobileMenu__Btn"
-            onClick={() => {
-                setMenuOpen(!menuOpen);
-                if (menuOpen) {
-                    enableBodyScroll(openMenu);
-                } else {
-                    disableBodyScroll(openMenu);
-                }
-            }}
-            aria-label="MobileMenuToggle"
-        >
-            <div
-                className={`MenuIcon1 MenuIcon ${menuOpen ? 'MenuIcon1--Actived' : 'MenuIcon1--NotActived'}`}
-            ></div>
-            <div
-                className={`MenuIcon2 MenuIcon ${menuOpen ? 'MenuIcon2--Actived' : 'MenuIcon2--NotActived'}`}
-            ></div>
-            <div
-                className={`MenuIcon3 MenuIcon ${menuOpen ? 'MenuIcon3--Actived' : 'MenuIcon3--NotActived'}`}
-            ></div>
-        </button>
+        <>
+            <MobileMenuToggle
+                menuOpen={menuOpen}
+                setMenuOpen={setMenuOpen}
+                openMenu={openMenu}
+            />
+            {menuOpen && (
+                <MobileMenuRouting
+                    isMobileView={isMobileView}
+                    menuOpen={menuOpen}
+                    setMenuOpen={setMenuOpen}
+                    navlinkData={navlinkData}
+                    openMenu={openMenu}
+                />
+            )}
+        </>
     );
 };
 

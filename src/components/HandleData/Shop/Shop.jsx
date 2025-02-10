@@ -8,7 +8,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 //
 import Product from '../../Layout/UI/Product/Product';
 import ProductSkeleton from '../../Layout/UI/Skeleton/ProductSkeleton';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import Loading from '../../Layout/UI/Loading/Loading';
 import { debounce } from 'lodash';
 
@@ -19,7 +19,6 @@ const ShopFilter = ({
     handleSaleCheck,
     handlePriceChange,
     handleOrderChange,
-    searchquery,
     saleChecked,
     price,
     order,
@@ -222,7 +221,6 @@ const Shop = () => {
     const [priceFilter, setPriceFilter] = useState(price);
     const [orderFilter, setOrderFilter] = useState(order);
     const result = [...productApi];
-    const location = useLocation();
 
     const getFilterItems = (
         searchValue,
@@ -1064,7 +1062,8 @@ const Shop = () => {
             document.title = 'Gumi Shopify';
             debounceChange.cancel();
         };
-    }, [location.search, debounceChange]);
+        // eslint-disable-next-line
+    }, []);
 
     return (
         <div className="Shop">
