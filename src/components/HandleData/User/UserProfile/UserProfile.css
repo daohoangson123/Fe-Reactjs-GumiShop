@@ -37,7 +37,7 @@
 }
 
 .SignOut__Btn:hover {
-    background-color: var(--color-primary-rgba);
+    background-color: var(--color-primary-rgba-7);
 }
 
 .SignOut__Btn:hover a {
@@ -64,7 +64,7 @@
     display: grid;
     gap: 10px;
     padding: 20px;
-    border: 1px solid var(--color-primary-rgba);
+    border: 1px solid var(--color-primary-rgba-7);
 }
 
 .ProductsAddingForm input {

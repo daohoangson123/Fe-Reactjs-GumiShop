@@ -145,7 +145,7 @@ const ShopFilter = ({
                             className="ToggleFilter__Btn"
                             style={{
                                 background: showFilter
-                                    ? 'var(--color-primary-rgba)'
+                                    ? 'var(--color-primary-rgba-7)'
                                     : 'var(--color-primary)',
                             }}
                             title={

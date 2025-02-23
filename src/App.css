@@ -6,8 +6,8 @@
 
 :root {
     --color-primary: #f6623e;
-    --color-primary-rgba: rgba(246, 98, 62, 0.7);
     --color-primary-rgba-3: rgba(246, 98, 62, 0.3);
+    --color-primary-rgba-7: rgba(246, 98, 62, 0.7);
     --color-default: #ffffff;
     --color-alt: #000000;
     --color-alt-rgba-1: rgba(0, 0, 0, 0.1);

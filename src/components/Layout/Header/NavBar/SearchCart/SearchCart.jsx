@@ -125,8 +125,8 @@ const SearchCart = () => {
 
     const filtered = getFilterItems(searchValue, result);
 
-    const getProducts = async () => {
-        let result = await fetchProductApi();
+    const getProducts = async (signal) => {
+        let result = await fetchProductApi(signal);
 
         if (result) {
             setProductApi(result);
@@ -134,7 +134,12 @@ const SearchCart = () => {
     };
 
     useEffect(() => {
-        searchValue && getProducts();
+        const controller = new AbortController();
+        const signal = controller.signal;
+        searchValue && getProducts(signal);
+        return () => {
+            controller.abort();
+        };
     }, [searchValue]);
 
     useEffect(() => {

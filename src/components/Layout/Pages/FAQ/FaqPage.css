@@ -12,7 +12,7 @@
 }
 
 .FaqPage__Content .accordion-button.collapsed:hover {
-    box-shadow: 0 0 3px 3px var(--color-primary-rgba);
+    box-shadow: 0 0 3px 3px var(--color-primary-rgba-7);
 }
 
 .FaqPage__Content .accordion-button:not(.collapsed) {

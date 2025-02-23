@@ -26,7 +26,7 @@
 }
 
 .ToShopLink:hover {
-    background-color: var(--color-primary-rgba);
+    background-color: var(--color-primary-rgba-7);
 }
 
 .ToShopLink:hover a {
@@ -155,7 +155,7 @@
 }
 
 .Cart-Item_RemoveBtn:hover {
-    background-color: var(--color-primary-rgba);
+    background-color: var(--color-primary-rgba-7);
 }
 
 .Cart-Item_RemoveBtn:hover svg path {

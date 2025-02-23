@@ -75,7 +75,7 @@
 
 .NavSearch__Form input:focus-visible {
     outline: none;
-    box-shadow: 0 0 3px 3px var(--color-primary-rgba);
+    box-shadow: 0 0 3px 3px var(--color-primary-rgba-7);
 }
 
 .NavSearch__Result {

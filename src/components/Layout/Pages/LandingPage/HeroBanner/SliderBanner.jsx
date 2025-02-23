@@ -28,110 +28,84 @@ const SliderBanner = () => {
                 items={1}
                 dots
             >
-                <HeroSlider1 />
-                <HeroSlider2 />
-                <HeroSlider3 />
+                <HeroSlider
+                    bannerNumber={1}
+                    imgSrc={banner1_425}
+                    imgAlt={banner_data[0].name}
+                    imgSrcset={`${banner1_425} 1024w, ${banner1_1024} 1920w, ${banner1_1920} 2560w`}
+                    sliderTitle={banner_data[0].title}
+                    sliderName={banner_data[0].name}
+                    sliderDes={banner_data[0].des}
+                    subImgSrc={banner1_bg}
+                />
+                <HeroSlider
+                    bannerNumber={2}
+                    imgSrc={banner2}
+                    imgAlt={banner_data[1].name}
+                    sliderTitle={banner_data[1].title}
+                    sliderName={banner_data[1].name}
+                    sliderDes={banner_data[1].des}
+                    subImgSrc={banner2_bg}
+                />
+                <HeroSlider
+                    bannerNumber={3}
+                    imgSrc={banner3}
+                    imgAlt={banner_data[2].name}
+                    imgSrcset={null}
+                    sliderTitle={banner_data[2].title}
+                    sliderName={banner_data[2].name}
+                    sliderDes={banner_data[2].des}
+                />
             </OwlCarousel>
         </section>
     );
 };
 
-const HeroSlider1 = () => {
+const HeroSlider = ({
+    bannerNumber,
+    imgSrc,
+    imgAlt,
+    imgSrcset,
+    sliderTitle,
+    sliderName,
+    sliderDes,
+    subImgSrc,
+}) => {
     const [isImgLoaded, setIsImgLoaded] = useState();
 
     return (
         <div className="SliderContainer">
             <div
-                className="BannerContainer BannerContainer_1"
+                className={`BannerContainer BannerContainer_${bannerNumber}`}
                 title="Drag or swip to see other banner"
             >
                 <img
-                    src={banner1_425}
-                    alt={banner_data[0].name}
-                    srcSet={`${banner1_425} 1024w, ${banner1_1024} 1920w, ${banner1_1920} 2560w`}
+                    src={imgSrc}
+                    alt={imgAlt}
+                    srcSet={imgSrcset}
                     fetchpriority="high"
-                    className="BannerContainer_MainImg BannerContainer_MainImg_1"
+                    className={`BannerContainer_MainImg BannerContainer_MainImg_${bannerNumber}`}
                     onLoad={() => setIsImgLoaded(true)}
                 />
                 {!isImgLoaded && (
-                    <div className="BannerImgLoader1">
+                    <div className={`BannerImgLoader${bannerNumber}`}>
                         <Loading />
                     </div>
                 )}
-                <div className="SliderBanner_1">
+                <div className={`SliderBanner_${bannerNumber}`}>
                     <SliderItem
-                        title={banner_data[0].title}
-                        name={banner_data[0].name}
-                        descript={banner_data[0].des}
+                        title={sliderTitle}
+                        name={sliderName}
+                        descript={sliderDes}
                         btn="SHOP NOW"
                     />
                 </div>
                 <img
-                    src={banner1_bg}
+                    src={subImgSrc}
                     alt=""
                     fetchpriority="high"
                     className="BannerContainer_SubImg"
                 />
-            </div>
-        </div>
-    );
-};
-
-const HeroSlider2 = () => {
-    return (
-        <div className="SliderContainer">
-            <div
-                className="BannerContainer BannerContainer_2"
-                title="Drag or swip to see other banner"
-            >
-                <img
-                    src={banner2}
-                    alt={banner_data[1].name}
-                    loading="lazy"
-                    fetchpriority="low"
-                    className="BannerContainer_MainImg BannerContainer_MainImg_2"
-                />
-                <div className="SliderBanner_2">
-                    <SliderItem
-                        title={banner_data[1].title}
-                        name={banner_data[1].name}
-                        descript={banner_data[1].des}
-                        btn="SHOP NOW"
-                    />
-                </div>
-                <img
-                    src={banner2_bg}
-                    alt=""
-                    loading="lazy"
-                    className="BannerContainer_SubImg"
-                />
-            </div>
-        </div>
-    );
-};
-
-const HeroSlider3 = () => {
-    return (
-        <div className="SliderContainer">
-            <div
-                className="BannerContainer BannerContainer_3"
-                title="Drag or swip to see other banner"
-            >
-                <img
-                    src={banner3}
-                    alt={banner_data[2].name}
-                    loading="lazy"
-                    fetchpriority="low"
-                    className="BannerContainer_MainImg BannerContainer_MainImg_3"
-                />
-                <div className="SliderBanner_3">
-                    <SliderItem
-                        title={banner_data[1].title}
-                        name={banner_data[1].name}
-                        descript={banner_data[1].des}
-                        btn="SHOP NOW"
-                    />
-                </div>
             </div>
         </div>
     );

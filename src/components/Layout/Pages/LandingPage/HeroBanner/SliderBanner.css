@@ -7,7 +7,7 @@
 }
 
 .HeroBanner .owl-theme .owl-dots .owl-dot:hover span {
-    background: var(--color-primary-rgba);
+    background: var(--color-primary-rgba-7);
 }
 
 .BannerContainer {

@@ -67,7 +67,7 @@
 
 .NameFilterInput:focus-visible {
     outline: none;
-    box-shadow: 0 0 2px 2px var(--color-primary-rgba);
+    box-shadow: 0 0 2px 2px var(--color-primary-rgba-7);
 }
 
 @media (width <= 1024px) {
