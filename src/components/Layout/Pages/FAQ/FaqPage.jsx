@@ -1,9 +1,13 @@
+import { useEffect } from 'react';
 import { faqList } from '../../../../data/faq';
 import './FaqPage.css';
 //
 import Accordion from 'react-bootstrap/Accordion';
 
 const FaqPage = () => {
+    useEffect(() => {
+        document.title = 'Gumi Shopify - FAQ';
+    }, []);
     return (
         <div className="FaqPage Container">
             <div className="FaqPage__Title">FAQ</div>

@@ -10,9 +10,8 @@
     width: 40px;
     height: 40px;
     transition: var(--transition-fast);
-    cursor: pointer;
-    border: 1px solid var(--color-primary);
     border-radius: var(--border-round);
+    cursor: pointer;
     color: var(--color-primary);
 }
 
@@ -20,6 +19,14 @@
     transform: scale(1);
 }
 
-.BackTopBtn-actived i {
-    font-size: 26px;
+.BackTopBtn-actived:hover svg {
+    fill: var(--color-primary);
+}
+
+.BackTopBtn svg,
+.BackTopBtn-actived svg {
+    transition: var(--transition-fast);
+    border-radius: var(--border-round);
+    fill: var(--color-alt);
+    backdrop-filter: blur(20px);
 }

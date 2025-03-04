@@ -141,6 +141,8 @@ const Wholesale = () => {
     };
 
     useEffect(() => {
+        document.title = 'Gumi Shopify - Wholesale';
+
         getWholesaleApi();
     }, []);
 

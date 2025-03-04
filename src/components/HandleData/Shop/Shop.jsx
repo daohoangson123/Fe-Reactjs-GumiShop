@@ -1059,7 +1059,6 @@ const Shop = () => {
         getProducts();
 
         return () => {
-            document.title = 'Gumi Shopify';
             debounceChange.cancel();
         };
         // eslint-disable-next-line

@@ -16,6 +16,7 @@ const Good4MeSilder = ({ title }) => {
                 className="owl-control owl-theme"
                 autoWidth={true}
                 dots={false}
+                nav={true}
                 items={5}
                 margin={30}
                 autoplayHoverPause

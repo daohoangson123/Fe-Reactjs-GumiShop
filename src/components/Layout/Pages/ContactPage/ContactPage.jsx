@@ -1,10 +1,13 @@
 import Loading from '../../UI/Loading/Loading';
 import './ContactPage.css';
 //
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const ContactPage = () => {
     const [mapLoaded, setMapLoaded] = useState(false);
+    useEffect(() => {
+        document.title = 'Gumi Shopify - Contact';
+    }, []);
 
     return (
         <div className="ContactPage">

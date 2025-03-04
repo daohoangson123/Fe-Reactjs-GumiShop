@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
     myCartSelector,
@@ -80,6 +80,10 @@ const Cart = () => {
     function handleRemove(product) {
         dispatch(removeInCart(product));
     }
+
+    useEffect(() => {
+        document.title = 'Gumi Shopify - Your Cart';
+    }, []);
 
     return (
         <div className="CartPage">

@@ -1,3 +1,4 @@
+import ArrowUp from '../../Layout/UI/SVG/Icons/ArrowUp';
 import './BackTopBtn.css';
 //
 import { useEffect, useState } from 'react';
@@ -42,7 +43,7 @@ const BackTopBtn = () => {
             className={showBacktop ? 'BackTopBtn-actived' : 'BackTopBtn'}
             onClick={scrollToTop}
         >
-            <i className="fa-sharp fa-regular fa-circle-up"></i>
+            <ArrowUp />
         </div>
     );
 };

@@ -23,6 +23,8 @@ const StockistPage = () => {
     };
 
     useEffect(() => {
+        document.title = 'Gumi Shopify - Stockist';
+
         getProducts();
     }, []);
 

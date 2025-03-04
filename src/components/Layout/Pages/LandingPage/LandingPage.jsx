@@ -15,10 +15,6 @@ import Good4MeSlider from './Good4MeSlider/Good4MeSlider';
 const LandingPage = () => {
     useEffect(() => {
         document.title = 'Gumi Shopify - Home';
-
-        return () => {
-            document.title = 'Gumi Shopify';
-        };
     }, []);
 
     return (
