@@ -11,6 +11,10 @@ import { userSignIn } from '../../../../redux/Actions/Action';
 //
 import { Zoom, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import EyeOpen from '../../../Layout/UI/SVG/Icons/EyeOpen';
+import EyeClose from '../../../Layout/UI/SVG/Icons/EyeClose';
+import UserName from '../../../Layout/UI/SVG/Icons/UserName';
+import PassWord from '../../../Layout/UI/SVG/Icons/PassWord';
 
 const SignInInput = ({
     inputName,
@@ -29,22 +33,7 @@ const SignInInput = ({
             {inputName === 'signInUserName' ? (
                 <div style={{ backdropFilter: 'opacity(0)' }}>
                     <span
-                        style={{
-                            position: 'absolute',
-                            transform:
-                                isFocus || username
-                                    ? 'translate3d(15px, -12px, -10px)'
-                                    : 'translate3d(5px, 8px, 0',
-                            fontSize: isFocus || username ? '14px' : '16px',
-                            color:
-                                isFocus || username
-                                    ? 'var(--color-primary)'
-                                    : 'var(--color-text)',
-                            background: isFocus || username ? 'white' : 'none',
-                            paddingInline: isFocus || username ? '5px' : 'none',
-                            zIndex: isFocus || username ? 0 : -1,
-                            transition: 'var(--transition-fast)',
-                        }}
+                        className={`${isFocus || username ? 'SignInInputFocused' : 'SignInInputNotFocused'}`}
                     >
                         username
                     </span>
@@ -68,22 +57,7 @@ const SignInInput = ({
             ) : (
                 <div style={{ backdropFilter: 'opacity(0)' }}>
                     <span
-                        style={{
-                            position: 'absolute',
-                            transform:
-                                isFocus || password
-                                    ? 'translate3d(15px, -12px, -10px)'
-                                    : 'translate3d(5px, 8px, 0',
-                            fontSize: isFocus || password ? '14px' : '16px',
-                            color:
-                                isFocus || password
-                                    ? 'var(--color-primary)'
-                                    : 'var(--color-text)',
-                            background: isFocus || password ? 'white' : 'none',
-                            paddingInline: isFocus || password ? '5px' : 'none',
-                            zIndex: isFocus || password ? 0 : -1,
-                            transition: 'var(--transition-fast)',
-                        }}
+                        className={`${isFocus || password ? 'SignInInputFocused' : 'SignInInputNotFocused'}`}
                     >
                         password
                     </span>
@@ -92,7 +66,6 @@ const SignInInput = ({
                         id="signInPassWord"
                         className="signInPassWord"
                         required
-                        autoComplete="on"
                         onChange={(event) => setPassword(event.target.value)}
                         onBlur={() => {
                             if (password === '') {
@@ -104,12 +77,12 @@ const SignInInput = ({
                             setIsFocus(true);
                         }}
                     />
-                    <i
-                        className={`fa-regular ${
-                            !showPass ? 'fa-eye-slash' : 'fa-eye'
-                        } showpassicon`}
+                    <span
+                        className="showpassicon"
                         onClick={() => setShowPass(!showPass)}
-                    ></i>
+                    >
+                        {showPass ? <EyeOpen /> : <EyeClose />}
+                    </span>
                 </div>
             )}
         </>
@@ -199,8 +172,8 @@ const SignInForm = () => {
             </div>
             <fieldset className="SignIn__Form-Fieldset">
                 <div className="SignIn__Form-InputContainer">
-                    <label htmlFor="signInUserName">
-                        <i className="fa-solid fa-user"></i>
+                    <label title="UserName" htmlFor="signInUserName">
+                        <UserName />
                     </label>
                     <SignInInput
                         inputName="signInUserName"
@@ -210,8 +183,8 @@ const SignInForm = () => {
                     />
                 </div>
                 <div className="SignIn__Form-InputContainer">
-                    <label htmlFor="signInPassWord">
-                        <i className="fa-key fa-solid"></i>
+                    <label title="PassWord" htmlFor="signInPassWord">
+                        <PassWord />
                     </label>
                     <SignInInput
                         inputName="signInPassWord"

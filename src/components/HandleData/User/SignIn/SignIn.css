@@ -74,15 +74,6 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 10px;
-    backdrop-filter: opacity;
-}
-
-.SignIn__Form-InputContainer label {
-    min-width: 20px;
-}
-
-.SignIn__Form-Remember label {
-    text-align: right;
 }
 
 .SignIn__Form-InputContainer div {
@@ -90,6 +81,23 @@
     flex-grow: 1;
     position: relative;
     width: min(100%, 273px);
+}
+
+.SignIn__Form-InputContainer label {
+    cursor: pointer;
+}
+
+.SignIn__Form-InputContainer label svg path,
+.SignIn__Form-InputContainer label svg circle {
+    transition: var(--transition-fast);
+}
+
+.SignIn__Form-InputContainer label:hover svg path {
+    stroke: var(--color-primary);
+}
+
+.SignIn__Form-InputContainer label:hover svg circle {
+    fill: var(--color-primary);
 }
 
 .SignIn__Form-InputContainer input {
@@ -106,6 +114,28 @@
     font: small-caption;
 }
 
+.SignInInputFocused {
+    position: absolute;
+    transition: var(--transition-fast);
+    transform: translate3d(15px, -12px, -10px);
+    font-size: 14px;
+    color: var(--color-primary);
+    background-color: var(--color-default);
+    padding-inline: 5px;
+    z-index: 0;
+}
+
+.SignInInputNotFocused {
+    position: absolute;
+    transition: var(--transition-fast);
+    transform: translate3d(5px, 7px, 0);
+    font-size: 16px;
+    color: var(--color-text);
+    background-color: none;
+    padding-inline: none;
+    z-index: -1;
+}
+
 .SignIn__Form-InputContainer input:invalid {
     outline: 1px solid var(--color-primary);
     border: none;
@@ -118,12 +148,18 @@
 
 .SignIn__Form-InputContainer .showpassicon {
     position: absolute;
-    top: 12px;
+    top: 8px;
     right: 6px;
+    cursor: pointer;
 }
 
-.SignIn__Form-InputContainer .showpassicon:hover {
+.SignIn__Form-InputContainer .showpassicon svg path {
+    transition: var(--transition-fast);
+}
+
+.SignIn__Form-InputContainer .showpassicon:hover svg path {
     cursor: pointer;
+    fill: var(--color-primary);
 }
 
 .SignIn__Form-InputContainer .showpassicon::before {
