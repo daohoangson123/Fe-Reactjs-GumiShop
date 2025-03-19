@@ -15,6 +15,7 @@ import EyeOpen from '../../../Layout/UI/SVG/Icons/EyeOpen';
 import EyeClose from '../../../Layout/UI/SVG/Icons/EyeClose';
 import UserName from '../../../Layout/UI/SVG/Icons/UserName';
 import PassWord from '../../../Layout/UI/SVG/Icons/PassWord';
+import Loading from '../../../Layout/UI/Loading/Loading'
 
 const SignInInput = ({
     inputName,
@@ -207,9 +208,7 @@ const SignInForm = () => {
                     className="SignIn__Btn"
                 >
                     {isLoading ? (
-                        <>
-                            <i className="fa-solid fa-spin-pulse fa-spinner"></i>
-                        </>
+                        <Loading />
                     ) : (
                         'Sign In'
                     )}

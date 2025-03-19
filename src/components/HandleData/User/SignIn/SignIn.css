@@ -205,6 +205,7 @@
 
 .SignIn__Btn {
     width: 100%;
+    min-height: 40px;
     padding: 5px;
     transition: var(--transition-fast);
     border-radius: var(--border-s);
