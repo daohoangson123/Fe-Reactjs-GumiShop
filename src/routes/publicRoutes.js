@@ -48,6 +48,9 @@ const NewsDetail = lazy(
             '../components/Layout/Pages/LandingPage/LatestNew/NewsDetail/NewsDetail'
         )
 );
+const VietlotteRandom = lazy(
+    () => import('../components/SideFeatures/Vietlotte/VietlotteRandom')
+);
 
 const PublicRoutes = () => {
     return (
@@ -76,6 +79,10 @@ const PublicRoutes = () => {
                     element={<WholesaleProductDetail />}
                 />
                 <Route path="/news/:id" element={<NewsDetail />} />
+                <Route
+                    path="/sidefeatures/vietlotterandom"
+                    element={<VietlotteRandom />}
+                />
                 <Route path="*" element={<NotFoundPage />} />
             </Routes>
         </Suspense>

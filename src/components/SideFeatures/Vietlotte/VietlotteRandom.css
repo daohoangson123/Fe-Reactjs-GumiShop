@@ -1,0 +1,51 @@
+button {
+    border-radius: 8px;
+    border: 2px solid transparent;
+    padding: 5px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.25s linear;
+}
+
+.lottetypebutton:hover,
+.vietlotteactions button:hover {
+    transform: scale(1.1);
+}
+
+button:hover {
+    background: var(--color-primary);
+}
+
+button:focus,
+button:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+}
+
+.lottenumber {
+    animation: zoom-in 0.3s 0.3s linear both;
+}
+
+@keyframes zoom-in {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        color: black;
+        background-color: dimgray;
+    }
+    button {
+        background-color: #f9f9f9;
+    }
+}

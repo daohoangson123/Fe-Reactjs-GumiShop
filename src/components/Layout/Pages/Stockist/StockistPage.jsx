@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 //
 import { fetchProductApi } from '../../../../data/axiosAPI/productData';
 import Skeleton from 'react-loading-skeleton';
+import { Link } from 'react-router-dom';
 //
 
 const StockistPage = () => {
@@ -62,6 +63,9 @@ const StockistPage = () => {
             ) : (
                 <Skeleton className="Table-Skeleton" />
             )}
+            <div>
+                <Link to="/sidefeatures/vietlotterandom">Vietllote</Link>
+            </div>
         </div>
     );
 };
