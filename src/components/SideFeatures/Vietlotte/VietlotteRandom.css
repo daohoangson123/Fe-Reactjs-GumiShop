@@ -13,10 +13,6 @@ button {
     transform: scale(1.1);
 }
 
-button:hover {
-    background: var(--color-primary);
-}
-
 button:focus,
 button:focus-visible {
     outline: 4px auto -webkit-focus-ring-color;
