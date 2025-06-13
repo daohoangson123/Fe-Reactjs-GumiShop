@@ -2,6 +2,8 @@ import { useState } from 'react';
 import './VietlotteRandom.css';
 
 function App() {
+    const [lotteList, setLotteList] = useState([]);
+
     const initialLotte = ['?', '?', '?', '?', '?', '?'];
     const [lotteNumbers, setLotteNumbers] = useState(initialLotte);
 
@@ -40,6 +42,12 @@ function App() {
                 setLotteNumbers(temp);
             }
         }
+        setLotteList([...lotteList, temp.sort(compareNumbers)]);
+    };
+
+    const reset = () => {
+        setLotteNumbers(initialLotte);
+        setLotteList([]);
     };
 
     const random = (max) => {
@@ -141,10 +149,59 @@ function App() {
                         color: 'white',
                         background: lotteType === 'Mega' ? 'red' : 'orange',
                     }}
-                    onClick={() => setLotteNumbers(initialLotte)}
+                    onClick={reset}
                 >
                     Reset
                 </button>
+            </div>
+            <div>
+                Lotte List
+                <div style={{ maxHeight: '300px', overflow: 'auto' }}>
+                    {lotteList
+                        .map((item, index) => (
+                            <>
+                                <div
+                                    key={item}
+                                    style={{
+                                        display: 'flex',
+                                        gap: '10px',
+                                        justifyContent: 'space-between',
+                                        padding: '10px',
+                                        border: '1px solid black',
+                                    }}
+                                >
+                                    <div
+                                        style={{
+                                            width: '25px',
+                                            height: '25px',
+                                        }}
+                                    >
+                                        {index + 1}
+                                    </div>
+                                    {item.map((item) => (
+                                        <div
+                                            style={{
+                                                display: 'grid',
+                                                placeItems: 'center',
+                                                width: '25px',
+                                                height: '25px',
+                                                borderRadius: '100%',
+                                                color: 'white',
+                                                background:
+                                                    lotteType === 'Mega'
+                                                        ? 'red'
+                                                        : 'orange',
+                                            }}
+                                            key={item}
+                                        >
+                                            {item}
+                                        </div>
+                                    ))}
+                                </div>
+                            </>
+                        ))
+                        .reverse()}
+                </div>
             </div>
         </div>
     );

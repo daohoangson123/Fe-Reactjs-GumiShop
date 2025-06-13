@@ -10,8 +10,6 @@ const instance = axios.create({
 
 instance.interceptors.response.use(
     (response) => {
-        console.log(response.headers);
-
         return response.data;
     },
     (error) => {
