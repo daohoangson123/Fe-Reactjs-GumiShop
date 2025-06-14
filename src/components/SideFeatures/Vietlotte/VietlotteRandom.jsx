@@ -3,13 +3,14 @@ import './VietlotteRandom.css';
 
 function App() {
     const [lotteList, setLotteList] = useState([]);
-
-    const initialLotte = ['?', '?', '?', '?', '?', '?'];
-    const [lotteNumbers, setLotteNumbers] = useState(initialLotte);
-
-    const [sort, setSort] = useState(false);
-
     const [lotteType, setLotteType] = useState('Mega');
+
+    const initialLotte = {
+        id: '?',
+        type: lotteType,
+        value: ['?', '?', '?', '?', '?', '?'],
+    };
+    const [lotteNumbers, setLotteNumbers] = useState(initialLotte.value);
 
     const count = 6;
 
@@ -23,7 +24,7 @@ function App() {
     };
 
     const changeLotteType = (type) => {
-        setLotteNumbers(initialLotte);
+        setLotteNumbers(initialLotte.value);
         setLotteType(type);
     };
 
@@ -32,26 +33,32 @@ function App() {
         for (let index = 0; index < count; index++) {
             const num = Math.floor(Math.random() * max + 1);
             if (!temp.includes(num)) {
-                temp.push(num);
+                temp = [...temp, num];
             } else {
                 index = index - 1;
             }
-            if (sort) {
-                setLotteNumbers(temp.sort(compareNumbers));
-            } else {
-                setLotteNumbers(temp);
-            }
         }
-        setLotteList([...lotteList, temp.sort(compareNumbers)]);
+
+        const result = {
+            id: temp.toString().split(',').join(''),
+            type: lotteType,
+            value: temp,
+        };
+
+        setLotteNumbers(temp);
+
+        setLotteList([
+            ...lotteList,
+            { ...result, value: temp.sort(compareNumbers) },
+        ]);
     };
 
     const reset = () => {
-        setLotteNumbers(initialLotte);
+        setLotteNumbers(initialLotte.value);
         setLotteList([]);
     };
 
     const random = (max) => {
-        setLotteNumbers([]);
         roll(max);
     };
 
@@ -99,7 +106,7 @@ function App() {
                     margin: '20px',
                 }}
             >
-                {lotteNumbers?.map((item, index) => (
+                {lotteNumbers?.map((lotteNum, lotteNumIndex) => (
                     <div
                         className="lottenumber"
                         style={{
@@ -110,11 +117,11 @@ function App() {
                             borderRadius: '100%',
                             color: 'white',
                             background: lotteType === 'Mega' ? 'red' : 'orange',
-                            animationDelay: `${index * 0.2}s`,
+                            animationDelay: `${(lotteNumIndex + 0.1) * 0.1}s`,
                         }}
-                        key={item + Math.random()}
+                        key={(lotteNumIndex + 1) * Math.random()}
                     >
-                        {item}
+                        {lotteNum}
                     </div>
                 ))}
             </div>
@@ -135,15 +142,7 @@ function App() {
                 >
                     Roll
                 </button>
-                <button
-                    style={{
-                        color: 'white',
-                        background: lotteType === 'Mega' ? 'red' : 'orange',
-                    }}
-                    onClick={() => setSort(!sort)}
-                >
-                    Sort - {sort ? 'ON' : 'OFF'}
-                </button>
+
                 <button
                     style={{
                         color: 'white',
@@ -158,47 +157,45 @@ function App() {
                 Lotte List
                 <div style={{ maxHeight: '300px', overflow: 'auto' }}>
                     {lotteList
-                        .map((item, index) => (
-                            <>
+                        .map((lotteItem, lotteItemIndex) => (
+                            <div
+                                key={lotteItem.id * Math.random()}
+                                style={{
+                                    display: 'flex',
+                                    gap: '10px',
+                                    justifyContent: 'space-between',
+                                    padding: '10px',
+                                    border: '1px solid black',
+                                }}
+                            >
                                 <div
-                                    key={item}
                                     style={{
-                                        display: 'flex',
-                                        gap: '10px',
-                                        justifyContent: 'space-between',
-                                        padding: '10px',
-                                        border: '1px solid black',
+                                        width: '25px',
+                                        height: '25px',
                                     }}
                                 >
+                                    {lotteItemIndex + 1}
+                                </div>
+                                {lotteItem?.value?.map((lotteItemNum) => (
                                     <div
                                         style={{
+                                            display: 'grid',
+                                            placeItems: 'center',
                                             width: '25px',
                                             height: '25px',
+                                            borderRadius: '100%',
+                                            color: 'white',
+                                            background:
+                                                lotteItem.type === 'Mega'
+                                                    ? 'red'
+                                                    : 'orange',
                                         }}
+                                        key={lotteItemNum}
                                     >
-                                        {index + 1}
+                                        {lotteItemNum}
                                     </div>
-                                    {item.map((item) => (
-                                        <div
-                                            style={{
-                                                display: 'grid',
-                                                placeItems: 'center',
-                                                width: '25px',
-                                                height: '25px',
-                                                borderRadius: '100%',
-                                                color: 'white',
-                                                background:
-                                                    lotteType === 'Mega'
-                                                        ? 'red'
-                                                        : 'orange',
-                                            }}
-                                            key={item}
-                                        >
-                                            {item}
-                                        </div>
-                                    ))}
-                                </div>
-                            </>
+                                ))}
+                            </div>
                         ))
                         .reverse()}
                 </div>
